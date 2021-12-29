@@ -80,7 +80,7 @@ $ yarn add amis-widget-cli --dev 或者 npm i amis-widget-cli --save-dev
     $ amis config init
     ```
 
-4. **编译当前自定义组件**
+4. **调试&构建自定义组件**
 
    4.1 开启本地调试模式
     ```bash
@@ -123,39 +123,38 @@ $ yarn add amis-widget-cli --dev 或者 npm i amis-widget-cli --save-dev
 
 3. **关于amis-widget-cli提供三种构建场景**
 
-   3.1. **dev**: 本地开发调试模式，用于本地开发和调试项目(包含热更新、接口代理等功能)，编译的代码没有压缩，默认会开启ESLint检测代码规范（可关闭）  
-   3.2. **build**: 用于构建生产环境代码，编译输出的代码会进行压缩优化  
-   3.3. **build2lib**: 用于构建library库，以umd进行输出  
-   3.4. **build2esm**: 用于构建library库，以esm进行输出  
+   3.1. **dev**: 本地开发调试模式，用于本地开发和调试项目(包含热更新、接口代理等功能)，编译的代码没有压缩，默认会开启ESLint检测代码规范（可关闭）；  
+   3.2. **build**: 用于构建生产环境代码，编译输出的代码会进行压缩优化；  
+   3.3. **build2lib**: 用于构建library库，以umd进行输出；  
+   3.4. **build2esm**: 用于构建library库，以esm进行输出。  
 
 4. **关于amis-widget-cli的配置文件**
 
-   4.1. 提供全量的默认配置，实现零配置、开箱即用的能力  
+   4.1. 提供全量的默认配置，实现零配置、开箱即用的能力；  
    4.2. 自定义构建配置，请在当前项目根目录创建amis-widget-cli配置文件（amis.config.js），amis-widget-cli提供初始化配置文件的方法：  
    ```bash
    $ amis config init
    ```
-   4.3. amis.config.js为当前项目的配置文件，优先级最高（可覆盖amis-widget-cli提供的默认配置）  
+   4.3. amis.config.js为当前项目的配置文件，优先级最高（可覆盖amis-widget-cli提供的默认配置）。  
 
 5. **配置构建入口文件（webpack.entry）**
 
-   5.1. 默认的构建入口文件: ./src/index.js  
-   5.2. 自定义构建入口(amis.config.js中提供对应的配置入口)  
-
-     5.2.1. 在webpack.entry配置构建入口，dev\build\build2lib都会以此为构建入口 ([关于entry的配置方法](https://www.webpackjs.com/configuration/entry-context/#entry))  
-     5.2.2. 在dev.entry、build.entry、build2lib.entry中配置对应执行环境的构建入口，优先级高于webpack.entry  
+   5.1. 默认的构建入口文件: ./src/index.js；  
+   5.2. 自定义构建入口(amis.config.js中提供对应的配置入口)；
+   5.3. 在webpack.entry配置构建入口，dev\build\build2lib都会以此为构建入口 ([关于entry的配置方法](https://www.webpackjs.com/configuration/entry-context/#entry))；  
+   5.4. 在dev.entry、build.entry、build2lib.entry中配置对应执行环境的构建入口，优先级高于webpack.entry。  
 
 6. **关于多页面**
 
-   6.1. 当amis.config.js的entry只有一个入口配置，且对应的构建入口文件不存在时，会自动从src/pages中获取构建入口（支持多页面多模板）  
-   6.2. 多页面模式下，会自动将src/pages中以.ts、.tsx、.js、.jsx结尾（对应的匹配正则：/\.[tj]sx?$/）的文件作为构建入口文件，同时将同名的html文件作为当前页面模板
+   6.1. 当amis.config.js的entry只有一个入口配置，且对应的构建入口文件不存在时，会自动从src/pages中获取构建入口（支持多页面多模板）；  
+   6.2. 多页面模式下，会自动将src/pages中以.ts、.tsx、.js、.jsx结尾（对应的匹配正则：/\.[tj]sx?$/）的文件作为构建入口文件，同时将同名的html文件作为当前页面模板。
 
 7. **关于多页面多模板**
 
-   7.1. 只有dev和build的构建过程中才会使用到页面模板，build2lib构建中不会将打包完成的代码输出到页面模板中  
-   7.2. 默认使用./src/index.html作为页面模板  
-   7.3. 当项目中./src/index.html不存在时，会使用默认页面模板  
-   7.4. 多页面模式时，如果pages下存在对应的html页面（与入口文件同名的html文件），会自动将其设置为页面模板
+   7.1. 只有dev和build的构建过程中才会使用到页面模板，build2lib构建中不会将打包完成的代码输出到页面模板中；  
+   7.2. 默认使用./src/index.html作为页面模板；  
+   7.3. 当项目中./src/index.html不存在时，会使用默认页面模板；  
+   7.4. 多页面模式时，如果pages下存在对应的html页面（与入口文件同名的html文件），会自动将其设置为页面模板。
 
 ## amis-widget-cli 配置项使用说明
 > amis-widget-cli配置文件（amis.config.js），以下使用AMISConfig代表amis.config.js配置对象
