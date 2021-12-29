@@ -12,6 +12,9 @@ const inspect = require('./inspect.js');
 const mainAction = require('./main.js'); // 功能入口
 const amisConfigInit = require('../utils/amisConfigInit.js');
 
+const curConfig = require('../config/index'); // 获取当前项目根目录下的配置文件
+const {consoleTag} = require('../utils/amisParams'); // 输出标记
+
 // amis的package文件
 const amisPackage = require('../../package.json');
 
@@ -144,7 +147,7 @@ let argv = yargs
         .alias('h', 'help');
     },
     (argv) => {
-      mainAction.build('lib'); // 构建library
+      mainAction.build2lib(); // 构建library
     },
   )
   .command(
