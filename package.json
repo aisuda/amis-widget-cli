@@ -1,0 +1,69 @@
+{
+  "name": "amis-widget-cli",
+  "version": "1.0.1",
+  "description": "前端脚手架：amis自定义组件开发工具",
+  "keywords": [
+    "amis自定义组件",
+    "自定义组件开发工具"
+  ],
+  "author": "fex",
+  "license": "MIT",
+  "bin": {
+    "amis": "./bin/amis.js"
+  },
+  "main": "src/module/main.js",
+  "scripts": {
+    "amis": "amis",
+    "format": "prettier --write \"src/**/**/*.{js,vue,tsx,ts,scss,json}\""
+  },
+  "files": [
+    "bin/*",
+    "src/*"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "src/**/**/*.{js,jsx,ts,tsx,vue,scss,json}": [
+      "prettier --write"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git@github.com:aisuda/amis-widget-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aisuda/amis-widget-cli/issues"
+  },
+  "dependencies": {
+    "akfun": "^1.6.5",
+    "chalk": "^4.0.0",
+    "deepmerge": "^4.2.2",
+    "figlet": "^1.2.0",
+    "inquirer": "^7.3.3",
+    "ora": "^4.0.4",
+    "yargs": "^12.0.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^9.1.1",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.9",
+    "prettier": "^2.0.5"
+  },
+  "engines": {
+    "node": ">= 10.13.0",
+    "npm": ">= 6.4.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8",
+    "iOS >= 8",
+    "Firefox >= 20",
+    "Android > 4.4"
+  ]
+}
