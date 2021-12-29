@@ -140,8 +140,8 @@ $ yarn add amis-widget-cli --dev 或者 npm i amis-widget-cli --save-dev
 5. **配置构建入口文件（webpack.entry）**
 
    5.1. 默认的构建入口文件: ./src/index.js；  
-   5.2. 自定义构建入口(amis.config.js中提供对应的配置入口)；
-   5.3. 在webpack.entry配置构建入口，dev\build\build2lib都会以此为构建入口 ([关于entry的配置方法](https://www.webpackjs.com/configuration/entry-context/#entry))；  
+   5.2. 自定义构建入口(amis.config.js中提供对应的配置入口)；  
+   5.3. 在webpack.entry配置构建入口，dev\build\build2lib都会以此为构建入口 ([关于entry的配置方法](https://www.webpackjs.com/configuration/entry-context/#entry))；    
    5.4. 在dev.entry、build.entry、build2lib.entry中配置对应执行环境的构建入口，优先级高于webpack.entry。  
 
 6. **关于多页面**
