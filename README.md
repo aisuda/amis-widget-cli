@@ -1,6 +1,6 @@
 # AMIS 前端脚手架
 > amis-widget-cli 主要用于开发amis自定义组件的脚手架，其核心是基于AKFun现有的工程能力，为用户提供自定义组件模板下载、编译、预览、多技术栈支持等功能。
-（AKFun是一个基于 Webpack4.0 和 rollup 的前端多场景打包工具，支持多种技术栈：Vue技术栈、React技术栈、React&TS技术栈。）
+（AKFun是一个基于 Webpack 和 rollup 的前端多场景打包工具，支持多种技术栈：Vue技术栈、React技术栈、React&TS技术栈。）
 
 ## 特性
 - ⚡️ 零配置，开箱即用
@@ -9,7 +9,7 @@
 - ❤️ 开放配置能力: 可配置构建入口文件、开启ESLint代码检测、接口代理等
 - 👍 支持 [Autoprefixer](https://github.com/postcss/autoprefixer#readme)、[Sass](https://sass-lang.com/)、[PostCSS](https://postcss.org/)、[ESLint](http://eslint.cn/)、[StyleLint](https://stylelint.io/)
 - ❤️ 支持项目系统参数自动批量替换 [params-replace-loader](https://www.npmjs.com/package/params-replace-loader)
-- 😀 提供完整的[Vue自定义组件模板](https://github.com/aisuda/vue-custom-widget-template)、[React自定义组件模板](https://github.com/aisuda/react-custom-widget-template)、[多个自定义组件模板](https://github.com/aisuda/multiple-cutom-widget-template)
+- 😀 提供完整的[Vue自定义组件模板](https://github.com/aisuda/vue-custom-widget-template)、[React自定义组件模板](https://github.com/aisuda/react-custom-widget-template)、[多技术栈自定义组件模板](https://github.com/aisuda/multiple-cutom-widget-template)
 
 ## 快速开始 / 使用方法一
 > 全局安装amis-widget-cli，用于同时管理多个自定义组件代码
@@ -256,6 +256,7 @@ module.exports = {
   ...
   webpack: {
     ignoreNodeModules: true,
+    allowList: [], // 用于配置会注入bundle中的依赖包（ignoreNodeModules为true时生效）
   }
   ...
 }
