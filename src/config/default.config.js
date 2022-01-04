@@ -1,7 +1,7 @@
 'use strict';
 // 统一路径解析：
 const { resolve } = require('akfun');
-const path = require("path"); // 以命令执行目录为根目录
+const path = require('path'); // 以命令执行目录为根目录
 
 // 当前amis的路径解析（用于获取amis-widget-cli本身的文件地址）
 function resolveByDirname(dir) {
@@ -23,13 +23,13 @@ const defaultAMISConfig = {
       // webpack的resolve配置
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue', '.json'], // 用于配置webpack在尝试过程中用到的后缀列表
       alias: {
-        '@': resolve('src'),
+        '@': resolve('src')
       }
     },
     createDeclaration: false, // 打包时是否创建ts声明文件
     ignoreNodeModules: false, // 打包时是否忽略 node_modules
     externals: [], // 从输出的 bundle 中排除依赖
-    template: resolveByDirname('../editor/index.html'), // 默认使用amis-widget提供的页面模板（会启动页面设计器）
+    template: resolveByDirname('../initData/defaultTemplate.html'), // 默认使用amis-widget提供的页面模板（会启动页面设计器）
     sassResources: []
   },
   envParams: {
