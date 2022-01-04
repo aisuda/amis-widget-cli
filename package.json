@@ -39,10 +39,7 @@
     "url": "https://github.com/aisuda/amis-widget-cli/issues"
   },
   "dependencies": {
-    "akfun": "^2.0.2",
-    "amis": "^1.5.7",
-    "amis-editor": "^4.0.1-beta.18",
-    "axios": "^0.24.0",
+    "akfun": "^2.0.5",
     "chalk": "^4.0.0",
     "deepmerge": "^4.2.2",
     "figlet": "^1.2.0",
