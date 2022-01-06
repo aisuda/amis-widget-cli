@@ -28,7 +28,9 @@ const defaultAMISConfig = {
     },
     createDeclaration: false, // 打包时是否创建ts声明文件
     ignoreNodeModules: false, // 打包时是否忽略 node_modules
+    allowList: [], // ignoreNodeModules为true时生效
     externals: [], // 从输出的 bundle 中排除依赖
+    projectDir: ['src'],
     template: resolveByDirname('../initData/defaultTemplate.html'), // 默认使用amis-widget提供的页面模板（会启动页面设计器）
     sassResources: []
   },
@@ -66,7 +68,8 @@ const defaultAMISConfig = {
      * In our experience, they generally work as expected,
      * just be aware of this issue when enabling this option.
      */
-    cssSourceMap: false
+    cssSourceMap: false,
+    closeHotReload: false, // 是否关闭热更新
   },
   build: {
     // 用于构建生产环境代码的相关配置信息

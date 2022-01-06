@@ -29,7 +29,9 @@ module.exports = {
     },
     createDeclaration: false, // 打包时是否创建ts声明文件
     ignoreNodeModules: false, // 打包时是否忽略 node_modules
+    allowList: [], // ignoreNodeModules为true时生效
     externals: [], // 从输出的 bundle 中排除依赖
+    projectDir: ['src'],
     sassResources: []
   },
   envParams: {
@@ -109,6 +111,8 @@ module.exports = {
     assetsRoot: resolve('dist'), // 编译完成的文件存放路径
     assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
     assetsSubDirectory: '', // 资源引用二级路径
+    ignoreNodeModules: true, // 打包时是否忽略 node_modules
+    allowList: [], // ignoreNodeModules为true时生效
     productionSourceMap: false,
     productionGzip: false,
     productionGzipExtensions: ['js', 'css', 'json'],
