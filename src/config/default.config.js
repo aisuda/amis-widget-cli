@@ -21,7 +21,7 @@ const defaultAMISConfig = {
   webpack: {
     resolve: {
       // webpack的resolve配置
-      extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue', '.json'], // 用于配置webpack在尝试过程中用到的后缀列表
+      extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue', '.min.js', '.json'], // 用于配置webpack在尝试过程中用到的后缀列表
       alias: {
         '@': resolve('src')
       }
@@ -69,7 +69,7 @@ const defaultAMISConfig = {
      * just be aware of this issue when enabling this option.
      */
     cssSourceMap: false,
-    closeHotReload: false, // 是否关闭热更新
+    closeHotReload: false // 是否关闭热更新
   },
   build: {
     // 用于构建生产环境代码的相关配置信息
