@@ -20,7 +20,7 @@ const titleTip = function (msg) {
 };
 
 const bigTip = figlet.textSync('amis', {
-  font: 'lean',
+  font: 'lean'
 });
 
 console.log(chalk.green(bigTip));
@@ -36,16 +36,16 @@ let argv = yargs
         .usage(titleTip('Usage') + ': $0 init [options]')
         .option('type', {
           alias: 't',
-          describe: '自定义组件类型（vue技术栈/react技术栈/多技术栈',
+          describe: '自定义组件类型（vue技术栈/react技术栈/多技术栈'
         })
         .option('dir', {
           alias: 'd',
-          describe: '自定义组件项目路径',
+          describe: '自定义组件项目路径'
         })
         .option('name', {
           alias: 'n',
           describe: '自定义组件项目名称',
-          default: 'amisWidget',
+          default: 'amisWidget'
         })
         .alias('h', 'help');
     },
@@ -57,43 +57,48 @@ let argv = yargs
         // 初始化项目模板时，当用户未设置项目类型type时，以列表形式展示当前可以使用的项目模板
         if (!argv.type) {
           questions.push({
-            name : 'type',
-            type : 'list',
-            message : '请选择您要创建的自定义组件类型: ',
-            default : 'react',
-            choices : [
+            name: 'type',
+            type: 'list',
+            message: '请选择您要创建的自定义组件类型: ',
+            default: 'react',
+            choices: [
               {
-                name : 'amis自定义组件（react技术栈）',
-                value : 'react',
-                short : 'react',
+                name: 'react自定义组件',
+                value: 'react',
+                short: 'react'
               },
               {
-                name : 'amis自定义组件（vue2.0技术栈）',
-                value : 'vue',
-                short : 'vue',
+                name: 'react自定义组件（含webpack工程）',
+                value: 'react-dev',
+                short: 'react-dev'
               },
               {
-                name : 'amis自定义组件（多技术栈）',
-                value : 'multiple',
-                short : 'multiple',
+                name: 'vue自定义组件（vue2.0技术栈）',
+                value: 'vue',
+                short: 'vue'
               },
-            ],
+              {
+                name: 'amis自定义组件（多技术栈）',
+                value: 'multiple',
+                short: 'multiple'
+              }
+            ]
           });
         }
         // 当用户未设置存放项目的目录地址时，提示用户
         if (!argv.dir) {
           questions.push({
-            name : 'dir',
-            type : 'input',
-            message : '请输入存放自定义组件的目录名（默认存放在当前路径下）: ',
-            default : 'amisProject',
+            name: 'dir',
+            type: 'input',
+            message: '请输入存放自定义组件的目录名（默认存放在当前路径下）: ',
+            default: 'amisProject'
           });
         }
-        inquirer.prompt(questions).then(ans=>{
+        inquirer.prompt(questions).then((ans) => {
           amisInit(ans.type, ans.dir, argv.name);
-        })
+        });
       }
-    },
+    }
   )
   .command(
     'config init',
@@ -106,7 +111,7 @@ let argv = yargs
     },
     () => {
       amisConfigInit('amis.config.js');
-    },
+    }
   )
   .command(
     'dev',
@@ -119,7 +124,7 @@ let argv = yargs
     },
     (argv) => {
       mainAction.dev();
-    },
+    }
   )
   .command(
     'build',
@@ -132,7 +137,7 @@ let argv = yargs
     },
     (argv) => {
       mainAction.build();
-    },
+    }
   )
   .command(
     'build2lib',
@@ -145,7 +150,7 @@ let argv = yargs
     },
     (argv) => {
       mainAction.build2lib(); // 构建library
-    },
+    }
   )
   .command(
     'build2esm',
@@ -157,13 +162,13 @@ let argv = yargs
         .option('fileName', {
           alias: 'n',
           describe: '输出的文件名',
-          default: '',
+          default: ''
         })
         .alias('h', 'help');
     },
     (argv) => {
       mainAction.build2esm(argv.fileName); // 构建esm
-    },
+    }
   )
   .command(
     'inspect',
@@ -175,13 +180,13 @@ let argv = yargs
         .option('type', {
           alias: 't',
           describe: '环境类型（本地调试环境/生产环境/library构建环境）',
-          default: 'build',
+          default: 'build'
         })
         .alias('h', 'help');
     },
     (argv) => {
       inspect(argv.type);
-    },
+    }
   )
   .alias('h', 'help')
   .alias('v', 'version')
@@ -189,5 +194,5 @@ let argv = yargs
   .updateStrings({
     'Usage:': titleTip('Usage:'),
     'Commands:': titleTip('Commands:'),
-    'Options:': titleTip('Options:'),
+    'Options:': titleTip('Options:')
   }).argv;
