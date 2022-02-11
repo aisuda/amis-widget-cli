@@ -52,7 +52,12 @@
     "@commitlint/config-conventional": "^9.1.1",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "webpack-sources": "^3.2.3",
+    "amis": "^1.6.3",
+    "amis-editor": "^4.0.1-beta.28",
+    "axios": "^0.24.0",
+    "react": "^16.8.6"
   },
   "engines": {
     "node": ">= 10.13.0",

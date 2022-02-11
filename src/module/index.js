@@ -115,7 +115,7 @@ let argv = yargs
   )
   .command(
     'dev',
-    '开启本地调试模式',
+    '开启本地调试模式（本地editor中调试）',
     (yargs) => {
       yargs
         .reset()
@@ -124,6 +124,32 @@ let argv = yargs
     },
     (argv) => {
       mainAction.dev();
+    }
+  )
+  .command(
+    'preview',
+    '开启组件预览模式（仅预览组件本身内容）',
+    (yargs) => {
+      yargs
+        .reset()
+        .usage(titleTip('Usage') + ': $0 dev')
+        .alias('h', 'help');
+    },
+    (argv) => {
+      mainAction.preview();
+    }
+  )
+  .command(
+    'debug',
+    '开启amis-saas调试模式（需手动添加外链注入amis-saas中）',
+    (yargs) => {
+      yargs
+        .reset()
+        .usage(titleTip('Usage') + ': $0 dev')
+        .alias('h', 'help');
+    },
+    (argv) => {
+      mainAction.preview();
     }
   )
   .command(
