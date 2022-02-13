@@ -1,12 +1,13 @@
 // amis 功能模块引用主入口
 const akfun = require('akfun');
+const path = require('path');
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const amisInit = require('./amisInit');
 const inspect = require('./inspect');
 const amisConfigInit = require('../utils/amisConfigInit.js');
 const curConfig = require('../config/index'); // 获取当前项目根目录下的配置文件
 const { consoleTag } = require('../utils/amisParams');
 const DebugPlugin = require('../plugins/DebugPlugin');
-const path = require('path');
 
 module.exports = {
   amisInit,
@@ -33,6 +34,8 @@ module.exports = {
     }
     // 设置css-loader配置项[url]的生效目录，避免editor示例中的字体icon失效
     curConfig.webpack.cssLoaderUrlDir = 'node_modules/amis-widget-cli/editor';
+    // 解决editor代码面板不展示问题
+    curConfig.webpack.plugins.push(new MonacoWebpackPlugin());
     // 本地开发模式（编辑器内预览模式）
     akfun.dev(curConfig, consoleTag);
   },
