@@ -140,8 +140,8 @@ let argv = yargs
     }
   )
   .command(
-    'debug',
-    '开启amis-saas调试模式（需手动添加外链注入amis-saas中）',
+    'linkDebug',
+    '开启amis-saas调试模式（需手动添加外链注入到amis-saas中）',
     (yargs) => {
       yargs
         .reset()
@@ -149,7 +149,7 @@ let argv = yargs
         .alias('h', 'help');
     },
     (argv) => {
-      mainAction.preview();
+      mainAction.linkDebug();
     }
   )
   .command(
