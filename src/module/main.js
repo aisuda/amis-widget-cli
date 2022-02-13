@@ -31,6 +31,8 @@ module.exports = {
     } else {
       curConfig.webpack.projectDir = [editorClientDir];
     }
+    // 设置css-loader配置项[url]的生效目录，避免editor示例中的字体icon失效
+    curConfig.webpack.cssLoaderUrlDir = 'node_modules/amis-widget-cli/editor';
     // 本地开发模式（编辑器内预览模式）
     akfun.dev(curConfig, consoleTag);
   },
