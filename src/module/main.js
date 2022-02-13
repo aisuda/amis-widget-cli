@@ -35,7 +35,15 @@ module.exports = {
     // 设置css-loader配置项[url]的生效目录，避免editor示例中的字体icon失效
     curConfig.webpack.cssLoaderUrlDir = 'node_modules/amis-widget-cli/editor';
     // 解决editor代码面板不展示问题
-    curConfig.webpack.plugins.push(new MonacoWebpackPlugin());
+    if (
+      curConfig.webpack &&
+      curConfig.webpack.plugins &&
+      Array.isArray(curConfig.webpack.plugins)
+    ) {
+      curConfig.webpack.plugins.push(new MonacoWebpackPlugin());
+    } else {
+      curConfig.webpack.plugins = [new MonacoWebpackPlugin()];
+    }
     // 本地开发模式（编辑器内预览模式）
     akfun.dev(curConfig, consoleTag);
   },
