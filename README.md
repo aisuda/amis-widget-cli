@@ -33,7 +33,7 @@ dev: 本地开发模式（带热更新）
 $ npm run dev
 ```
 
-review: 组件预览模式（带热更新）
+preview: 组件预览模式（带热更新）
 > preview模式：用于预览自定义组件内容。
 ```bash
 $ npm run preview
@@ -359,6 +359,8 @@ module.exports = {
       productionGzip: false, // 是否开启Gzip服务
       productionGzipExtensions: ['js', 'css', 'json'], // Gzip识别的文件后缀
       bundleAnalyzerReport: false, // 开启打包分析功能
+      ignoreNodeModules: true, // 打包时是否忽略 node_modules
+      allowList: [], // ignoreNodeModules为true时生效
     },
   ...
 }
