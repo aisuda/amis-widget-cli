@@ -1,5 +1,5 @@
 # AMIS 前端脚手架
-> amis-widget-cli 主要用于开发amis自定义组件的脚手架，其核心是基于AKFun现有的工程能力，为用户提供自定义组件模板下载、编译、预览、多技术栈支持等功能。
+> amis-widget-cli 用于开发amis自定义组件的脚手架，其核心是基于AKFun现有的工程能力，为用户提供组件模板下载、编译、预览、多技术栈支持等功能。
 （AKFun是一个基于 Webpack 和 rollup 的前端多场景打包工具，支持多种技术栈：Vue技术栈、React技术栈、React&TS技术栈。）
 
 ## 特性
@@ -19,38 +19,42 @@
 $ yarn global add amis-widget-cli 或者  npm i -g amis-widget-cli
 ```
 
-2. **初始化一个项目**
-> 可选择项目类型：vue、react、multiple-widget，默认react技术栈，也可通过--dir参数指定存放项目模板的目录
+2. **创建一个自定义组件**
+> 可选择项目类型：vue、react、multiple-widget，默认react技术栈，可通过--dir参数指定存放项目模板的目录
 ```bash
-$ amis init -t=vue
+$ amis init -t=react
 ```
 
-3. **开始使用：以全局命令方式构建项目（确保已yarn install或者npm install）**
+3. **开始使用：确保已安装项目依赖（yarn install或者npm install）**
 
+dev: 本地开发模式（带热更新）
+> dev开发模式：用于在本地editor中调试自定义组件。
 ```bash
-# 1、开启本地调试模式
-$ amis dev
+$ npm run dev
 ```
 
+review: 组件预览模式（带热更新）
+> preview模式：用于预览自定义组件内容。
 ```bash
-# 2、构建生产环境代码
-$ amis build
+$ npm run preview
 ```
 
+linkDebug: 外链调试（amis-saas中预览自定义组件）
+> linkDebug模式：用于在amis-saas中预览和调试自定义组件。
 ```bash
-# 3、构建第三方功能包（以umd格式输出）
-$ amis build2lib
+$ npm run linkDebug
 ```
 
+build2lib: 构建自定义组件输出产物
+> build2lib模式：用于构建发布到 npm 中的文件，默认存放到 当前dist目录中。
 ```bash
-# 4、构建第三方功能包的esm输出格式
-$ amis build2esm
+$ npm run build2lib
 ```
 
 ## 快速开始 / 使用方法二
-> 在现有项目中局部安装amis-widget-cli，给现有项目赋予amis的前端工程能力
+> 在现有组件项目中使用amis-widget-cli
 
-1. **本地安装**
+1. **组件项目目录局部安装**
 
 ```bash
 $ yarn add amis-widget-cli --dev 或者 npm i amis-widget-cli --save-dev
@@ -63,15 +67,15 @@ $ yarn add amis-widget-cli --dev 或者 npm i amis-widget-cli --save-dev
 # 用于开启本地调试模式
 "dev": "amis dev"
 
-# 用于构建生产环境代码
-"build": "amis build"
+# preview模式：用于预览自定义组件内容
+"preview": "amis preview"
 
-# 用于构建第三方功能包（以umd格式输出）
+# linkDebug: 外链调试（amis-saas中预览自定义组件）
+"linkDebug": "amis linkDebug"
+
+# build2lib: 构建自定义组件输出产物
 "build2lib": "amis build2lib"
 
-# 用于构建第三方功能包（以esm格式输出）
-"build2esm": "amis build2esm"
-```
 
 3. **创建amis-widget-cli的配置文件**
 > 需要根据实际情况调整配置文件内（比如：入口文件、路径缩写、接口代理等）
@@ -80,30 +84,30 @@ $ yarn add amis-widget-cli --dev 或者 npm i amis-widget-cli --save-dev
     $ amis config init
     ```
 
-4. **调试&构建自定义组件**
+4. **调试当前组件**
 
    4.1 开启本地调试模式
     ```bash
     $ npm run dev
     ```
-   4.2 构建生产环境代码
+   4.2 预览自定义组件内容
    ```bash
-   $ npm run build
+   $ npm run preview
    ```
-   4.3 构建第三方功能包（以umd格式输出）
+   4.3 外链调试（amis-saas中预览自定义组件）
+   ```bash
+   $ npm run linkDebug
+   ```
+   4.4 构建自定义组件输出产物（以umd格式输出）
    ```bash
    $ npm run build2lib
-   ```
-   4.4 构建第三方功能包（以esm格式输出）
-   ```bash
-   $ npm run build2esm
    ```
 
 ## amis-widget-cli使用说明
 
 1. **使用amis-widget-cli创建一个新的自定义组件**
 
-   1.1 创建一个react技术栈自定义组件
+   1.1 创建一个自定义组件
     ```bash
     $ amis init
     ```
@@ -113,7 +117,7 @@ $ yarn add amis-widget-cli --dev 或者 npm i amis-widget-cli --save-dev
     ```
    1.3 在指定的目录中创建一个新的自定义组件
     ```bash
-    $ amis init -t=vue --dir=myTest1
+    $ amis init -t=react --dir=myTest1
     ```
 
 2. **创建amis-widget-cli的配置文件**
@@ -124,9 +128,9 @@ $ yarn add amis-widget-cli --dev 或者 npm i amis-widget-cli --save-dev
 3. **关于amis-widget-cli提供三种构建场景**
 
    3.1. **dev**: 本地开发调试模式，用于本地开发和调试项目(包含热更新、接口代理等功能)，编译的代码没有压缩，默认会开启ESLint检测代码规范（可关闭）；  
-   3.2. **build**: 用于构建生产环境代码，编译输出的代码会进行压缩优化；  
-   3.3. **build2lib**: 用于构建library库，以umd进行输出；  
-   3.4. **build2esm**: 用于构建library库，以esm进行输出。  
+   3.2. **preview**: 用于预览自定义组件内容；  
+   3.3. **linkDebug**: 用于在amis-saas中预览和调试自定义组件；  
+   3.4. **build2lib**: 构建自定义组件输出产物（以umd格式输出）。  
 
 4. **关于amis-widget-cli的配置文件**
 
@@ -141,8 +145,8 @@ $ yarn add amis-widget-cli --dev 或者 npm i amis-widget-cli --save-dev
 
    5.1. 默认的构建入口文件: ./src/index.js；  
    5.2. 自定义构建入口(amis.config.js中提供对应的配置入口)；  
-   5.3. 在webpack.entry配置构建入口，dev\build\build2lib都会以此为构建入口 ([关于entry的配置方法](https://www.webpackjs.com/configuration/entry-context/#entry))；    
-   5.4. 在dev.entry、build.entry、build2lib.entry中配置对应执行环境的构建入口，优先级高于webpack.entry。  
+   5.3. 在webpack.entry配置构建入口，dev\preview\linkDebug\build2lib都会以此为构建入口 ([关于entry的配置方法](https://www.webpackjs.com/configuration/entry-context/#entry))；    
+   5.4. 在dev.entry、preview.entry、linkDebug.entry、build2lib.entry中配置对应执行环境的构建入口，优先级高于webpack.entry。  
 
 6. **关于多页面**
 
@@ -151,7 +155,7 @@ $ yarn add amis-widget-cli --dev 或者 npm i amis-widget-cli --save-dev
 
 7. **关于多页面多模板**
 
-   7.1. 只有dev和build的构建过程中才会使用到页面模板，build2lib构建中不会将打包完成的代码输出到页面模板中；  
+   7.1. dev、preview、linkDebug的构建过程中会使用到页面模板，build2lib构建中不会将打包完成的代码输出到页面模板中；  
    7.2. 默认使用./src/index.html作为页面模板；  
    7.3. 当项目中./src/index.html不存在时，会使用默认页面模板；  
    7.4. 多页面模式时，如果pages下存在对应的html页面（与入口文件同名的html文件），会自动将其设置为页面模板。
@@ -184,16 +188,15 @@ module.exports = {
   ...
   dev: {
     entry: {}
-  }
-  build: {
+  },
+  preview: {
     entry: {}
-  }
+  },
+  linkDebug: {
+    entry: {}
+  },
   build2lib: {
     entry: {}
-  }
-  build2esm: {
-    input: resolve('src/main.js'),
-    fileName: 'index',
   }
   ...
 }
@@ -342,25 +345,7 @@ module.exports = {
 }
 ```
 
-13. 用于构建生产环境代码的相关配置信息
-```bash
-module.exports = {
-  ...
-    build: {
-      NODE_ENV: 'production', // production 模式，会启动UglifyJsPlugin服务
-      assetsRoot: resolve('./dist'), // 打包后的文件绝对路径（物理路径）
-      assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
-      assetsSubDirectory: '', // 资源引用二级路径
-      productionSourceMap: false, // 是否显示原始源代码
-      productionGzip: false, // 是否开启Gzip服务
-      productionGzipExtensions: ['js', 'css', 'json'], // Gzip识别的文件后缀
-      bundleAnalyzerReport: false, // 开启打包分析功能
-    }
-  ...
-}
-```
-
-14. 用于构建第三方功能包的配置（以umd格式输出）
+13. 用于构建第三方功能包的配置（以umd格式输出）
 ```bash
 module.exports = {
   ...
@@ -374,18 +359,6 @@ module.exports = {
       productionGzip: false, // 是否开启Gzip服务
       productionGzipExtensions: ['js', 'css', 'json'], // Gzip识别的文件后缀
       bundleAnalyzerReport: false, // 开启打包分析功能
-    },
-  ...
-}
-```
-
-15. 用于构建esm格式的第三方功能包配置
-```bash
-module.exports = {
-  ...
-    build2esm: {
-      input: resolve('src/main.js'), // 入口文件
-      fileName: 'index', // 输出的文件名称
     },
   ...
 }
