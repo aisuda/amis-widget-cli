@@ -40,9 +40,9 @@ module.exports = {
       curConfig.webpack.plugins &&
       Array.isArray(curConfig.webpack.plugins)
     ) {
-      curConfig.webpack.plugins.push(new MonacoWebpackPlugin());
+      // curConfig.webpack.plugins.push(new MonacoWebpackPlugin());
     } else {
-      curConfig.webpack.plugins = [new MonacoWebpackPlugin()];
+      // curConfig.webpack.plugins = [new MonacoWebpackPlugin()];
     }
     // 本地开发模式（编辑器内预览模式）
     akfun.dev(curConfig, consoleTag);
