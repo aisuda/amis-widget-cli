@@ -80,9 +80,9 @@ $ yarn add amis-widget-cli --dev 或者 npm i amis-widget-cli --save-dev
 3. **创建amis-widget-cli的配置文件**
 > 需要根据实际情况调整配置文件内（比如：入口文件、路径缩写、接口代理等）
 
-    ```bash
-    $ amis config init
-    ```
+```bash
+$ amis config init
+```
 
 4. **调试当前组件**
 
