@@ -75,7 +75,7 @@ $ yarn add amis-widget-cli --dev 或者 npm i amis-widget-cli --save-dev
 
 # build2lib: 构建自定义组件输出产物
 "build2lib": "amis build2lib"
-
+```
 
 3. **创建amis-widget-cli的配置文件**
 > 需要根据实际情况调整配置文件内（比如：入口文件、路径缩写、接口代理等）
