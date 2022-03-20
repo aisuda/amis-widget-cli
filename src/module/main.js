@@ -40,9 +40,9 @@ module.exports = {
       curConfig.webpack.plugins &&
       Array.isArray(curConfig.webpack.plugins)
     ) {
-      // curConfig.webpack.plugins.push(new MonacoWebpackPlugin());
+      curConfig.webpack.plugins.push(new MonacoWebpackPlugin());
     } else {
-      // curConfig.webpack.plugins = [new MonacoWebpackPlugin()];
+      curConfig.webpack.plugins = [new MonacoWebpackPlugin()];
     }
     // 本地开发模式（编辑器内预览模式）
     akfun.dev(curConfig, consoleTag);
@@ -86,9 +86,6 @@ module.exports = {
         amis: 'commonjs2 amis',
         'amis-editor': 'commonjs2 amis-editor'
       };
-      // 待进一步完善，需要兼容接收用户自定义的externals
-      // curConfig.webpack.externals['amis'] = 'commonjs2 amis';
-      // curConfig.webpack.externals['amis-editor'] = 'commonjs2 amis-editor';
     }
     // 本地预览模式（仅预览组件内容）
     akfun.dev(curConfig, consoleTag);
