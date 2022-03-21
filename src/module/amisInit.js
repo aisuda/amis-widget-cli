@@ -5,7 +5,9 @@ const templateList = {
   vue: 'git@github.com:aisuda/vue-custom-widget-template.git',
   react: 'git@github.com:aisuda/react-custom-widget-template.git',
   'react-dev': 'git@github.com:aisuda/react-widget-dev.git',
-  multiple: 'git@github.com:aisuda/multiple-custom-widget-template.git'
+  multiple: 'git@github.com:aisuda/multiple-custom-widget-template.git',
+  'react-container': 'git@github.com:aisuda/container-custom-widget-template.git',
+  'vue-container': 'git@github.com:aisuda/vue-container-custom-widget-template.git'
 };
 
 const amisInit = function (type, dir, projectName) {

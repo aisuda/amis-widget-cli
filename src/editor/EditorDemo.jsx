@@ -95,6 +95,7 @@ class SchemaEditorDemo extends React.Component {
             value={this.state.schema}
             onChange={this.handleChange}
             theme="cxd"
+            showCustomRenderersPanel={true} // 是否显示自定义组件面板
             $schemaUrl={`${
               // @ts-ignore
               __uri('amis/schema.json')

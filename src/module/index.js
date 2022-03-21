@@ -81,6 +81,16 @@ let argv = yargs
                 name: 'amis自定义组件（多技术栈）',
                 value: 'multiple',
                 short: 'multiple'
+              },
+              {
+                name: 'react自定义容器类组件',
+                value: 'react-container',
+                short: 'react-container'
+              },
+              {
+                name: 'vue自定义容器类组件',
+                value: 'vue-container',
+                short: 'vue-container'
               }
             ]
           });
