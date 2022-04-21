@@ -1,6 +1,6 @@
 {
   "name": "amis-widget-cli",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "前端脚手架：amis自定义组件开发工具",
   "keywords": [
     "amis自定义组件",
@@ -39,7 +39,7 @@
     "url": "https://github.com/aisuda/amis-widget-cli/issues"
   },
   "dependencies": {
-    "akfun": "^3.2.3",
+    "akfun": "^3.2.5",
     "chalk": "^4.0.0",
     "deepmerge": "^4.2.2",
     "figlet": "^1.2.0",
