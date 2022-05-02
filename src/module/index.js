@@ -69,8 +69,8 @@ let argv = yargs
               },
               {
                 name: 'react&ts自定义组件',
-                value: 'react&ts',
-                short: 'ts'
+                value: 'react-ts',
+                short: 'react-ts'
               },
               {
                 name: 'react自定义组件（含webpack工程）',
