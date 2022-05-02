@@ -84,7 +84,9 @@ module.exports = {
     if (curConfig.webpack) {
       curConfig.webpack.externals = {
         amis: 'commonjs2 amis',
-        'amis-editor': 'commonjs2 amis-editor'
+        'amis-editor': 'commonjs2 amis-editor',
+        '@fex/amis': 'commonjs2 @fex/amis',
+        '@fex/amis-editor': 'commonjs2 @fex/amis-editor'
       };
     }
     // 本地预览模式（仅预览组件内容）
