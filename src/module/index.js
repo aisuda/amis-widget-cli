@@ -68,7 +68,7 @@ let argv = yargs
                 short: 'react'
               },
               {
-                name: 'amis自定义组件模板（react&ts技术栈）',
+                name: 'react&ts自定义组件',
                 value: 'react&ts',
                 short: 'ts'
               },
