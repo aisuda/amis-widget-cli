@@ -45,6 +45,12 @@ for f in $(find ./src -name "*.jsx"); do
   sed -i '' -e "s/import \'amis-widget/import \'@fex\/amis-widget/g" $f
 done
 
+for f in $(find ./src -name "*.scss"); do
+  sed -i '' -e "s/@import \'amis/@import \'@fex\/amis/g" $f
+  sed -i '' -e "s/@import \'amis-editor/@import \'@fex\/amis-editor/g" $f
+  sed -i '' -e "s/@import \'amis-widget/@import \'@fex\/amis-widget/g" $f
+done
+
 npm publish --registry=http://registry.npm.baidu-int.com
 
 cd ..
