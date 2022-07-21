@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Editor, ShortcutKey } from 'amis-editor';
 import 'amis-editor/dist/style.css';
 import { __uri } from 'amis-core';
-// import {Icon} from './icons/index';
+import {Icon} from './icons/index';
 // import styles
 import 'amis-ui/lib/themes/default.css';
 import 'amis-ui/lib/themes/cxd.css';
