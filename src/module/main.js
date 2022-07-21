@@ -7,33 +7,36 @@ const inspect = require('./inspect');
 const amisConfigInit = require('../utils/amisConfigInit.js');
 const curConfig = require('../config/index'); // 获取当前项目根目录下的配置文件
 const { consoleTag } = require('../utils/amisParams');
-const DebugPlugin = require('../plugins/DebugPlugin');
+const AmisEditorDebugPlugin = require('../plugins/AmisEditorDebugPlugin');
 
 module.exports = {
   amisInit,
   inspect,
   amisConfigInit,
   dev: () => {
-    // 自动注入editor示例
-    const editorClientPath = path.resolve(__dirname, '../editor/EditorDemo.jsx');
-    if (curConfig.dev && curConfig.dev.entry && !curConfig.dev.closeEditorClient) {
-      Object.keys(curConfig.dev.entry).forEach((name) => {
-        curConfig.dev.entry[name] = [editorClientPath].concat(curConfig.dev.entry[name]);
-      });
+    if (!curConfig.dev.closeEditorClient) {
+      // 自动注入editor示例
+      const editorClientPath = path.resolve(__dirname, '../editor/EditorDemo.jsx');
+      if (curConfig.dev && curConfig.dev.entry && !curConfig.dev.closeEditorClient) {
+        Object.keys(curConfig.dev.entry).forEach((name) => {
+          curConfig.dev.entry[name] = [editorClientPath].concat(curConfig.dev.entry[name]);
+        });
+      }
+      // 设置工程有效目录
+      const editorClientDir = path.resolve(__dirname, '../editor');
+      if (
+        curConfig.webpack &&
+        curConfig.webpack.projectDir &&
+        Array.isArray(curConfig.webpack.projectDir)
+      ) {
+        curConfig.webpack.projectDir.push(editorClientDir);
+      } else {
+        curConfig.webpack.projectDir = [editorClientDir];
+      }
+      // 设置css-loader配置项[url]的生效目录，避免editor示例中的字体icon失效
+      curConfig.webpack.cssLoaderUrlDir = 'node_modules/amis-widget-cli/editor';
     }
-    // 设置工程有效目录
-    const editorClientDir = path.resolve(__dirname, '../editor');
-    if (
-      curConfig.webpack &&
-      curConfig.webpack.projectDir &&
-      Array.isArray(curConfig.webpack.projectDir)
-    ) {
-      curConfig.webpack.projectDir.push(editorClientDir);
-    } else {
-      curConfig.webpack.projectDir = [editorClientDir];
-    }
-    // 设置css-loader配置项[url]的生效目录，避免editor示例中的字体icon失效
-    curConfig.webpack.cssLoaderUrlDir = 'node_modules/amis-widget-cli/editor';
+
     // 解决editor代码面板不展示问题
     if (
       curConfig.webpack &&
@@ -68,25 +71,37 @@ module.exports = {
     // 将 linkDebug 设置给 dev
     curConfig.dev = curConfig.linkDebug;
     delete curConfig.linkDebug;
-    // 添加自定义webpack插件: 对外链进行特殊处理
-    if (
-      curConfig.webpack &&
-      curConfig.webpack.plugins &&
-      Array.isArray(curConfig.webpack.plugins)
-    ) {
-      curConfig.webpack.plugins.push(new DebugPlugin());
-    } else {
-      curConfig.webpack.plugins = [new DebugPlugin()];
+    if (!curConfig.dev.debugMode) {
+      curConfig.dev.debugMode = 'amis-editor'; // 默认开启amis-editor调试模式
     }
+    if (curConfig.dev.debugMode === 'amis-editor') {
+      // 添加自定义webpack插件: 对外链进行特殊处理
+      if (
+        curConfig.webpack &&
+        curConfig.webpack.plugins &&
+        Array.isArray(curConfig.webpack.plugins)
+      ) {
+        curConfig.webpack.plugins.push(new AmisEditorDebugPlugin());
+      } else {
+        curConfig.webpack.plugins = [new AmisEditorDebugPlugin()];
+      }
+    }
+
     delete curConfig.dev.ignoreNodeModules;
     curConfig.webpack.ignoreNodeModules = false;
-    // 剔除amis和amis-editor，复用amis-saas中的amis和amis-editor模块
+    // 剔除amis和amis-editor，复用amis-saas中的amis和amis-editor等现有模块
     if (curConfig.webpack) {
       curConfig.webpack.externals = {
         amis: 'commonjs2 amis',
+        'amis-core': 'commonjs2 amis-core',
+        'amis-ui': 'commonjs2 amis-ui',
         'amis-editor': 'commonjs2 amis-editor',
+        'aipage-editor': 'commonjs2 aipage-editor',
         '@fex/amis': 'commonjs2 @fex/amis',
-        '@fex/amis-editor': 'commonjs2 @fex/amis-editor'
+        '@fex/amis-core': 'commonjs2 @fex/amis-core',
+        '@fex/amis-ui': 'commonjs2 @fex/amis-ui',
+        '@fex/amis-editor': 'commonjs2 @fex/amis-editor',
+        '@fex/aipage-editor': 'commonjs2 @fex/aipage-editor'
       };
     }
     // 本地预览模式（仅预览组件内容）

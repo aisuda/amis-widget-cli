@@ -1,6 +1,5 @@
-// // @import "@fex/aui/scss/variables";
-@import 'amis/scss/functions';
-@import 'amis/scss/variables';
+@import 'amis-ui/scss/functions.scss';
+@import 'amis-ui/scss/variables.scss';
 
 $editor-default-color: #151b26; // 默认的字体色
 $editor-active-color: #2468f2;
@@ -161,6 +160,7 @@ $disabled-bg-color: #f7f7f9; // 禁用背景颜色
 
         > svg {
           width: 16px;
+          height: 16px;
           fill: $editor-default-color;
         }
 
