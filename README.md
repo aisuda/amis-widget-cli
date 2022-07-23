@@ -11,6 +11,16 @@
 - ❤️ 支持项目系统参数自动批量替换 [params-replace-loader](https://www.npmjs.com/package/params-replace-loader)
 - 😀 提供完整的[Vue自定义组件模板](https://github.com/aisuda/vue-custom-widget-template)、[React自定义组件模板](https://github.com/aisuda/react-custom-widget-template)、[多技术栈自定义组件模板](https://github.com/aisuda/multiple-cutom-widget-template)
 
+
+## 当前已支持的自定义组件模板类型
+- react自定义组件([react-custom-widget-template](https://github.com/aisuda/react-custom-widget-template)): react 技术栈的自定义组件模板
+- react&ts自定义组件([react-ts-custom-widget-template](https://github.com/aisuda/react-ts-custom-widget-template)): react 和 typescript 技术栈的自定义组件模板
+- react自定义组件（含webpack工程）([react-widget-dev](https://github.com/aisuda/react-widget-dev)): 带 webpack 工程的 react 版自定义组件模板
+- vue自定义组件（vue2.0技术栈）([vue-custom-widget-template](https://github.com/aisuda/vue-custom-widget-template)): vue2.0 技术栈的自定义组件模板
+- amis自定义组件（多技术栈）([multiple-custom-widget-template](https://github.com/aisuda/multiple-custom-widget-template)): 含多种技术栈（vue2.0、react）的自定义组件模板
+- react自定义容器类组件([react-custom-widget-template](https://github.com/aisuda/container-custom-widget-template)): react 版容器类自定义组件模板，自定义容器组件内部可插入其他组件
+- vue自定义容器类组件([vue-container-custom-widget-template](https://github.com/aisuda/vue-container-custom-widget-template)): vue2.0 版容器类自定义组件模板，自定义容器组件内部可插入其他组件
+
 ## 快速开始 / 使用方法一
 > 全局安装amis-widget-cli，用于同时管理多个自定义组件代码
 
@@ -24,15 +34,6 @@ $ yarn global add amis-widget-cli 或者  npm i -g amis-widget-cli
 ```bash
 $ amis init -t=react
 ```
-
-### 当前已支持的自定义组件模板类型
-- react自定义组件([react-custom-widget-template](https://github.com/aisuda/react-custom-widget-template)): react 技术栈的自定义组件模板
-- react&ts自定义组件([react-ts-custom-widget-template](https://github.com/aisuda/react-ts-custom-widget-template)): react 和 typescript 技术栈的自定义组件模板
-- react自定义组件（含webpack工程）([react-widget-dev](https://github.com/aisuda/react-widget-dev)): 带 webpack 工程的 react 版自定义组件模板
-- vue自定义组件（vue2.0技术栈）([vue-custom-widget-template](https://github.com/aisuda/vue-custom-widget-template)): vue2.0 技术栈的自定义组件模板
-- amis自定义组件（多技术栈）([multiple-custom-widget-template](https://github.com/aisuda/multiple-custom-widget-template)): 含多种技术栈（vue2.0、react）的自定义组件模板
-- react自定义容器类组件([react-custom-widget-template](https://github.com/aisuda/container-custom-widget-template)): react 版容器类自定义组件模板，自定义容器组件内部可插入其他组件
-- vue自定义容器类组件([vue-container-custom-widget-template](https://github.com/aisuda/vue-container-custom-widget-template)): vue2.0 版容器类自定义组件模板，自定义容器组件内部可插入其他组件
 
 3. **开始使用：确保已安装项目依赖（yarn install或者npm install）**
 
