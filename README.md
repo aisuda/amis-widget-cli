@@ -132,7 +132,10 @@ $ amis config init
 
 > 【特别说明】自定义组件模板存放在 Github，由于国内网络环境问题，可能下载失败。如果初始化组件失败请尝试如下措施：  
 1、在设备或路由器的网络设置中增加 DNS（如：8.8.8.8，使用Google DNS的主 DNS 服务器）；  
-2、在设备中增加固定的 hosts（如：140.82.113.4 github.com），执行命令：ssh-keyscan github.com >> ~/.ssh/known_hosts。  
+2、在设备中增加固定的 hosts（如：140.82.113.4 github.com），执行以下命令：  
+    ```bash
+    $ ssh-keyscan github.com >> ~/.ssh/known_hosts
+    ```
 
 2. **创建amis-widget-cli的配置文件**
     ```bash
