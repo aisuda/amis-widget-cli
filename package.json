@@ -1,7 +1,7 @@
 {
-  "name": "amis-widget-cli",
-  "version": "2.0.6-vue3-beta.2",
-  "description": "前端脚手架：amis自定义组件开发工具",
+  "name": "@wibetter/amis-widget-cli",
+  "version": "2.0.7",
+  "description": "前端脚手架：amis自定义组件开发工具，支持vue3技术栈。",
   "keywords": [
     "amis自定义组件",
     "自定义组件开发工具"
