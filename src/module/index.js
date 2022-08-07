@@ -36,7 +36,7 @@ let argv = yargs
         .usage(titleTip('Usage') + ': $0 init [options]')
         .option('type', {
           alias: 't',
-          describe: '自定义组件类型（vue技术栈/react技术栈/多技术栈'
+          describe: '自定义组件类型（vue技术栈/react技术栈/多技术栈)'
         })
         .option('dir', {
           alias: 'd',
@@ -47,6 +47,10 @@ let argv = yargs
           describe: '自定义组件项目名称',
           default: 'amisWidget'
         })
+        .option('editor', {
+          alias: 'e',
+          describe: '支持的编辑器类型（amis/aipage)'
+        })
         .alias('h', 'help');
     },
     (argv) => {
@@ -55,49 +59,91 @@ let argv = yargs
       } else {
         const questions = [];
         // 初始化项目模板时，当用户未设置项目类型type时，以列表形式展示当前可以使用的项目模板
-        if (!argv.type) {
+        const amisWidgetTemplates = [
+          {
+            name: 'react自定义组件',
+            value: 'react',
+            short: 'react'
+          },
+          {
+            name: 'react&ts自定义组件',
+            value: 'react-ts',
+            short: 'react-ts'
+          },
+          {
+            name: 'react自定义组件（含webpack工程）',
+            value: 'react-dev',
+            short: 'react-dev'
+          },
+          {
+            name: 'vue自定义组件（vue2.0技术栈）',
+            value: 'vue',
+            short: 'vue'
+          },
+          {
+            name: 'amis自定义组件（多技术栈）',
+            value: 'multiple',
+            short: 'multiple'
+          },
+          {
+            name: 'react自定义容器类组件',
+            value: 'react-container',
+            short: 'react-container'
+          },
+          {
+            name: 'vue自定义容器类组件',
+            value: 'vue-container',
+            short: 'vue-container'
+          }
+        ];
+
+        const aipageWidgetTemplates = [
+          {
+            name: '跨端自定义组件(uniapp技术栈/aipage-editor专用)',
+            value: 'uniapp-aipage-widget',
+            short: 'uniapp-aipage-widget',
+          },
+          {
+            name: '快应用自定义组件(aipage-editor专用)',
+            value: 'quick-aipage-widget',
+            short: 'quick-aipage-widget',
+          },
+          {
+            name: 'vue3自定义组件(aipage-editor专用)',
+            value: 'vue3-aipage-widget',
+            short: 'vue3-aipage-widget',
+          },
+          {
+            name: 'vue2自定义组件(aipage-editor专用)',
+            value: 'vue2-aipage-widget',
+            short: 'vue2-aipage-widget',
+          },
+        ]
+
+        if (!argv.type && argv.editor === 'aipage') {
+          // 创建aipage-editor自定义组件的快捷入口
+          questions.push({
+            name: 'type',
+            type: 'list',
+            message: '请选择您要创建的自定义组件类型: ',
+            default: 'vue3-aipage',
+            choices: aipageWidgetTemplates
+          });
+        } else if (!argv.type && argv.editor === 'amis') {
           questions.push({
             name: 'type',
             type: 'list',
             message: '请选择您要创建的自定义组件类型: ',
             default: 'react',
-            choices: [
-              {
-                name: 'react自定义组件',
-                value: 'react',
-                short: 'react'
-              },
-              {
-                name: 'react&ts自定义组件',
-                value: 'react-ts',
-                short: 'react-ts'
-              },
-              {
-                name: 'react自定义组件（含webpack工程）',
-                value: 'react-dev',
-                short: 'react-dev'
-              },
-              {
-                name: 'vue自定义组件（vue2.0技术栈）',
-                value: 'vue',
-                short: 'vue'
-              },
-              {
-                name: 'amis自定义组件（多技术栈）',
-                value: 'multiple',
-                short: 'multiple'
-              },
-              {
-                name: 'react自定义容器类组件',
-                value: 'react-container',
-                short: 'react-container'
-              },
-              {
-                name: 'vue自定义容器类组件',
-                value: 'vue-container',
-                short: 'vue-container'
-              }
-            ]
+            choices: amisWidgetTemplates
+          });
+        } else if (!argv.type) {
+          questions.push({
+            name: 'type',
+            type: 'list',
+            message: '请选择您要创建的自定义组件类型: ',
+            default: 'react',
+            choices: amisWidgetTemplates.concat(aipageWidgetTemplates)
           });
         }
         // 当用户未设置存放项目的目录地址时，提示用户
