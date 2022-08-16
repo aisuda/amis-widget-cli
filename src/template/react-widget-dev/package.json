@@ -1,0 +1,117 @@
+{
+  "name": "react-widget-dev",
+  "version": "0.0.2",
+  "description": "amis自定义组件模板（react技术栈-带完整webpack工程）",
+  "keywords": [
+    "自定义组件模板",
+    "react技术栈",
+    "amis自定义组件",
+    "amis-editor自定义插件"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": "fex",
+  "license": "MIT",
+  "scripts": {
+    "dev": "npm run start-dev",
+    "preview": "npm run start-preview",
+    "linkDebug": "npm run start-link-debug",
+    "build": "npm run clean-dist && webpack --config=webpack/prod.js && npm run declaration",
+    "clean-dist": "rimraf dist/*",
+    "lint": "eslint './src/**/*.{js,ts,tsx}' --quiet",
+    "start-dev": "webpack serve --config=webpack/dev.js --host 0.0.0.0",
+    "start-preview": "webpack serve --config=webpack/preview.js --host 0.0.0.0",
+    "start-link-debug": "webpack serve --config=webpack/linkDebug.js --host 0.0.0.0 --port 8081",
+    "declaration": "tsc --allowJs --declaration --emitDeclarationOnly --declarationDir ./dist --rootDir ./src"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "framework": "react",
+  "amis-widgets": [
+    {
+      "name": "react-info-card",
+      "framework": "react",
+      "usage": "renderer",
+      "type": "react-info-card",
+      "entry": "/dist/index",
+      "files": [
+        "/dist/index.css"
+      ],
+      "editorPlugin": {
+        "name": "react-info-card-plugin",
+        "description": "信息展示卡片",
+        "pluginEntry": "/dist/plugin",
+        "tag": [
+          "展示"
+        ],
+        "sort": 100
+      }
+    }
+  ],
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint",
+    "*.{css,less,scss,styl}": "stylelint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git@github.com:aisuda/react-widget-dev.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aisuda/react-widget-dev/issues"
+  },
+  "devDependencies": {
+    "@ecomfe/eslint-config": "^4.0.0",
+    "@ecomfe/stylelint-config": "^1.0.0",
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "@types/lodash": "^4.14.172",
+    "@types/react": "^17.0.16",
+    "@types/react-dom": "^17.0.9",
+    "@typescript-eslint/eslint-plugin": "^4.28.5",
+    "@typescript-eslint/parser": "^4.28.5",
+    "amis": "^1.6.4",
+    "amis-editor": "^4.0.1-beta.28",
+    "axios": "^0.21.1",
+    "babel-eslint": "^10.0.0",
+    "css-loader": "^6.2.0",
+    "eslint": "^7.0.0",
+    "eslint-plugin-babel": "^5.0.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "html-webpack-plugin": "^5.3.2",
+    "husky": "^4.0.0",
+    "lint-staged": "^10.0.0",
+    "lodash": "^4.17.21",
+    "mini-css-extract-plugin": "^2.2.0",
+    "prettier": "^2.3.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-hot-loader": "^4.13.0",
+    "react-overlays": "^5.1.1",
+    "rimraf": "^3.0.2",
+    "sass": "^1.36.0",
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.2.1",
+    "stylelint": "^13.0.0",
+    "ts-loader": "^9.2.3",
+    "typescript": "^4.3.5",
+    "webpack": "^5.46.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.8.0",
+    "webpack-node-externals": "^3.0.0",
+    "webpack-sources": "^3.2.3"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0",
+    "amis-widget": "1.3.0",
+    "antd": "^3.26.20",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}

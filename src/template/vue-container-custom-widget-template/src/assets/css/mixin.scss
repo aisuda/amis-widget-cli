@@ -1,0 +1,47 @@
+// 通用mixin
+$borderColor: #ddd;
+
+// type 为top 或者 bottom
+@mixin borderTopOrBtm($type) {
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    #{$type}: 0;
+    width: 100%;
+    height: 1px;
+    background: $borderColor;
+    transform: scaleY(0.5);
+  }
+}
+
+// type为 right 或者 left
+@mixin borderRtOrLt($type) {
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    #{$type}: 0;
+    height: 100%;
+    width: 1px;
+    background: $borderColor;
+    transform: scaleX(0.5);
+  }
+}
+
+//超出1行显示...
+@mixin ellipsis1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// 超出多行显示...
+@mixin ellipsis($num) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $num;
+  -webkit-box-orient: vertical;
+}

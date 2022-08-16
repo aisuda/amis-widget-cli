@@ -8,6 +8,7 @@ const inquirer = require('inquirer'); // 问答式交互
 
 // 引入本地脚本模块
 const amisInit = require('./amisInit.js');
+const amisInitByCopy = require('./amisInitByCopy.js');
 const inspect = require('./inspect.js');
 const mainAction = require('./main.js'); // 功能入口
 const amisConfigInit = require('../utils/amisConfigInit.js');
@@ -51,11 +52,20 @@ let argv = yargs
           alias: 'e',
           describe: '支持的编辑器类型（amis/aipage)'
         })
+        .option('mode', {
+          alias: 'm',
+          describe: '自定义组件下载模式（github/copy）',
+          default: 'github',
+        })
         .alias('h', 'help');
     },
     (argv) => {
       if (argv.type && argv.dir) {
-        amisInit(argv.type, argv.dir, argv.name);
+        if (argv.mode === 'copy') {
+          amisInitByCopy(argv.type, argv.dir, argv.name);
+        } else {
+          amisInit(argv.type, argv.dir, argv.name);
+        }
       } else {
         const questions = [];
         // 初始化项目模板时，当用户未设置项目类型type时，以列表形式展示当前可以使用的项目模板
@@ -156,7 +166,11 @@ let argv = yargs
           });
         }
         inquirer.prompt(questions).then((ans) => {
-          amisInit(ans.type, ans.dir, argv.name);
+          if (argv.mode === 'copy') {
+            amisInitByCopy(ans.type, ans.dir, argv.name);
+          } else {
+            amisInit(ans.type, ans.dir, argv.name);
+          }
         });
       }
     }

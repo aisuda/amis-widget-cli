@@ -3,6 +3,7 @@ const akfun = require('akfun');
 const path = require('path');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const amisInit = require('./amisInit');
+const amisInitByCopy = require('./amisInitByCopy');
 const inspect = require('./inspect');
 const amisConfigInit = require('../utils/amisConfigInit.js');
 const curConfig = require('../config/index'); // 获取当前项目根目录下的配置文件
@@ -11,6 +12,7 @@ const AmisEditorDebugPlugin = require('../plugins/AmisEditorDebugPlugin');
 
 module.exports = {
   amisInit,
+  amisInitByCopy,
   inspect,
   amisConfigInit,
   dev: () => {
