@@ -1,0 +1,22 @@
+{
+  "pages": [
+    {
+      "path": "pages/demo/index",
+      "style": {
+        "navigationBarTitleText": "uni-app"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^u-(.*)": "vk-uview-ui/components/u-$1/u-$1.vue"
+    }
+  }
+}

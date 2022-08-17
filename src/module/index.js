@@ -119,6 +119,11 @@ let argv = yargs
             short: 'quick-aipage-widget',
           },
           {
+            name: 'uview版自定义组件(aipage-editor专用)',
+            value: 'uview-custom-widget',
+            short: 'uview-custom-widget',
+          },
+          {
             name: 'vue3自定义组件(aipage-editor专用)',
             value: 'vue3-aipage-widget',
             short: 'vue3-aipage-widget',
