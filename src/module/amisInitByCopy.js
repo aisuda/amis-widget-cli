@@ -11,6 +11,7 @@ const templateList = {
   'react-container': path.resolve(__dirname, '../template/container-custom-widget-template'),
   'vue-container': path.resolve(__dirname, '../template/vue-container-custom-widget-template'),
   'uniapp-aipage-widget': path.resolve(__dirname, '../template/uni-custom-widget-template'),
+  'uniapp-h5-aipage-widget': path.resolve(__dirname, '../template/uni-h5-custom-widget-template'),
   'quick-aipage-widget': path.resolve(__dirname, '../template/quick-custom-widget-template'),
   'uview-custom-widget': path.resolve(__dirname, '../template/uview-custom-widget'),
   'vue3-aipage-widget': path.resolve(__dirname, '../template/vue3-aipage-custom-widget-template'),

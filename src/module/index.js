@@ -114,6 +114,11 @@ let argv = yargs
             short: 'uniapp-aipage-widget',
           },
           {
+            name: 'uniapp+H5版自定义组件模板(aipage-editor专用)',
+            value: 'uniapp-h5-aipage-widget',
+            short: 'uniapp-h5-aipage-widget',
+          },
+          {
             name: '快应用自定义组件(aipage-editor专用)',
             value: 'quick-aipage-widget',
             short: 'quick-aipage-widget',
