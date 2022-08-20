@@ -15,6 +15,7 @@ const templateList = {
   'uview-custom-widget': 'git@github.com:wibetter/uview-custom-widget.git',
   'vue3-aipage-widget': 'git@github.com:aisuda/vue3-aipage-custom-widget-template.git',
   'vue2-aipage-widget': 'git@github.com:aisuda/aipage-custom-widget-template.git',
+  'uchart-custom-widget': 'git@github.com:wibetter/uchart-custom-widget.git',
 };
 
 const amisInit = function (type, dir, projectName) {

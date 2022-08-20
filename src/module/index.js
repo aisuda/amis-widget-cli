@@ -107,7 +107,7 @@ let argv = yargs
           }
         ];
 
-        const aipageWidgetTemplates = [
+        const uniappWidgetTemplates = [
           {
             name: '跨端自定义组件(uniapp技术栈/aipage-editor专用)',
             value: 'uniapp-aipage-widget',
@@ -119,9 +119,9 @@ let argv = yargs
             short: 'uniapp-h5-aipage-widget',
           },
           {
-            name: '快应用自定义组件(aipage-editor专用)',
-            value: 'quick-aipage-widget',
-            short: 'quick-aipage-widget',
+            name: '图表自定义组件(aipage-editor专用，uniapp+H5版)',
+            value: 'uchart-custom-widget',
+            short: 'uchart-custom-widget',
           },
           {
             name: 'uview版自定义组件(aipage-editor专用)',
@@ -140,13 +140,26 @@ let argv = yargs
           },
         ]
 
+        const quickappWidgetTemplates = [
+          {
+            name: '快应用自定义组件(aipage-editor专用)',
+            value: 'quick-aipage-widget',
+            short: 'quick-aipage-widget',
+          }
+        ]
+
+        const aipageWidgetTemplates = [
+          ...uniappWidgetTemplates,
+          ...quickappWidgetTemplates
+        ]
+
         if (!argv.type && argv.editor === 'aipage') {
           // 创建aipage-editor自定义组件的快捷入口
           questions.push({
             name: 'type',
             type: 'list',
             message: '请选择您要创建的自定义组件类型: ',
-            default: 'vue3-aipage',
+            default: 'uniapp-h5-aipage-widget',
             choices: aipageWidgetTemplates
           });
         } else if (!argv.type && argv.editor === 'amis') {
@@ -156,6 +169,22 @@ let argv = yargs
             message: '请选择您要创建的自定义组件类型: ',
             default: 'react',
             choices: amisWidgetTemplates
+          });
+        } else if (!argv.type && argv.editor === 'uniapp') {
+          questions.push({
+            name: 'type',
+            type: 'list',
+            message: '请选择您要创建的自定义组件类型: ',
+            default: 'uniapp-h5-aipage-widget',
+            choices: uniappWidgetTemplates
+          });
+        } else if (!argv.type && argv.editor === 'quickapp') {
+          questions.push({
+            name: 'type',
+            type: 'list',
+            message: '请选择您要创建的自定义组件类型: ',
+            default: 'quick-aipage-widget',
+            choices: quickappWidgetTemplates
           });
         } else if (!argv.type) {
           questions.push({
