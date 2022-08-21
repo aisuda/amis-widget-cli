@@ -71,37 +71,37 @@ let argv = yargs
         // 初始化项目模板时，当用户未设置项目类型type时，以列表形式展示当前可以使用的项目模板
         const amisWidgetTemplates = [
           {
-            name: 'react自定义组件',
+            name: 'react自定义组件(amis-editor专用)',
             value: 'react',
             short: 'react'
           },
           {
-            name: 'react&ts自定义组件',
+            name: 'react&ts自定义组件(amis-editor专用)',
             value: 'react-ts',
             short: 'react-ts'
           },
           {
-            name: 'react自定义组件（含webpack工程）',
+            name: 'react自定义组件（amis-editor专用，含webpack工程）',
             value: 'react-dev',
             short: 'react-dev'
           },
           {
-            name: 'vue自定义组件（vue2.0技术栈）',
+            name: 'vue自定义组件（amis-editor专用，vue2.0技术栈）',
             value: 'vue',
             short: 'vue'
           },
           {
-            name: 'amis自定义组件（多技术栈）',
+            name: 'amis自定义组件（amis-editor专用，多技术栈）',
             value: 'multiple',
             short: 'multiple'
           },
           {
-            name: 'react自定义容器类组件',
+            name: 'react自定义容器类组件(amis-editor专用)',
             value: 'react-container',
             short: 'react-container'
           },
           {
-            name: 'vue自定义容器类组件',
+            name: 'vue自定义容器类组件(amis-editor专用)',
             value: 'vue-container',
             short: 'vue-container'
           }
@@ -145,6 +145,11 @@ let argv = yargs
             name: '快应用自定义组件(aipage-editor专用)',
             value: 'quick-aipage-widget',
             short: 'quick-aipage-widget',
+          },
+          {
+            name: 'qapp-ui自定义组件(aipage-editor专用，快应用版)',
+            value: 'qapp-ui-custom-widget',
+            short: 'qapp-ui-custom-widget',
           }
         ]
 

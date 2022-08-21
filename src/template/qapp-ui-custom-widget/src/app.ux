@@ -1,0 +1,12 @@
+<script>
+export default {
+  onError(err) {
+    console.log(`error message=${err.message}, stack=${err.stack}`);
+  },
+  onPageNotFound(errorParams) {
+    console.log('error Param', errorParams);
+    const { uri = '' } = errorParams;
+    console.error('error uri', uri);
+  },
+};
+</script>

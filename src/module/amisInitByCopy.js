@@ -17,6 +17,7 @@ const templateList = {
   'vue3-aipage-widget': path.resolve(__dirname, '../template/vue3-aipage-custom-widget-template'),
   'vue2-aipage-widget': path.resolve(__dirname, '../template/aipage-custom-widget-template'),
   'uchart-custom-widget': path.resolve(__dirname, '../template/uchart-custom-widget'),
+  'qapp-ui-custom-widget': path.resolve(__dirname, '../template/qapp-ui-custom-widget'),
 };
 
 const amisInitByCopy = function (type, dir, projectName) {

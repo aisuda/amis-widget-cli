@@ -1,0 +1,46 @@
+<import src="../../components/qui-flow" name="qui-flow"></import>
+<template>
+  <div class="content">
+    <div class="text-area">
+      <text class="title">{{ title }}</text>
+    </div>
+    <image class="logo" src="./favicon.svg"></image>
+    <qui-flow></qui-flow>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      title: 'hello, world!',
+    };
+  }
+};
+</script>
+
+<style lang="less">
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.text-area {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+
+  .title {
+    font-size: 36px;
+    color: #8f8f94;
+  }
+}
+
+.logo {
+  margin-top: 20px;
+  width: 200px;
+  margin-bottom: 30px;
+}
+</style>
