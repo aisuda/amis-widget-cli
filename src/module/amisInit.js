@@ -10,12 +10,12 @@ const templateList = {
   'react-container': 'git@github.com:aisuda/container-custom-widget-template.git',
   'vue-container': 'git@github.com:aisuda/vue-container-custom-widget-template.git',
   'uniapp-aipage-widget': 'git@github.com:aisuda/uni-custom-widget-template.git',
-  'uniapp-h5-aipage-widget': 'git@github.com:aisuda/uni-h5-custom-widget-template.git',
-  'quick-aipage-widget': 'git@github.com:aisuda/quick-custom-widget-template.git',
+  'uniapp-h5-aipage-widget': 'git@github.com:wibetter/uni-h5-custom-widget-template.git',
   'uview-custom-widget': 'git@github.com:wibetter/uview-custom-widget.git',
+  'uchart-custom-widget': 'git@github.com:wibetter/uchart-custom-widget.git',
   'vue3-aipage-widget': 'git@github.com:aisuda/vue3-aipage-custom-widget-template.git',
   'vue2-aipage-widget': 'git@github.com:aisuda/aipage-custom-widget-template.git',
-  'uchart-custom-widget': 'git@github.com:wibetter/uchart-custom-widget.git',
+  'quick-aipage-widget': 'git@github.com:aisuda/quick-custom-widget-template.git',
   'qapp-ui-custom-widget': 'git@github.com:wibetter/qapp-ui-custom-widget.git',
 };
 
