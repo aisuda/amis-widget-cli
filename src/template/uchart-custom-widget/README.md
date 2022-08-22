@@ -28,7 +28,7 @@
 - 自定义组件开发工具：[amis-widget-cli](https://github.com/aisuda/amis-widget-cli)
 
 ### 开发 aipage-editor 自定义组件 注意事项
-- 开发自定义组件时，请遵循[easycom组件规范](https://uniapp.dcloud.net.cn/component/#easycom%E7%BB%84%E4%BB%B6%E8%A7%84%E8%8C%83)存放和组件命名（应用导出源码时需要）；
+- 开发跨端自定义组件（非H5自定义组件）时，请遵循[easycom组件规范](https://uniapp.dcloud.net.cn/component/#easycom%E7%BB%84%E4%BB%B6%E8%A7%84%E8%8C%83)存放和组件命名（应用导出源码时需要）；
 - 静态资源（img、css等）请和自定义组件渲染器放同一个目录，比如：components/info-card/assets 存放 info-card 自定义组件的静态资源。方便后续动态注入自定义组件源码。
 
 ### 开发说明
