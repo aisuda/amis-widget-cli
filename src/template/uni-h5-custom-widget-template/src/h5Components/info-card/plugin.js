@@ -12,7 +12,7 @@ const InfoCardPlugin = {
   pluginIcon: 'cards-plugin',
   order: 1, // 展示顺序（从小到大展示）
   type: 'element', // 渲染器类型
-  device: ['mobile', 'quickapp', 'quickapp-card'], // 设置类型，目前支持3种类型: pc、mobile、app、quickapp、quickapp-card
+  device: ['mobile', 'app', 'quickapp', 'quickapp-card'], // 设置类型，目前支持3种类型: pc、mobile、app、quickapp、quickapp-card
   docLink: '',
   demoProperties: {
     componentId: 'h5-uni-info-card',
