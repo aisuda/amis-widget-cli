@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="news-info">
-      <div class="left media-mark">爱速搭 · 低代码平台@wibetter</div>
+      <div class="left media-mark">爱速搭 · 低代码平台@002</div>
       <div class="cmt-num right">
         {{ agreeDataFormat(comment_count) || 0 }} 评
       </div>

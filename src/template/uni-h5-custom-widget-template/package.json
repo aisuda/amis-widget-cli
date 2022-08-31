@@ -1,6 +1,6 @@
 {
   "name": "uni-h5-custom-widget-template",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "uniapp+H5版自定义组件模板（vue3技术栈），用于开发小程序自定义组件。",
   "keywords": [
     "自定义组件注册器",
@@ -134,7 +134,7 @@
     "@dcloudio/uni-quickapp-webview": "3.0.0-alpha-3040820220424001",
     "vue": "^3.2.37",
     "vue-i18n": "^9.1.9",
-    "vue3-aipage-widget": "^1.0.8",
+    "vue3-aipage-widget": "^1.0.11",
     "vuex": "^4.0.2"
   },
   "devDependencies": {

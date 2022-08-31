@@ -55,7 +55,7 @@ module.exports = {
         './src/h5Components/info-card-v2/plugin.js',
       ],
     },
-    NODE_ENV: 'production',
+    NODE_ENV: 'development',
     port: 80,
     autoOpenBrowser: false,
     closeHtmlWebpackPlugin: true, // 关闭HtmlWebpackPlugin
