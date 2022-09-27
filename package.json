@@ -1,6 +1,6 @@
 {
   "name": "amis-widget-cli",
-  "version": "2.2.5",
+  "version": "2.2.6",
   "description": "前端脚手架：amis自定义组件开发工具，支持vue2.0技术栈。",
   "keywords": [
     "amis自定义组件",
@@ -40,7 +40,7 @@
     "url": "https://github.com/aisuda/amis-widget-cli/issues"
   },
   "dependencies": {
-    "akfun": "^3.2.8",
+    "akfun": "3.2.10",
     "amis": "^2.0.2",
     "amis-core": "^2.0.2",
     "amis-editor": "^5.2.0",
