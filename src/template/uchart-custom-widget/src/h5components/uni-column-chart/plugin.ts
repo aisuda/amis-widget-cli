@@ -2,7 +2,7 @@
  * @file 编辑器扩展, 增加自定义插件（组件物料面板展示需要）
  */
 // @ts-ignore
-import { registerPlugin } from 'vue3-aipage-widget';
+import { registerPlugin } from 'vue3-aipage-widget/dist/index.umd';
 
 const columnChartPlugin = {
   name: '柱状图',
@@ -48,7 +48,9 @@ const columnChartPlugin = {
               {
                 name: 'data.series',
                 type: 'setting-list',
-                label: '饼图数据',
+                label: '图表数据',
+                mode: 'normal',
+                fullSize: true,
                 setting: [
                   {
                     type: 'input-text',
@@ -72,7 +74,7 @@ const columnChartPlugin = {
               },
               {
                 name: 'data.categories',
-                label: 'categories',
+                label: '横轴数据',
                 type: 'input-array',
                 inline: true,
                 removable: true,

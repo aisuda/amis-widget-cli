@@ -1,6 +1,6 @@
 {
   "name": "uchart-custom-widget",
-  "version": "1.1.0",
+  "version": "1.2.1",
   "description": "图表自定义组件",
   "keywords": [
     "自定义组件",
@@ -238,8 +238,9 @@
     "@qiun/ucharts": "^2.4.3-20220505",
     "vue": "^3.2.37",
     "vue-i18n": "^9.1.9",
-    "vue3-aipage-widget": "^1.0.6",
-    "vuex": "^4.0.2"
+    "vue3-aipage-widget": "^1.2.0",
+    "vuex": "^4.0.2",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
@@ -253,6 +254,6 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "prettier": "^2.0.5",
-    "vite": "^2.9.14"
+    "vite": "^3.1.3"
   }
 }

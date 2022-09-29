@@ -13,6 +13,7 @@ const templateList = {
   'uniapp-h5-aipage-widget': 'git@github.com:wibetter/uni-h5-custom-widget-template.git',
   'uview-custom-widget': 'git@github.com:wibetter/uview-custom-widget.git',
   'uchart-custom-widget': 'git@github.com:wibetter/uchart-custom-widget.git',
+  'lottery-custom-widget': 'git@github.com:wibetter/lottery-custom-widget.git',
   'vue3-aipage-widget': 'git@github.com:aisuda/vue3-aipage-custom-widget-template.git',
   'vue2-aipage-widget': 'git@github.com:aisuda/aipage-custom-widget-template.git',
   'quick-aipage-widget': 'git@github.com:aisuda/quick-custom-widget-template.git',

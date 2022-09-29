@@ -38,6 +38,7 @@ const InfoCardPlugin = {
                 label: '卡片title',
                 value:
                   'amis 是一个低代码前端框架，它使用 JSON 配置来生成页面，可以减少页面开发工作量，极大提升效率。',
+                enableDataBinding: true, // 有这个属性则组件会自动开启动态数据绑定
               },
               {
                 type: 'text',

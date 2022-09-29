@@ -1,6 +1,6 @@
 <template>
   <u-time-line class="time-line">
-    <u-time-line-item v-for="(item, index) in timeLine" :key="index">
+    <u-time-line-item v-for="(item, index) in timeLineReverse" :key="index">
       <!-- 此处自定义了左边内容，用一个图标替代 -->
       <template v-slot:node v-if="index === 0">
         <view class="u-node" style="background: #19be6b">
@@ -23,14 +23,9 @@ export default {
   props: ['componentProperties', 'id'],
   data() {
     return {
-      show: false,
+      show: true,
       mode: 'date',
       timeLineDemo: [
-        {
-          status: '待取件',
-          desc: '[自提柜]您的快件已放在楼下侧门，直走前方53.6米，左拐约10步，再右拐直走，见一红灯笼停下，叩门三下，喊“芝麻开门”即可。',
-          time: '2019-05-12 12:12',
-        },
         {
           status: '运输中',
           desc: '【深圳市】日照香炉生紫烟，遥看瀑布挂前川，飞流直下三千尺，疑是银河落九天。',
@@ -40,6 +35,11 @@ export default {
           status: '运输中',
           desc: '【深圳市】日照香炉生紫烟，遥看瀑布挂前川，飞流直下三千尺，疑是银河落九天。',
           time: '2019-05-08 12:12',
+        },
+        {
+          status: '待取件',
+          desc: '[自提柜]您的快件已放在楼下侧门，直走前方53.6米，左拐约10步，再右拐直走，见一红灯笼停下，叩门三下，喊“芝麻开门”即可。',
+          time: '2019-05-12 12:12',
         },
       ],
     };
@@ -52,6 +52,9 @@ export default {
           this.componentProperties.data.timeLine) ||
         this.timeLineDemo
       );
+    },
+    timeLineReverse() {
+      return this.timeLine ? this.timeLine.reverse() : [];
     },
   },
 };

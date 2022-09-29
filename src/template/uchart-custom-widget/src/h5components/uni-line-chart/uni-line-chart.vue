@@ -63,6 +63,13 @@ export default {
       series: this.series,
     });
   },
+  updated() {
+    // 确保编辑器端，右侧属性配置面板调整后图表会及时更新
+    this.drawCharts(this.chartId, {
+      categories: this.categories,
+      series: this.series,
+    });
+  },
   methods: {
     drawCharts(id, data) {
       const canvas = document.getElementById(id) || this.$refs.uchart;

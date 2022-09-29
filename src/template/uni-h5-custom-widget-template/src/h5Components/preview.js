@@ -9,7 +9,7 @@ const InfoCard2 = createVue3Component(VueInfoCard2);
 
 ReactDOM.render(
   <>
-    <InfoCard />
+    <InfoCard2 />
   </>,
   document.getElementById('root'),
 );

@@ -22,11 +22,6 @@ const InfoCardPlugin = {
       data: {
         timeLine: [
           {
-            status: '待取件',
-            desc: '[自提柜]您的快件已放在楼下侧门，直走前方53.6米，左拐约10步，再右拐直走，见一红灯笼停下，叩门三下，喊“芝麻开门”即可。',
-            time: '2019-05-12 12:12',
-          },
-          {
             status: '运输中',
             desc: '【深圳市】日照香炉生紫烟，遥看瀑布挂前川，飞流直下三千尺，疑是银河落九天。',
             time: '2019-05-10 12:12',
@@ -36,7 +31,12 @@ const InfoCardPlugin = {
             desc: '【深圳市】日照香炉生紫烟，遥看瀑布挂前川，飞流直下三千尺，疑是银河落九天。',
             time: '2019-05-08 12:12',
           },
-        ],
+          {
+            status: '待取件',
+            desc: '[自提柜]您的快件已放在楼下侧门，直走前方53.6米，左拐约10步，再右拐直走，见一红灯笼停下，叩门三下，喊“芝麻开门”即可。',
+            time: '2019-05-12 12:12',
+          },
+        ]
       },
       style: {},
     },
@@ -55,6 +55,8 @@ const InfoCardPlugin = {
                 name: 'data.timeLine',
                 type: 'setting-list',
                 label: '物流节点',
+                mode: 'normal',
+                fullSize: true,
                 setting: [
                   {
                     type: 'input-text',
@@ -67,9 +69,10 @@ const InfoCardPlugin = {
                     label: '详细',
                   },
                   {
-                    type: 'input-date',
+                    type: 'input-datetime',
                     name: 'time',
                     label: '时间',
+                    format: "YYYY-MM-DD HH:mm",
                   },
                 ],
                 enableDataBinding: true, // 有这个属性则组件会自动开启动态数据绑定

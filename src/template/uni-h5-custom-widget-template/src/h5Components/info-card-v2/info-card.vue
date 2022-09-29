@@ -16,6 +16,7 @@
         {{ agreeDataFormat(comment_count) || 0 }} 评
       </div>
     </div>
+    <div class="news-img-test"></div>
   </div>
 </template>
 <script>
@@ -147,6 +148,14 @@ export default {
     font-family: PingFangSC-Light;
     font-size: 18px;
     color: #828282;
+  }
+
+  .news-img-test {
+    width: 300px;
+    height: 200px;
+    box-sizing: border-box;
+    background-size: cover;
+    background-image: url('./backgroundImage.jpeg');
   }
 }
 </style>

@@ -2,7 +2,7 @@
  * @file 编辑器扩展, 增加自定义插件（组件物料面板展示需要）
  */
 // @ts-ignore
-import { registerPlugin } from 'vue3-aipage-widget';
+import { registerPlugin } from 'vue3-aipage-widget/dist/index.umd';
 
 const ringChartPlugin = {
   name: '环形图',
@@ -58,36 +58,24 @@ const ringChartPlugin = {
                 label: '子标题',
               },
               {
-                type: 'input-array',
-                name: 'data.series',
-                label: '饼图数据',
-                inline: true,
-                removable: true,
-                draggable: true,
-                items: {
-                  name: 'data',
-                  type: 'setting-list',
-                  label: '饼图数据',
-                  setting: [
-                    {
-                      type: 'input-text',
-                      name: 'name',
-                      label: '指标',
-                      placeholder: '请输入奖品名称',
-                    },
-                    {
-                      type: 'input-array',
-                      name: 'data',
-                      label: '数值',
-                      inline: true,
-                      removable: true,
-                      draggable: true,
-                      items: {
-                        type: 'input-number',
-                      },
-                    },
-                  ],
-                },
+                type: 'setting-list',
+                name: 'data.series[0].data',
+                label: '图表数据',
+                mode: 'normal',
+                fullSize: true,
+                setting: [
+                  {
+                    type: 'input-text',
+                    name: 'name',
+                    label: '指标',
+                    placeholder: '请输入奖品名称',
+                  },
+                  {
+                    type: 'input-number',
+                    name: 'value',
+                    label: '数值',
+                  },
+                ],
                 enableDataBinding: true, // 有这个属性则组件会自动开启动态数据绑定
               },
             ],

@@ -114,14 +114,19 @@ let argv = yargs
             short: 'uniapp-aipage-widget',
           },
           {
-            name: 'uniapp+H5版自定义组件模板(aipage-editor专用)',
+            name: 'uniapp+H5版组件模板(aipage-editor专用)',
             value: 'uniapp-h5-aipage-widget',
             short: 'uniapp-h5-aipage-widget',
           },
           {
-            name: '图表自定义组件(aipage-editor专用，uniapp+H5版)',
+            name: '图表组件(aipage-editor专用，uniapp+H5版)',
             value: 'uchart-custom-widget',
             short: 'uchart-custom-widget',
+          },
+          {
+            name: '抽奖组件(aipage-editor专用，uniapp+H5版)',
+            value: 'lottery-custom-widget',
+            short: 'lottery-custom-widget',
           },
           {
             name: 'uview版自定义组件(aipage-editor专用)',
