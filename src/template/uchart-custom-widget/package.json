@@ -238,7 +238,7 @@
     "@qiun/ucharts": "^2.4.3-20220505",
     "vue": "^3.2.37",
     "vue-i18n": "^9.1.9",
-    "vue3-aipage-widget": "^1.2.0",
+    "vue3-aipage-widget": "^1.2.1",
     "vuex": "^4.0.2",
     "lodash": "^4.17.21"
   },

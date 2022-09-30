@@ -74,7 +74,7 @@
     "url": "https://github.com/aisuda/vue3-aipage-custom-widget-template/issues"
   },
   "dependencies": {
-    "vue3-aipage-widget": "^1.0.6",
+    "vue3-aipage-widget": "^1.2.1",
     "react": "^16.8.6",
     "vue": "^3.2.33"
   },
