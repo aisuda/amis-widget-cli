@@ -400,3 +400,17 @@ module.exports = {
   ...
 }
 ```
+
+14. 本地开启https服务
+> 使用 https://localhost/index.html 访问当前项目。
+```bash
+module.exports = {
+  ...
+  dev: {
+    ...
+    https: true, // 默认不开启
+  }
+  ...
+}
+```
+备注：amis-widget-cli使用自签名证书开启https服务，浏览器会提示安全性问题不能正常访问，需要进行如下设置，以 Chrome设置 为例：浏览器打开 Chrome://flags/#allow-insecure-localhost 后将其设置为Enabled。
