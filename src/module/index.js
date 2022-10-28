@@ -70,11 +70,14 @@ let argv = yargs
             value: 'react-ts',
             short: 'react-ts'
           },
+          /*
+          备注: 带webpack工程的自定义组件模板使用成本较高，暂不开放出来，避免后续维护成本过高。
           {
             name: 'react自定义组件（含webpack工程）',
             value: 'react-dev',
             short: 'react-dev'
           },
+          */
           {
             name: 'vue自定义组件（vue2.0技术栈）',
             value: 'vue',
@@ -101,24 +104,24 @@ let argv = yargs
           {
             name: '跨端自定义组件(uniapp技术栈/aipage-editor专用)',
             value: 'uniapp-aipage-widget',
-            short: 'uniapp-aipage-widget',
+            short: 'uniapp-aipage-widget'
           },
           {
             name: '快应用自定义组件(aipage-editor专用)',
             value: 'quick-aipage-widget',
-            short: 'quick-aipage-widget',
+            short: 'quick-aipage-widget'
           },
           {
             name: 'vue3自定义组件(aipage-editor专用)',
             value: 'vue3-aipage-widget',
-            short: 'vue3-aipage-widget',
+            short: 'vue3-aipage-widget'
           },
           {
             name: 'vue2自定义组件(aipage-editor专用)',
             value: 'vue2-aipage-widget',
-            short: 'vue2-aipage-widget',
-          },
-        ]
+            short: 'vue2-aipage-widget'
+          }
+        ];
 
         if (!argv.type && argv.editor === 'aipage') {
           // 创建aipage-editor自定义组件的快捷入口
