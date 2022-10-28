@@ -55,7 +55,7 @@ let argv = yargs
         .option('mode', {
           alias: 'm',
           describe: '自定义组件下载模式（github/copy）',
-          default: 'github',
+          default: 'github'
         })
         .alias('h', 'help');
     },
@@ -80,11 +80,14 @@ let argv = yargs
             value: 'react-ts',
             short: 'react-ts'
           },
+          /*
+          带webpack工程的自定义组件模板使用成本较高，暂不开放出来，避免后续维护成本过高。
           {
             name: 'react自定义组件（amis-editor专用，含webpack工程）',
             value: 'react-dev',
             short: 'react-dev'
           },
+          */
           {
             name: 'vue自定义组件（amis-editor专用，vue2.0技术栈）',
             value: 'vue',
@@ -111,57 +114,54 @@ let argv = yargs
           {
             name: '跨端自定义组件(uniapp技术栈/aipage-editor专用)',
             value: 'uniapp-aipage-widget',
-            short: 'uniapp-aipage-widget',
+            short: 'uniapp-aipage-widget'
           },
           {
             name: 'uniapp+H5版组件模板(aipage-editor专用)',
             value: 'uniapp-h5-aipage-widget',
-            short: 'uniapp-h5-aipage-widget',
+            short: 'uniapp-h5-aipage-widget'
           },
           {
             name: '图表组件(aipage-editor专用，uniapp+H5版)',
             value: 'uchart-custom-widget',
-            short: 'uchart-custom-widget',
+            short: 'uchart-custom-widget'
           },
           {
             name: '抽奖组件(aipage-editor专用，uniapp+H5版)',
             value: 'lottery-custom-widget',
-            short: 'lottery-custom-widget',
+            short: 'lottery-custom-widget'
           },
           {
             name: 'uview版自定义组件(aipage-editor专用)',
             value: 'uview-custom-widget',
-            short: 'uview-custom-widget',
+            short: 'uview-custom-widget'
           },
           {
             name: 'vue3自定义组件(aipage-editor专用)',
             value: 'vue3-aipage-widget',
-            short: 'vue3-aipage-widget',
+            short: 'vue3-aipage-widget'
           },
           {
             name: 'vue2自定义组件(aipage-editor专用)',
             value: 'vue2-aipage-widget',
-            short: 'vue2-aipage-widget',
-          },
-        ]
+            short: 'vue2-aipage-widget'
+          }
+        ];
 
         const quickappWidgetTemplates = [
           {
             name: '快应用自定义组件(aipage-editor专用)',
             value: 'quick-aipage-widget',
-            short: 'quick-aipage-widget',
+            short: 'quick-aipage-widget'
           },
           {
             name: 'qapp-ui自定义组件(aipage-editor专用，快应用版)',
             value: 'qapp-ui-custom-widget',
-            short: 'qapp-ui-custom-widget',
+            short: 'qapp-ui-custom-widget'
           }
-        ]
+        ];
 
-        const aipageWidgetTemplates = [
-          ...uniappWidgetTemplates,
-          ...quickappWidgetTemplates
-        ]
+        const aipageWidgetTemplates = [...uniappWidgetTemplates, ...quickappWidgetTemplates];
 
         if (!argv.type && argv.editor === 'aipage') {
           // 创建aipage-editor自定义组件的快捷入口
