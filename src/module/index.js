@@ -21,7 +21,7 @@ const titleTip = function (msg) {
 };
 
 const bigTip = figlet.textSync('amis', {
-  font: 'lean'
+  font: 'Lean'
 });
 
 console.log(chalk.green(bigTip));
