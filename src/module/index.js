@@ -8,6 +8,7 @@ const inquirer = require('inquirer'); // 问答式交互
 
 // 引入本地脚本模块
 const amisInit = require('./amisInit.js');
+const amisInitByCopy = require('./amisInitByCopy.js');
 const inspect = require('./inspect.js');
 const mainAction = require('./main.js'); // 功能入口
 const amisConfigInit = require('../utils/amisConfigInit.js');
@@ -51,65 +52,89 @@ let argv = yargs
           alias: 'e',
           describe: '支持的编辑器类型（amis/aipage)'
         })
+        .option('mode', {
+          alias: 'm',
+          describe: '自定义组件下载模式（github/copy）',
+          default: 'github'
+        })
         .alias('h', 'help');
     },
     (argv) => {
       if (argv.type && argv.dir) {
-        amisInit(argv.type, argv.dir, argv.name);
+        if (argv.mode === 'copy') {
+          amisInitByCopy(argv.type, argv.dir, argv.name);
+        } else {
+          amisInit(argv.type, argv.dir, argv.name);
+        }
       } else {
         const questions = [];
         // 初始化项目模板时，当用户未设置项目类型type时，以列表形式展示当前可以使用的项目模板
         const amisWidgetTemplates = [
           {
-            name: 'react自定义组件',
+            name: 'react自定义组件(amis-editor专用)',
             value: 'react',
             short: 'react'
           },
           {
-            name: 'react&ts自定义组件',
+            name: 'react&ts自定义组件(amis-editor专用)',
             value: 'react-ts',
             short: 'react-ts'
           },
           /*
-          备注: 带webpack工程的自定义组件模板使用成本较高，暂不开放出来，避免后续维护成本过高。
+          带webpack工程的自定义组件模板使用成本较高，暂不开放出来，避免后续维护成本过高。
           {
-            name: 'react自定义组件（含webpack工程）',
+            name: 'react自定义组件（amis-editor专用，含webpack工程）',
             value: 'react-dev',
             short: 'react-dev'
           },
           */
           {
-            name: 'vue自定义组件（vue2.0技术栈）',
+            name: 'vue自定义组件（amis-editor专用，vue2.0技术栈）',
             value: 'vue',
             short: 'vue'
           },
           {
-            name: 'amis自定义组件（多技术栈）',
+            name: 'amis自定义组件（amis-editor专用，多技术栈）',
             value: 'multiple',
             short: 'multiple'
           },
           {
-            name: 'react自定义容器类组件',
+            name: 'react自定义容器类组件(amis-editor专用)',
             value: 'react-container',
             short: 'react-container'
           },
           {
-            name: 'vue自定义容器类组件',
+            name: 'vue自定义容器类组件(amis-editor专用)',
             value: 'vue-container',
             short: 'vue-container'
           }
         ];
 
-        const aipageWidgetTemplates = [
+        const uniappWidgetTemplates = [
           {
             name: '跨端自定义组件(uniapp技术栈/aipage-editor专用)',
             value: 'uniapp-aipage-widget',
             short: 'uniapp-aipage-widget'
           },
           {
-            name: '快应用自定义组件(aipage-editor专用)',
-            value: 'quick-aipage-widget',
-            short: 'quick-aipage-widget'
+            name: 'uniapp+H5版组件模板(aipage-editor专用)',
+            value: 'uniapp-h5-aipage-widget',
+            short: 'uniapp-h5-aipage-widget'
+          },
+          {
+            name: '图表组件(aipage-editor专用，uniapp+H5版)',
+            value: 'uchart-custom-widget',
+            short: 'uchart-custom-widget'
+          },
+          {
+            name: '抽奖组件(aipage-editor专用，uniapp+H5版)',
+            value: 'lottery-custom-widget',
+            short: 'lottery-custom-widget'
+          },
+          {
+            name: 'uview版自定义组件(aipage-editor专用)',
+            value: 'uview-custom-widget',
+            short: 'uview-custom-widget'
           },
           {
             name: 'vue3自定义组件(aipage-editor专用)',
@@ -123,13 +148,28 @@ let argv = yargs
           }
         ];
 
+        const quickappWidgetTemplates = [
+          {
+            name: '快应用自定义组件(aipage-editor专用)',
+            value: 'quick-aipage-widget',
+            short: 'quick-aipage-widget'
+          },
+          {
+            name: 'qapp-ui自定义组件(aipage-editor专用，快应用版)',
+            value: 'qapp-ui-custom-widget',
+            short: 'qapp-ui-custom-widget'
+          }
+        ];
+
+        const aipageWidgetTemplates = [...uniappWidgetTemplates, ...quickappWidgetTemplates];
+
         if (!argv.type && argv.editor === 'aipage') {
           // 创建aipage-editor自定义组件的快捷入口
           questions.push({
             name: 'type',
             type: 'list',
             message: '请选择您要创建的自定义组件类型: ',
-            default: 'vue3-aipage',
+            default: 'uniapp-h5-aipage-widget',
             choices: aipageWidgetTemplates
           });
         } else if (!argv.type && argv.editor === 'amis') {
@@ -139,6 +179,22 @@ let argv = yargs
             message: '请选择您要创建的自定义组件类型: ',
             default: 'react',
             choices: amisWidgetTemplates
+          });
+        } else if (!argv.type && argv.editor === 'uniapp') {
+          questions.push({
+            name: 'type',
+            type: 'list',
+            message: '请选择您要创建的自定义组件类型: ',
+            default: 'uniapp-h5-aipage-widget',
+            choices: uniappWidgetTemplates
+          });
+        } else if (!argv.type && argv.editor === 'quickapp') {
+          questions.push({
+            name: 'type',
+            type: 'list',
+            message: '请选择您要创建的自定义组件类型: ',
+            default: 'quick-aipage-widget',
+            choices: quickappWidgetTemplates
           });
         } else if (!argv.type) {
           questions.push({
@@ -159,7 +215,11 @@ let argv = yargs
           });
         }
         inquirer.prompt(questions).then((ans) => {
-          amisInit(ans.type, ans.dir, argv.name);
+          if (argv.mode === 'copy') {
+            amisInitByCopy(ans.type, ans.dir, argv.name);
+          } else {
+            amisInit(ans.type, ans.dir, argv.name);
+          }
         });
       }
     }

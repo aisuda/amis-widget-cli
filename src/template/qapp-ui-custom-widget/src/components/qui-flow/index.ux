@@ -1,0 +1,55 @@
+<!-- 引用第三方UI组件库 -->
+<import name="qui-flow-ui" src="../../../node_modules/qapp-ui/components/qui-flow/index"></import>
+
+<template>
+ <div class="qui-flow-card">
+    <qui-flow-ui line='#0F8DE8' background='#ffffff' border='#0F8DE8' highlight-title='#0F8DE8' 
+    highlight-background='#ffffff' highlight-border='#0F8DE8' options="{{flowData}}"></qui-flow-ui>
+  </div>
+</template>
+
+<script>
+export default {
+  props: ['componentProperties', 'id'],
+  data() {
+    return {
+      defaultFlowData: [{
+        'time': '2017-05-24 21:10:29',
+        'desc': '',
+        'highlight': true,
+        'title': '方案已确认'
+      }, {
+        'highlight': true,
+        'title': '方案已更新'
+      }, {
+        'highlight': true,
+        'time': '2017-05-24 19:49:03',
+        'desc': '测试测试测试测试测试测试测试测试测试测试测试测试测试测',
+        'title': '测试标题测试标题测试标题'
+      }, {
+        'desc': '您以确定了方案',
+        'title': '方案已上传'
+      }, {
+        'time': '2017-05-24 19:49:03',
+        'desc': '商家会在2个工作小时内电话联系您',
+        'title': '商家已接单'
+      }]
+    };
+  },
+  computed: {
+    flowData() {
+      return (
+        (this.componentProperties &&
+        this.componentProperties.data &&
+        this.componentProperties.data.flowData) ||
+        this.defaultFlowData
+      );
+    },
+  },
+};
+</script>
+<style lang="less">
+ .qui-flow-card {
+   margin: 10px auto;
+ }
+</style>

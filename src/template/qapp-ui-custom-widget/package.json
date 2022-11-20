@@ -1,0 +1,92 @@
+{
+  "name": "qapp-ui-custom-widget",
+  "version": "1.0.0",
+  "description": "qapp-ui自定义组件模板，使用第三方UI库开发快应用自定义组件。",
+  "keywords": [
+    "qapp-ui自定义组件",
+    "quickapp自定义组件注册器",
+    "aipage-editor自定义组件",
+    "aipage-editor自定义插件"
+  ],
+  "author": "wibetter",
+  "scripts": {
+    "preview": "hap server --watch",
+    "preview:h5": "amis preview",
+    "linkDebug": "amis linkDebug",
+    "build": "hap build",
+    "build2lib": "amis build2lib",
+    "format": "prettier --write \"src/**/**/*.{js,jsx,ts,tsx,vue,scss,json}\""
+  },
+  "files": [
+    "web/*",
+    "src/components/*"
+  ],
+  "aipage-widgets": [
+    {
+      "type": "qui-flow-card",
+      "framework": "vue3",
+      "description": "快应用版流程节点展示卡片",
+      "entry": "/web/renderer.umd",
+      "files": [
+        "/web/renderer.css"
+      ],
+      "editorPlugin": {
+        "pluginEntry": "/web/plugin.umd",
+        "tag": [
+          "快应用组件"
+        ],
+        "sort": 100,
+        "device": [
+          "mobile",
+          "quickapp",
+          "quickapp-card"
+        ]
+      }
+    },
+    {
+      "type": "qui-flow-card",
+      "framework": "quickapp",
+      "entry": "/src/components/qui-flow"
+    }
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "src/**/**/*.{js,jsx,ts,tsx,vue,scss,json}": [
+      "prettier --write"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git@github.com:wibetter/qapp-ui-custom-widget.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wibetter/qapp-ui-custom-widget/issues"
+  },
+  "dependencies": {
+    "vue": "^3.2.33",
+    "vue3-aipage-widget": "^1.0.6",
+    "qapp-ui": "^1.2.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^9.1.1",
+    "@types/quickapp": "npm:quickapp-interface@^1.0.0",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^17.0.13",
+    "@wibetter/amis-widget-cli": "^2.0.7",
+    "hap-toolkit": "^1.9.10",
+    "husky": "^4.2.5",
+    "less": "^4.1.3",
+    "less-loader": "^11.0.0",
+    "lint-staged": "^10.2.9",
+    "prettier": "^2.0.5"
+  },
+  "browserslist": [
+    "chrome 65"
+  ]
+}

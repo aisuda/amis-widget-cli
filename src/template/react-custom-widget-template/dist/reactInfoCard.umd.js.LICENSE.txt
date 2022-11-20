@@ -1,0 +1,7 @@
+/*!
+ * react-custom-widget-template v1.0.13
+ * author: fex
+ * build tool: AKFun
+ * build time: Wed Mar 09 2022 16:33:08 GMT+0800 (中国标准时间)
+ * build tool info: https://github.com/wibetter/akfun
+ */

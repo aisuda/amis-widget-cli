@@ -1,0 +1,7 @@
+/*!
+ * container-custom-widget-template v1.0.0
+ * author: fex
+ * build tool: AKFun
+ * build time: Thu Mar 17 2022 13:47:55 GMT+0800 (中国标准时间)
+ * build tool info: https://github.com/wibetter/akfun
+ */

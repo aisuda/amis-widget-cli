@@ -1,0 +1,259 @@
+{
+  "name": "uchart-custom-widget",
+  "version": "1.2.1",
+  "description": "图表自定义组件",
+  "keywords": [
+    "自定义组件",
+    "uniapp自定义组件",
+    "图表自定义组件"
+  ],
+  "author": "wibetter",
+  "scripts": {
+    "preview": "uni",
+    "preview:h5": "amis preview",
+    "linkDebug": "amis linkDebug",
+    "build2lib": "amis build2lib",
+    "dev:app": "uni -p app",
+    "dev:custom": "uni -p",
+    "dev:h5": "uni",
+    "dev:h5:ssr": "uni --ssr",
+    "dev:mp-alipay": "uni -p mp-alipay",
+    "dev:mp-baidu": "uni -p mp-baidu",
+    "dev:mp-kuaishou": "uni -p mp-kuaishou",
+    "dev:mp-lark": "uni -p mp-lark",
+    "dev:mp-qq": "uni -p mp-qq",
+    "dev:mp-toutiao": "uni -p mp-toutiao",
+    "dev:mp-weixin": "uni -p mp-weixin",
+    "dev:quickapp-webview": "uni -p quickapp-webview",
+    "dev:quickapp-webview-huawei": "uni -p quickapp-webview-huawei",
+    "dev:quickapp-webview-union": "uni -p quickapp-webview-union",
+    "build:app": "uni build -p app",
+    "build:custom": "uni build -p",
+    "build:h5:ssr": "uni build --ssr",
+    "build:mp-alipay": "uni build -p mp-alipay",
+    "build:mp-baidu": "uni build -p mp-baidu",
+    "build:mp-kuaishou": "uni build -p mp-kuaishou",
+    "build:mp-lark": "uni build -p mp-lark",
+    "build:mp-qq": "uni build -p mp-qq",
+    "build:mp-toutiao": "uni build -p mp-toutiao",
+    "build:mp-weixin": "uni build -p mp-weixin",
+    "build:quickapp-webview": "uni build -p quickapp-webview",
+    "build:quickapp-webview-huawei": "uni build -p quickapp-webview-huawei",
+    "build:quickapp-webview-union": "uni build -p quickapp-webview-union",
+    "format": "prettier --write \"{src,build}/**/**/*.{js,jsx,ts,tsx,vue,scss,json}\""
+  },
+  "files": [
+    "preview/*",
+    "src/components/*"
+  ],
+  "aipage-widgets": [
+    {
+      "type": "uni-line-chart",
+      "framework": "vue3",
+      "description": "折线图",
+      "entry": "/preview/uniLineRenderer.umd",
+      "files": [
+        "/preview/uniLineRenderer.css"
+      ],
+      "editorPlugin": {
+        "pluginEntry": "/preview/uniLinePlugin.umd",
+        "tag": [
+          "图表组件",
+          "跨端组件"
+        ],
+        "sort": 100,
+        "device": [
+          "mobile",
+          "app"
+        ]
+      }
+    },
+    {
+      "type": "uni-line-chart",
+      "framework": "uniapp",
+      "entry": "/src/components/uni-line-chart"
+    },
+    {
+      "type": "uni-area-chart",
+      "framework": "vue3",
+      "description": "折线图",
+      "entry": "/preview/uniAreaRenderer.umd",
+      "files": [
+        "/preview/uniAreaRenderer.css"
+      ],
+      "editorPlugin": {
+        "pluginEntry": "/preview/uniAreaPlugin.umd",
+        "tag": [
+          "图表组件",
+          "跨端组件"
+        ],
+        "sort": 100,
+        "device": [
+          "mobile",
+          "app"
+        ]
+      }
+    },
+    {
+      "type": "uni-area-chart",
+      "framework": "uniapp",
+      "entry": "/src/components/uni-area-chart"
+    },
+    {
+      "type": "uni-column-chart",
+      "framework": "vue3",
+      "description": "折线图",
+      "entry": "/preview/uniColumnRenderer.umd",
+      "files": [
+        "/preview/uniColumnRenderer.css"
+      ],
+      "editorPlugin": {
+        "pluginEntry": "/preview/uniColumnPlugin.umd",
+        "tag": [
+          "图表组件",
+          "跨端组件"
+        ],
+        "sort": 100,
+        "device": [
+          "mobile",
+          "app"
+        ]
+      }
+    },
+    {
+      "type": "uni-column-chart",
+      "framework": "uniapp",
+      "entry": "/src/components/uni-column-chart"
+    },
+    {
+      "type": "uni-mount-chart",
+      "framework": "vue3",
+      "description": "折线图",
+      "entry": "/preview/uniMountRenderer.umd",
+      "files": [
+        "/preview/uniMountRenderer.css"
+      ],
+      "editorPlugin": {
+        "pluginEntry": "/preview/uniMountPlugin.umd",
+        "tag": [
+          "图表组件",
+          "跨端组件"
+        ],
+        "sort": 100,
+        "device": [
+          "mobile",
+          "app"
+        ]
+      }
+    },
+    {
+      "type": "uni-mount-chart",
+      "framework": "uniapp",
+      "entry": "/src/components/uni-mount-chart"
+    },
+    {
+      "type": "uni-pie-chart",
+      "framework": "vue3",
+      "description": "折线图",
+      "entry": "/preview/uniPieRenderer.umd",
+      "files": [
+        "/preview/uniPieRenderer.css"
+      ],
+      "editorPlugin": {
+        "pluginEntry": "/preview/uniPiePlugin.umd",
+        "tag": [
+          "图表组件",
+          "跨端组件"
+        ],
+        "sort": 100,
+        "device": [
+          "mobile",
+          "app"
+        ]
+      }
+    },
+    {
+      "type": "uni-pie-chart",
+      "framework": "uniapp",
+      "entry": "/src/components/uni-pie-chart"
+    },
+    {
+      "type": "uni-ring-chart",
+      "framework": "vue3",
+      "description": "折线图",
+      "entry": "/preview/uniRingRenderer.umd",
+      "files": [
+        "/preview/uniRingRenderer.css"
+      ],
+      "editorPlugin": {
+        "pluginEntry": "/preview/uniRingPlugin.umd",
+        "tag": [
+          "图表组件",
+          "跨端组件"
+        ],
+        "sort": 100,
+        "device": [
+          "mobile",
+          "app"
+        ]
+      }
+    },
+    {
+      "type": "uni-ring-chart",
+      "framework": "uniapp",
+      "entry": "/src/components/uni-ring-chart"
+    }
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "src/**/**/*.{js,jsx,ts,tsx,vue,scss,json}": [
+      "prettier --write"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git@github.com:wibetter/uchart-custom-widget.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wibetter/uchart-custom-widget/issues"
+  },
+  "dependencies": {
+    "@dcloudio/uni-app": "3.0.0-alpha-3040820220424001",
+    "@dcloudio/uni-app-plus": "3.0.0-alpha-3040820220424001",
+    "@dcloudio/uni-components": "3.0.0-alpha-3040820220424001",
+    "@dcloudio/uni-h5": "3.0.0-alpha-3040820220424001",
+    "@dcloudio/uni-mp-alipay": "3.0.0-alpha-3040820220424001",
+    "@dcloudio/uni-mp-baidu": "3.0.0-alpha-3040820220424001",
+    "@dcloudio/uni-mp-kuaishou": "3.0.0-alpha-3040820220424001",
+    "@dcloudio/uni-mp-lark": "3.0.0-alpha-3040820220424001",
+    "@dcloudio/uni-mp-qq": "3.0.0-alpha-3040820220424001",
+    "@dcloudio/uni-mp-toutiao": "3.0.0-alpha-3040820220424001",
+    "@dcloudio/uni-mp-weixin": "3.0.0-alpha-3040820220424001",
+    "@dcloudio/uni-quickapp-webview": "3.0.0-alpha-3040820220424001",
+    "@qiun/ucharts": "^2.4.3-20220505",
+    "vue": "^3.2.37",
+    "vue-i18n": "^9.1.9",
+    "vue3-aipage-widget": "^1.2.1",
+    "vuex": "^4.0.2",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^9.1.1",
+    "@dcloudio/types": "^3.0.13",
+    "@dcloudio/uni-automator": "^3.0.0-alpha-3050420220804004",
+    "@dcloudio/uni-cli-shared": "^3.0.0-alpha-3050420220804004",
+    "@dcloudio/uni-stacktracey": "^3.0.0-alpha-3050420220804004",
+    "@dcloudio/vite-plugin-uni": "^3.0.0-alpha-3050420220804004",
+    "@wibetter/amis-widget-cli": "^2.0.7",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.9",
+    "prettier": "^2.0.5",
+    "vite": "^3.1.3"
+  }
+}

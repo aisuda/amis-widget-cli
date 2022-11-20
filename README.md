@@ -4,22 +4,38 @@
 
 ## 特性
 - ⚡️ 零配置，开箱即用
-- 👏 支持Vue和React自定义组件的调试和构建
-- 💪 提供三种构建场景: 本地开发模式(包含热更新、接口代理等功能)、生产环境代码构建、library库构建(支持umd和esm的打包能力)
-- ❤️ 开放配置能力: 可配置构建入口文件、开启ESLint代码检测、接口代理等
-- 👍 支持 [Autoprefixer](https://github.com/postcss/autoprefixer#readme)、[Sass](https://sass-lang.com/)、[PostCSS](https://postcss.org/)、[ESLint](http://eslint.cn/)、[StyleLint](https://stylelint.io/)
-- ❤️ 支持项目系统参数自动批量替换 [params-replace-loader](https://www.npmjs.com/package/params-replace-loader)
-- 😀 提供完整的[Vue自定义组件模板](https://github.com/aisuda/vue-custom-widget-template)、[React自定义组件模板](https://github.com/aisuda/react-custom-widget-template)、[多技术栈自定义组件模板](https://github.com/aisuda/multiple-cutom-widget-template)
+- 支持Vue和React自定义组件的调试和构建
+- 提供三种构建场景: 本地开发模式(包含热更新、接口代理等功能)、生产环境代码构建、library库构建(支持umd和esm的打包能力)
+- 开放配置能力: 可配置构建入口文件、开启ESLint代码检测、接口代理等
+- 支持 [Autoprefixer](https://github.com/postcss/autoprefixer#readme)、[Sass](https://sass-lang.com/)、[PostCSS](https://postcss.org/)、[ESLint](http://eslint.cn/)、[StyleLint](https://stylelint.io/)
+- 支持项目系统参数自动批量替换 [params-replace-loader](https://www.npmjs.com/package/params-replace-loader)
+- 提供完整的[Vue自定义组件模板](https://github.com/aisuda/vue-custom-widget-template)、[React自定义组件模板](https://github.com/aisuda/react-custom-widget-template)、[多技术栈自定义组件模板](https://github.com/aisuda/multiple-cutom-widget-template)
 
 
-## 当前已支持的自定义组件模板类型
+## 当前已支持的amis自定义组件模板类型
+> 使用方式: amis init -e=amis
 - react自定义组件([react-custom-widget-template](https://github.com/aisuda/react-custom-widget-template)): react 技术栈的自定义组件模板
 - react&ts自定义组件([react-ts-custom-widget-template](https://github.com/aisuda/react-ts-custom-widget-template)): react 和 typescript 技术栈的自定义组件模板
 - react自定义组件（含webpack工程）([react-widget-dev](https://github.com/aisuda/react-widget-dev)): 带 webpack 工程的 react 版自定义组件模板
 - vue自定义组件（vue2.0技术栈）([vue-custom-widget-template](https://github.com/aisuda/vue-custom-widget-template)): vue2.0 技术栈的自定义组件模板
 - amis自定义组件（多技术栈）([multiple-custom-widget-template](https://github.com/aisuda/multiple-custom-widget-template)): 含多种技术栈（vue2.0、react）的自定义组件模板
 - react自定义容器类组件([react-custom-widget-template](https://github.com/aisuda/container-custom-widget-template)): react 版容器类自定义组件模板，自定义容器组件内部可插入其他组件
-- vue自定义容器类组件([vue-container-custom-widget-template](https://github.com/aisuda/vue-container-custom-widget-template)): vue2.0 版容器类自定义组件模板，自定义容器组件内部可插入其他组件
+- vue自定义容器类组件([vue-container-custom-widget-template](https://github.com/aisuda/vue-container-custom-widget-template)): vue2.0 版容器类自定义组件模板，自定义容器组件内部可插入其他组件  
+
+
+## 当前已支持的跨端自定义组件模板
+> 使用方式: amis init -e=uniapp
+- 跨端自定义组件([uni-custom-widget-template](https://github.com/aisuda/uni-custom-widget-template)): uniapp技术栈/aipage-editor专用，可用于开发小程序自定义组件；
+- uniapp+H5版自定义组件模板([uni-h5-custom-widget-template](https://github.com/aisuda/uni-h5-custom-widget-template)):  uniapp技术栈/aipage-editor专用，可用于开发小程序自定义组件；
+- uview版自定义组件([uview-custom-widget](https://github.com/wibetter/uview-custom-widget)): aipage-editor专用，可用于开发小程序自定义组件；
+- 图表自定义组件([uchart-custom-widget](https://github.com/wibetter/uchart-custom-widget)): aipage-editor专用，uniapp+H5版，，可用于开发小程序图表类自定义组件；
+- vue3自定义组件([vue3-aipage-custom-widget-template](https://github.com/aisuda/vue3-aipage-custom-widget-template)): aipage-editor专用，支持vue3.0和react技术栈，可用于开发H5自定义组件；
+- vue2自定义组件([vue2-aipage-widget](https://github.com/aisuda/vue2-aipage-widget)): aipage-editor专用，支持vue2.0和react技术栈，可用于开发H5自定义组件；  
+
+## 当前已支持的快应用版自定义组件模板
+> 使用方式: amis init -e=quickapp
+- 快应用自定义组件([quick-custom-widget-template](https://github.com/aisuda/quick-custom-widget-template)): aipage-editor专用，可用于快应用自定义组件；
+- qapp-ui版快应用自定义组件([qapp-ui-custom-widget](https://github.com/wibetter/qapp-ui-custom-widget)): aipage-editor专用，使用第三方UI组件库开发快应用自定义组件；  
 
 ## 快速开始 / 使用方法一
 > 全局安装amis-widget-cli，用于同时管理多个自定义组件代码
@@ -34,6 +50,7 @@ $ yarn global add amis-widget-cli 或者  npm i -g amis-widget-cli
 ```bash
 $ amis init -t=react
 ```
+【特别说明】如果自定义组件模板安装异常（github网络原因），请使用copy模式：amis init -m=copy。
 
 3. **开始使用：确保已安装项目依赖（yarn install或者npm install）**
 
@@ -135,7 +152,8 @@ $ amis config init
 2、在设备中增加固定的 hosts（如：140.82.113.4 github.com），执行以下命令：  
     ```
     $ ssh-keyscan github.com >> ~/.ssh/known_hosts
-    ```
+    ```  
+3、如果工作网络环境不支持访问github，请使用copy模式：amis init -m=copy。   
 
 2. **创建amis-widget-cli的配置文件**
     ```bash
@@ -382,3 +400,17 @@ module.exports = {
   ...
 }
 ```
+
+14. 本地开启https服务
+> 使用 https://localhost/index.html 访问当前项目。
+```bash
+module.exports = {
+  ...
+  dev: {
+    ...
+    https: true, // 默认不开启
+  }
+  ...
+}
+```
+备注：amis-widget-cli使用自签名证书开启https服务，浏览器会提示安全性问题不能正常访问，需要进行如下设置，以 Chrome设置 为例：浏览器打开 Chrome://flags/#allow-insecure-localhost 后将其设置为Enabled。

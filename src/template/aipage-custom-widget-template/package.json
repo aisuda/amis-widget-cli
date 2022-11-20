@@ -1,0 +1,98 @@
+{
+  "name": "aipage-custom-widget-template",
+  "version": "1.0.0",
+  "description": "aipage-editor H5自定义组件模板（vue2、react）",
+  "keywords": [
+    "自定义组件模板",
+    "aipage-editor自定义组件"
+  ],
+  "author": "fex",
+  "license": "MIT",
+  "scripts": {
+    "preview": "amis preview",
+    "linkDebug": "amis linkDebug",
+    "build2lib": "amis build2lib",
+    "format": "prettier --write \"src/**/**/*.{js,jsx,ts,tsx,vue,scss,json}\""
+  },
+  "files": [
+    "dist/*"
+  ],
+  "framework": "mulStack",
+  "aipage-widgets": [
+    {
+      "type": "react-info-card",
+      "framework": "react",
+      "description": "react版信息展示卡片",
+      "entry": "/dist/reactInfoCard.umd",
+      "files": [
+        "/dist/reactInfoCard.css"
+      ],
+      "editorPlugin": {
+        "pluginEntry": "/dist/reactInfoCardPlugin.umd",
+        "tag": [
+          "自定义组件"
+        ],
+        "sort": 100,
+        "device": [
+          "mobile",
+          "pc"
+        ]
+      }
+    },
+    {
+      "type": "vue-info-card",
+      "description": "vue2.0版信息展示卡片",
+      "framework": "vue2",
+      "entry": "/dist/infoCard.umd",
+      "files": [
+        "/dist/infoCard.css"
+      ],
+      "editorPlugin": {
+        "pluginEntry": "/dist/infoCardPlugin.umd",
+        "tag": [
+          "自定义组件"
+        ],
+        "sort": 100,
+        "device": [
+          "mobile",
+          "pc"
+        ]
+      }
+    }
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "src/**/**/*.{js,jsx,ts,tsx,vue,scss,json}": [
+      "prettier --write"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git@github.com:aisuda/aipage-custom-widget-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aisuda/aipage-custom-widget-template/issues"
+  },
+  "dependencies": {
+    "aipage-widget": "^1.0.2",
+    "react": "^16.8.6",
+    "vue": "^2.6.14"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^9.1.1",
+    "amis-widget-cli": "^2.0.1",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.9",
+    "prettier": "^2.0.5"
+  },
+  "engines": {
+    "node": ">= 10.13.0",
+    "npm": ">= 6.4.1"
+  }
+}
