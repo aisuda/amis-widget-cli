@@ -144,7 +144,7 @@
     "@dcloudio/uni-automator": "3.0.0-alpha-3040820220424001",
     "@dcloudio/uni-cli-shared": "3.0.0-alpha-3040820220424001",
     "@dcloudio/vite-plugin-uni": "3.0.0-alpha-3040820220424001",
-    "@wibetter/amis-widget-cli": "^2.2.6",
+    "@wibetter/amis-widget-cli": "^2.2.12",
     "cross-env": "^7.0.3",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
