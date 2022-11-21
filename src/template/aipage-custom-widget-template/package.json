@@ -33,7 +33,10 @@
           "自定义组件"
         ],
         "sort": 100,
-        "device": ["mobile", "pc"]
+        "device": [
+          "mobile",
+          "pc"
+        ]
       }
     },
     {
@@ -50,7 +53,10 @@
           "自定义组件"
         ],
         "sort": 100,
-        "device": ["mobile", "pc"]
+        "device": [
+          "mobile",
+          "pc"
+        ]
       }
     }
   ],
@@ -80,7 +86,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^9.1.1",
-    "amis-widget-cli": "^2.0.1",
+    "amis-widget-cli": "^2.2.12",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "prettier": "^2.0.5"
