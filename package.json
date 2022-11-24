@@ -1,6 +1,6 @@
 {
   "name": "amis-widget-cli",
-  "version": "3.0.0-beta.3",
+  "version": "3.0.0-beta.5",
   "description": "前端脚手架：amis自定义组件开发工具，支持vue2.0技术栈。",
   "keywords": [
     "amis自定义组件",
@@ -45,8 +45,8 @@
     "amis-core": "^2.4.1-beta.0",
     "amis-formula": "^2.4.1-beta.0",
     "amis-ui": "^2.4.1-beta.0",
-    "amis-editor": "^5.2.1-beta.20",
-    "amis-editor-core": "^5.2.1-beta.20",
+    "amis-editor": "^5.2.1-beta.22",
+    "amis-editor-core": "^5.2.1-beta.22",
     "axios": "^0.24.0",
     "chalk": "^4.0.0",
     "deepmerge": "^4.2.2",
