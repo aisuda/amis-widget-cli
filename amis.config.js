@@ -26,7 +26,7 @@ module.exports = {
     externals: [],
     projectDir: ['src/editor'],
     template: resolve('./src/editor/index.html'), // 使用自己的html模板
-    cssLoaderUrl: true,
+    cssLoaderUrl: true, // 是否处理 node_modules 中的 css
     moduleRules: [], // 用于配置自定义loaders
     plugins: [], // 用于配置自定义plugins
   },
