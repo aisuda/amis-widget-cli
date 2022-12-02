@@ -98,12 +98,16 @@ module.exports = {
         'amis-core': 'commonjs2 amis-core',
         'amis-ui': 'commonjs2 amis-ui',
         'amis-editor': 'commonjs2 amis-editor',
+        'amis-editor-core': 'commonjs2 amis-editor-core',
+        'amis-formula': 'commonjs2 amis-formula',
         'aipage-editor': 'commonjs2 aipage-editor',
         '@fex/amis': 'commonjs2 @fex/amis',
         '@fex/amis-core': 'commonjs2 @fex/amis-core',
         '@fex/amis-ui': 'commonjs2 @fex/amis-ui',
         '@fex/amis-editor': 'commonjs2 @fex/amis-editor',
-        '@fex/aipage-editor': 'commonjs2 @fex/aipage-editor'
+        '@fex/aipage-editor': 'commonjs2 @fex/aipage-editor',
+        '@fex/amis-formula': 'commonjs2 @fex/amis-formula',
+        '@fex/amis-editor-core': 'commonjs2 @fex/amis-editor-core'
       };
     }
     // 本地预览模式（仅预览组件内容）

@@ -2,6 +2,7 @@
 node_modules/
 temp/
 temp2/
+demo/
 npm/
 package-lock.json
 npm-debug.log*

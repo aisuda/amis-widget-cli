@@ -1,6 +1,6 @@
 {
   "name": "@wibetter/amis-widget-cli",
-  "version": "2.2.12",
+  "version": "3.0.0-beta.12",
   "description": "前端脚手架：amis自定义组件开发工具，支持vue3技术栈。",
   "keywords": [
     "amis自定义组件",
@@ -14,6 +14,7 @@
   "main": "src/module/main.js",
   "scripts": {
     "amis": "amis",
+    "dev": "node ./test/demo.js",
     "format": "prettier --write \"src/**/**/*.{js,vue,tsx,ts,scss,json}\"",
     "publish2local": "sh publish-local.sh"
   },
@@ -40,11 +41,7 @@
     "url": "https://github.com/aisuda/amis-widget-cli/issues"
   },
   "dependencies": {
-    "akfun": "3.2.15-vue3-beta.1",
-    "amis": "^2.0.2",
-    "amis-core": "^2.0.2",
-    "amis-editor": "^5.2.0",
-    "amis-ui": "^2.0.2",
+    "akfun": "3.2.18-vue3-beta.1",
     "axios": "^0.24.0",
     "chalk": "^4.0.0",
     "deepmerge": "^4.2.2",
@@ -53,17 +50,35 @@
     "inquirer": "^7.3.3",
     "monaco-editor-webpack-plugin": "6.0.0",
     "ora": "^4.0.4",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
     "webpack-sources": "^3.2.3",
     "yargs": "^12.0.2"
   },
   "devDependencies": {
+    "amis": "2.5.1",
+    "amis-core": "2.5.1",
+    "amis-formula": "2.5.1",
+    "amis-ui": "2.5.1",
+    "amis-editor": "^5.2.1-beta.32",
+    "amis-editor-core": "^5.2.1-beta.32",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "mobx-react": "^6.3.1",
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^9.1.1",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "prettier": "^2.0.5"
+  },
+  "peerDependencies": {
+    "amis": "*",
+    "amis-core": "*",
+    "amis-formula": "*",
+    "amis-ui": "*",
+    "amis-editor": "*",
+    "amis-editor-core": "*",
+    "mobx-react":  "*",
+    "react": ">=16.8.6",
+    "react-dom": ">=16.8.6"
   },
   "engines": {
     "node": ">= 10.13.0",
