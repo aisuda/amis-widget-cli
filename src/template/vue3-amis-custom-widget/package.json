@@ -1,0 +1,80 @@
+{
+  "name": "vue3-amis-custom-widget",
+  "version": "1.0.0",
+  "description": "amis自定义组件模板（vue3.0技术栈）",
+  "keywords": [
+    "自定义组件模板",
+    "vue3.0技术栈",
+    "amis自定义组件",
+    "amis-editor自定义插件",
+    "图表自定义组件"
+  ],
+  "author": "fex",
+  "license": "MIT",
+  "scripts": {
+    "dev": "amis dev",
+    "preview": "amis preview",
+    "linkDebug": "amis linkDebug",
+    "build2lib": "amis build2lib",
+    "format": "prettier --write \"src/**/**/*.{js,jsx,ts,tsx,vue,scss,json}\""
+  },
+  "files": [
+    "dist/*"
+  ],
+  "framework": "vue3",
+  "amis-widgets": [
+    {
+      "type": "uni-area-chart",
+      "framework": "vue3",
+      "description": "折线区域图",
+      "entry": "/dist/uniAreaRenderer.umd",
+      "files": [
+        "/dist/uniAreaRenderer.css"
+      ],
+      "editorPlugin": {
+        "pluginEntry": "/dist/uniAreaPlugin.umd",
+        "tag": [
+          "图表组件"
+        ],
+        "sort": 100
+      }
+    }
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "src/**/**/*.{js,jsx,ts,tsx,vue,scss,json}": [
+      "prettier --write"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git@github.com:aisuda/vue3-amis-custom-widget.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aisuda/vue3-amis-custom-widget/issues"
+  },
+  "dependencies": {
+    "vue3-amis-widget": "^3.0.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "@qiun/ucharts": "^2.4.3-20220505",
+    "vue": "^3.2.37"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^9.1.1",
+    "@wibetter/amis-widget-cli": "^3.0.2",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.9",
+    "prettier": "^2.0.5"
+  },
+  "engines": {
+    "node": ">= 10.13.0",
+    "npm": ">= 6.4.1"
+  }
+}

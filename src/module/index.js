@@ -94,6 +94,11 @@ let argv = yargs
             short: 'vue'
           },
           {
+            name: 'vue3自定义组件（amis-editor专用，vue3.0技术栈）',
+            value: 'vue3-amis',
+            short: 'vue3-amis'
+          },
+          {
             name: 'amis自定义组件（amis-editor专用，多技术栈）',
             value: 'multiple',
             short: 'multiple'
