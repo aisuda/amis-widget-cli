@@ -72,8 +72,8 @@ let argv = yargs
         const amisWidgetTemplates = [
           {
             name: 'react自定义组件(amis-editor专用)',
-            value: 'react',
-            short: 'react'
+            value: 'react-amis',
+            short: 'react-amis'
           },
           {
             name: 'react&ts自定义组件(amis-editor专用)',
@@ -89,9 +89,14 @@ let argv = yargs
           },
           */
           {
-            name: 'vue自定义组件（amis-editor专用，vue2.0技术栈）',
-            value: 'vue',
-            short: 'vue'
+            name: 'vue2自定义组件（amis-editor专用）',
+            value: 'vue2-amis',
+            short: 'vue2-amis'
+          },
+          {
+            name: 'vue3自定义组件（amis-editor专用）',
+            value: 'vue3-amis',
+            short: 'vue3-amis'
           },
           {
             name: 'amis自定义组件（amis-editor专用，多技术栈）',

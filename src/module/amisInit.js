@@ -2,10 +2,11 @@ const { gitClone } = require('akfun');
 const { consoleTag } = require('../utils/amisParams'); // 输出标记
 
 const templateList = {
-  react: 'git@github.com:aisuda/react-custom-widget-template.git',
+  'react-amis': 'git@github.com:aisuda/react-custom-widget-template.git',
   'react-ts': 'git@github.com:aisuda/react-ts-custom-widget-template.git',
   'react-dev': 'git@github.com:aisuda/react-widget-dev.git',
-  vue: 'git@github.com:aisuda/vue-custom-widget-template.git',
+  'vue2-amis': 'git@github.com:aisuda/vue-custom-widget-template.git',
+  'vue3-amis': 'git@github.com:aisuda/vue3-amis-custom-widget.git',
   multiple: 'git@github.com:aisuda/multiple-custom-widget-template.git',
   'react-container': 'git@github.com:aisuda/container-custom-widget-template.git',
   'vue-container': 'git@github.com:aisuda/vue-container-custom-widget-template.git',

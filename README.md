@@ -414,3 +414,52 @@ module.exports = {
 }
 ```
 备注：amis-widget-cli使用自签名证书开启https服务，浏览器会提示安全性问题不能正常访问，需要进行如下设置，以 Chrome设置 为例：浏览器打开 Chrome://flags/#allow-insecure-localhost 后将其设置为Enabled。
+
+15. 支持配置自定义webpack plugin 和 loader  
+```bash
+module.exports = {
+  ...
+  webpack: {
+    ...
+    moduleRules: [], // 用于添加自定义 loaders
+    plugins: [], // 用于添加自定义 plugins
+  }
+  ...
+}
+```
+
+16. 支持配置自定义babel plugin  
+```bash
+module.exports = {
+  ...
+  webpack: {
+    ...
+    babelPlugins: [  // 用于添加自定义 Babel plugins
+      [
+        "component",
+        {
+          "libraryName": "element-ui",
+          "styleLibraryName": "theme-chalk"
+        }
+      ]
+    ]
+  }
+  ...
+}
+```
+备注: 以上自定义babel plugin 用于实现 [element-ui 组件按需引入](https://element.eleme.cn/#/zh-CN/component/quickstart#an-xu-yin-ru)。
+
+其中babelPlugins也支持配置成function，可用于调整或者重写脚手架内置的 babel plugins  
+```bash
+module.exports = {
+  ...
+  webpack: {
+    ...
+    babelPlugins: (curBabelPlugins) => {
+      // 通过 curBabelPlugins 来调整当前 Babel plugins
+      curBabelPlugins.push({...});
+    },
+  }
+  ...
+}
+```

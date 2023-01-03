@@ -18,14 +18,24 @@ module.exports = {
   dev: () => {
     if (!curConfig.dev.closeEditorClient) {
       // 自动注入editor示例
-      const editorClientPath = path.resolve(__dirname, '../editor/EditorDemo.jsx');
+      let editorClientPath = path.resolve(__dirname, '../editor/EditorDemo.jsx');
+      // 设置工程有效目录
+      let editorClientDir = path.resolve(__dirname, '../editor');
+      // 设置css-loader配置项[url]的生效目录，避免editor示例中的字体icon失效
+      curConfig.webpack.cssLoaderUrlDir = 'node_modules/amis-widget-cli/editor';
+
+      if (curConfig.dev.editorClient === 'aipage') {
+        editorClientPath = path.resolve(__dirname, '../aipage/index.jsx');
+        editorClientDir = path.resolve(__dirname, '../aipage');
+        curConfig.webpack.cssLoaderUrlDir = 'node_modules/amis-widget-cli/aipage';
+      }
+
       if (curConfig.dev && curConfig.dev.entry && !curConfig.dev.closeEditorClient) {
         Object.keys(curConfig.dev.entry).forEach((name) => {
           curConfig.dev.entry[name] = [editorClientPath].concat(curConfig.dev.entry[name]);
         });
       }
-      // 设置工程有效目录
-      const editorClientDir = path.resolve(__dirname, '../editor');
+
       if (
         curConfig.webpack &&
         curConfig.webpack.projectDir &&
@@ -35,8 +45,6 @@ module.exports = {
       } else {
         curConfig.webpack.projectDir = [editorClientDir];
       }
-      // 设置css-loader配置项[url]的生效目录，避免editor示例中的字体icon失效
-      curConfig.webpack.cssLoaderUrlDir = 'node_modules/amis-widget-cli/editor';
     }
 
     // 解决editor代码面板不展示问题
