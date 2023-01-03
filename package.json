@@ -1,6 +1,6 @@
 {
   "name": "amis-widget-cli",
-  "version": "3.0.2",
+  "version": "3.0.5",
   "description": "前端脚手架：amis自定义组件开发工具，支持vue2.0技术栈。",
   "keywords": [
     "amis自定义组件",
@@ -15,7 +15,7 @@
   "scripts": {
     "amis": "amis",
     "dev": "node ./test/demo.js",
-    "format": "prettier --write \"src/**/**/*.{js,vue,tsx,ts,scss,json}\"",
+    "format": "prettier --write \"src/aipage/**/**/*.{js,jsx,vue,tsx,ts,scss,less,json}\"",
     "publish2local": "sh publish-local.sh"
   },
   "files": [
@@ -50,8 +50,11 @@
     "amis-ui": "^2.5.2-beta.0",
     "amis-editor": "^5.2.1-beta.32",
     "amis-editor-core": "^5.2.1-beta.32",
+    "aipage-editor": "2.0.1",
+    "react-router-dom": "5.0.1",
     "akfun": "3.2.19",
     "axios": "^0.24.0",
+    "classnames": "^2.3.2",
     "chalk": "^4.0.0",
     "deepmerge": "^4.2.2",
     "figlet": "^1.2.0",

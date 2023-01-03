@@ -38,6 +38,16 @@ class SchemaEditorDemo extends React.Component {
       ? JSON.parse(localStorage.getItem('editting_schema'))
       : schema
   };
+
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.onSave = this.onSave.bind(this);
+    this.handlePreviewChange = this.handlePreviewChange.bind(this);
+    this.togglePreview = this.togglePreview.bind(this);
+    this.handleMobileChange = this.handleMobileChange.bind(this);
+  }
+
   handleChange = (value) => {
     localStorage.setItem('editting_schema', JSON.stringify(value));
 
@@ -68,13 +78,6 @@ class SchemaEditorDemo extends React.Component {
 
     this.setState({
       isMobile: !!isMobile
-    });
-  };
-
-  clearCache = () => {
-    localStorage.removeItem('editting_schema');
-    this.setState({
-      schema: schema
     });
   };
 

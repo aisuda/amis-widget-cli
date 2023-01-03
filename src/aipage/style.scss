@@ -1,0 +1,12 @@
+@import 'amis-ui/scss/functions.scss';
+@import 'amis-ui/scss/variables.scss';
+@import 'amis-ui/scss/helper.scss';
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.editor-body {
+  flex: 1;
+}

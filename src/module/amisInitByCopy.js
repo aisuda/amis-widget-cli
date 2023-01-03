@@ -3,10 +3,10 @@ const path = require('path');
 const { consoleTag } = require('../utils/amisParams'); // 输出标记
 
 const templateList = {
-  react: path.resolve(__dirname, '../template/react-custom-widget-template'),
+  'react-amis': path.resolve(__dirname, '../template/react-custom-widget-template'),
   'react-ts': path.resolve(__dirname, '../template/react-ts-custom-widget-template'),
   'react-dev': path.resolve(__dirname, '../template/react-ts-custom-widget-template'),
-  vue: path.resolve(__dirname, '../template/vue-custom-widget-template'),
+  'vue2-amis': path.resolve(__dirname, '../template/vue-custom-widget-template'),
   'vue3-amis': path.resolve(__dirname, '../template/vue3-amis-custom-widget'),
   multiple: path.resolve(__dirname, '../template/multiple-custom-widget-template'),
   'react-container': path.resolve(__dirname, '../template/container-custom-widget-template'),

@@ -18,7 +18,7 @@ module.exports = {
     resolve: {
       // webpack的resolve配置
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue', '.esm.js', '.umd.js', '.min.js', '.json'],
-      // conditionNames: ['require']
+      conditionNames: ['require']
     },
     createDeclaration: true, // 打包时是否创建ts声明文件
     ignoreNodeModules: false, // 打包时是否忽略 node_modules
@@ -33,12 +33,10 @@ module.exports = {
   dev: {
     entry: { // 本地调试模式的入口
       index: [
-        './src/editor/EditorDemo.jsx',
       ],
     },
     // 用于开启本地调试模式的相关配置信息
     NODE_ENV: 'development',
-    ignoreNodeModules: false, // 打包时是否忽略 node_modules
     port: 80,
     autoOpenBrowser: true,
     assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
@@ -47,5 +45,24 @@ module.exports = {
     cssSourceMap: false,
     closeHotReload: false, // 是否关闭热更新
     closeEditorClient: false, // 是否关闭自动注入editor
+    // editorClient: 'aipage'
   },
+  build2lib: {
+    entry: {
+      index: './src/aipage/index.jsx',
+      // index: './src/editor/EditorDemo.jsx',
+    },
+    // 用于构建生产环境代码的相关配置信息
+    NODE_ENV: 'production', // development / production
+    libraryName: 'editor', // 构建第三方功能包时最后导出的引用变量名
+    assetsRoot: resolve('./dist'), // 打包后的文件绝对路径（物理路径）
+    assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
+    assetsSubDirectory: '', // 资源引用二级路径
+    ignoreNodeModules: false, // 打包时是否忽略 node_modules
+    allowList: [], // ignoreNodeModules为true时生效
+    productionSourceMap: false,
+    productionGzip: false,
+    productionGzipExtensions: ['js', 'css', 'json'],
+    bundleAnalyzerReport: true,
+  }
 };
