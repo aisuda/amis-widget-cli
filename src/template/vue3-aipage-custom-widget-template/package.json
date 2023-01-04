@@ -11,6 +11,7 @@
   "license": "MIT",
   "scripts": {
     "preview": "amis preview",
+    "devDebug": "amis dev",
     "linkDebug": "amis linkDebug",
     "build2lib": "amis build2lib",
     "format": "prettier --write \"src/**/**/*.{js,jsx,ts,tsx,vue,scss,json}\""
@@ -87,7 +88,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^9.1.1",
-    "@wibetter/amis-widget-cli": "^2.2.12",
+    "@wibetter/amis-widget-cli": "^3.0.5",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "prettier": "^2.0.5"

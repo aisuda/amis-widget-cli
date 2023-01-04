@@ -11,15 +11,26 @@ module.exports = {
     enableESLint: false, // 调试模式是否开启ESLint，默认开启ESLint检测代码格式
     enableESLintFix: false, // 是否自动修正代码格式，默认不自动修正
     enableStyleLint: false, // 是否开启StyleLint，默认开启ESLint检测代码格式
-    enableStyleLintFix: false // 是否需要StyleLint自动修正代码格式
+    enableStyleLintFix: false, // 是否需要StyleLint自动修正代码格式
   },
   webpack: {
     resolve: {
       // webpack的resolve配置
-      extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue', '.esm.js', '.umd.js', '.min.js', '.json'], // 用于配置webpack在尝试过程中用到的后缀列表
+      extensions: [
+        '.js',
+        '.jsx',
+        '.ts',
+        '.tsx',
+        '.vue',
+        '.esm.js',
+        '.umd.js',
+        '.min.js',
+        '.json',
+      ], // 用于配置webpack在尝试过程中用到的后缀列表
       alias: {
         '@': resolve('src'),
       },
+      conditionNames: ['require'],
     },
     // createDeclaration: true, // 打包时是否创建ts声明文件
     ignoreNodeModules: false, // 打包时是否忽略 node_modules
@@ -32,7 +43,8 @@ module.exports = {
     plugins: [], // 用于配置自定义plugins
   },
   preview: {
-    entry: { // 本地预览自定义组件内容
+    entry: {
+      // 本地预览自定义组件内容
       index: './src/preview.js',
     },
     // 用于开启本地调试模式的相关配置信息
@@ -45,15 +57,38 @@ module.exports = {
       '/apiTest': {
         target: 'http://api-test.com.cn', // 不支持跨域的接口根地址
         ws: true,
-        changeOrigin: true
-      }
+        changeOrigin: true,
+      },
     },
     cssSourceMap: true,
     closeHotReload: false, // 是否关闭热更新
     autoOpenBrowser: true,
   },
+  dev: {
+    entry: {
+      // 本地调试模式的入口
+      index: [
+        './src/react-widget/index.js',
+        './src/react-widget/plugin.jsx',
+        './src/vue-widget/index.js',
+        './src/vue-widget/plugin.jsx',
+      ],
+    },
+    // 用于开启本地调试模式的相关配置信息
+    NODE_ENV: 'development',
+    port: 80,
+    autoOpenBrowser: true,
+    assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
+    assetsSubDirectory: '',
+    hostname: 'localhost',
+    cssSourceMap: false,
+    closeHotReload: false, // 是否关闭热更新
+    closeEditorClient: false, // 是否关闭自动注入editor
+    editorClient: 'aipage',
+  },
   linkDebug: {
-    entry: { // 外链调试（爱速搭中预览本地自定义组件）
+    entry: {
+      // 外链调试（爱速搭中预览本地自定义组件）
       index: [
         './src/react-widget/index.js',
         './src/react-widget/plugin.jsx',
@@ -70,7 +105,7 @@ module.exports = {
     hostname: 'localhost',
     cssSourceMap: true,
     closeHotReload: true, // 是否关闭热更新
-    debugMode: 'aipage-editor'
+    debugMode: 'aipage-editor',
   },
   build2lib: {
     entry: {
