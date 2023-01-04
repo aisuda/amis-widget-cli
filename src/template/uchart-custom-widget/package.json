@@ -11,6 +11,7 @@
   "scripts": {
     "preview": "uni",
     "preview:h5": "amis preview",
+    "devDebug": "amis dev",
     "linkDebug": "amis linkDebug",
     "build2lib": "amis build2lib",
     "dev:app": "uni -p app",
@@ -238,7 +239,7 @@
     "@qiun/ucharts": "^2.4.3-20220505",
     "vue": "^3.2.37",
     "vue-i18n": "^9.1.9",
-    "vue3-aipage-widget": "^1.2.1",
+    "vue3-aipage-widget": "^1.2.2",
     "vuex": "^4.0.2",
     "lodash": "^4.17.21"
   },
@@ -250,10 +251,10 @@
     "@dcloudio/uni-cli-shared": "^3.0.0-alpha-3050420220804004",
     "@dcloudio/uni-stacktracey": "^3.0.0-alpha-3050420220804004",
     "@dcloudio/vite-plugin-uni": "^3.0.0-alpha-3050420220804004",
-    "@wibetter/amis-widget-cli": "^2.2.12",
+    "@wibetter/amis-widget-cli": "^3.0.5",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "prettier": "^2.0.5",
-    "vite": "^3.1.3"
+    "vite": "^4.0.3"
   }
 }
