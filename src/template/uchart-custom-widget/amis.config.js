@@ -12,15 +12,26 @@ module.exports = {
     enableESLint: false, // 调试模式是否开启ESLint，默认开启ESLint检测代码格式
     enableESLintFix: false, // 是否自动修正代码格式，默认不自动修正
     enableStyleLint: false, // 是否开启StyleLint，默认开启ESLint检测代码格式
-    enableStyleLintFix: false // 是否需要StyleLint自动修正代码格式
+    enableStyleLintFix: false, // 是否需要StyleLint自动修正代码格式
   },
   webpack: {
     resolve: {
       // webpack的resolve配置
-      extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue', '.esm.js', '.umd.js', '.min.js', '.json'], // 用于配置webpack在尝试过程中用到的后缀列表
+      extensions: [
+        '.js',
+        '.jsx',
+        '.ts',
+        '.tsx',
+        '.vue',
+        '.esm.js',
+        '.umd.js',
+        '.min.js',
+        '.json',
+      ], // 用于配置webpack在尝试过程中用到的后缀列表
       alias: {
         '@': resolve('src'),
       },
+      conditionNames: ['require'],
     },
     // createDeclaration: true, // 打包时是否创建ts声明文件
     ignoreNodeModules: false, // 打包时是否忽略 node_modules
@@ -32,8 +43,39 @@ module.exports = {
     moduleRules: [], // 用于配置自定义loaders
     plugins: [], // 用于配置自定义plugins // uni()
   },
+  dev: {
+    entry: {
+      // 本地调试模式的入口
+      index: [
+        './src/h5components/uni-column-chart/renderer.ts',
+        './src/h5components/uni-column-chart/plugin.ts',
+        './src/h5components/uni-mount-chart/renderer.ts',
+        './src/h5components/uni-mount-chart/plugin.ts',
+        './src/h5components/uni-line-chart/renderer.ts',
+        './src/h5components/uni-line-chart/plugin.ts',
+        './src/h5components/uni-area-chart/renderer.ts',
+        './src/h5components/uni-area-chart/plugin.ts',
+        './src/h5components/uni-pie-chart/renderer.ts',
+        './src/h5components/uni-pie-chart/plugin.ts',
+        './src/h5components/uni-ring-chart/renderer.ts',
+        './src/h5components/uni-ring-chart/plugin.ts',
+      ],
+    },
+    // 用于开启本地调试模式的相关配置信息
+    NODE_ENV: 'development',
+    port: 80,
+    autoOpenBrowser: true,
+    assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
+    assetsSubDirectory: '',
+    hostname: 'localhost',
+    cssSourceMap: false,
+    closeHotReload: false, // 是否关闭热更新
+    closeEditorClient: false, // 是否关闭自动注入editor
+    editorClient: 'aipage',
+  },
   preview: {
-    entry: { // 本地预览自定义组件内容
+    entry: {
+      // 本地预览自定义组件内容
       index: './src/h5components/preview.js',
     },
     // 用于开启本地调试模式的相关配置信息
@@ -47,7 +89,8 @@ module.exports = {
     autoOpenBrowser: true,
   },
   linkDebug: {
-    entry: { // 外链调试（爱速搭中预览本地自定义组件）
+    entry: {
+      // 外链调试（爱速搭中预览本地自定义组件）
       index: [
         './src/h5components/uni-column-chart/renderer.ts',
         './src/h5components/uni-column-chart/plugin.ts',
@@ -72,7 +115,7 @@ module.exports = {
     hostname: 'localhost',
     cssSourceMap: true,
     closeHotReload: true, // 是否关闭热更新
-    debugMode: 'aipage-editor'
+    debugMode: 'aipage-editor',
   },
   // build2lib 用于打包生成环境的js模块
   build2lib: {
@@ -101,5 +144,5 @@ module.exports = {
     productionGzip: false,
     productionGzipExtensions: ['js', 'css', 'json'],
     bundleAnalyzerReport: false,
-  }
+  },
 };
