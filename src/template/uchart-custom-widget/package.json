@@ -12,7 +12,6 @@
     "preview": "uni",
     "devDebug": "amis dev",
     "preview:h5": "amis preview",
-    "devDebug": "amis dev",
     "linkDebug": "amis linkDebug",
     "build2lib": "amis build2lib",
     "dev:app": "uni -p app",
