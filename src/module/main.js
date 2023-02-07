@@ -103,6 +103,8 @@ module.exports = {
     if (curConfig.webpack) {
       curConfig.webpack.externals = {
         amis: 'commonjs2 amis',
+        react: 'commonjs2 react',
+        'react-dom': 'commonjs2 react-dom',
         'amis-core': 'commonjs2 amis-core',
         'amis-ui': 'commonjs2 amis-ui',
         'amis-editor': 'commonjs2 amis-editor',
