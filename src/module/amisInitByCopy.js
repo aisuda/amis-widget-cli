@@ -6,7 +6,7 @@ const templateList = {
   'react-amis': path.resolve(__dirname, '../template/react-custom-widget-template'),
   'react-ts': path.resolve(__dirname, '../template/react-ts-custom-widget-template'),
   'react-dev': path.resolve(__dirname, '../template/react-ts-custom-widget-template'),
-  'vue2-amis': path.resolve(__dirname, '../template/vue-custom-widget-template'),
+  'vue2-amis': path.resolve(__dirname, '../template/vue2-amis-custom-widget'),
   'vue3-amis': path.resolve(__dirname, '../template/vue3-amis-custom-widget'),
   multiple: path.resolve(__dirname, '../template/multiple-custom-widget-template'),
   'react-container': path.resolve(__dirname, '../template/container-custom-widget-template'),
@@ -17,7 +17,7 @@ const templateList = {
   'uchart-custom-widget': path.resolve(__dirname, '../template/uchart-custom-widget'),
   'lottery-custom-widget': path.resolve(__dirname, '../template/lottery-custom-widget'),
   'vue3-aipage-widget': path.resolve(__dirname, '../template/vue3-aipage-custom-widget-template'),
-  'vue2-aipage-widget': path.resolve(__dirname, '../template/aipage-custom-widget-template'),
+  'vue2-aipage-widget': path.resolve(__dirname, '../template/vue2-aipage-custom-widget'),
   'quick-aipage-widget': path.resolve(__dirname, '../template/quick-custom-widget-template'),
   'qapp-ui-custom-widget': path.resolve(__dirname, '../template/qapp-ui-custom-widget')
 };

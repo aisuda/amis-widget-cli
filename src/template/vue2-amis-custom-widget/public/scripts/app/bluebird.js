@@ -414,10 +414,7 @@
                     return obj.methodName.apply(obj, this);                  \n\
             }                                                                \n\
         };                                                                   \n\
-        ".replace(
-                    /methodName/g,
-                    methodName,
-                  ),
+        ".replace(/methodName/g, methodName),
                 )(ensureMethod);
               };
 
@@ -427,10 +424,7 @@
                   "                                             \n\
         'use strict';                                                        \n\
         return obj.propertyName;                                             \n\
-        ".replace(
-                    'propertyName',
-                    propertyName,
-                  ),
+        ".replace('propertyName', propertyName),
                 );
               };
 
@@ -2678,10 +2672,7 @@
             'use strict';                                                    \n\
             holder.pIndex = value;                                           \n\
             holder.checkFulfillment(this);                                   \n\
-            ".replace(
-                      /Index/g,
-                      i,
-                    ),
+            ".replace(/Index/g, i),
                   );
                 };
 
@@ -2692,10 +2683,7 @@
                     "                           \n\
             'use strict';                                                    \n\
             holder.pIndex = promise;                                         \n\
-            ".replace(
-                      /Index/g,
-                      i,
-                    ),
+            ".replace(/Index/g, i),
                   );
                 };
 

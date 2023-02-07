@@ -43,6 +43,36 @@ module.exports = {
     moduleRules: [], // 用于配置自定义loaders
     plugins: [], // 用于配置自定义plugins // uni()
   },
+  dev: {
+    entry: {
+      // 本地调试模式的入口
+      index: [
+        './src/h5components/uni-column-chart/renderer.ts',
+        './src/h5components/uni-column-chart/plugin.ts',
+        './src/h5components/uni-mount-chart/renderer.ts',
+        './src/h5components/uni-mount-chart/plugin.ts',
+        './src/h5components/uni-line-chart/renderer.ts',
+        './src/h5components/uni-line-chart/plugin.ts',
+        './src/h5components/uni-area-chart/renderer.ts',
+        './src/h5components/uni-area-chart/plugin.ts',
+        './src/h5components/uni-pie-chart/renderer.ts',
+        './src/h5components/uni-pie-chart/plugin.ts',
+        './src/h5components/uni-ring-chart/renderer.ts',
+        './src/h5components/uni-ring-chart/plugin.ts',
+      ],
+    },
+    // 用于开启本地调试模式的相关配置信息
+    NODE_ENV: 'development',
+    port: 80,
+    autoOpenBrowser: true,
+    assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
+    assetsSubDirectory: '',
+    hostname: 'localhost',
+    cssSourceMap: false,
+    closeHotReload: false, // 是否关闭热更新
+    closeEditorClient: false, // 是否关闭自动注入editor
+    editorClient: 'aipage',
+  },
   preview: {
     entry: {
       // 本地预览自定义组件内容

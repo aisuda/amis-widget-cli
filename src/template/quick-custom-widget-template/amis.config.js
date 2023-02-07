@@ -77,6 +77,26 @@ module.exports = {
     closeHotReload: false, // 是否关闭热更新
     autoOpenBrowser: true,
   },
+  dev: {
+    entry: {
+      // 本地调试模式的入口
+      index: [
+        './src/h5Components/info-card/renderer.js',
+        './src/h5Components/info-card/plugin.js',
+      ],
+    },
+    // 用于开启本地调试模式的相关配置信息
+    NODE_ENV: 'development',
+    port: 80,
+    autoOpenBrowser: true,
+    assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
+    assetsSubDirectory: '',
+    hostname: 'localhost',
+    cssSourceMap: false,
+    closeHotReload: false, // 是否关闭热更新
+    closeEditorClient: false, // 是否关闭自动注入editor
+    editorClient: 'aipage',
+  },
   linkDebug: {
     entry: {
       // 外链调试（爱速搭中预览本地自定义组件）
