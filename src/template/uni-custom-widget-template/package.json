@@ -11,6 +11,7 @@
   "author": "wibetter",
   "scripts": {
     "preview": "uni",
+    "dev": "amis dev",
     "devDebug": "amis dev",
     "linkDebug": "npm run build:h5 && amis linkDebug",
     "build2lib": "npm run build:h5",

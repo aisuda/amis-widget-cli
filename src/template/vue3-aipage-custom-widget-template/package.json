@@ -11,6 +11,7 @@
   "license": "MIT",
   "scripts": {
     "preview": "amis preview",
+    "dev": "amis dev",
     "devDebug": "amis dev",
     "linkDebug": "amis linkDebug",
     "build2lib": "amis build2lib",
