@@ -11,6 +11,7 @@
   "author": "wibetter",
   "scripts": {
     "preview": "hap server --watch",
+    "dev": "amis dev",
     "devDebug": "amis dev",
     "build": "hap build",
     "preview:h5": "amis preview",
