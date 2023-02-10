@@ -1,4 +1,4 @@
-const { gitClone } = require('akfun');
+const { gitClone } = require('@wibetter/akfun');
 const { consoleTag } = require('../utils/amisParams'); // 输出标记
 
 const templateList = {

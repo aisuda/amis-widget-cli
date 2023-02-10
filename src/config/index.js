@@ -1,5 +1,5 @@
 // 统一路径解析：
-const { resolve, getConfigObj, deepMergeConfig } = require('akfun');
+const { resolve, getConfigObj, deepMergeConfig } = require('@wibetter/akfun');
 const defaultAMISConfig = require('./default.config');
 
 // 从项目根目录获取当前项目的配置文件

@@ -1,6 +1,6 @@
 'use strict';
 // 统一路径解析：
-const { resolve } = require('akfun');
+const { resolve } = require('@wibetter/akfun');
 const path = require('path'); // 以命令执行目录为根目录
 
 // 当前amis的路径解析（用于获取amis-widget-cli本身的文件地址）

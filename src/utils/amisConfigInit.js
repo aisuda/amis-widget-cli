@@ -1,5 +1,5 @@
 const path = require('path');
-const { createFile } = require('akfun');
+const { createFile } = require('@wibetter/akfun');
 
 // 将脚手架的默认配置文件拷贝到当前项目根目录
 const createDefaultConfig = function (_configFileName) {

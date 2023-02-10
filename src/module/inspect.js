@@ -1,7 +1,7 @@
 const path = require('path');
 const ora = require('ora');
 const fs = require('fs');
-const { getCurWebpackConfig } = require('akfun'); // 用于获取当前webpack配置的方法
+const { getCurWebpackConfig } = require('@wibetter/akfun'); // 用于获取当前webpack配置的方法
 const curConfig = require('../config/index');
 const { consoleTag } = require('../utils/amisParams'); // 输出标记
 

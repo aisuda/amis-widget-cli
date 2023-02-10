@@ -1,5 +1,5 @@
 // amis 功能模块引用主入口
-const akfun = require('akfun');
+const akfun = require('@wibetter/akfun');
 const path = require('path');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const amisInit = require('./amisInit');
