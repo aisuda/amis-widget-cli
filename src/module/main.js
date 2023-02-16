@@ -95,12 +95,11 @@ module.exports = {
       } else {
         curConfig.webpack.plugins = [new AmisEditorDebugPlugin()];
       }
-    }
 
-    delete curConfig.dev.ignoreNodeModules;
-    curConfig.webpack.ignoreNodeModules = false;
-    // 剔除amis和amis-editor，复用amis-saas中的amis和amis-editor等现有模块
-    if (curConfig.webpack) {
+      // 剔除amis和amis-editor，复用amis-saas中的amis和amis-editor等现有模块
+      if (!curConfig.webpack) {
+        curConfig.webpack = {};
+      }
       curConfig.webpack.externals = {
         amis: 'commonjs2 amis',
         react: 'commonjs2 react',
@@ -120,6 +119,10 @@ module.exports = {
         '@fex/amis-editor-core': 'commonjs2 @fex/amis-editor-core'
       };
     }
+
+    delete curConfig.dev.ignoreNodeModules;
+    curConfig.webpack.ignoreNodeModules = false;
+
     // 本地预览模式（仅预览组件内容）
     akfun.dev(curConfig, consoleTag);
   },
