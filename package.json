@@ -1,6 +1,6 @@
 {
   "name": "@wibetter/amis-widget-cli",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "前端脚手架：amis自定义组件开发工具，支持vue3技术栈。",
   "keywords": [
     "amis自定义组件",
@@ -52,7 +52,7 @@
     "amis-editor-core": "^5.2.5-beta.1",
     "aipage-editor": "^2.0.9",
     "react-router-dom": "5.0.1",
-    "akfun": "^3.2.21",
+    "@wibetter/akfun": "^3.2.21",
     "axios": "^0.24.0",
     "classnames": "^2.3.2",
     "chalk": "^4.0.0",
