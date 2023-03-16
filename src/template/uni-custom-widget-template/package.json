@@ -31,7 +31,7 @@
     "dev:quickapp-webview-union": "uni -p quickapp-webview-union",
     "build:app": "uni build -p app",
     "build:custom": "uni build -p",
-    "build:h5": "cross-env UNI_BUILD_MODE=h5 UNI_BUILD_LIB=renderer uni build && cross-env UNI_BUILD_MODE=h5  UNI_BUILD_LIB=plugin uni build",
+    "build:h5": "cross-env UNI_BUILD_MODE=h5 UNI_BUILD_LIB=renderer uni build && cross-env UNI_BUILD_MODE=h5 UNI_BUILD_LIB=plugin uni build",
     "build:h5:ssr": "uni build --ssr",
     "build:mp-alipay": "uni build -p mp-alipay",
     "build:mp-baidu": "uni build -p mp-baidu",
@@ -109,7 +109,7 @@
     "@dcloudio/uni-quickapp-webview": "3.0.0-alpha-3040820220424001",
     "vue": "^3.2.37",
     "vue-i18n": "^9.1.9",
-    "vue3-aipage-widget": "^1.2.2",
+    "vue3-aipage-widget": "^1.2.3",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
@@ -119,7 +119,7 @@
     "@dcloudio/uni-automator": "3.0.0-alpha-3040820220424001",
     "@dcloudio/uni-cli-shared": "3.0.0-alpha-3040820220424001",
     "@dcloudio/vite-plugin-uni": "3.0.0-alpha-3040820220424001",
-    "@wibetter/amis-widget-cli": "^3.0.5",
+    "@wibetter/amis-widget-cli": "^3.1.0",
     "cross-env": "^7.0.3",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",

@@ -59,14 +59,6 @@ export class InfoCardPlugin {
   ];
 }
 
-registerAmisEditorPlugin(InfoCardPlugin, {
-  rendererName: 'vue-info-card',
-  name: 'vue-info-card',
-  // description: '信息展示卡片',
-  // tags: ['展示', '自定义'],
-  order: 9,
-  // icon: 'fa fa-file-code-o',
-  // panelTitle: '配置'
-});
+registerAmisEditorPlugin(InfoCardPlugin);
 
 export default InfoCardPlugin;

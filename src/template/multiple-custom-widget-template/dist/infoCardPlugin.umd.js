@@ -34,7 +34,7 @@
           return o;
         },
         default: function () {
-          return r;
+          return i;
         },
       });
     var n = require('amis-widget'),
@@ -43,7 +43,7 @@
           (this.$schema = '/schemas/UnkownSchema.json'),
           (this.name = 'vue-info-card'),
           (this.description = '信息展示卡片'),
-          (this.tags = ['展示']),
+          (this.tags = ['自定义']),
           (this.icon = 'fa fa-file-code-o'),
           (this.scaffold = {
             type: 'vue-info-card',
@@ -84,9 +84,8 @@
             },
           ]);
       };
-    (0,
-    n.registerAmisEditorPlugin)(o, { rendererName: 'vue-info-card', name: 'vue-info-card', order: 9 });
-    var r = o;
+    (0, n.registerAmisEditorPlugin)(o);
+    var i = o;
     return t;
   })();
 });

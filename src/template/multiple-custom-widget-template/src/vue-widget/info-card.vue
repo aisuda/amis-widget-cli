@@ -19,9 +19,6 @@
   </div>
 </template>
 <script>
-/**
- * 视频模板页
- */
 export default {
   props: {
     title: {
@@ -65,6 +62,24 @@ export default {
       }
       if (agreeData && agreeData > 9999) {
         return `${Math.floor(agreeData / 1000) / 10}w`;
+      }
+    },
+    /**
+     * 添加amis事件动作:
+     * 在这里设置自定义组件对外暴露的动作，其他组件可以通过组件动作触发自定义组件的对应动作
+     */
+    doAction(action, args) {
+      const actionType = action ? action.actionType : '';
+      if (actionType === 'message') {
+        // 接收外部组件的事件动作'message'
+        alert('您触发了自定义组件的事件动作[message]');
+      } else {
+        console.log(
+          '自定义组件中监听到的事件动作：',
+          action,
+          ', 事件参数：',
+          args,
+        );
       }
     },
   },

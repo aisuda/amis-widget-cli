@@ -9,7 +9,7 @@
     "amis-editor自定义插件",
     "图表自定义组件"
   ],
-  "author": "fex",
+  "author": "wibetter",
   "license": "MIT",
   "scripts": {
     "dev": "amis dev",
@@ -59,7 +59,7 @@
     "url": "https://github.com/aisuda/vue3-amis-custom-widget/issues"
   },
   "dependencies": {
-    "vue3-amis-widget": "^3.0.2",
+    "vue3-amis-widget": "^3.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "@qiun/ucharts": "^2.4.3-20220505",
@@ -68,7 +68,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^9.1.1",
-    "@wibetter/amis-widget-cli": "^3.0.2",
+    "@wibetter/amis-widget-cli": "^3.1.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "prettier": "^2.0.5"

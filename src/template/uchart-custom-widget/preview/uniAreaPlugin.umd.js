@@ -10,31 +10,22 @@
 })(this, function () {
   return (function () {
     'use strict';
-    var e = {
-        d: function (t, n) {
-          for (var a in n)
-            e.o(n, a) &&
-              !e.o(t, a) &&
-              Object.defineProperty(t, a, { enumerable: !0, get: n[a] });
-        },
-        o: function (e, t) {
-          return Object.prototype.hasOwnProperty.call(e, t);
-        },
-        r: function (e) {
-          'undefined' != typeof Symbol &&
-            Symbol.toStringTag &&
-            Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
-            Object.defineProperty(e, '__esModule', { value: !0 });
-        },
-      },
-      t = {};
-    e.r(t),
-      e.d(t, {
-        default: function () {
-          return a;
-        },
-      });
-    var n = {
+    var e = {};
+    (function (e) {
+      'undefined' != typeof Symbol &&
+        Symbol.toStringTag &&
+        Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
+        Object.defineProperty(e, '__esModule', { value: !0 });
+    })(e),
+      Object(
+        (function () {
+          var e = new Error(
+            "Cannot find module 'vue3-aipage-widget/dist/index.umd'",
+          );
+          throw ((e.code = 'MODULE_NOT_FOUND'), e);
+        })(),
+      );
+    var t = {
       name: '折线区域图',
       description: '基本折线区域图',
       componentId: 'uni-area-chart',
@@ -153,8 +144,17 @@
         ],
       },
     };
-    (0, require('vue3-aipage-widget/dist/index.umd').registerPlugin)(n);
-    var a = n;
-    return t;
+    return (
+      Object(
+        (function () {
+          var e = new Error(
+            "Cannot find module 'vue3-aipage-widget/dist/index.umd'",
+          );
+          throw ((e.code = 'MODULE_NOT_FOUND'), e);
+        })(),
+      )(t),
+      (e.default = t),
+      e
+    );
   })();
 });

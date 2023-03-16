@@ -10,21 +10,21 @@
 })(this, function () {
   return (function () {
     var e = {
-        290: function () {},
-        618: function () {},
-        292: function (e, t, n) {
-          var r = n(290);
+        924: function () {},
+        861: function () {},
+        714: function (e, t, n) {
+          var r = n(924);
           r.__esModule && (r = r.default),
             'string' == typeof r && (r = [[e.id, r, '']]),
             r.locals && (e.exports = r.locals),
-            (0, n(346).Z)('1f876ccb', r, !1, { sourceMap: !1 });
+            (0, n(346).Z)('8393e70c', r, !1, { sourceMap: !1 });
         },
-        491: function (e, t, n) {
-          var r = n(618);
+        513: function (e, t, n) {
+          var r = n(861);
           r.__esModule && (r = r.default),
             'string' == typeof r && (r = [[e.id, r, '']]),
             r.locals && (e.exports = r.locals),
-            (0, n(346).Z)('5389f1ec', r, !1, { sourceMap: !1 });
+            (0, n(346).Z)('1985a1f0', r, !1, { sourceMap: !1 });
         },
         346: function (e, t, n) {
           'use strict';
@@ -213,31 +213,30 @@
         n.r(r);
         var e = function () {
           var e = this,
-            t = e.$createElement,
-            n = e._self._c || t;
-          return n('div', { staticClass: 'news-card' }, [
-            n('div', { staticClass: 'news-title' }, [e._v(e._s(e.title))]),
+            t = e._self._c;
+          return t('div', { staticClass: 'news-card' }, [
+            t('div', { staticClass: 'news-title' }, [e._v(e._s(e.title))]),
             e._v(' '),
-            n('div', { staticClass: 'item-imgbox' }, [
-              n('div', {
+            t('div', { staticClass: 'item-imgbox' }, [
+              t('div', {
                 staticClass: 'news-img',
                 style: { backgroundImage: 'url(' + e.backgroundImage + ')' },
               }),
               e._v(' '),
               e.img_count > 0
-                ? n('div', { staticClass: 'img-count' }, [
+                ? t('div', { staticClass: 'img-count' }, [
                     e._v('\n      ' + e._s(e.img_count) + '\n    '),
                   ])
                 : e._e(),
             ]),
             e._v(' '),
-            n('div', { staticClass: 'news-info' }, [
-              n('div', { staticClass: 'left media-mark' }, [
+            t('div', { staticClass: 'news-info' }, [
+              t('div', { staticClass: 'left media-mark' }, [
                 e._v('爱速搭 · 低代码平台'),
               ]),
               e._v(' '),
               e.comment_count && 0 != e.comment_count
-                ? n('div', { staticClass: 'cmt-num right' }, [
+                ? t('div', { staticClass: 'cmt-num right' }, [
                     e._v(
                       '\n      ' +
                         e._s(e.agreeDataFormat(e.comment_count)) +
@@ -247,7 +246,7 @@
                 : e._e(),
             ]),
             e._v(' '),
-            n('div', {
+            t('div', {
               staticClass: 'widget-container',
               attrs: { id: 'ReactChildBody' },
             }),
@@ -297,32 +296,31 @@
             },
           },
         };
-        n(292);
+        n(714);
         var i = (function (e, t, n, r, i, o, s, a) {
-          var d,
-            c = 'function' == typeof e ? e.options : e;
-          if (
-            (t &&
-              ((c.render = t), (c.staticRenderFns = []), (c._compiled = !0)),
-            (c._scopeId = 'data-v-6119f49d'),
-            d)
-          )
-            if (c.functional) {
-              c._injectStyles = d;
-              var u = c.render;
-              c.render = function (e, t) {
-                return d.call(t), u(e, t);
-              };
-            } else {
-              var l = c.beforeCreate;
-              c.beforeCreate = l ? [].concat(l, d) : [d];
-            }
-          return { exports: e, options: c };
-        })(t, e);
-        i.options.__file = 'src/widget/info-card.vue';
-        var o = i.exports,
+            var d,
+              c = 'function' == typeof e ? e.options : e;
+            if (
+              (t &&
+                ((c.render = t), (c.staticRenderFns = []), (c._compiled = !0)),
+              o && (c._scopeId = 'data-v-' + o),
+              d)
+            )
+              if (c.functional) {
+                c._injectStyles = d;
+                var u = c.render;
+                c.render = function (e, t) {
+                  return d.call(t), u(e, t);
+                };
+              } else {
+                var l = c.beforeCreate;
+                c.beforeCreate = l ? [].concat(l, d) : [d];
+              }
+            return { exports: e, options: c };
+          })(t, e, 0, 0, 0, '7ae507e0'),
+          o = i.exports,
           s = require('amis-widget');
-        n(491),
+        n(513),
           (0, s.registerRendererByType)(o, {
             type: 'vue-info-card-container',
             usage: 'renderer',

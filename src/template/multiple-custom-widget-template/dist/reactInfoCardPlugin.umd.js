@@ -12,10 +12,10 @@
     'use strict';
     var e = {
         d: function (t, n) {
-          for (var r in n)
-            e.o(n, r) &&
-              !e.o(t, r) &&
-              Object.defineProperty(t, r, { enumerable: !0, get: n[r] });
+          for (var a in n)
+            e.o(n, a) &&
+              !e.o(t, a) &&
+              Object.defineProperty(t, a, { enumerable: !0, get: n[a] });
         },
         o: function (e, t) {
           return Object.prototype.hasOwnProperty.call(e, t);
@@ -31,19 +31,19 @@
     e.r(t),
       e.d(t, {
         InfoCardPlugin: function () {
-          return r;
+          return a;
         },
         default: function () {
-          return a;
+          return o;
         },
       });
     var n = require('amis-widget'),
-      r = function () {
+      a = function () {
         (this.rendererName = 'react-info-card'),
           (this.$schema = '/schemas/UnkownSchema.json'),
           (this.name = 'react-info-card'),
           (this.description = '信息展示卡片'),
-          (this.tags = ['展示']),
+          (this.tags = ['自定义']),
           (this.icon = 'fa fa-file-code-o'),
           (this.scaffold = {
             type: 'react-info-card',
@@ -84,9 +84,8 @@
             },
           ]);
       };
-    (0,
-    n.registerAmisEditorPlugin)(r, { rendererName: 'react-info-card', name: 'react-info-card', order: 99 });
-    var a = r;
+    (0, n.registerAmisEditorPlugin)(a);
+    var o = a;
     return t;
   })();
 });

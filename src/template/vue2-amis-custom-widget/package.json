@@ -1,6 +1,6 @@
 {
   "name": "vue2-amis-custom-widget",
-  "version": "1.1.0",
+  "version": "1.1.5",
   "description": "amis自定义组件模板（vue2.0技术栈）",
   "keywords": [
     "自定义组件模板",
@@ -61,18 +61,20 @@
     "url": "https://github.com/aisuda/vue2-amis-custom-widget/issues"
   },
   "dependencies": {
-    "amis-widget": "^2.0.5",
-    "vue": "^2.6.14"
+    "amis-widget": "^3.1.0",
+    "vue": "^2.6.14",
+    "element-ui": "^2.15.12"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^9.1.1",
-    "amis-widget-cli": "^2.2.12",
+    "amis-widget-cli": "^3.1.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "prettier": "^2.0.5",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "babel-plugin-component": "^1.1.1"
   },
   "engines": {
     "node": ">= 10.13.0",

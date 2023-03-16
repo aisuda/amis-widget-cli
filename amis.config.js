@@ -45,7 +45,7 @@ module.exports = {
     cssSourceMap: false,
     closeHotReload: false, // 是否关闭热更新
     closeEditorClient: false, // 是否关闭自动注入editor
-    // editorClient: 'aipage'
+    editorClient: 'aipage'
   },
   build2lib: {
     entry: {

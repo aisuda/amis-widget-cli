@@ -43,6 +43,21 @@ module.exports = {
     moduleRules: [], // 用于配置自定义loaders
     plugins: [], // 用于配置自定义plugins // uni()
   },
+  preview: {
+    entry: {
+      // 本地预览自定义组件内容
+      index: './src/h5components/preview.js',
+    },
+    // 用于开启本地调试模式的相关配置信息
+    NODE_ENV: 'development',
+    port: 80,
+    assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
+    assetsSubDirectory: '',
+    hostname: 'localhost',
+    cssSourceMap: true,
+    closeHotReload: false, // 是否关闭热更新
+    autoOpenBrowser: true,
+  },
   dev: {
     entry: {
       // 本地调试模式的入口

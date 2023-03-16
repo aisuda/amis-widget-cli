@@ -10,33 +10,24 @@
 })(this, function () {
   return (function () {
     var e = {
-        585: function () {},
-        744: function (e, t) {
-          'use strict';
-          t.Z = (e, t) => {
-            const r = e.__vccOpts || e;
-            for (const [e, n] of t) r[e] = n;
-            return r;
-          };
-        },
-        378: function (e, t, r) {
-          var n = r(585);
+        187: function (e, t, r) {
+          var n = r(449);
           n.__esModule && (n = n.default),
             'string' == typeof n && (n = [[e.id, n, '']]),
             n.locals && (e.exports = n.locals),
-            (0, r(346).Z)('08e8aacc', n, !1, { sourceMap: !1 });
+            (0, r(159).Z)('44445574', n, !1, { sourceMap: !1 });
         },
-        346: function (e, t, r) {
+        159: function (e, t, r) {
           'use strict';
           function n(e, t) {
-            for (var r = [], n = {}, i = 0; i < t.length; i++) {
-              var o = t[i],
-                a = o[0],
+            for (var r = [], n = {}, o = 0; o < t.length; o++) {
+              var i = t[o],
+                a = i[0],
                 s = {
-                  id: e + ':' + i,
-                  css: o[1],
-                  media: o[2],
-                  sourceMap: o[3],
+                  id: e + ':' + o,
+                  css: i[1],
+                  media: i[2],
+                  sourceMap: i[3],
                 };
               n[a]
                 ? n[a].parts.push(s)
@@ -49,42 +40,42 @@
               return h;
             },
           });
-          var i = 'undefined' != typeof document;
-          if ('undefined' != typeof DEBUG && DEBUG && !i)
+          var o = 'undefined' != typeof document;
+          if ('undefined' != typeof DEBUG && DEBUG && !o)
             throw new Error(
               "vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.",
             );
-          var o = {},
+          var i = {},
             a =
-              i && (document.head || document.getElementsByTagName('head')[0]),
+              o && (document.head || document.getElementsByTagName('head')[0]),
             s = null,
             d = 0,
-            u = !1,
-            c = function () {},
+            c = !1,
+            u = function () {},
             f = null,
             l = 'data-vue-ssr-id',
             p =
               'undefined' != typeof navigator &&
               /msie [6-9]\b/.test(navigator.userAgent.toLowerCase());
-          function h(e, t, r, i) {
-            (u = r), (f = i || {});
+          function h(e, t, r, o) {
+            (c = r), (f = o || {});
             var a = n(e, t);
             return (
               v(a),
               function (t) {
-                for (var r = [], i = 0; i < a.length; i++) {
-                  var s = a[i];
-                  (d = o[s.id]).refs--, r.push(d);
+                for (var r = [], o = 0; o < a.length; o++) {
+                  var s = a[o];
+                  (d = i[s.id]).refs--, r.push(d);
                 }
                 for (
-                  t ? v((a = n(e, t))) : (a = []), i = 0;
-                  i < r.length;
-                  i++
+                  t ? v((a = n(e, t))) : (a = []), o = 0;
+                  o < r.length;
+                  o++
                 ) {
                   var d;
-                  if (0 === (d = r[i]).refs) {
-                    for (var u = 0; u < d.parts.length; u++) d.parts[u]();
-                    delete o[d.id];
+                  if (0 === (d = r[o]).refs) {
+                    for (var c = 0; c < d.parts.length; c++) d.parts[c]();
+                    delete i[d.id];
                   }
                 }
               }
@@ -93,17 +84,17 @@
           function v(e) {
             for (var t = 0; t < e.length; t++) {
               var r = e[t],
-                n = o[r.id];
+                n = i[r.id];
               if (n) {
                 n.refs++;
-                for (var i = 0; i < n.parts.length; i++) n.parts[i](r.parts[i]);
-                for (; i < r.parts.length; i++) n.parts.push(g(r.parts[i]));
+                for (var o = 0; o < n.parts.length; o++) n.parts[o](r.parts[o]);
+                for (; o < r.parts.length; o++) n.parts.push(g(r.parts[o]));
                 n.parts.length > r.parts.length &&
                   (n.parts.length = r.parts.length);
               } else {
                 var a = [];
-                for (i = 0; i < r.parts.length; i++) a.push(g(r.parts[i]));
-                o[r.id] = { id: r.id, refs: 1, parts: a };
+                for (o = 0; o < r.parts.length; o++) a.push(g(r.parts[o]));
+                i[r.id] = { id: r.id, refs: 1, parts: a };
               }
             }
           }
@@ -116,17 +107,17 @@
               r,
               n = document.querySelector('style[' + l + '~="' + e.id + '"]');
             if (n) {
-              if (u) return c;
+              if (c) return u;
               n.parentNode.removeChild(n);
             }
             if (p) {
-              var i = d++;
+              var o = d++;
               (n = s || (s = m())),
-                (t = C.bind(null, n, i, !1)),
-                (r = C.bind(null, n, i, !0));
+                (t = C.bind(null, n, o, !1)),
+                (r = C.bind(null, n, o, !0));
             } else
               (n = m()),
-                (t = x.bind(null, n)),
+                (t = w.bind(null, n)),
                 (r = function () {
                   n.parentNode.removeChild(n);
                 });
@@ -145,34 +136,34 @@
               }
             );
           }
-          var y,
-            b =
-              ((y = []),
+          var b,
+            y =
+              ((b = []),
               function (e, t) {
-                return (y[e] = t), y.filter(Boolean).join('\n');
+                return (b[e] = t), b.filter(Boolean).join('\n');
               });
           function C(e, t, r, n) {
-            var i = r ? '' : n.css;
-            if (e.styleSheet) e.styleSheet.cssText = b(t, i);
+            var o = r ? '' : n.css;
+            if (e.styleSheet) e.styleSheet.cssText = y(t, o);
             else {
-              var o = document.createTextNode(i),
+              var i = document.createTextNode(o),
                 a = e.childNodes;
               a[t] && e.removeChild(a[t]),
-                a.length ? e.insertBefore(o, a[t]) : e.appendChild(o);
+                a.length ? e.insertBefore(i, a[t]) : e.appendChild(i);
             }
           }
-          function x(e, t) {
+          function w(e, t) {
             var r = t.css,
               n = t.media,
-              i = t.sourceMap;
+              o = t.sourceMap;
             if (
               (n && e.setAttribute('media', n),
               f.ssrId && e.setAttribute(l, t.id),
-              i &&
-                ((r += '\n/*# sourceURL=' + i.sources[0] + ' */'),
+              o &&
+                ((r += '\n/*# sourceURL=' + o.sources[0] + ' */'),
                 (r +=
                   '\n/*# sourceMappingURL=data:application/json;base64,' +
-                  btoa(unescape(encodeURIComponent(JSON.stringify(i)))) +
+                  btoa(unescape(encodeURIComponent(JSON.stringify(o)))) +
                   ' */')),
               e.styleSheet)
             )
@@ -183,31 +174,21 @@
             }
           }
         },
+        449: function () {},
       },
       t = {};
     function r(n) {
-      var i = t[n];
-      if (void 0 !== i) return i.exports;
-      var o = (t[n] = { id: n, exports: {} });
-      return e[n](o, o.exports, r), o.exports;
+      var o = t[n];
+      if (void 0 !== o) return o.exports;
+      var i = (t[n] = { id: n, exports: {} });
+      return e[n](i, i.exports, r), i.exports;
     }
-    (r.n = function (e) {
-      var t =
-        e && e.__esModule
-          ? function () {
-              return e.default;
-            }
-          : function () {
-              return e;
-            };
-      return r.d(t, { a: t }), t;
+    (r.d = function (e, t) {
+      for (var n in t)
+        r.o(t, n) &&
+          !r.o(e, n) &&
+          Object.defineProperty(e, n, { enumerable: !0, get: t[n] });
     }),
-      (r.d = function (e, t) {
-        for (var n in t)
-          r.o(t, n) &&
-            !r.o(e, n) &&
-            Object.defineProperty(e, n, { enumerable: !0, get: t[n] });
-      }),
       (r.o = function (e, t) {
         return Object.prototype.hasOwnProperty.call(e, t);
       }),
@@ -222,14 +203,30 @@
       (function () {
         'use strict';
         r.r(n);
-        var e = require('vue3-aipage-widget/dist/index.umd'),
-          t = require('vue'),
-          i = { class: 'u-charts-container' },
-          o = ['canvas-id', 'id'],
-          a = require('@qiun/ucharts'),
-          s = r.n(a),
-          d = {},
-          u = {
+        var e = function () {
+          var e = this,
+            t = e.$createElement,
+            r = e._self._c || t;
+          return r('div', { staticClass: 'u-charts-container' }, [
+            e.chartId
+              ? r('canvas', {
+                  ref: 'uchart',
+                  staticClass: 'u-charts',
+                  attrs: { 'canvas-id': e.chartId, id: e.chartId },
+                  on: { touchend: e.tap },
+                })
+              : e._e(),
+          ]);
+        };
+        (e._withStripped = !0),
+          Object(
+            (function () {
+              var e = new Error("Cannot find module '@qiun/ucharts'");
+              throw ((e.code = 'MODULE_NOT_FOUND'), e);
+            })(),
+          );
+        var t = {},
+          o = {
             props: ['componentProperties', 'id'],
             data: function () {
               return {
@@ -284,16 +281,22 @@
               this.drawCharts(this.chartId, { series: this.series });
             },
             methods: {
-              drawCharts: function (e, t) {
-                var r = document.getElementById(e) || this.$refs.uchart;
-                (r.width = r.offsetWidth), (r.height = r.offsetHeight);
-                var n = r.getContext('2d');
-                d[e] = new (s())({
+              drawCharts: function (e, r) {
+                var n = document.getElementById(e) || this.$refs.uchart;
+                (n.width = n.offsetWidth || '370'),
+                  (n.height = n.offsetHeight || '280');
+                var o = n.getContext('2d');
+                t[e] = new Object(
+                  (function () {
+                    var e = new Error("Cannot find module '@qiun/ucharts'");
+                    throw ((e.code = 'MODULE_NOT_FOUND'), e);
+                  })(),
+                )({
                   type: 'ring',
-                  context: n,
-                  width: r.width,
-                  height: r.height,
-                  series: t.series,
+                  context: o,
+                  width: n.width,
+                  height: n.height,
+                  series: r.series,
                   animation: !0,
                   background: '#ffffff',
                   rotate: !1,
@@ -333,50 +336,49 @@
                 });
               },
               tap: function (e) {
-                d[e.target.id].touchLegend(e), d[e.target.id].showToolTip(e);
+                t[e.target.id].touchLegend(e), t[e.target.id].showToolTip(e);
               },
             },
           };
-        r(378);
-        const c = (0, r(744).Z)(u, [
-          [
-            'render',
-            function (e, r, n, a, s, d) {
-              return (
-                (0, t.openBlock)(),
-                (0, t.createElementBlock)('div', i, [
-                  d.chartId
-                    ? ((0, t.openBlock)(),
-                      (0, t.createElementBlock)(
-                        'canvas',
-                        {
-                          key: 0,
-                          'canvas-id': d.chartId,
-                          id: d.chartId,
-                          class: 'u-charts',
-                          onTouchend:
-                            r[0] ||
-                            (r[0] = function () {
-                              return d.tap && d.tap.apply(d, arguments);
-                            }),
-                          ref: 'uchart',
-                        },
-                        null,
-                        40,
-                        o,
-                      ))
-                    : (0, t.createCommentVNode)('v-if', !0),
-                ])
+        r(187);
+        var i = (function (e, t, r, n, o, i, a, s) {
+            var d,
+              c = 'function' == typeof e ? e.options : e;
+            if (
+              (t &&
+                ((c.render = t), (c.staticRenderFns = []), (c._compiled = !0)),
+              i && (c._scopeId = 'data-v-' + i),
+              d)
+            )
+              if (c.functional) {
+                c._injectStyles = d;
+                var u = c.render;
+                c.render = function (e, t) {
+                  return d.call(t), u(e, t);
+                };
+              } else {
+                var f = c.beforeCreate;
+                c.beforeCreate = f ? [].concat(f, d) : [d];
+              }
+            return { exports: e, options: c };
+          })(o, e, 0, 0, 0, 'b86dfad6'),
+          a = i.exports;
+        Object(
+          (function () {
+            var e = new Error(
+              "Cannot find module 'vue3-aipage-widget/dist/index.umd'",
+            );
+            throw ((e.code = 'MODULE_NOT_FOUND'), e);
+          })(),
+        ),
+          Object(
+            (function () {
+              var e = new Error(
+                "Cannot find module 'vue3-aipage-widget/dist/index.umd'",
               );
-            },
-          ],
-          ['__scopeId', 'data-v-fe732df6'],
-        ]);
-        var f = c;
-        (0, e.registerRenderer)(f, {
-          type: 'uni-ring-chart',
-          framework: 'vue3',
-        });
+              throw ((e.code = 'MODULE_NOT_FOUND'), e);
+            })(),
+          )(a, { type: 'uni-ring-chart', framework: 'vue3' });
       })(),
       n
     );

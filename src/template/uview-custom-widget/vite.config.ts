@@ -33,7 +33,7 @@ export default defineConfig(({ command, mode }) => {
         ...commonConfig,
         build: {
           // https://vitejs.dev/config/build-options.html#build-minify
-          minify: true,
+          minify: false,
           rollupOptions: {
             // https://rollupjs.org/guide/en/#big-list-of-options
             external: ['react', 'vue'], // 在构建中排除的依赖项

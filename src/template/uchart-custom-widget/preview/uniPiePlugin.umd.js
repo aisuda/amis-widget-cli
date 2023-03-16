@@ -10,31 +10,22 @@
 })(this, function () {
   return (function () {
     'use strict';
-    var e = {
-        d: function (t, n) {
-          for (var l in n)
-            e.o(n, l) &&
-              !e.o(t, l) &&
-              Object.defineProperty(t, l, { enumerable: !0, get: n[l] });
-        },
-        o: function (e, t) {
-          return Object.prototype.hasOwnProperty.call(e, t);
-        },
-        r: function (e) {
-          'undefined' != typeof Symbol &&
-            Symbol.toStringTag &&
-            Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
-            Object.defineProperty(e, '__esModule', { value: !0 });
-        },
-      },
-      t = {};
-    e.r(t),
-      e.d(t, {
-        default: function () {
-          return l;
-        },
-      });
-    var n = {
+    var e = {};
+    (function (e) {
+      'undefined' != typeof Symbol &&
+        Symbol.toStringTag &&
+        Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
+        Object.defineProperty(e, '__esModule', { value: !0 });
+    })(e),
+      Object(
+        (function () {
+          var e = new Error(
+            "Cannot find module 'vue3-aipage-widget/dist/index.umd'",
+          );
+          throw ((e.code = 'MODULE_NOT_FOUND'), e);
+        })(),
+      );
+    var t = {
       name: '饼状图',
       description: '基本饼状图',
       componentId: 'uni-pie-chart',
@@ -134,8 +125,17 @@
         ],
       },
     };
-    (0, require('vue3-aipage-widget/dist/index.umd').registerPlugin)(n);
-    var l = n;
-    return t;
+    return (
+      Object(
+        (function () {
+          var e = new Error(
+            "Cannot find module 'vue3-aipage-widget/dist/index.umd'",
+          );
+          throw ((e.code = 'MODULE_NOT_FOUND'), e);
+        })(),
+      )(t),
+      (e.default = t),
+      e
+    );
   })();
 });

@@ -10,23 +10,14 @@
 })(this, function () {
   return (function () {
     var e = {
-        908: function () {},
-        744: function (e, t) {
-          'use strict';
-          t.Z = (e, t) => {
-            const r = e.__vccOpts || e;
-            for (const [e, n] of t) r[e] = n;
-            return r;
-          };
-        },
-        118: function (e, t, r) {
-          var n = r(908);
+        105: function (e, t, r) {
+          var n = r(61);
           n.__esModule && (n = n.default),
             'string' == typeof n && (n = [[e.id, n, '']]),
             n.locals && (e.exports = n.locals),
-            (0, r(346).Z)('7c8e37f4', n, !1, { sourceMap: !1 });
+            (0, r(159).Z)('b5d87820', n, !1, { sourceMap: !1 });
         },
-        346: function (e, t, r) {
+        159: function (e, t, r) {
           'use strict';
           function n(e, t) {
             for (var r = [], n = {}, i = 0; i < t.length; i++) {
@@ -46,7 +37,7 @@
           }
           r.d(t, {
             Z: function () {
-              return h;
+              return l;
             },
           });
           var i = 'undefined' != typeof document;
@@ -63,21 +54,21 @@
             u = function () {},
             f = null,
             p = 'data-vue-ssr-id',
-            l =
+            h =
               'undefined' != typeof navigator &&
               /msie [6-9]\b/.test(navigator.userAgent.toLowerCase());
-          function h(e, t, r, i) {
+          function l(e, t, r, i) {
             (c = r), (f = i || {});
             var a = n(e, t);
             return (
-              g(a),
+              v(a),
               function (t) {
                 for (var r = [], i = 0; i < a.length; i++) {
                   var s = a[i];
                   (d = o[s.id]).refs--, r.push(d);
                 }
                 for (
-                  t ? g((a = n(e, t))) : (a = []), i = 0;
+                  t ? v((a = n(e, t))) : (a = []), i = 0;
                   i < r.length;
                   i++
                 ) {
@@ -90,7 +81,7 @@
               }
             );
           }
-          function g(e) {
+          function v(e) {
             for (var t = 0; t < e.length; t++) {
               var r = e[t],
                 n = o[r.id];
@@ -107,7 +98,7 @@
               }
             }
           }
-          function v() {
+          function g() {
             var e = document.createElement('style');
             return (e.type = 'text/css'), a.appendChild(e), e;
           }
@@ -119,14 +110,14 @@
               if (c) return u;
               n.parentNode.removeChild(n);
             }
-            if (l) {
+            if (h) {
               var i = d++;
-              (n = s || (s = v())),
-                (t = C.bind(null, n, i, !1)),
-                (r = C.bind(null, n, i, !0));
+              (n = s || (s = g())),
+                (t = b.bind(null, n, i, !1)),
+                (r = b.bind(null, n, i, !0));
             } else
-              (n = v()),
-                (t = x.bind(null, n)),
+              (n = g()),
+                (t = w.bind(null, n)),
                 (r = function () {
                   n.parentNode.removeChild(n);
                 });
@@ -146,14 +137,14 @@
             );
           }
           var y,
-            b =
+            C =
               ((y = []),
               function (e, t) {
                 return (y[e] = t), y.filter(Boolean).join('\n');
               });
-          function C(e, t, r, n) {
+          function b(e, t, r, n) {
             var i = r ? '' : n.css;
-            if (e.styleSheet) e.styleSheet.cssText = b(t, i);
+            if (e.styleSheet) e.styleSheet.cssText = C(t, i);
             else {
               var o = document.createTextNode(i),
                 a = e.childNodes;
@@ -161,7 +152,7 @@
                 a.length ? e.insertBefore(o, a[t]) : e.appendChild(o);
             }
           }
-          function x(e, t) {
+          function w(e, t) {
             var r = t.css,
               n = t.media,
               i = t.sourceMap;
@@ -183,6 +174,7 @@
             }
           }
         },
+        61: function () {},
       },
       t = {};
     function r(n) {
@@ -191,23 +183,12 @@
       var o = (t[n] = { id: n, exports: {} });
       return e[n](o, o.exports, r), o.exports;
     }
-    (r.n = function (e) {
-      var t =
-        e && e.__esModule
-          ? function () {
-              return e.default;
-            }
-          : function () {
-              return e;
-            };
-      return r.d(t, { a: t }), t;
+    (r.d = function (e, t) {
+      for (var n in t)
+        r.o(t, n) &&
+          !r.o(e, n) &&
+          Object.defineProperty(e, n, { enumerable: !0, get: t[n] });
     }),
-      (r.d = function (e, t) {
-        for (var n in t)
-          r.o(t, n) &&
-            !r.o(e, n) &&
-            Object.defineProperty(e, n, { enumerable: !0, get: t[n] });
-      }),
       (r.o = function (e, t) {
         return Object.prototype.hasOwnProperty.call(e, t);
       }),
@@ -222,14 +203,30 @@
       (function () {
         'use strict';
         r.r(n);
-        var e = require('vue3-aipage-widget/dist/index.umd'),
-          t = require('vue'),
-          i = { class: 'u-charts-container' },
-          o = ['canvas-id', 'id'],
-          a = require('@qiun/ucharts'),
-          s = r.n(a),
-          d = {},
-          c = {
+        var e = function () {
+          var e = this,
+            t = e.$createElement,
+            r = e._self._c || t;
+          return r('div', { staticClass: 'u-charts-container' }, [
+            e.chartId
+              ? r('canvas', {
+                  ref: 'uchart',
+                  staticClass: 'u-charts',
+                  attrs: { 'canvas-id': e.chartId, id: e.chartId },
+                  on: { touchend: e.tap },
+                })
+              : e._e(),
+          ]);
+        };
+        (e._withStripped = !0),
+          Object(
+            (function () {
+              var e = new Error("Cannot find module '@qiun/ucharts'");
+              throw ((e.code = 'MODULE_NOT_FOUND'), e);
+            })(),
+          );
+        var t = {},
+          i = {
             props: ['componentProperties', 'id'],
             data: function () {
               return {
@@ -276,17 +273,23 @@
               });
             },
             methods: {
-              drawCharts: function (e, t) {
-                var r = document.getElementById(e) || this.$refs.uchart;
-                (r.width = r.offsetWidth), (r.height = r.offsetHeight);
-                var n = r.getContext('2d');
-                d[e] = new (s())({
+              drawCharts: function (e, r) {
+                var n = document.getElementById(e) || this.$refs.uchart;
+                (n.width = n.offsetWidth || '370'),
+                  (n.height = n.offsetHeight || '280');
+                var i = n.getContext('2d');
+                t[e] = new Object(
+                  (function () {
+                    var e = new Error("Cannot find module '@qiun/ucharts'");
+                    throw ((e.code = 'MODULE_NOT_FOUND'), e);
+                  })(),
+                )({
                   type: 'line',
-                  context: n,
-                  width: r.width,
-                  height: r.height,
-                  categories: t.categories,
-                  series: t.series,
+                  context: i,
+                  width: n.width,
+                  height: n.height,
+                  categories: r.categories,
+                  series: r.series,
                   animation: !0,
                   background: '#ffffff',
                   padding: [15, 15, 0, 5],
@@ -308,50 +311,49 @@
                 });
               },
               tap: function (e) {
-                d[e.target.id].touchLegend(e), d[e.target.id].showToolTip(e);
+                t[e.target.id].touchLegend(e), t[e.target.id].showToolTip(e);
               },
             },
           };
-        r(118);
-        const u = (0, r(744).Z)(c, [
-          [
-            'render',
-            function (e, r, n, a, s, d) {
-              return (
-                (0, t.openBlock)(),
-                (0, t.createElementBlock)('div', i, [
-                  d.chartId
-                    ? ((0, t.openBlock)(),
-                      (0, t.createElementBlock)(
-                        'canvas',
-                        {
-                          key: 0,
-                          'canvas-id': d.chartId,
-                          id: d.chartId,
-                          class: 'u-charts',
-                          onTouchend:
-                            r[0] ||
-                            (r[0] = function () {
-                              return d.tap && d.tap.apply(d, arguments);
-                            }),
-                          ref: 'uchart',
-                        },
-                        null,
-                        40,
-                        o,
-                      ))
-                    : (0, t.createCommentVNode)('v-if', !0),
-                ])
+        r(105);
+        var o = (function (e, t, r, n, i, o, a, s) {
+            var d,
+              c = 'function' == typeof e ? e.options : e;
+            if (
+              (t &&
+                ((c.render = t), (c.staticRenderFns = []), (c._compiled = !0)),
+              o && (c._scopeId = 'data-v-' + o),
+              d)
+            )
+              if (c.functional) {
+                c._injectStyles = d;
+                var u = c.render;
+                c.render = function (e, t) {
+                  return d.call(t), u(e, t);
+                };
+              } else {
+                var f = c.beforeCreate;
+                c.beforeCreate = f ? [].concat(f, d) : [d];
+              }
+            return { exports: e, options: c };
+          })(i, e, 0, 0, 0, 'df75732a'),
+          a = o.exports;
+        Object(
+          (function () {
+            var e = new Error(
+              "Cannot find module 'vue3-aipage-widget/dist/index.umd'",
+            );
+            throw ((e.code = 'MODULE_NOT_FOUND'), e);
+          })(),
+        ),
+          Object(
+            (function () {
+              var e = new Error(
+                "Cannot find module 'vue3-aipage-widget/dist/index.umd'",
               );
-            },
-          ],
-          ['__scopeId', 'data-v-05acbe3b'],
-        ]);
-        var f = u;
-        (0, e.registerRenderer)(f, {
-          type: 'uni-line-chart',
-          framework: 'vue3',
-        });
+              throw ((e.code = 'MODULE_NOT_FOUND'), e);
+            })(),
+          )(a, { type: 'uni-line-chart', framework: 'vue3' });
       })(),
       n
     );

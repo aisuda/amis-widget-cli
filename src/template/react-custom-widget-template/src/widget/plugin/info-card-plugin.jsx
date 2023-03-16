@@ -6,7 +6,7 @@ import { registerAmisEditorPlugin } from 'amis-widget';
 export class InfoCardPlugin {
   rendererName = 'react-info-card';
   $schema = '/schemas/UnkownSchema.json';
-  name = 'react-info-card';
+  name = 'react组件';
   description = '信息展示卡片';
   tags = ['自定义'];
   icon = 'fa fa-file-code-o';
@@ -52,14 +52,6 @@ export class InfoCardPlugin {
   ];
 }
 
-registerAmisEditorPlugin(InfoCardPlugin, {
-  rendererName: 'react-info-card',
-  name: 'react-info-card',
-  // description: '信息展示卡片',
-  // tags: ['展示'],
-  order: 99,
-  // icon: 'fa fa-file-code-o',
-  // panelTitle: '配置'
-});
+registerAmisEditorPlugin(InfoCardPlugin);
 
 export default InfoCardPlugin;

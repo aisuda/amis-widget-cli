@@ -10,23 +10,14 @@
 })(this, function () {
   return (function () {
     var e = {
-        672: function () {},
-        744: function (e, t) {
-          'use strict';
-          t.Z = (e, t) => {
-            const r = e.__vccOpts || e;
-            for (const [e, n] of t) r[e] = n;
-            return r;
-          };
-        },
-        778: function (e, t, r) {
-          var n = r(672);
+        582: function (e, t, r) {
+          var n = r(885);
           n.__esModule && (n = n.default),
             'string' == typeof n && (n = [[e.id, n, '']]),
             n.locals && (e.exports = n.locals),
-            (0, r(346).Z)('3d445e5f', n, !1, { sourceMap: !1 });
+            (0, r(159).Z)('43a30672', n, !1, { sourceMap: !1 });
         },
-        346: function (e, t, r) {
+        159: function (e, t, r) {
           'use strict';
           function n(e, t) {
             for (var r = [], n = {}, a = 0; a < t.length; a++) {
@@ -126,7 +117,7 @@
                 (r = b.bind(null, n, a, !0));
             } else
               (n = v()),
-                (t = x.bind(null, n)),
+                (t = w.bind(null, n)),
                 (r = function () {
                   n.parentNode.removeChild(n);
                 });
@@ -161,7 +152,7 @@
                 o.length ? e.insertBefore(i, o[t]) : e.appendChild(i);
             }
           }
-          function x(e, t) {
+          function w(e, t) {
             var r = t.css,
               n = t.media,
               a = t.sourceMap;
@@ -183,6 +174,7 @@
             }
           }
         },
+        885: function () {},
       },
       t = {};
     function r(n) {
@@ -191,23 +183,12 @@
       var i = (t[n] = { id: n, exports: {} });
       return e[n](i, i.exports, r), i.exports;
     }
-    (r.n = function (e) {
-      var t =
-        e && e.__esModule
-          ? function () {
-              return e.default;
-            }
-          : function () {
-              return e;
-            };
-      return r.d(t, { a: t }), t;
+    (r.d = function (e, t) {
+      for (var n in t)
+        r.o(t, n) &&
+          !r.o(e, n) &&
+          Object.defineProperty(e, n, { enumerable: !0, get: t[n] });
     }),
-      (r.d = function (e, t) {
-        for (var n in t)
-          r.o(t, n) &&
-            !r.o(e, n) &&
-            Object.defineProperty(e, n, { enumerable: !0, get: t[n] });
-      }),
       (r.o = function (e, t) {
         return Object.prototype.hasOwnProperty.call(e, t);
       }),
@@ -222,14 +203,30 @@
       (function () {
         'use strict';
         r.r(n);
-        var e = require('vue3-aipage-widget/dist/index.umd'),
-          t = require('vue'),
-          a = { class: 'u-charts-container' },
-          i = ['canvas-id', 'id'],
-          o = require('@qiun/ucharts'),
-          s = r.n(o),
-          d = {},
-          c = {
+        var e = function () {
+          var e = this,
+            t = e.$createElement,
+            r = e._self._c || t;
+          return r('div', { staticClass: 'u-charts-container' }, [
+            e.chartId
+              ? r('canvas', {
+                  ref: 'uchart',
+                  staticClass: 'u-charts',
+                  attrs: { 'canvas-id': e.chartId, id: e.chartId },
+                  on: { touchend: e.tap },
+                })
+              : e._e(),
+          ]);
+        };
+        (e._withStripped = !0),
+          Object(
+            (function () {
+              var e = new Error("Cannot find module '@qiun/ucharts'");
+              throw ((e.code = 'MODULE_NOT_FOUND'), e);
+            })(),
+          );
+        var t = {},
+          a = {
             props: ['componentProperties', 'id'],
             data: function () {
               return {
@@ -277,17 +274,23 @@
               });
             },
             methods: {
-              drawCharts: function (e, t) {
-                var r = document.getElementById(e) || this.$refs.uchart;
-                (r.width = r.offsetWidth), (r.height = r.offsetHeight);
-                var n = r.getContext('2d');
-                d[e] = new (s())({
+              drawCharts: function (e, r) {
+                var n = document.getElementById(e) || this.$refs.uchart;
+                (n.width = n.offsetWidth || '370'),
+                  (n.height = n.offsetHeight || '280');
+                var a = n.getContext('2d');
+                t[e] = new Object(
+                  (function () {
+                    var e = new Error("Cannot find module '@qiun/ucharts'");
+                    throw ((e.code = 'MODULE_NOT_FOUND'), e);
+                  })(),
+                )({
                   type: 'area',
-                  context: n,
-                  width: r.width,
-                  height: r.height,
+                  context: a,
+                  width: n.width,
+                  height: n.height,
                   categories: this.categories,
-                  series: t.series,
+                  series: r.series,
                   animation: !0,
                   background: '#ffffff',
                   padding: [15, 15, 0, 5],
@@ -317,50 +320,49 @@
                 });
               },
               tap: function (e) {
-                d[e.target.id].touchLegend(e), d[e.target.id].showToolTip(e);
+                t[e.target.id].touchLegend(e), t[e.target.id].showToolTip(e);
               },
             },
           };
-        r(778);
-        const u = (0, r(744).Z)(c, [
-          [
-            'render',
-            function (e, r, n, o, s, d) {
-              return (
-                (0, t.openBlock)(),
-                (0, t.createElementBlock)('div', a, [
-                  d.chartId
-                    ? ((0, t.openBlock)(),
-                      (0, t.createElementBlock)(
-                        'canvas',
-                        {
-                          key: 0,
-                          'canvas-id': d.chartId,
-                          id: d.chartId,
-                          class: 'u-charts',
-                          onTouchend:
-                            r[0] ||
-                            (r[0] = function () {
-                              return d.tap && d.tap.apply(d, arguments);
-                            }),
-                          ref: 'uchart',
-                        },
-                        null,
-                        40,
-                        i,
-                      ))
-                    : (0, t.createCommentVNode)('v-if', !0),
-                ])
+        r(582);
+        var i = (function (e, t, r, n, a, i, o, s) {
+            var d,
+              c = 'function' == typeof e ? e.options : e;
+            if (
+              (t &&
+                ((c.render = t), (c.staticRenderFns = []), (c._compiled = !0)),
+              i && (c._scopeId = 'data-v-' + i),
+              d)
+            )
+              if (c.functional) {
+                c._injectStyles = d;
+                var u = c.render;
+                c.render = function (e, t) {
+                  return d.call(t), u(e, t);
+                };
+              } else {
+                var f = c.beforeCreate;
+                c.beforeCreate = f ? [].concat(f, d) : [d];
+              }
+            return { exports: e, options: c };
+          })(a, e, 0, 0, 0, '0076da2c'),
+          o = i.exports;
+        Object(
+          (function () {
+            var e = new Error(
+              "Cannot find module 'vue3-aipage-widget/dist/index.umd'",
+            );
+            throw ((e.code = 'MODULE_NOT_FOUND'), e);
+          })(),
+        ),
+          Object(
+            (function () {
+              var e = new Error(
+                "Cannot find module 'vue3-aipage-widget/dist/index.umd'",
               );
-            },
-          ],
-          ['__scopeId', 'data-v-7ab9ec08'],
-        ]);
-        var f = u;
-        (0, e.registerRenderer)(f, {
-          type: 'uni-area-chart',
-          framework: 'vue3',
-        });
+              throw ((e.code = 'MODULE_NOT_FOUND'), e);
+            })(),
+          )(o, { type: 'uni-area-chart', framework: 'vue3' });
       })(),
       n
     );

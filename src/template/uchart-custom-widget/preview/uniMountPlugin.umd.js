@@ -10,31 +10,22 @@
 })(this, function () {
   return (function () {
     'use strict';
-    var e = {
-        d: function (t, n) {
-          for (var o in n)
-            e.o(n, o) &&
-              !e.o(t, o) &&
-              Object.defineProperty(t, o, { enumerable: !0, get: n[o] });
-        },
-        o: function (e, t) {
-          return Object.prototype.hasOwnProperty.call(e, t);
-        },
-        r: function (e) {
-          'undefined' != typeof Symbol &&
-            Symbol.toStringTag &&
-            Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
-            Object.defineProperty(e, '__esModule', { value: !0 });
-        },
-      },
-      t = {};
-    e.r(t),
-      e.d(t, {
-        default: function () {
-          return o;
-        },
-      });
-    var n = {
+    var e = {};
+    (function (e) {
+      'undefined' != typeof Symbol &&
+        Symbol.toStringTag &&
+        Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
+        Object.defineProperty(e, '__esModule', { value: !0 });
+    })(e),
+      Object(
+        (function () {
+          var e = new Error(
+            "Cannot find module 'vue3-aipage-widget/dist/index.umd'",
+          );
+          throw ((e.code = 'MODULE_NOT_FOUND'), e);
+        })(),
+      );
+    var t = {
       name: '山峰图',
       description: '圆角山峰图',
       componentId: 'uni-mount-chart',
@@ -134,8 +125,17 @@
         ],
       },
     };
-    (0, require('vue3-aipage-widget/dist/index.umd').registerPlugin)(n);
-    var o = n;
-    return t;
+    return (
+      Object(
+        (function () {
+          var e = new Error(
+            "Cannot find module 'vue3-aipage-widget/dist/index.umd'",
+          );
+          throw ((e.code = 'MODULE_NOT_FOUND'), e);
+        })(),
+      )(t),
+      (e.default = t),
+      e
+    );
   })();
 });

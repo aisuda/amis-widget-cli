@@ -34,7 +34,7 @@
           return r;
         },
         default: function () {
-          return n;
+          return i;
         },
       });
     var o = require('amis-widget'),
@@ -43,7 +43,7 @@
           (this.$schema = '/schemas/UnkownSchema.json'),
           (this.name = 'hello-jquery'),
           (this.description = 'hello-jquery'),
-          (this.tags = ['按钮']),
+          (this.tags = ['自定义']),
           (this.icon = 'fa fa-file-code-o'),
           (this.scaffold = {
             type: 'hello-jquery',
@@ -59,9 +59,8 @@
             { type: 'tpl', tpl: '可根据变量 \\${amisUser} 获取用户数据。' },
           ]);
       };
-    (0,
-    o.registerAmisEditorPlugin)(r, { rendererName: 'hello-jquery', name: 'hello-jquery', order: 98, panelTitle: '配置面板' });
-    var n = r;
+    (0, o.registerAmisEditorPlugin)(r);
+    var i = r;
     return t;
   })();
 });

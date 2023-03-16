@@ -10,33 +10,33 @@
 })(this, function () {
   return (function () {
     var e = {
-        492: function () {},
-        493: function (e, t, r) {
-          var n = r(492);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, r(346).Z)('3cf7e3a2', n, !1, { sourceMap: !1 });
+        317: function () {},
+        176: function (e, t, n) {
+          var r = n(317);
+          r.__esModule && (r = r.default),
+            'string' == typeof r && (r = [[e.id, r, '']]),
+            r.locals && (e.exports = r.locals),
+            (0, n(346).Z)('632f244a', r, !1, { sourceMap: !1 });
         },
-        346: function (e, t, r) {
+        346: function (e, t, n) {
           'use strict';
-          function n(e, t) {
-            for (var r = [], n = {}, i = 0; i < t.length; i++) {
+          function r(e, t) {
+            for (var n = [], r = {}, i = 0; i < t.length; i++) {
               var o = t[i],
-                a = o[0],
-                s = {
+                s = o[0],
+                a = {
                   id: e + ':' + i,
                   css: o[1],
                   media: o[2],
                   sourceMap: o[3],
                 };
-              n[a]
-                ? n[a].parts.push(s)
-                : r.push((n[a] = { id: a, parts: [s] }));
+              r[s]
+                ? r[s].parts.push(a)
+                : n.push((r[s] = { id: s, parts: [a] }));
             }
-            return r;
+            return n;
           }
-          r.d(t, {
+          n.d(t, {
             Z: function () {
               return v;
             },
@@ -47,36 +47,36 @@
               "vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.",
             );
           var o = {},
-            a =
+            s =
               i && (document.head || document.getElementsByTagName('head')[0]),
-            s = null,
-            u = 0,
-            c = !1,
+            a = null,
+            c = 0,
+            u = !1,
             d = function () {},
             f = null,
             l = 'data-vue-ssr-id',
             p =
               'undefined' != typeof navigator &&
               /msie [6-9]\b/.test(navigator.userAgent.toLowerCase());
-          function v(e, t, r, i) {
-            (c = r), (f = i || {});
-            var a = n(e, t);
+          function v(e, t, n, i) {
+            (u = n), (f = i || {});
+            var s = r(e, t);
             return (
-              m(a),
+              m(s),
               function (t) {
-                for (var r = [], i = 0; i < a.length; i++) {
-                  var s = a[i];
-                  (u = o[s.id]).refs--, r.push(u);
+                for (var n = [], i = 0; i < s.length; i++) {
+                  var a = s[i];
+                  (c = o[a.id]).refs--, n.push(c);
                 }
                 for (
-                  t ? m((a = n(e, t))) : (a = []), i = 0;
-                  i < r.length;
+                  t ? m((s = r(e, t))) : (s = []), i = 0;
+                  i < n.length;
                   i++
                 ) {
-                  var u;
-                  if (0 === (u = r[i]).refs) {
-                    for (var c = 0; c < u.parts.length; c++) u.parts[c]();
-                    delete o[u.id];
+                  var c;
+                  if (0 === (c = n[i]).refs) {
+                    for (var u = 0; u < c.parts.length; u++) c.parts[u]();
+                    delete o[c.id];
                   }
                 }
               }
@@ -84,56 +84,56 @@
           }
           function m(e) {
             for (var t = 0; t < e.length; t++) {
-              var r = e[t],
-                n = o[r.id];
-              if (n) {
-                n.refs++;
-                for (var i = 0; i < n.parts.length; i++) n.parts[i](r.parts[i]);
-                for (; i < r.parts.length; i++) n.parts.push(h(r.parts[i]));
-                n.parts.length > r.parts.length &&
-                  (n.parts.length = r.parts.length);
+              var n = e[t],
+                r = o[n.id];
+              if (r) {
+                r.refs++;
+                for (var i = 0; i < r.parts.length; i++) r.parts[i](n.parts[i]);
+                for (; i < n.parts.length; i++) r.parts.push(h(n.parts[i]));
+                r.parts.length > n.parts.length &&
+                  (r.parts.length = n.parts.length);
               } else {
-                var a = [];
-                for (i = 0; i < r.parts.length; i++) a.push(h(r.parts[i]));
-                o[r.id] = { id: r.id, refs: 1, parts: a };
+                var s = [];
+                for (i = 0; i < n.parts.length; i++) s.push(h(n.parts[i]));
+                o[n.id] = { id: n.id, refs: 1, parts: s };
               }
             }
           }
           function g() {
             var e = document.createElement('style');
-            return (e.type = 'text/css'), a.appendChild(e), e;
+            return (e.type = 'text/css'), s.appendChild(e), e;
           }
           function h(e) {
             var t,
-              r,
-              n = document.querySelector('style[' + l + '~="' + e.id + '"]');
-            if (n) {
-              if (c) return d;
-              n.parentNode.removeChild(n);
+              n,
+              r = document.querySelector('style[' + l + '~="' + e.id + '"]');
+            if (r) {
+              if (u) return d;
+              r.parentNode.removeChild(r);
             }
             if (p) {
-              var i = u++;
-              (n = s || (s = g())),
-                (t = _.bind(null, n, i, !1)),
-                (r = _.bind(null, n, i, !0));
+              var i = c++;
+              (r = a || (a = g())),
+                (t = _.bind(null, r, i, !1)),
+                (n = _.bind(null, r, i, !0));
             } else
-              (n = g()),
-                (t = C.bind(null, n)),
-                (r = function () {
-                  n.parentNode.removeChild(n);
+              (r = g()),
+                (t = C.bind(null, r)),
+                (n = function () {
+                  r.parentNode.removeChild(r);
                 });
             return (
               t(e),
-              function (n) {
-                if (n) {
+              function (r) {
+                if (r) {
                   if (
-                    n.css === e.css &&
-                    n.media === e.media &&
-                    n.sourceMap === e.sourceMap
+                    r.css === e.css &&
+                    r.media === e.media &&
+                    r.sourceMap === e.sourceMap
                   )
                     return;
-                  t((e = n));
-                } else r();
+                  t((e = r));
+                } else n();
               }
             );
           }
@@ -143,94 +143,93 @@
               function (e, t) {
                 return (y[e] = t), y.filter(Boolean).join('\n');
               });
-          function _(e, t, r, n) {
-            var i = r ? '' : n.css;
+          function _(e, t, n, r) {
+            var i = n ? '' : r.css;
             if (e.styleSheet) e.styleSheet.cssText = b(t, i);
             else {
               var o = document.createTextNode(i),
-                a = e.childNodes;
-              a[t] && e.removeChild(a[t]),
-                a.length ? e.insertBefore(o, a[t]) : e.appendChild(o);
+                s = e.childNodes;
+              s[t] && e.removeChild(s[t]),
+                s.length ? e.insertBefore(o, s[t]) : e.appendChild(o);
             }
           }
           function C(e, t) {
-            var r = t.css,
-              n = t.media,
+            var n = t.css,
+              r = t.media,
               i = t.sourceMap;
             if (
-              (n && e.setAttribute('media', n),
+              (r && e.setAttribute('media', r),
               f.ssrId && e.setAttribute(l, t.id),
               i &&
-                ((r += '\n/*# sourceURL=' + i.sources[0] + ' */'),
-                (r +=
+                ((n += '\n/*# sourceURL=' + i.sources[0] + ' */'),
+                (n +=
                   '\n/*# sourceMappingURL=data:application/json;base64,' +
                   btoa(unescape(encodeURIComponent(JSON.stringify(i)))) +
                   ' */')),
               e.styleSheet)
             )
-              e.styleSheet.cssText = r;
+              e.styleSheet.cssText = n;
             else {
               for (; e.firstChild; ) e.removeChild(e.firstChild);
-              e.appendChild(document.createTextNode(r));
+              e.appendChild(document.createTextNode(n));
             }
           }
         },
       },
       t = {};
-    function r(n) {
-      var i = t[n];
+    function n(r) {
+      var i = t[r];
       if (void 0 !== i) return i.exports;
-      var o = (t[n] = { id: n, exports: {} });
-      return e[n](o, o.exports, r), o.exports;
+      var o = (t[r] = { id: r, exports: {} });
+      return e[r](o, o.exports, n), o.exports;
     }
-    (r.d = function (e, t) {
-      for (var n in t)
-        r.o(t, n) &&
-          !r.o(e, n) &&
-          Object.defineProperty(e, n, { enumerable: !0, get: t[n] });
+    (n.d = function (e, t) {
+      for (var r in t)
+        n.o(t, r) &&
+          !n.o(e, r) &&
+          Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
     }),
-      (r.o = function (e, t) {
+      (n.o = function (e, t) {
         return Object.prototype.hasOwnProperty.call(e, t);
       }),
-      (r.r = function (e) {
+      (n.r = function (e) {
         'undefined' != typeof Symbol &&
           Symbol.toStringTag &&
           Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
           Object.defineProperty(e, '__esModule', { value: !0 });
       });
-    var n = {};
+    var r = {};
     return (
       (function () {
         'use strict';
-        r.r(n);
+        n.r(r);
         var e = require('amis-widget'),
           t = function () {
             var e = this,
-              t = e.$createElement,
-              r = e._self._c || t;
-            return r('div', { key: e.uuid, staticClass: 'news-card' }, [
-              r('div', { staticClass: 'news-title' }, [e._v(e._s(e.title))]),
+              t = e._self._c;
+            return t('div', { staticClass: 'news-card' }, [
+              t('div', { staticClass: 'news-title' }, [e._v(e._s(e.title))]),
               e._v(' '),
-              r('div', { staticClass: 'item-imgbox' }, [
-                r('div', {
+              t('div', { staticClass: 'item-imgbox' }, [
+                t('div', {
                   staticClass: 'news-img',
                   style: { backgroundImage: 'url(' + e.backgroundImage + ')' },
                 }),
                 e._v(' '),
                 e.img_count > 0
-                  ? r('div', { staticClass: 'img-count' }, [
+                  ? t('div', { staticClass: 'img-count' }, [
                       e._v('\n      ' + e._s(e.img_count) + '\n    '),
                     ])
                   : e._e(),
               ]),
               e._v(' '),
-              r('div', { staticClass: 'news-info' }, [
-                r('div', { staticClass: 'left media-mark' }, [
+              t('div', { staticClass: 'news-info' }, [
+                t('div', { staticClass: 'left media-mark' }, [
                   e._v('爱速搭 · 低代码平台'),
                 ]),
                 e._v(' '),
                 e.comment_count && 0 != e.comment_count
-                  ? r('div', { staticClass: 'cmt-num right' }, [
+                  ? t('div', { staticClass: 'cmt-num right' }, [
                       e._v(
                         '\n      ' +
                           e._s(e.agreeDataFormat(e.comment_count)) +
@@ -277,40 +276,49 @@
                 ? Math.floor(e / 1e3) / 10 + 'w'
                 : void 0;
             },
+            doAction: function (e, t) {
+              'message' === (e ? e.actionType : '')
+                ? alert('您触发了自定义组件的事件动作[message]')
+                : console.log(
+                    '自定义组件中监听到的事件动作：',
+                    e,
+                    ', 事件参数：',
+                    t,
+                  );
+            },
           },
         };
-        r(493);
-        var o = (function (e, t, r, n, i, o, a, s) {
-          var u,
-            c = 'function' == typeof e ? e.options : e;
-          if (
-            (t &&
-              ((c.render = t), (c.staticRenderFns = []), (c._compiled = !0)),
-            (c._scopeId = 'data-v-68141a04'),
-            u)
-          )
-            if (c.functional) {
-              c._injectStyles = u;
-              var d = c.render;
-              c.render = function (e, t) {
-                return u.call(t), d(e, t);
-              };
-            } else {
-              var f = c.beforeCreate;
-              c.beforeCreate = f ? [].concat(f, u) : [u];
-            }
-          return { exports: e, options: c };
-        })(i, t);
-        o.options.__file = 'src/vue-widget/info-card.vue';
-        var a = o.exports;
-        (0, e.registerRendererByType)(a, {
+        n(176);
+        var o = (function (e, t, n, r, i, o, s, a) {
+            var c,
+              u = 'function' == typeof e ? e.options : e;
+            if (
+              (t &&
+                ((u.render = t), (u.staticRenderFns = []), (u._compiled = !0)),
+              o && (u._scopeId = 'data-v-' + o),
+              c)
+            )
+              if (u.functional) {
+                u._injectStyles = c;
+                var d = u.render;
+                u.render = function (e, t) {
+                  return c.call(t), d(e, t);
+                };
+              } else {
+                var f = u.beforeCreate;
+                u.beforeCreate = f ? [].concat(f, c) : [c];
+              }
+            return { exports: e, options: u };
+          })(i, t, 0, 0, 0, '6f393cf2'),
+          s = o.exports;
+        (0, e.registerRendererByType)(s, {
           type: 'vue-info-card',
           usage: 'renderer',
           weight: 99,
           framework: 'vue',
         });
       })(),
-      n
+      r
     );
   })();
 });

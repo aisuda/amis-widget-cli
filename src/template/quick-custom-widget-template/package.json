@@ -79,7 +79,7 @@
     "@types/quickapp": "npm:quickapp-interface@^1.0.0",
     "@types/react": "^16.9.11",
     "@types/react-dom": "^17.0.13",
-    "@wibetter/amis-widget-cli": "^3.0.5",
+    "@wibetter/amis-widget-cli": "^3.1.0",
     "hap-toolkit": "^1.9.10",
     "husky": "^4.2.5",
     "less": "^4.1.3",

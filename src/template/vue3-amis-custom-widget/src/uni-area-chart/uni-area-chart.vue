@@ -15,16 +15,10 @@ import uCharts from '@qiun/ucharts';
 // 图表详细配置说明请见：https://www.ucharts.cn/v2/#/guide/index
 var uChartsInstance = {};
 export default {
-  props: {
-    categories: {
-      type: Array
-    },
-    series: {
-      type: Array
-    }
-  },
   data() {
     return {
+      categories: [],
+      series: [],
       defaultChartData: {
         categories: ['2016', '2017', '2018', '2019', '2020', '2021'],
         series: [
@@ -49,10 +43,12 @@ export default {
       return this.id || 'area-uChart';
     },
     thisCategories() {
-      return this.categories || this.defaultChartData.categories;
+      return this.categories && this.categories.length > 0
+        ? this.categories
+        : this.defaultChartData.categories;
     },
     thisSeries() {
-      return this.series || this.defaultChartData.series;
+      return this.series && this.series.length > 0 ? this.series : this.defaultChartData.series;
     }
   },
   mounted() {
@@ -63,6 +59,7 @@ export default {
   },
   updated() {
     // 确保编辑器端，右侧属性配置面板调整后图表会及时更新
+    console.log('this.thisSeries:', this.thisSeries);
     this.drawCharts(this.chartId, {
       categories: this.thisCategories,
       series: this.thisSeries

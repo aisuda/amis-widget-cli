@@ -12,7 +12,7 @@ const InfoCardPlugin = {
   pluginIcon: 'cards-plugin',
   order: 1, // 展示顺序（从小到大展示）
   type: 'element', // 渲染器类型
-  device: ['pc', 'mobile'], // 设置类型，目前支持3种类型: pc、mobile、app
+  device: ['pc', 'mobile', 'app'], // 设置类型，目前支持3种类型: pc、mobile、app
   docLink: '',
   demoProperties: {
     componentId: 'react-info-card',
