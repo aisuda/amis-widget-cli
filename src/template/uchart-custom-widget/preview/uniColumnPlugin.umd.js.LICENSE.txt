@@ -1,7 +1,7 @@
 /*!
- * uchart-custom-widget v1.2.0
+ * uchart-custom-widget v1.2.10
  * author: wibetter
  * build tool: AKFun
- * build time: Thu Sep 29 2022 16:34:40 GMT+0800 (中国标准时间)
+ * build time: Mon Feb 27 2023 10:29:41 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */

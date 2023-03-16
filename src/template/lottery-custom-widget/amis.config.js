@@ -34,12 +34,12 @@ module.exports = {
       conditionNames: ['require'],
     },
     // createDeclaration: true, // 打包时是否创建ts声明文件
-    ignoreNodeModules: false, // 打包时是否忽略 node_modules
     allowList: [], // ignoreNodeModules为true时生效
     externals: [],
     projectDir: ['src'],
     // template: resolve('./index.html'), // 使用自己的html模板
     cssLoaderUrl: true,
+    ignoreNodeModules: false, // 打包时是否忽略 node_modules
     moduleRules: [], // 用于配置自定义loaders
     plugins: [], // 用于配置自定义plugins // uni()
   },

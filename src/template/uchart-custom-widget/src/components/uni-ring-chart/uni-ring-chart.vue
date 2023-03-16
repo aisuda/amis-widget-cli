@@ -66,6 +66,7 @@ export default {
   mounted() {
     //这里的 750 对应 css .charts 的 width
     this.cWidth = uni.upx2px(750);
+    console.log('750 this.cWidth:', this.cWidth);
     //这里的 500 对应 css .charts 的 height
     this.cHeight = uni.upx2px(500);
     this.drawCharts(this.chartId, {
@@ -115,7 +116,7 @@ export default {
         },
         extra: {
           ring: {
-            ringWidth: 60,
+            ringWidth: uni.upx2px(60),
             activeOpacity: 0.5,
             activeRadius: 10,
             offsetAngle: 0,

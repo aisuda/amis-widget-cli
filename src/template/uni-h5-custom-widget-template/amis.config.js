@@ -12,12 +12,22 @@ module.exports = {
     enableESLint: false, // 调试模式是否开启ESLint，默认开启ESLint检测代码格式
     enableESLintFix: false, // 是否自动修正代码格式，默认不自动修正
     enableStyleLint: false, // 是否开启StyleLint，默认开启ESLint检测代码格式
-    enableStyleLintFix: false // 是否需要StyleLint自动修正代码格式
+    enableStyleLintFix: false, // 是否需要StyleLint自动修正代码格式
   },
   webpack: {
     resolve: {
       // webpack的resolve配置
-      extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue', '.esm.js', '.umd.js', '.min.js', '.json'], // 用于配置webpack在尝试过程中用到的后缀列表
+      extensions: [
+        '.js',
+        '.jsx',
+        '.ts',
+        '.tsx',
+        '.vue',
+        '.esm.js',
+        '.umd.js',
+        '.min.js',
+        '.json',
+      ], // 用于配置webpack在尝试过程中用到的后缀列表
       alias: {
         '@': resolve('src'),
       },
@@ -33,7 +43,8 @@ module.exports = {
     plugins: [], // 用于配置自定义plugins // uni()
   },
   preview: {
-    entry: { // 本地预览自定义组件内容
+    entry: {
+      // 本地预览自定义组件内容
       index: './src/h5Components/preview.js',
     },
     // 用于开启本地调试模式的相关配置信息
@@ -47,12 +58,15 @@ module.exports = {
     autoOpenBrowser: true,
   },
   linkDebug: {
-    entry: { // 外链调试（爱速搭中预览本地自定义组件）
+    entry: {
+      // 外链调试（爱速搭中预览本地自定义组件）
       index: [
         './src/h5Components/info-card/renderer.js',
         './src/h5Components/info-card/plugin.js',
         './src/h5Components/info-card-v2/renderer.js',
         './src/h5Components/info-card-v2/plugin.js',
+        './src/h5Components/info-card-v3/renderer.js',
+        './src/h5Components/info-card-v3/plugin.js',
       ],
     },
     NODE_ENV: 'development',
@@ -64,7 +78,7 @@ module.exports = {
     hostname: 'localhost',
     cssSourceMap: true,
     closeHotReload: true, // 是否关闭热更新
-    debugMode: 'aipage-editor'
+    debugMode: 'aipage-editor',
   },
   // build2lib 用于打包生成环境的js模块
   build2lib: {
@@ -73,6 +87,8 @@ module.exports = {
       plugin: './src/h5Components/info-card/plugin.js',
       renderer2: './src/h5Components/info-card-v2/renderer.js',
       plugin2: './src/h5Components/info-card-v2/plugin.js',
+      renderer3: './src/h5Components/info-card-v3/renderer.js',
+      plugin3: './src/h5Components/info-card-v3/plugin.js',
     },
     // 用于构建生产环境代码的相关配置信息
     NODE_ENV: 'production', // development / production
@@ -85,5 +101,5 @@ module.exports = {
     productionGzip: false,
     productionGzipExtensions: ['js', 'css', 'json'],
     bundleAnalyzerReport: false,
-  }
+  },
 };

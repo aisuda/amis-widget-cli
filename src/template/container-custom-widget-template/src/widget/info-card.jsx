@@ -18,12 +18,13 @@ export default class InfoCard extends React.PureComponent {
 
   componentDidMount() {
     const childElem = <h1>hhh</h1>;
-    ReactDOM.render(childElem, document.getElementById('test1111'))
+    ReactDOM.render(childElem, document.getElementById('test1111'));
   }
 
   render() {
-    const { title, backgroundImage, img_count, comment_count, body, render } = this.props;
-    console.log("body:", body);
+    const { title, backgroundImage, img_count, comment_count, body, render } =
+      this.props;
+    console.log('body:', body);
     window.test111 = render('body', body);
     // {body ? render('body', body) : null}
     const curBackgroundImage =

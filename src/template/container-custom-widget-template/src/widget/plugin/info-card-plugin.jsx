@@ -14,33 +14,28 @@ export class InfoCardPlugin {
     type: 'react-info-card-container',
     label: 'react-info-card-container',
     name: 'react-info-card-container',
-    body: [ // 容器类字段
+    body: [
+      // 容器类字段
       {
-        "type": "container",
-        "body": [
-          {
-            "type": "tpl",
-            "tpl": "自定义容器区",
-            "inline": false
-          }
-        ]
-      }
-    ]
+        type: 'tpl',
+        tpl: '自定义容器区',
+        inline: false,
+      },
+    ],
   };
   previewSchema = {
     type: 'react-info-card-container',
     label: 'react-info-card-container',
-    body: '内容'
+    body: '内容',
   };
 
   // 容器类组件必需字段
   regions = [
     {
       key: 'body',
-      label: '内容区'
+      label: '内容区',
     },
   ];
-
 
   panelTitle = '配置';
 

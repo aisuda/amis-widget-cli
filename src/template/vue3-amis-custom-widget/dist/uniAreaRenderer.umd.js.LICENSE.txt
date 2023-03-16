@@ -1,7 +1,7 @@
 /*!
- * amis-uchart-custom-widget v1.0.0
+ * vue3-amis-custom-widget v1.0.0
  * author: fex
  * build tool: AKFun
- * build time: Wed Dec 07 2022 14:18:56 GMT+0800 (中国标准时间)
+ * build time: Tue Mar 14 2023 10:23:37 GMT+0800 (China Standard Time)
  * build tool info: https://github.com/wibetter/akfun
  */

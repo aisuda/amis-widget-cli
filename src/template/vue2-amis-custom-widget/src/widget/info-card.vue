@@ -1,6 +1,8 @@
 <template>
   <div class="news-card">
-    <div class="news-title">{{ title }}</div>
+    <div class="news-title">
+      {{ title }}
+    </div>
     <div class="item-imgbox">
       <div
         class="news-img"
@@ -16,12 +18,13 @@
         {{ agreeDataFormat(comment_count) }}评
       </div>
     </div>
+    <rate v-model="rateVal"></rate>
   </div>
 </template>
 <script>
-/**
- * 视频模板页
- */
+// 按需引入element-ui中的组件
+import { Rate } from 'element-ui';
+
 export default {
   props: {
     title: {
@@ -47,7 +50,11 @@ export default {
     return {
       isAlive: true,
       isFirstVisit: true,
+      rateVal: 3,
     };
+  },
+  components: {
+    Rate, // 局部注册组件
   },
   mounted() {
     this.isFirstVisit = false;

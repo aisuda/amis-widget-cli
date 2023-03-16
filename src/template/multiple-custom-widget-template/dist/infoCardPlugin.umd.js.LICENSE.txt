@@ -1,7 +1,0 @@
-/*!
- * multiple-custom-widget-template v1.0.6
- * author: fex
- * build tool: AKFun
- * build time: Tue Feb 15 2022 12:25:28 GMT+0800 (China Standard Time)
- * build tool info: https://github.com/wibetter/akfun
- */

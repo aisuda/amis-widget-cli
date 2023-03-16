@@ -1,5 +1,5 @@
-import { defineConfig } from "vite";
-import uni from "@dcloudio/vite-plugin-uni";
+import { defineConfig } from 'vite';
+import uni from '@dcloudio/vite-plugin-uni';
 const path = require('path');
 /**
  * vite 配置文件
@@ -23,11 +23,16 @@ export default defineConfig(({ command, mode }) => {
   if (command === 'serve') {
     // dev 独有配置
     return {
-      ...commonConfig
-    }
+      ...commonConfig,
+    };
   } else {
     // command === 'build'
-    if (process.env.UNI_BUILD_MODE === 'h5') {
+    const UNI_BUILD_MODE =
+      process.env.UNI_BUILD_MODE || catchProcessParam('UNI_BUILD_MODE');
+    const UNI_BUILD_LIB =
+      process.env.UNI_BUILD_LIB || catchProcessParam('UNI_BUILD_LIB');
+
+    if (UNI_BUILD_MODE === 'h5') {
       return {
         //mode: 'development', // 'development'（开发模式），'production'（生产模式）
         ...commonConfig,
@@ -42,20 +47,24 @@ export default defineConfig(({ command, mode }) => {
               dir: 'web', // 输出构建后文件的目录
               globals: {
                 vue: 'vue',
-                react: 'react'
+                react: 'react',
               },
               // format: 'amd',
-            }
+            },
           },
           lib: {
-            entry: path.resolve(__dirname, `./build/${ process.env.UNI_BUILD_LIB || 'registerRenderer'}.ts`), // 构建自定组件入口文件
+            entry: path.resolve(
+              __dirname,
+              `./build/${UNI_BUILD_LIB || 'registerRenderer'}.ts`,
+            ), // 构建自定组件入口文件
             formats: ['umd'],
-            name: process.env.UNI_BUILD_LIB || 'registerRenderer', // 自定义组件名字
-            fileName: (format) => `${process.env.UNI_BUILD_LIB || 'registerRenderer'}.${format}.js`,
-            style: 'renderer'
+            name: UNI_BUILD_LIB || 'registerRenderer', // 自定义组件名字
+            fileName: (format) =>
+              `${UNI_BUILD_LIB || 'registerRenderer'}.${format}.js`,
+            style: 'renderer',
           },
           // cssCodeSplit: false, // https://vitejs.cn/config/#build-csscodesplit
-        }
+        },
       };
     } else {
       return {
@@ -64,3 +73,18 @@ export default defineConfig(({ command, mode }) => {
     }
   }
 });
+
+// 获取执行命令中的指定参数值
+function catchProcessParam(paramKey) {
+  const argv = process.argv;
+  let paramVal = '';
+  for (let ind = 0, size = argv.length; ind < size; ind++) {
+    if (argv[ind].indexOf(`--${paramKey}`) === 0) {
+      const envStr = argv[ind].split('=');
+      if (envStr && envStr[1]) {
+        paramVal = envStr[1];
+      }
+    }
+  }
+  return paramVal;
+}

@@ -42,6 +42,17 @@ module.exports = {
     ignoreNodeModules: false, // 打包时是否忽略 node_modules
     allowList: [], // ignoreNodeModules为true时生效
     projectDir: ['src', 'editor'],
+    plugins: [], // 自定义webpack插件
+    moduleRules: [], // 自定义webpack loader
+    babelPlugins: [
+      [
+        'component',
+        {
+          libraryName: 'element-ui',
+          styleLibraryName: 'theme-chalk',
+        },
+      ],
+    ],
   },
   dev: {
     entry: {

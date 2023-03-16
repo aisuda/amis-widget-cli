@@ -1,5 +1,5 @@
-import { defineConfig } from "vite";
-import uni from "@dcloudio/vite-plugin-uni";
+import { defineConfig } from 'vite';
+import uni from '@dcloudio/vite-plugin-uni';
 const path = require('path');
 /**
  * vite 配置文件
@@ -23,8 +23,8 @@ export default defineConfig(({ command, mode }) => {
   if (command === 'serve') {
     // dev 独有配置
     return {
-      ...commonConfig
-    }
+      ...commonConfig,
+    };
   } else {
     // command === 'build'
     if (process.env.UNI_BUILD_MODE === 'h5') {
@@ -33,7 +33,7 @@ export default defineConfig(({ command, mode }) => {
         ...commonConfig,
         build: {
           // https://vitejs.dev/config/build-options.html#build-minify
-          minify: true,
+          minify: false,
           rollupOptions: {
             // https://rollupjs.org/guide/en/#big-list-of-options
             external: ['react', 'vue'], // 在构建中排除的依赖项
@@ -42,20 +42,24 @@ export default defineConfig(({ command, mode }) => {
               dir: 'web', // 输出构建后文件的目录
               globals: {
                 vue: 'vue',
-                react: 'react'
+                react: 'react',
               },
               // format: 'amd',
-            }
+            },
           },
           lib: {
-            entry: path.resolve(__dirname, `./build/${ process.env.UNI_BUILD_LIB || 'registerRenderer'}.ts`), // 构建自定组件入口文件
+            entry: path.resolve(
+              __dirname,
+              `./build/${process.env.UNI_BUILD_LIB || 'registerRenderer'}.ts`,
+            ), // 构建自定组件入口文件
             formats: ['umd'],
             name: process.env.UNI_BUILD_LIB || 'registerRenderer', // 自定义组件名字
-            fileName: (format) => `${process.env.UNI_BUILD_LIB || 'registerRenderer'}.${format}.js`,
-            style: 'renderer'
+            fileName: (format) =>
+              `${process.env.UNI_BUILD_LIB || 'registerRenderer'}.${format}.js`,
+            style: 'renderer',
           },
           // cssCodeSplit: false, // https://vitejs.cn/config/#build-csscodesplit
-        }
+        },
       };
     } else {
       return {
