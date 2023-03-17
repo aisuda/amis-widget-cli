@@ -39,7 +39,7 @@
       });
     var n = require('amis-widget'),
       a = function () {
-        (this.rendererName = '1react-info-card'),
+        (this.rendererName = 'react-info-card'),
           (this.$schema = '/schemas/UnkownSchema.json'),
           (this.name = 'react组件'),
           (this.description = '信息展示卡片'),
