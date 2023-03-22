@@ -1,0 +1,7 @@
+/*!
+ * vue-container-custom-widget-template v1.0.7
+ * author: fex
+ * build tool: AKFun
+ * build time: Wed Mar 22 2023 19:22:49 GMT+0800 (China Standard Time)
+ * build tool info: https://github.com/wibetter/akfun
+ */

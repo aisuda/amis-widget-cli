@@ -1,4 +1,4 @@
-/*! For license information please see reactInfoCardContainerPlugin.umd.js.LICENSE.txt */
+/*! For license information please see infoCardPlugin.umd.js.LICENSE.txt */
 !(function (e, t) {
   'object' == typeof exports && 'object' == typeof module
     ? (module.exports = t())
@@ -12,10 +12,10 @@
     'use strict';
     var e = {
         d: function (t, n) {
-          for (var r in n)
-            e.o(n, r) &&
-              !e.o(t, r) &&
-              Object.defineProperty(t, r, { enumerable: !0, get: n[r] });
+          for (var o in n)
+            e.o(n, o) &&
+              !e.o(t, o) &&
+              Object.defineProperty(t, o, { enumerable: !0, get: n[o] });
         },
         o: function (e, t) {
           return Object.prototype.hasOwnProperty.call(e, t);
@@ -31,29 +31,34 @@
     e.r(t),
       e.d(t, {
         InfoCardPlugin: function () {
-          return r;
+          return o;
         },
         default: function () {
-          return a;
+          return i;
         },
       });
     var n = require('amis-widget'),
-      r = function () {
-        (this.rendererName = 'react-info-card-container'),
+      o = function () {
+        (this.rendererName = 'vue-info-card-container'),
           (this.$schema = '/schemas/UnkownSchema.json'),
-          (this.name = 'react-info-card-container'),
+          (this.name = 'vue-info-card-container'),
           (this.description = '卡片容器'),
-          (this.tags = ['自定义', '容器']),
+          (this.tags = ['容器', '自定义']),
           (this.icon = 'fa fa-file-code-o'),
           (this.scaffold = {
-            type: 'react-info-card-container',
-            label: 'react-info-card-container',
-            name: 'react-info-card-container',
-            body: [{ type: 'tpl', tpl: '自定义容器区', inline: !1 }],
+            type: 'vue-info-card-container',
+            label: 'vue-info-card-container',
+            name: 'vue-info-card-container',
+            body: [
+              {
+                type: 'container',
+                body: [{ type: 'tpl', tpl: '自定义容器区', inline: !1 }],
+              },
+            ],
           }),
           (this.previewSchema = {
-            type: 'react-info-card-container',
-            label: 'react-info-card-container',
+            type: 'vue-info-card-container',
+            label: 'vue-info-card-container',
             body: '内容',
           }),
           (this.regions = [{ key: 'body', label: '内容区' }]),
@@ -88,8 +93,8 @@
           ]);
       };
     (0,
-    n.registerAmisEditorPlugin)(r, { rendererName: 'react-info-card-container', name: 'react-info-card-container', order: 99 });
-    var a = r;
+    n.registerAmisEditorPlugin)(o, { rendererName: 'vue-info-card-container', name: 'vue-info-card-container', order: 99 });
+    var i = o;
     return t;
   })();
 });
