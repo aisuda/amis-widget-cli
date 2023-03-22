@@ -1,7 +1,7 @@
 /*!
- * react-custom-widget-template v1.0.16
+ * react-custom-widget-template v2.0.11
  * author: fex
  * build tool: AKFun
- * build time: Thu Mar 16 2023 16:50:35 GMT+0800 (China Standard Time)
+ * build time: Wed Mar 22 2023 14:29:26 GMT+0800 (China Standard Time)
  * build tool info: https://github.com/wibetter/akfun
  */

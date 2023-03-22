@@ -11,14 +11,6 @@
   return (function () {
     var e = {
         391: function () {},
-        490: function () {},
-        940: function (e, t, r) {
-          var n = r(490);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, r(346).Z)('7c81504e', n, !1, { sourceMap: !1 });
-        },
         325: function (e, t, r) {
           var n = r(391);
           n.__esModule && (n = n.default),
@@ -30,17 +22,17 @@
           'use strict';
           function n(e, t) {
             for (var r = [], n = {}, a = 0; a < t.length; a++) {
-              var o = t[a],
-                i = o[0],
+              var i = t[a],
+                o = i[0],
                 s = {
                   id: e + ':' + a,
-                  css: o[1],
-                  media: o[2],
-                  sourceMap: o[3],
+                  css: i[1],
+                  media: i[2],
+                  sourceMap: i[3],
                 };
-              n[i]
-                ? n[i].parts.push(s)
-                : r.push((n[i] = { id: i, parts: [s] }));
+              n[o]
+                ? n[o].parts.push(s)
+                : r.push((n[o] = { id: o, parts: [s] }));
             }
             return r;
           }
@@ -54,37 +46,37 @@
             throw new Error(
               "vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.",
             );
-          var o = {},
-            i =
+          var i = {},
+            o =
               a && (document.head || document.getElementsByTagName('head')[0]),
             s = null,
             u = 0,
             c = !1,
-            l = function () {},
-            d = null,
+            d = function () {},
+            l = null,
             f = 'data-vue-ssr-id',
             p =
               'undefined' != typeof navigator &&
               /msie [6-9]\b/.test(navigator.userAgent.toLowerCase());
           function m(e, t, r, a) {
-            (c = r), (d = a || {});
-            var i = n(e, t);
+            (c = r), (l = a || {});
+            var o = n(e, t);
             return (
-              v(i),
+              v(o),
               function (t) {
-                for (var r = [], a = 0; a < i.length; a++) {
-                  var s = i[a];
-                  (u = o[s.id]).refs--, r.push(u);
+                for (var r = [], a = 0; a < o.length; a++) {
+                  var s = o[a];
+                  (u = i[s.id]).refs--, r.push(u);
                 }
                 for (
-                  t ? v((i = n(e, t))) : (i = []), a = 0;
+                  t ? v((o = n(e, t))) : (o = []), a = 0;
                   a < r.length;
                   a++
                 ) {
                   var u;
                   if (0 === (u = r[a]).refs) {
                     for (var c = 0; c < u.parts.length; c++) u.parts[c]();
-                    delete o[u.id];
+                    delete i[u.id];
                   }
                 }
               }
@@ -93,40 +85,40 @@
           function v(e) {
             for (var t = 0; t < e.length; t++) {
               var r = e[t],
-                n = o[r.id];
+                n = i[r.id];
               if (n) {
                 n.refs++;
                 for (var a = 0; a < n.parts.length; a++) n.parts[a](r.parts[a]);
-                for (; a < r.parts.length; a++) n.parts.push(h(r.parts[a]));
+                for (; a < r.parts.length; a++) n.parts.push(g(r.parts[a]));
                 n.parts.length > r.parts.length &&
                   (n.parts.length = r.parts.length);
               } else {
-                var i = [];
-                for (a = 0; a < r.parts.length; a++) i.push(h(r.parts[a]));
-                o[r.id] = { id: r.id, refs: 1, parts: i };
+                var o = [];
+                for (a = 0; a < r.parts.length; a++) o.push(g(r.parts[a]));
+                i[r.id] = { id: r.id, refs: 1, parts: o };
               }
             }
           }
-          function g() {
+          function h() {
             var e = document.createElement('style');
-            return (e.type = 'text/css'), i.appendChild(e), e;
+            return (e.type = 'text/css'), o.appendChild(e), e;
           }
-          function h(e) {
+          function g(e) {
             var t,
               r,
               n = document.querySelector('style[' + f + '~="' + e.id + '"]');
             if (n) {
-              if (c) return l;
+              if (c) return d;
               n.parentNode.removeChild(n);
             }
             if (p) {
               var a = u++;
-              (n = s || (s = g())),
-                (t = E.bind(null, n, a, !1)),
-                (r = E.bind(null, n, a, !0));
+              (n = s || (s = h())),
+                (t = N.bind(null, n, a, !1)),
+                (r = N.bind(null, n, a, !0));
             } else
-              (n = g()),
-                (t = N.bind(null, n)),
+              (n = h()),
+                (t = x.bind(null, n)),
                 (r = function () {
                   n.parentNode.removeChild(n);
                 });
@@ -151,23 +143,23 @@
               function (e, t) {
                 return (y[e] = t), y.filter(Boolean).join('\n');
               });
-          function E(e, t, r, n) {
+          function N(e, t, r, n) {
             var a = r ? '' : n.css;
             if (e.styleSheet) e.styleSheet.cssText = b(t, a);
             else {
-              var o = document.createTextNode(a),
-                i = e.childNodes;
-              i[t] && e.removeChild(i[t]),
-                i.length ? e.insertBefore(o, i[t]) : e.appendChild(o);
+              var i = document.createTextNode(a),
+                o = e.childNodes;
+              o[t] && e.removeChild(o[t]),
+                o.length ? e.insertBefore(i, o[t]) : e.appendChild(i);
             }
           }
-          function N(e, t) {
+          function x(e, t) {
             var r = t.css,
               n = t.media,
               a = t.sourceMap;
             if (
               (n && e.setAttribute('media', n),
-              d.ssrId && e.setAttribute(f, t.id),
+              l.ssrId && e.setAttribute(f, t.id),
               a &&
                 ((r += '\n/*# sourceURL=' + a.sources[0] + ' */'),
                 (r +=
@@ -188,8 +180,8 @@
     function r(n) {
       var a = t[n];
       if (void 0 !== a) return a.exports;
-      var o = (t[n] = { id: n, exports: {} });
-      return e[n](o, o.exports, r), o.exports;
+      var i = (t[n] = { id: n, exports: {} });
+      return e[n](i, i.exports, r), i.exports;
     }
     (r.n = function (e) {
       var t =
@@ -225,79 +217,73 @@
         var e = require('@babel/runtime/helpers/assertThisInitialized'),
           t = r.n(e),
           a = require('@babel/runtime/helpers/inheritsLoose'),
-          o = r.n(a),
-          i = require('react'),
-          s = require('antd'),
-          u = (r(325), r(940)),
-          c = r.n(u),
-          l = (function (e) {
-            function r() {
-              var r;
+          i = r.n(a),
+          o = require('react'),
+          s =
+            (r(325),
+            (function (e) {
+              function r() {
+                var r;
+                return (
+                  ((r = e.call(this) || this).agreeDataFormat =
+                    r.agreeDataFormat.bind(t()(r))),
+                  r
+                );
+              }
+              i()(r, e);
+              var n = r.prototype;
               return (
-                ((r = e.call(this) || this).agreeDataFormat =
-                  r.agreeDataFormat.bind(t()(r))),
+                (n.agreeDataFormat = function (e) {
+                  return e && e <= 9999
+                    ? e
+                    : e && e > 9999
+                    ? Math.floor(e / 1e3) / 10 + 'w'
+                    : void 0;
+                }),
+                (n.render = function () {
+                  var e = this.props,
+                    t = e.title,
+                    r = (e.backgroundImage, e.img_count),
+                    n = e.comment_count;
+                  return o.createElement(
+                    'div',
+                    { className: 'news-card' },
+                    o.createElement(
+                      'div',
+                      { className: 'news-title' },
+                      t ||
+                        'amis 是一个低代码前端框架，它使用 JSON 配置来生成页面，可以减少页面开发工作量，极大提升效率。',
+                    ),
+                    o.createElement(
+                      'div',
+                      { className: 'item-imgbox' },
+                      o.createElement('div', { className: 'news-img' }),
+                      r > 0 &&
+                        o.createElement('div', { className: 'img-count' }, r),
+                    ),
+                    o.createElement(
+                      'div',
+                      { className: 'news-info' },
+                      o.createElement(
+                        'div',
+                        { className: 'left media-mark' },
+                        '爱速搭 · 低代码平台',
+                      ),
+                      n &&
+                        n > 0 &&
+                        o.createElement(
+                          'div',
+                          { className: 'cmt-num right' },
+                          this.agreeDataFormat(n),
+                          '评',
+                        ),
+                    ),
+                  );
+                }),
                 r
               );
-            }
-            o()(r, e);
-            var n = r.prototype;
-            return (
-              (n.agreeDataFormat = function (e) {
-                return e && e <= 9999
-                  ? e
-                  : e && e > 9999
-                  ? Math.floor(e / 1e3) / 10 + 'w'
-                  : void 0;
-              }),
-              (n.render = function () {
-                console.log('myStyle:', c());
-                var e = this.props,
-                  t = e.title,
-                  r = (e.backgroundImage, e.img_count),
-                  n = e.comment_count;
-                return i.createElement(
-                  'div',
-                  { className: 'news-card ' + c().cssTest1 },
-                  i.createElement(
-                    'div',
-                    { className: 'news-title' },
-                    t ||
-                      'amis 是一个低代码前端框架，它使用 JSON 配置来生成页面，可以减少页面开发工作量，极大提升效率。',
-                  ),
-                  i.createElement(
-                    'div',
-                    { className: 'item-imgbox' },
-                    i.createElement('div', { className: 'news-img' }),
-                    r > 0 &&
-                      i.createElement('div', { className: 'img-count' }, r),
-                  ),
-                  i.createElement(
-                    'div',
-                    { className: 'news-info' },
-                    i.createElement(
-                      'div',
-                      { className: 'left media-mark' },
-                      '爱速搭 · 低代码平台',
-                    ),
-                    n &&
-                      n > 0 &&
-                      i.createElement(
-                        'div',
-                        { className: 'cmt-num right' },
-                        this.agreeDataFormat(n),
-                        '评',
-                      ),
-                  ),
-                  i.createElement(s.Empty, {
-                    image: s.Empty.PRESENTED_IMAGE_SIMPLE,
-                    description: i.createElement(i.Fragment, null, '暂无内容'),
-                  }),
-                );
-              }),
-              r
-            );
-          })(i.PureComponent);
-        (0, require('amis-widget').registerRendererByType)(l, {
+            })(o.PureComponent));
+        (0, require('amis-widget').registerRendererByType)(s, {
           type: 'react-info-card',
           usage: 'renderer',
           weight: 99,
