@@ -48,6 +48,9 @@ export default {
       ],
     };
   },
+  beforeCreate() {
+    console.log('beforeCreate:', this.prizeList);
+  },
   computed: {
     prizeList() {
       return (
@@ -60,8 +63,8 @@ export default {
     prizeResult() {
       return (
         this.componentProperties &&
-          this.componentProperties.data &&
-          this.componentProperties.data.prizeResult
+        this.componentProperties.data &&
+        this.componentProperties.data.prizeResult
       );
     },
   },

@@ -68,18 +68,18 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
   var Tr = Sr,
     Le = B,
     wr = yr,
-    Ar = Tr,
-    Cr = '[object Null]',
+    Cr = Tr,
+    Ar = '[object Null]',
     xr = '[object Undefined]',
     Ee = Le ? Le.toStringTag : void 0;
   function Or(e) {
     return e == null
       ? e === void 0
         ? xr
-        : Cr
+        : Ar
       : Ee && Ee in Object(e)
       ? wr(e)
-      : Ar(e);
+      : Cr(e);
   }
   var j = Or;
   function jr(e) {
@@ -184,8 +184,8 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
     var r = vn(e, t);
     return mn(r) ? r : void 0;
   }
-  var A = yn,
-    $n = A,
+  var C = yn,
+    $n = C,
     _n = $n(Object, 'create'),
     U = _n,
     Re = U;
@@ -197,14 +197,14 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
     var t = this.has(e) && delete this.__data__[e];
     return (this.size -= t ? 1 : 0), t;
   }
-  var An = wn,
-    Cn = U,
+  var Cn = wn,
+    An = U,
     xn = '__lodash_hash_undefined__',
     On = Object.prototype,
     jn = On.hasOwnProperty;
   function In(e) {
     var t = this.__data__;
-    if (Cn) {
+    if (An) {
       var r = t[e];
       return r === xn ? void 0 : r;
     }
@@ -231,7 +231,7 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
   }
   var Fn = Dn,
     zn = Tn,
-    Vn = An,
+    Vn = Cn,
     Hn = Pn,
     Gn = Nn,
     Un = Fn;
@@ -312,7 +312,7 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
     (P.prototype.has = ga),
     (P.prototype.set = ba);
   var K = P,
-    ma = A,
+    ma = C,
     va = v,
     ya = ma(va, 'Map'),
     ae = ya,
@@ -334,11 +334,11 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
       ? e !== '__proto__'
       : e === null;
   }
-  var Aa = wa,
-    Ca = Aa;
+  var Ca = wa,
+    Aa = Ca;
   function xa(e, t) {
     var r = e.__data__;
-    return Ca(t) ? r[typeof t == 'string' ? 'string' : 'hash'] : r.map;
+    return Aa(t) ? r[typeof t == 'string' ? 'string' : 'hash'] : r.map;
   }
   var Y = xa,
     Oa = Y;
@@ -475,14 +475,14 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
     return r && r == n ? e : void 0;
   }
   var wo = To,
-    Ao = A,
-    Co = (function () {
+    Co = C,
+    Ao = (function () {
       try {
-        var e = Ao(Object, 'defineProperty');
+        var e = Co(Object, 'defineProperty');
         return e({}, '', {}), e;
       } catch {}
     })(),
-    Ke = Co,
+    Ke = Ao,
     Ye = Ke;
   function xo(e, t, r) {
     t == '__proto__' && Ye
@@ -622,12 +622,12 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
     Ti = le,
     wi = y,
     et = Qe ? Qe.isConcatSpreadable : void 0;
-  function Ai(e) {
+  function Ci(e) {
     return wi(e) || Ti(e) || !!(et && e && e[et]);
   }
-  var Ci = Ai,
+  var Ai = Ci,
     xi = fe,
-    Oi = Ci;
+    Oi = Ai;
   function tt(e, t, r, n, a) {
     var o = -1,
       s = e.length;
@@ -767,18 +767,18 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
     Ss = K,
     Ts = ae,
     ws = ze,
-    As = 200;
-  function Cs(e, t) {
+    Cs = 200;
+  function As(e, t) {
     var r = this.__data__;
     if (r instanceof Ss) {
       var n = r.__data__;
-      if (!Ts || n.length < As - 1)
+      if (!Ts || n.length < Cs - 1)
         return n.push([e, t]), (this.size = ++r.size), this;
       r = this.__data__ = new ws(n);
     }
     return r.set(e, t), (this.size = r.size), this;
   }
-  var xs = Cs,
+  var xs = As,
     Os = K,
     js = gs,
     Is = ms,
@@ -915,16 +915,16 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
     Sc = it ? _c(it) : $c,
     Tc = Sc,
     wc = zs,
-    Ac = le,
-    Cc = y,
+    Cc = le,
+    Ac = y,
     xc = X.exports,
     Oc = ce,
     jc = Tc,
     Ic = Object.prototype,
     Pc = Ic.hasOwnProperty;
   function Mc(e, t) {
-    var r = Cc(e),
-      n = !r && Ac(e),
+    var r = Ac(e),
+      n = !r && Cc(e),
       a = !r && !n && xc(e),
       o = !r && !n && !a && jc(e),
       s = r || n || a || o,
@@ -1057,9 +1057,9 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
   }
   var ut = Tl,
     wl = Sl,
-    Al = ut,
-    Cl = Object.prototype,
-    xl = Cl.propertyIsEnumerable,
+    Cl = ut,
+    Al = Object.prototype,
+    xl = Al.propertyIsEnumerable,
     ft = Object.getOwnPropertySymbols,
     Ol = ft
       ? function (e) {
@@ -1070,7 +1070,7 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
                 return xl.call(e, t);
               }));
         }
-      : Al,
+      : Cl,
     ve = Ol,
     jl = J,
     Il = ve;
@@ -1120,19 +1120,19 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
     return Ql(e, tu, eu);
   }
   var nu = ru,
-    au = A,
+    au = C,
     ou = v,
     iu = au(ou, 'DataView'),
     su = iu,
-    cu = A,
+    cu = C,
     lu = v,
     uu = cu(lu, 'Promise'),
     fu = uu,
-    pu = A,
+    pu = C,
     du = v,
     hu = pu(du, 'Set'),
     gu = hu,
-    bu = A,
+    bu = C,
     mu = v,
     vu = bu(mu, 'WeakMap'),
     yu = vu,
@@ -1153,14 +1153,14 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
     Su = E($e),
     Tu = E(_e),
     wu = E(Se),
-    Au = E(Te),
-    C = gt;
-  ((ye && C(new ye(new ArrayBuffer(1))) != $t) ||
-    ($e && C(new $e()) != bt) ||
-    (_e && C(_e.resolve()) != mt) ||
-    (Se && C(new Se()) != vt) ||
-    (Te && C(new Te()) != yt)) &&
-    (C = function (e) {
+    Cu = E(Te),
+    A = gt;
+  ((ye && A(new ye(new ArrayBuffer(1))) != $t) ||
+    ($e && A(new $e()) != bt) ||
+    (_e && A(_e.resolve()) != mt) ||
+    (Se && A(new Se()) != vt) ||
+    (Te && A(new Te()) != yt)) &&
+    (A = function (e) {
       var t = gt(e),
         r = t == $u ? e.constructor : void 0,
         n = r ? E(r) : '';
@@ -1174,14 +1174,14 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
             return mt;
           case wu:
             return vt;
-          case Au:
+          case Cu:
             return yt;
         }
       return t;
     });
-  var we = C,
-    Cu = Object.prototype,
-    xu = Cu.hasOwnProperty;
+  var we = A,
+    Au = Object.prototype,
+    xu = Au.hasOwnProperty;
   function Ou(e) {
     var t = e.length,
       r = new e.constructor(t);
@@ -1202,8 +1202,8 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
     var t = new e.constructor(e.byteLength);
     return new _t(t).set(new _t(e)), t;
   }
-  var Ae = Lu,
-    Eu = Ae;
+  var Ce = Lu,
+    Eu = Ce;
   function ku(e, t) {
     var r = t ? Eu(e.buffer) : e.buffer;
     return new e.constructor(r, e.byteOffset, e.byteLength);
@@ -1222,13 +1222,13 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
     return wt ? Object(wt.call(e)) : {};
   }
   var zu = Fu,
-    Vu = Ae;
+    Vu = Ce;
   function Hu(e, t) {
     var r = t ? Vu(e.buffer) : e.buffer;
     return new e.constructor(r, e.byteOffset, e.length);
   }
   var Gu = Hu,
-    Uu = Ae,
+    Uu = Ce,
     Wu = Nu,
     Ku = Du,
     Yu = zu,
@@ -1287,12 +1287,12 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
   }
   var mf = bf,
     vf = T,
-    At = Object.create,
+    Ct = Object.create,
     yf = (function () {
       function e() {}
       return function (t) {
         if (!vf(t)) return {};
-        if (At) return At(t);
+        if (Ct) return Ct(t);
         e.prototype = t;
         var r = new e();
         return (e.prototype = void 0), r;
@@ -1305,18 +1305,18 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
   function wf(e) {
     return typeof e.constructor == 'function' && !Tf(e) ? _f(Sf(e)) : {};
   }
-  var Af = wf,
-    Cf = we,
+  var Cf = wf,
+    Af = we,
     xf = w,
     Of = '[object Map]';
   function jf(e) {
-    return xf(e) && Cf(e) == Of;
+    return xf(e) && Af(e) == Of;
   }
   var If = jf,
     Pf = If,
     Mf = de,
-    Ct = D.exports,
-    xt = Ct && Ct.isMap,
+    At = D.exports,
+    xt = At && At.isMap,
     Lf = xt ? Mf(xt) : Pf,
     Ef = Lf,
     kf = we,
@@ -1346,7 +1346,7 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
     tp = we,
     rp = ju,
     np = mf,
-    ap = Af,
+    ap = Cf,
     op = y,
     ip = X.exports,
     sp = Ef,
@@ -1370,8 +1370,8 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
     Sp = '[object RegExp]',
     Tp = '[object Set]',
     wp = '[object String]',
-    Ap = '[object Symbol]',
-    Cp = '[object WeakMap]',
+    Cp = '[object Symbol]',
+    Ap = '[object WeakMap]',
     xp = '[object ArrayBuffer]',
     Op = '[object DataView]',
     jp = '[object Float32Array]',
@@ -1401,13 +1401,13 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
     f[Sp] =
     f[Tp] =
     f[wp] =
-    f[Ap] =
+    f[Cp] =
     f[Ep] =
     f[kp] =
     f[Np] =
     f[Bp] =
       !0),
-    (f[vp] = f[Pt] = f[Cp] = !1);
+    (f[vp] = f[Pt] = f[Ap] = !1);
   function Z(e, t, r, n, a, o) {
     var s,
       c = t & pp,
@@ -1458,7 +1458,7 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
   function Vp(e) {
     return Dp(e, Fp | zp);
   }
-  var Ce = Vp,
+  var Ae = Vp,
     Hp = { exports: {} };
   /*!
 	Copyright (c) 2018 Jed Watson.
@@ -1576,7 +1576,7 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
   }
   function Zp(e = {}) {
     const t = pe(
-      Ce(e) || {},
+      Ae(e) || {},
       'backgroundImage',
       'backgroundRepeat',
       'backgroundSize',
@@ -1593,7 +1593,7 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
     );
   }
   function Qp(e = {}) {
-    let t = pe(Ce(e) || {}, 'color', 'fontFamily', 'lineHeight', 'textAlign');
+    let t = pe(Ae(e) || {}, 'color', 'fontFamily', 'lineHeight', 'textAlign');
     return (
       e.bold && (t.fontWeight = 'bold'),
       e.italic && (t.fontStyle = 'italic'),
@@ -1611,7 +1611,7 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
   }
   function ed(e = {}) {
     const t = pe(
-      Ce(e) || {},
+      Ae(e) || {},
       'borderLeftStyle',
       'borderRightStyle',
       'borderTopStyle',
@@ -1812,9 +1812,10 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
         if (!this.isUnmount) {
           const { amisData: a } = this.resolveAmisProps();
           this.vm &&
-            Object.keys(a).forEach((o) => {
+            (Object.keys(a).forEach((o) => {
               this.vm[o] = a[o];
-            });
+            }),
+            this.vm.$forceUpdate());
         }
       }
       componentWillUnmount() {
@@ -1984,7 +1985,7 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
       .replace(/[A-Z]/g, (t) => `-${t.toLowerCase()}`)
       .replace('webkit', '-webkit');
   }
-  function Ad(e) {
+  function Cd(e) {
     const t = [
         'matrix',
         'matrix3d',
@@ -2052,7 +2053,7 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
     function o() {
       const s = n[r],
         c = s.option.transition,
-        l = Ad(s);
+        l = Cd(s);
       Object.keys(l).forEach((u) => {
         e.$el.style[u] = l[u];
       }),
@@ -2063,7 +2064,7 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
       o();
     }, 0);
   }
-  var Cd = {
+  var Ad = {
     props: ['animation'],
     watch: {
       animation: {
@@ -2080,7 +2081,7 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
   const Ut = (e) => {
       e.__reserved = !0;
       const { props: t, mixins: r } = e;
-      return (!t || !t.animation) && (r || (e.mixins = [])).push(Cd), ee(e);
+      return (!t || !t.animation) && (r || (e.mixins = [])).push(Ad), ee(e);
     },
     ee = (e) => (
       (e.__reserved = !0), (e.compatConfig = { MODE: 3 }), i.defineComponent(e)
@@ -2549,8 +2550,8 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
       )
     );
   }
-  var Ah = '',
-    Ch = '',
+  var Ch = '',
+    Ah = '',
     or = (e, t) => {
       const r = e.__vccOpts || e;
       for (const [n, a] of t) r[n] = a;
@@ -2904,6 +2905,9 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
         ],
       };
     },
+    beforeCreate() {
+      console.log('beforeCreate:', this.prizeList);
+    },
     computed: {
       prizeList() {
         return (
@@ -2992,7 +2996,7 @@ var H = (m, i, S) => (_h(m, typeof i != 'symbol' ? i + '' : i, S), S);
   }
   var vh = or(bh, [
     ['render', mh],
-    ['__scopeId', 'data-v-aa95580a'],
+    ['__scopeId', 'data-v-3f75b813'],
   ]);
   id(vh, { type: 'uni-lottery-card', framework: 'vue3' });
 });
