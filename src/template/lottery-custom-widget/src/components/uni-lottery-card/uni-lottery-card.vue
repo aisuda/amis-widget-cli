@@ -48,6 +48,9 @@ export default {
       ],
     };
   },
+  beforeCreate() {
+    console.log('beforeCreate:', this.prizeList);
+  },
   computed: {
     prizeList() {
       return (

@@ -1,6 +1,6 @@
 {
   "name": "container-custom-widget-template",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "amis自定义组件模板（react技术栈、自定义容器类组件）",
   "keywords": [
     "自定义组件模板",
