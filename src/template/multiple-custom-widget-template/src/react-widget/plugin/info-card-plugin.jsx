@@ -1,7 +1,7 @@
 /**
  * @file 编辑器扩展, 增加自定义组件
  */
-import { registerAmisEditorPlugin } from 'amis-widget';
+import { registerAmisEditorPlugin, getSchemaTpl } from 'amis-widget';
 
 export class InfoCardPlugin {
   rendererName = 'react-info-card';
@@ -30,13 +30,12 @@ export class InfoCardPlugin {
   panelTitle = '配置';
 
   panelControls = [
-    {
-      type: 'textarea',
+    getSchemaTpl('description', {
       name: 'title',
       label: '卡片title',
       value:
         'amis 是一个低代码前端框架，它使用 JSON 配置来生成页面，可以减少页面开发工作量，极大提升效率。',
-    },
+    }),
     {
       type: 'text',
       name: 'backgroundImage',

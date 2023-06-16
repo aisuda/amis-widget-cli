@@ -2238,6 +2238,7 @@ var __publicField = (obj, key, value) => {
             Object.keys(amisData).forEach((key) => {
               this.vm[key] = amisData[key];
             });
+            this.vm.$forceUpdate();
           }
         }
       }
@@ -2392,8 +2393,8 @@ var __publicField = (obj, key, value) => {
     };
   }
   /*!
-   * vue-router v4.1.6
-   * (c) 2022 Eduardo San Martin Morote
+   * vue-router v4.2.2
+   * (c) 2023 Eduardo San Martin Morote
    * @license MIT
    */
   var NavigationType;
@@ -3982,7 +3983,7 @@ var __publicField = (obj, key, value) => {
   }
   var __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [
     ['render', _sfc_render$3],
-    ['__scopeId', 'data-v-b2a223fe'],
+    ['__scopeId', 'data-v-477f2e54'],
   ]);
   function resolveEasycom(component, easycom) {
     return isString(component) ? easycom : component;

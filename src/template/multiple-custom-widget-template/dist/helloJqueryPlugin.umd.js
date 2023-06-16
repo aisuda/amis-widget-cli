@@ -11,56 +11,77 @@
   return (function () {
     'use strict';
     var e = {
-        d: function (t, o) {
-          for (var r in o)
-            e.o(o, r) &&
-              !e.o(t, r) &&
-              Object.defineProperty(t, r, { enumerable: !0, get: o[r] });
-        },
-        o: function (e, t) {
-          return Object.prototype.hasOwnProperty.call(e, t);
-        },
-        r: function (e) {
-          'undefined' != typeof Symbol &&
-            Symbol.toStringTag &&
-            Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
-            Object.defineProperty(e, '__esModule', { value: !0 });
+        'amis-widget': function (e) {
+          e.exports = require('amis-widget');
         },
       },
       t = {};
-    e.r(t),
-      e.d(t, {
-        HelloJqueryPlugin: function () {
-          return r;
-        },
-        default: function () {
-          return i;
-        },
+    function o(r) {
+      var n = t[r];
+      if (void 0 !== n) return n.exports;
+      var i = (t[r] = { exports: {} });
+      return e[r](i, i.exports, o), i.exports;
+    }
+    (o.n = function (e) {
+      var t =
+        e && e.__esModule
+          ? function () {
+              return e.default;
+            }
+          : function () {
+              return e;
+            };
+      return o.d(t, { a: t }), t;
+    }),
+      (o.d = function (e, t) {
+        for (var r in t)
+          o.o(t, r) &&
+            !o.o(e, r) &&
+            Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
+      }),
+      (o.o = function (e, t) {
+        return Object.prototype.hasOwnProperty.call(e, t);
+      }),
+      (o.r = function (e) {
+        'undefined' != typeof Symbol &&
+          Symbol.toStringTag &&
+          Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
+          Object.defineProperty(e, '__esModule', { value: !0 });
       });
-    var o = require('amis-widget'),
-      r = function () {
-        (this.rendererName = 'hello-jquery'),
-          (this.$schema = '/schemas/UnkownSchema.json'),
-          (this.name = 'hello-jquery'),
-          (this.description = 'hello-jquery'),
-          (this.tags = ['自定义']),
-          (this.icon = 'fa fa-file-code-o'),
-          (this.scaffold = {
-            type: 'hello-jquery',
-            label: 'hello-jquery',
-            name: 'hello-jquery',
-          }),
-          (this.previewSchema = {
-            type: 'hello-jquery',
-            label: 'hello-jquery',
-          }),
-          (this.panelTitle = '配置面板'),
-          (this.panelControls = [
-            { type: 'tpl', tpl: '可根据变量 \\${amisUser} 获取用户数据。' },
-          ]);
-      };
-    (0, o.registerAmisEditorPlugin)(r);
-    var i = r;
-    return t;
+    var r = {};
+    return (
+      (function () {
+        o.r(r),
+          o.d(r, {
+            HelloJqueryPlugin: function () {
+              return t;
+            },
+          });
+        var e = o('amis-widget'),
+          t = function () {
+            (this.rendererName = 'hello-jquery'),
+              (this.$schema = '/schemas/UnkownSchema.json'),
+              (this.name = 'hello-jquery'),
+              (this.description = 'hello-jquery'),
+              (this.tags = ['自定义']),
+              (this.icon = 'fa fa-file-code-o'),
+              (this.scaffold = {
+                type: 'hello-jquery',
+                label: 'hello-jquery',
+                name: 'hello-jquery',
+              }),
+              (this.previewSchema = {
+                type: 'hello-jquery',
+                label: 'hello-jquery',
+              }),
+              (this.panelTitle = '配置面板'),
+              (this.panelControls = [
+                { type: 'tpl', tpl: '可根据变量 \\${amisUser} 获取用户数据。' },
+              ]);
+          };
+        (0, e.registerAmisEditorPlugin)(t), (r.default = t);
+      })(),
+      r
+    );
   })();
 });

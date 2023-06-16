@@ -2,6 +2,22 @@
  * multiple-custom-widget-template v1.0.7
  * author: fex
  * build tool: AKFun
- * build time: Wed Mar 22 2023 11:29:08 GMT+0800 (China Standard Time)
+ * build time: Mon Mar 27 2023 16:58:25 GMT+0800 (China Standard Time)
  * build tool info: https://github.com/wibetter/akfun
  */
+
+/*! amis-widget */
+
+/*! jquery */
+
+/*!*************************!*\
+  !*** external "jquery" ***!
+  \*************************/
+
+/*!******************************!*\
+  !*** external "amis-widget" ***!
+  \******************************/
+
+/*!*******************************************!*\
+  !*** ./src/hello-jquery/hello-jquery.jsx ***!
+  \*******************************************/

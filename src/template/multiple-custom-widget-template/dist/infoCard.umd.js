@@ -10,73 +10,302 @@
 })(this, function () {
   return (function () {
     var e = {
-        317: function () {},
-        176: function (e, t, n) {
-          var r = n(317);
-          r.__esModule && (r = r.default),
-            'string' == typeof r && (r = [[e.id, r, '']]),
-            r.locals && (e.exports = r.locals),
-            (0, n(346).Z)('632f244a', r, !1, { sourceMap: !1 });
-        },
-        346: function (e, t, n) {
+        './node_modules/babel-loader/lib/index.js??clonedRuleSet-2.use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./node_modules/vue-loader/lib/index.js??vue-loader-options!./src/vue-widget/info-card.vue?vue&type=script&lang=js&':
+          function (e, t, s) {
+            'use strict';
+            s.r(t),
+              (t.default = {
+                props: {
+                  title: {
+                    type: String,
+                    default:
+                      'amis 是一个低代码前端框架，它使用 JSON 配置来生成页面，可以减少页面开发工作量，极大提升效率。',
+                  },
+                  backgroundImage: {
+                    type: String,
+                    default:
+                      'https://search-operate.cdn.bcebos.com/64c279f23794a831f9a8e7a4e0b722dd.jpg',
+                  },
+                  img_count: { type: Number, default: 3 },
+                  comment_count: { type: Number, default: 2021 },
+                },
+                data: function () {
+                  return { isAlive: !0, isFirstVisit: !0 };
+                },
+                mounted: function () {
+                  this.isFirstVisit = !1;
+                },
+                activated: function () {
+                  this.isAlive = !0;
+                },
+                deactivated: function () {
+                  this.isAlive = !1;
+                },
+                methods: {
+                  agreeDataFormat: function (e) {
+                    return e && e <= 9999
+                      ? e
+                      : e && e > 9999
+                      ? Math.floor(e / 1e3) / 10 + 'w'
+                      : void 0;
+                  },
+                  doAction: function (e, t) {
+                    'message' === (e ? e.actionType : '')
+                      ? alert('您触发了自定义组件的事件动作[message]')
+                      : console.log(
+                          '自定义组件中监听到的事件动作：',
+                          e,
+                          ', 事件参数：',
+                          t,
+                        );
+                  },
+                },
+              });
+          },
+        './node_modules/babel-loader/lib/index.js??clonedRuleSet-2.use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./src/vue-widget/info-card.vue?vue&type=template&id=68141a04&scoped=true&':
+          function (e, t, s) {
+            'use strict';
+            s.r(t),
+              s.d(t, {
+                render: function () {
+                  return o;
+                },
+                staticRenderFns: function () {
+                  return n;
+                },
+              });
+            var o = function () {
+                var e = this,
+                  t = e._self._c;
+                return t('div', { staticClass: 'news-card' }, [
+                  t('div', { staticClass: 'news-title' }, [
+                    e._v(e._s(e.title)),
+                  ]),
+                  e._v(' '),
+                  t('div', { staticClass: 'item-imgbox' }, [
+                    t('div', {
+                      staticClass: 'news-img',
+                      style: {
+                        backgroundImage: 'url(' + e.backgroundImage + ')',
+                      },
+                    }),
+                    e._v(' '),
+                    e.img_count > 0
+                      ? t('div', { staticClass: 'img-count' }, [
+                          e._v('\n      ' + e._s(e.img_count) + '\n    '),
+                        ])
+                      : e._e(),
+                  ]),
+                  e._v(' '),
+                  t('div', { staticClass: 'news-info' }, [
+                    t('div', { staticClass: 'left media-mark' }, [
+                      e._v('爱速搭 · 低代码平台'),
+                    ]),
+                    e._v(' '),
+                    e.comment_count && 0 != e.comment_count
+                      ? t('div', { staticClass: 'cmt-num right' }, [
+                          e._v(
+                            '\n      ' +
+                              e._s(e.agreeDataFormat(e.comment_count)) +
+                              '评\n    ',
+                          ),
+                        ])
+                      : e._e(),
+                  ]),
+                ]);
+              },
+              n = [];
+            o._withStripped = !0;
+          },
+        './node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./src/vue-widget/info-card.vue?vue&type=style&index=0&id=68141a04&lang=scss&scoped=true&':
+          function () {},
+        './src/vue-widget/info-card.vue': function (e, t, s) {
           'use strict';
-          function r(e, t) {
-            for (var n = [], r = {}, i = 0; i < t.length; i++) {
-              var o = t[i],
-                s = o[0],
-                a = {
-                  id: e + ':' + i,
-                  css: o[1],
-                  media: o[2],
-                  sourceMap: o[3],
-                };
-              r[s]
-                ? r[s].parts.push(a)
-                : n.push((r[s] = { id: s, parts: [a] }));
+          s.r(t);
+          var o = s(
+              './src/vue-widget/info-card.vue?vue&type=template&id=68141a04&scoped=true&',
+            ),
+            n = s('./src/vue-widget/info-card.vue?vue&type=script&lang=js&'),
+            d =
+              (s(
+                './src/vue-widget/info-card.vue?vue&type=style&index=0&id=68141a04&lang=scss&scoped=true&',
+              ),
+              (0,
+              s('./node_modules/vue-loader/lib/runtime/componentNormalizer.js')
+                .default)(
+                n.default,
+                o.render,
+                o.staticRenderFns,
+                !1,
+                null,
+                '68141a04',
+                null,
+              ));
+          (d.options.__file = 'src/vue-widget/info-card.vue'),
+            (t.default = d.exports);
+        },
+        './src/vue-widget/info-card.vue?vue&type=script&lang=js&': function (
+          e,
+          t,
+          s,
+        ) {
+          'use strict';
+          s.r(t);
+          var o = s(
+            './node_modules/babel-loader/lib/index.js??clonedRuleSet-2.use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./node_modules/vue-loader/lib/index.js??vue-loader-options!./src/vue-widget/info-card.vue?vue&type=script&lang=js&',
+          );
+          t.default = o.default;
+        },
+        './src/vue-widget/info-card.vue?vue&type=template&id=68141a04&scoped=true&':
+          function (e, t, s) {
+            'use strict';
+            s.r(t),
+              s.d(t, {
+                render: function () {
+                  return o.render;
+                },
+                staticRenderFns: function () {
+                  return o.staticRenderFns;
+                },
+              });
+            var o = s(
+              './node_modules/babel-loader/lib/index.js??clonedRuleSet-2.use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./src/vue-widget/info-card.vue?vue&type=template&id=68141a04&scoped=true&',
+            );
+          },
+        './src/vue-widget/info-card.vue?vue&type=style&index=0&id=68141a04&lang=scss&scoped=true&':
+          function (e, t, s) {
+            'use strict';
+            s.r(t);
+            var o = s(
+                './node_modules/vue-style-loader/index.js??clonedRuleSet-11.use[0]!./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./src/vue-widget/info-card.vue?vue&type=style&index=0&id=68141a04&lang=scss&scoped=true&',
+              ),
+              n = {};
+            for (var d in o)
+              'default' !== d &&
+                (n[d] = function (e) {
+                  return o[e];
+                }.bind(0, d));
+            s.d(t, n);
+          },
+        './node_modules/vue-loader/lib/runtime/componentNormalizer.js':
+          function (e, t, s) {
+            'use strict';
+            function o(e, t, s, o, n, d, r, i) {
+              var l,
+                u = 'function' == typeof e ? e.options : e;
+              if (
+                (t &&
+                  ((u.render = t), (u.staticRenderFns = s), (u._compiled = !0)),
+                o && (u.functional = !0),
+                d && (u._scopeId = 'data-v-' + d),
+                r
+                  ? ((l = function (e) {
+                      (e =
+                        e ||
+                        (this.$vnode && this.$vnode.ssrContext) ||
+                        (this.parent &&
+                          this.parent.$vnode &&
+                          this.parent.$vnode.ssrContext)) ||
+                        'undefined' == typeof __VUE_SSR_CONTEXT__ ||
+                        (e = __VUE_SSR_CONTEXT__),
+                        n && n.call(this, e),
+                        e &&
+                          e._registeredComponents &&
+                          e._registeredComponents.add(r);
+                    }),
+                    (u._ssrRegister = l))
+                  : n &&
+                    (l = i
+                      ? function () {
+                          n.call(
+                            this,
+                            (u.functional ? this.parent : this).$root.$options
+                              .shadowRoot,
+                          );
+                        }
+                      : n),
+                l)
+              )
+                if (u.functional) {
+                  u._injectStyles = l;
+                  var a = u.render;
+                  u.render = function (e, t) {
+                    return l.call(t), a(e, t);
+                  };
+                } else {
+                  var c = u.beforeCreate;
+                  u.beforeCreate = c ? [].concat(c, l) : [l];
+                }
+              return { exports: e, options: u };
             }
-            return n;
-          }
-          n.d(t, {
-            Z: function () {
-              return v;
-            },
-          });
-          var i = 'undefined' != typeof document;
-          if ('undefined' != typeof DEBUG && DEBUG && !i)
+            s.r(t),
+              s.d(t, {
+                default: function () {
+                  return o;
+                },
+              });
+          },
+        './node_modules/vue-style-loader/index.js??clonedRuleSet-11.use[0]!./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./src/vue-widget/info-card.vue?vue&type=style&index=0&id=68141a04&lang=scss&scoped=true&':
+          function (e, t, s) {
+            var o = s(
+              './node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./src/vue-widget/info-card.vue?vue&type=style&index=0&id=68141a04&lang=scss&scoped=true&',
+            );
+            o.__esModule && (o = o.default),
+              'string' == typeof o && (o = [[e.id, o, '']]),
+              o.locals && (e.exports = o.locals),
+              (0,
+              s('./node_modules/vue-style-loader/lib/addStylesClient.js')
+                .default)('15c8684e', o, !1, { sourceMap: !1 });
+          },
+        './node_modules/vue-style-loader/lib/addStylesClient.js': function (
+          e,
+          t,
+          s,
+        ) {
+          'use strict';
+          s.r(t),
+            s.d(t, {
+              default: function () {
+                return v;
+              },
+            });
+          var o = s('./node_modules/vue-style-loader/lib/listToStyles.js'),
+            n = 'undefined' != typeof document;
+          if ('undefined' != typeof DEBUG && DEBUG && !n)
             throw new Error(
               "vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.",
             );
-          var o = {},
-            s =
-              i && (document.head || document.getElementsByTagName('head')[0]),
-            a = null,
-            c = 0,
+          var d = {},
+            r =
+              n && (document.head || document.getElementsByTagName('head')[0]),
+            i = null,
+            l = 0,
             u = !1,
-            d = function () {},
-            f = null,
-            l = 'data-vue-ssr-id',
-            p =
+            a = function () {},
+            c = null,
+            p = 'data-vue-ssr-id',
+            f =
               'undefined' != typeof navigator &&
               /msie [6-9]\b/.test(navigator.userAgent.toLowerCase());
-          function v(e, t, n, i) {
-            (u = n), (f = i || {});
-            var s = r(e, t);
+          function v(e, t, s, n) {
+            (u = s), (c = n || {});
+            var r = (0, o.default)(e, t);
             return (
-              m(s),
+              m(r),
               function (t) {
-                for (var n = [], i = 0; i < s.length; i++) {
-                  var a = s[i];
-                  (c = o[a.id]).refs--, n.push(c);
+                for (var s = [], n = 0; n < r.length; n++) {
+                  var i = r[n];
+                  (l = d[i.id]).refs--, s.push(l);
                 }
                 for (
-                  t ? m((s = r(e, t))) : (s = []), i = 0;
-                  i < n.length;
-                  i++
+                  t ? m((r = (0, o.default)(e, t))) : (r = []), n = 0;
+                  n < s.length;
+                  n++
                 ) {
-                  var c;
-                  if (0 === (c = n[i]).refs) {
-                    for (var u = 0; u < c.parts.length; u++) c.parts[u]();
-                    delete o[c.id];
+                  var l;
+                  if (0 === (l = s[n]).refs) {
+                    for (var u = 0; u < l.parts.length; u++) l.parts[u]();
+                    delete d[l.id];
                   }
                 }
               }
@@ -84,241 +313,179 @@
           }
           function m(e) {
             for (var t = 0; t < e.length; t++) {
-              var n = e[t],
-                r = o[n.id];
-              if (r) {
-                r.refs++;
-                for (var i = 0; i < r.parts.length; i++) r.parts[i](n.parts[i]);
-                for (; i < n.parts.length; i++) r.parts.push(h(n.parts[i]));
-                r.parts.length > n.parts.length &&
-                  (r.parts.length = n.parts.length);
+              var s = e[t],
+                o = d[s.id];
+              if (o) {
+                o.refs++;
+                for (var n = 0; n < o.parts.length; n++) o.parts[n](s.parts[n]);
+                for (; n < s.parts.length; n++) o.parts.push(g(s.parts[n]));
+                o.parts.length > s.parts.length &&
+                  (o.parts.length = s.parts.length);
               } else {
-                var s = [];
-                for (i = 0; i < n.parts.length; i++) s.push(h(n.parts[i]));
-                o[n.id] = { id: n.id, refs: 1, parts: s };
+                var r = [];
+                for (n = 0; n < s.parts.length; n++) r.push(g(s.parts[n]));
+                d[s.id] = { id: s.id, refs: 1, parts: r };
               }
             }
           }
-          function g() {
+          function _() {
             var e = document.createElement('style');
-            return (e.type = 'text/css'), s.appendChild(e), e;
+            return (e.type = 'text/css'), r.appendChild(e), e;
           }
-          function h(e) {
+          function g(e) {
             var t,
-              n,
-              r = document.querySelector('style[' + l + '~="' + e.id + '"]');
-            if (r) {
-              if (u) return d;
-              r.parentNode.removeChild(r);
+              s,
+              o = document.querySelector('style[' + p + '~="' + e.id + '"]');
+            if (o) {
+              if (u) return a;
+              o.parentNode.removeChild(o);
             }
-            if (p) {
-              var i = c++;
-              (r = a || (a = g())),
-                (t = _.bind(null, r, i, !1)),
-                (n = _.bind(null, r, i, !0));
+            if (f) {
+              var n = l++;
+              (o = i || (i = _())),
+                (t = b.bind(null, o, n, !1)),
+                (s = b.bind(null, o, n, !0));
             } else
-              (r = g()),
-                (t = C.bind(null, r)),
-                (n = function () {
-                  r.parentNode.removeChild(r);
+              (o = _()),
+                (t = h.bind(null, o)),
+                (s = function () {
+                  o.parentNode.removeChild(o);
                 });
             return (
               t(e),
-              function (r) {
-                if (r) {
+              function (o) {
+                if (o) {
                   if (
-                    r.css === e.css &&
-                    r.media === e.media &&
-                    r.sourceMap === e.sourceMap
+                    o.css === e.css &&
+                    o.media === e.media &&
+                    o.sourceMap === e.sourceMap
                   )
                     return;
-                  t((e = r));
-                } else n();
+                  t((e = o));
+                } else s();
               }
             );
           }
-          var y,
-            b =
-              ((y = []),
+          var j,
+            y =
+              ((j = []),
               function (e, t) {
-                return (y[e] = t), y.filter(Boolean).join('\n');
+                return (j[e] = t), j.filter(Boolean).join('\n');
               });
-          function _(e, t, n, r) {
-            var i = n ? '' : r.css;
-            if (e.styleSheet) e.styleSheet.cssText = b(t, i);
+          function b(e, t, s, o) {
+            var n = s ? '' : o.css;
+            if (e.styleSheet) e.styleSheet.cssText = y(t, n);
             else {
-              var o = document.createTextNode(i),
-                s = e.childNodes;
-              s[t] && e.removeChild(s[t]),
-                s.length ? e.insertBefore(o, s[t]) : e.appendChild(o);
+              var d = document.createTextNode(n),
+                r = e.childNodes;
+              r[t] && e.removeChild(r[t]),
+                r.length ? e.insertBefore(d, r[t]) : e.appendChild(d);
             }
           }
-          function C(e, t) {
-            var n = t.css,
-              r = t.media,
-              i = t.sourceMap;
+          function h(e, t) {
+            var s = t.css,
+              o = t.media,
+              n = t.sourceMap;
             if (
-              (r && e.setAttribute('media', r),
-              f.ssrId && e.setAttribute(l, t.id),
-              i &&
-                ((n += '\n/*# sourceURL=' + i.sources[0] + ' */'),
-                (n +=
+              (o && e.setAttribute('media', o),
+              c.ssrId && e.setAttribute(p, t.id),
+              n &&
+                ((s += '\n/*# sourceURL=' + n.sources[0] + ' */'),
+                (s +=
                   '\n/*# sourceMappingURL=data:application/json;base64,' +
-                  btoa(unescape(encodeURIComponent(JSON.stringify(i)))) +
+                  btoa(unescape(encodeURIComponent(JSON.stringify(n)))) +
                   ' */')),
               e.styleSheet)
             )
-              e.styleSheet.cssText = n;
+              e.styleSheet.cssText = s;
             else {
               for (; e.firstChild; ) e.removeChild(e.firstChild);
-              e.appendChild(document.createTextNode(n));
+              e.appendChild(document.createTextNode(s));
             }
           }
         },
+        './node_modules/vue-style-loader/lib/listToStyles.js': function (
+          e,
+          t,
+          s,
+        ) {
+          'use strict';
+          function o(e, t) {
+            for (var s = [], o = {}, n = 0; n < t.length; n++) {
+              var d = t[n],
+                r = d[0],
+                i = {
+                  id: e + ':' + n,
+                  css: d[1],
+                  media: d[2],
+                  sourceMap: d[3],
+                };
+              o[r]
+                ? o[r].parts.push(i)
+                : s.push((o[r] = { id: r, parts: [i] }));
+            }
+            return s;
+          }
+          s.r(t),
+            s.d(t, {
+              default: function () {
+                return o;
+              },
+            });
+        },
+        'amis-widget': function (e) {
+          'use strict';
+          e.exports = require('amis-widget');
+        },
       },
       t = {};
-    function n(r) {
-      var i = t[r];
-      if (void 0 !== i) return i.exports;
-      var o = (t[r] = { id: r, exports: {} });
-      return e[r](o, o.exports, n), o.exports;
+    function s(o) {
+      var n = t[o];
+      if (void 0 !== n) return n.exports;
+      var d = (t[o] = { id: o, exports: {} });
+      return e[o](d, d.exports, s), d.exports;
     }
-    (n.d = function (e, t) {
-      for (var r in t)
-        n.o(t, r) &&
-          !n.o(e, r) &&
-          Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
+    (s.n = function (e) {
+      var t =
+        e && e.__esModule
+          ? function () {
+              return e.default;
+            }
+          : function () {
+              return e;
+            };
+      return s.d(t, { a: t }), t;
     }),
-      (n.o = function (e, t) {
+      (s.d = function (e, t) {
+        for (var o in t)
+          s.o(t, o) &&
+            !s.o(e, o) &&
+            Object.defineProperty(e, o, { enumerable: !0, get: t[o] });
+      }),
+      (s.o = function (e, t) {
         return Object.prototype.hasOwnProperty.call(e, t);
       }),
-      (n.r = function (e) {
+      (s.r = function (e) {
         'undefined' != typeof Symbol &&
           Symbol.toStringTag &&
           Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
           Object.defineProperty(e, '__esModule', { value: !0 });
       });
-    var r = {};
+    var o = {};
     return (
       (function () {
         'use strict';
-        n.r(r);
-        var e = require('amis-widget'),
-          t = function () {
-            var e = this,
-              t = e._self._c;
-            return t('div', { staticClass: 'news-card' }, [
-              t('div', { staticClass: 'news-title' }, [e._v(e._s(e.title))]),
-              e._v(' '),
-              t('div', { staticClass: 'item-imgbox' }, [
-                t('div', {
-                  staticClass: 'news-img',
-                  style: { backgroundImage: 'url(' + e.backgroundImage + ')' },
-                }),
-                e._v(' '),
-                e.img_count > 0
-                  ? t('div', { staticClass: 'img-count' }, [
-                      e._v('\n      ' + e._s(e.img_count) + '\n    '),
-                    ])
-                  : e._e(),
-              ]),
-              e._v(' '),
-              t('div', { staticClass: 'news-info' }, [
-                t('div', { staticClass: 'left media-mark' }, [
-                  e._v('爱速搭 · 低代码平台'),
-                ]),
-                e._v(' '),
-                e.comment_count && 0 != e.comment_count
-                  ? t('div', { staticClass: 'cmt-num right' }, [
-                      e._v(
-                        '\n      ' +
-                          e._s(e.agreeDataFormat(e.comment_count)) +
-                          '评\n    ',
-                      ),
-                    ])
-                  : e._e(),
-              ]),
-            ]);
-          };
-        t._withStripped = !0;
-        var i = {
-          props: {
-            title: {
-              type: String,
-              default:
-                'amis 是一个低代码前端框架，它使用 JSON 配置来生成页面，可以减少页面开发工作量，极大提升效率。',
-            },
-            backgroundImage: {
-              type: String,
-              default:
-                'https://search-operate.cdn.bcebos.com/64c279f23794a831f9a8e7a4e0b722dd.jpg',
-            },
-            img_count: { type: Number, default: 3 },
-            comment_count: { type: Number, default: 2021 },
-          },
-          data: function () {
-            return { isAlive: !0, isFirstVisit: !0 };
-          },
-          mounted: function () {
-            this.isFirstVisit = !1;
-          },
-          activated: function () {
-            this.isAlive = !0;
-          },
-          deactivated: function () {
-            this.isAlive = !1;
-          },
-          methods: {
-            agreeDataFormat: function (e) {
-              return e && e <= 9999
-                ? e
-                : e && e > 9999
-                ? Math.floor(e / 1e3) / 10 + 'w'
-                : void 0;
-            },
-            doAction: function (e, t) {
-              'message' === (e ? e.actionType : '')
-                ? alert('您触发了自定义组件的事件动作[message]')
-                : console.log(
-                    '自定义组件中监听到的事件动作：',
-                    e,
-                    ', 事件参数：',
-                    t,
-                  );
-            },
-          },
-        };
-        n(176);
-        var o = (function (e, t, n, r, i, o, s, a) {
-            var c,
-              u = 'function' == typeof e ? e.options : e;
-            if (
-              (t &&
-                ((u.render = t), (u.staticRenderFns = []), (u._compiled = !0)),
-              o && (u._scopeId = 'data-v-' + o),
-              c)
-            )
-              if (u.functional) {
-                u._injectStyles = c;
-                var d = u.render;
-                u.render = function (e, t) {
-                  return c.call(t), d(e, t);
-                };
-              } else {
-                var f = u.beforeCreate;
-                u.beforeCreate = f ? [].concat(f, c) : [c];
-              }
-            return { exports: e, options: u };
-          })(i, t, 0, 0, 0, '6f393cf2'),
-          s = o.exports;
-        (0, e.registerRendererByType)(s, {
+        s.r(o);
+        var e = s('amis-widget'),
+          t = s('./src/vue-widget/info-card.vue');
+        (0, e.registerRendererByType)(t.default, {
           type: 'vue-info-card',
           usage: 'renderer',
           weight: 99,
           framework: 'vue',
         });
       })(),
-      r
+      o
     );
   })();
 });
