@@ -61,14 +61,14 @@
     "url": "https://github.com/aisuda/vue2-amis-custom-widget/issues"
   },
   "dependencies": {
-    "amis-widget": "^3.1.0",
+    "amis-widget": "^3.2.0",
     "vue": "^2.6.14",
     "element-ui": "^2.15.12"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^9.1.1",
-    "amis-widget-cli": "^3.1.0",
+    "amis-widget-cli": "^3.1.11",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "prettier": "^2.0.5",

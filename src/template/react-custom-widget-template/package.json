@@ -61,14 +61,14 @@
     "url": "https://github.com/aisuda/react-custom-widget-template/issues"
   },
   "dependencies": {
-    "amis-widget": "^3.1.0",
+    "amis-widget": "^3.2.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^9.1.1",
-    "amis-widget-cli": "^3.1.0",
+    "amis-widget-cli": "^3.1.11",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "prettier": "^2.0.5"

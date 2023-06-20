@@ -1,6 +1,6 @@
 {
   "name": "amis-widget-cli",
-  "version": "3.1.10",
+  "version": "3.1.12",
   "description": "前端脚手架：amis自定义组件开发工具，支持vue2.0技术栈。",
   "keywords": [
     "amis自定义组件",
