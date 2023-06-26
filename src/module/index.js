@@ -138,8 +138,8 @@ let argv = yargs
           },
           {
             name: 'uview版自定义组件(aipage-editor专用)',
-            value: 'uview-custom-widget',
-            short: 'uview-custom-widget'
+            value: 'uview-custom-form',
+            short: 'uview-custom-form'
           },
           {
             name: 'vue3自定义组件(aipage-editor专用)',

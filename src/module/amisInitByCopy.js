@@ -14,6 +14,7 @@ const templateList = {
   'uniapp-aipage-widget': path.resolve(__dirname, '../template/uni-custom-widget-template'),
   'uniapp-h5-aipage-widget': path.resolve(__dirname, '../template/uni-h5-custom-widget-template'),
   'uview-custom-widget': path.resolve(__dirname, '../template/uview-custom-widget'),
+  'uview-custom-form': path.resolve(__dirname, '../template/uview-custom-form'),
   'uchart-custom-widget': path.resolve(__dirname, '../template/uchart-custom-widget'),
   'lottery-custom-widget': path.resolve(__dirname, '../template/lottery-custom-widget'),
   'vue3-aipage-widget': path.resolve(__dirname, '../template/vue3-aipage-custom-widget-template'),
