@@ -1,6 +1,6 @@
 # AMIS 前端脚手架
-> amis-widget-cli 用于开发amis自定义组件的脚手架，其核心是基于AKFun现有的工程能力，为用户提供组件模板下载、编译、预览、多技术栈支持等功能。
-（AKFun是一个基于 Webpack 和 rollup 的前端多场景打包工具，支持多种技术栈：Vue技术栈、React技术栈、React&TS技术栈。）
+> amis-widget-cli 用于开发amis自定义组件的脚手架，其核心是基于[AKFun](https://github.com/wibetter/akfun)现有的工程能力，为用户提供组件模板下载、编译、预览、多技术栈支持等功能。
+（[AKFun](https://github.com/wibetter/akfun)是一个基于 Webpack 和 rollup 的前端多场景打包工具，支持多种技术栈：Vue技术栈、React技术栈、React&TS技术栈。）
 
 ## 特性
 - ⚡️ 零配置，开箱即用
