@@ -104,6 +104,11 @@ let argv = yargs
             short: 'multiple'
           },
           {
+            name: '国际化版amis自定义组件（amis-editor专用）',
+            value: 'i18n-react-amis',
+            short: 'i18n-react-amis'
+          },
+          {
             name: 'react自定义容器类组件(amis-editor专用)',
             value: 'react-container',
             short: 'react-container'

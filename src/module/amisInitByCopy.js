@@ -9,6 +9,7 @@ const templateList = {
   'vue2-amis': path.resolve(__dirname, '../template/vue2-amis-custom-widget'),
   'vue3-amis': path.resolve(__dirname, '../template/vue3-amis-custom-widget'),
   multiple: path.resolve(__dirname, '../template/multiple-custom-widget-template'),
+  'i18n-react-amis': path.resolve(__dirname, '../template/i18n-react-custom-widget-template'),
   'react-container': path.resolve(__dirname, '../template/container-custom-widget-template'),
   'vue-container': path.resolve(__dirname, '../template/vue-container-custom-widget-template'),
   'uniapp-aipage-widget': path.resolve(__dirname, '../template/uni-custom-widget-template'),
