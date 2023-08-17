@@ -1,7 +1,18 @@
 import * as React from 'react';
+// import {useState, useRef} from 'react';
 import cx from 'classnames';
 import { getClasses } from 'vue3-aipage-widget';
 import './style.scss'; // 组件内容样式
+
+/*
+function HooksTest() {
+  const ref = useRef(0);
+  const [show, setShow] = useState(false);
+  return (
+    <div>test hooks</div>
+  );
+}
+*/
 
 export default class InfoCard extends React.PureComponent {
   constructor() {
@@ -39,7 +50,7 @@ export default class InfoCard extends React.PureComponent {
           {img_count > 0 && <div className="img-count">{img_count}</div>}
         </div>
         <div className="news-info">
-          <div className="left media-mark">爱速搭 · 低代码平台</div>
+          <div className="left media-mark">爱速搭 · 低代码平台 @wibetter</div>
           <div className="cmt-num right">
             {this.agreeDataFormat(comment_count) || 0} 评
           </div>

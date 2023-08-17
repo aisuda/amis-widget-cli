@@ -1,6 +1,6 @@
 {
   "name": "vue3-aipage-custom-widget-template",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "aipage-editor H5自定义组件模板（vue3、react）",
   "keywords": [
     "自定义组件模板",
@@ -82,14 +82,14 @@
     "url": "https://github.com/aisuda/vue3-aipage-custom-widget-template/issues"
   },
   "dependencies": {
-    "vue3-aipage-widget": "^1.2.3",
+    "vue3-aipage-widget": "^1.2.8",
     "react": "^16.8.6",
     "vue": "^3.2.33"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^9.1.1",
-    "@wibetter/amis-widget-cli": "^3.1.0",
+    "@wibetter/amis-widget-cli": "^3.1.10",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "prettier": "^2.0.5"

@@ -127,6 +127,11 @@ let argv = yargs
             short: 'uniapp-aipage-widget'
           },
           {
+            name: 'uview版自定义组件(aipage-editor专用)',
+            value: 'uview-custom-form',
+            short: 'uview-custom-form'
+          },
+          {
             name: 'uniapp+H5版组件模板(aipage-editor专用)',
             value: 'uniapp-h5-aipage-widget',
             short: 'uniapp-h5-aipage-widget'
@@ -140,11 +145,6 @@ let argv = yargs
             name: '抽奖组件(aipage-editor专用，uniapp+H5版)',
             value: 'lottery-custom-widget',
             short: 'lottery-custom-widget'
-          },
-          {
-            name: 'uview版自定义组件(aipage-editor专用)',
-            value: 'uview-custom-form',
-            short: 'uview-custom-form'
           },
           {
             name: 'vue3自定义组件(aipage-editor专用)',

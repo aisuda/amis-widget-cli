@@ -10,33 +10,33 @@
 })(this, function () {
   return (function () {
     var e = {
-        492: function () {},
-        468: function (e, t, r) {
-          var n = r(492);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, r(346).Z)('5193891b', n, !1, { sourceMap: !1 });
+        75: function () {},
+        195: function (e, t, n) {
+          var r = n(75);
+          r.__esModule && (r = r.default),
+            'string' == typeof r && (r = [[e.id, r, '']]),
+            r.locals && (e.exports = r.locals),
+            (0, n(346).Z)('93fb3e70', r, !1, { sourceMap: !1 });
         },
-        346: function (e, t, r) {
+        346: function (e, t, n) {
           'use strict';
-          function n(e, t) {
-            for (var r = [], n = {}, i = 0; i < t.length; i++) {
+          function r(e, t) {
+            for (var n = [], r = {}, i = 0; i < t.length; i++) {
               var a = t[i],
-                o = a[0],
-                s = {
+                s = a[0],
+                o = {
                   id: e + ':' + i,
                   css: a[1],
                   media: a[2],
                   sourceMap: a[3],
                 };
-              n[o]
-                ? n[o].parts.push(s)
-                : r.push((n[o] = { id: o, parts: [s] }));
+              r[s]
+                ? r[s].parts.push(o)
+                : n.push((r[s] = { id: s, parts: [o] }));
             }
-            return r;
+            return n;
           }
-          r.d(t, {
+          n.d(t, {
             Z: function () {
               return v;
             },
@@ -47,143 +47,143 @@
               "vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.",
             );
           var a = {},
-            o =
+            s =
               i && (document.head || document.getElementsByTagName('head')[0]),
-            s = null,
+            o = null,
             u = 0,
-            c = !1,
-            d = function () {},
-            l = null,
-            f = 'data-vue-ssr-id',
-            p =
+            l = !1,
+            c = function () {},
+            d = null,
+            m = 'data-vue-ssr-id',
+            f =
               'undefined' != typeof navigator &&
               /msie [6-9]\b/.test(navigator.userAgent.toLowerCase());
-          function v(e, t, r, i) {
-            (c = r), (l = i || {});
-            var o = n(e, t);
+          function v(e, t, n, i) {
+            (l = n), (d = i || {});
+            var s = r(e, t);
             return (
-              m(o),
+              p(s),
               function (t) {
-                for (var r = [], i = 0; i < o.length; i++) {
-                  var s = o[i];
-                  (u = a[s.id]).refs--, r.push(u);
+                for (var n = [], i = 0; i < s.length; i++) {
+                  var o = s[i];
+                  (u = a[o.id]).refs--, n.push(u);
                 }
                 for (
-                  t ? m((o = n(e, t))) : (o = []), i = 0;
-                  i < r.length;
+                  t ? p((s = r(e, t))) : (s = []), i = 0;
+                  i < n.length;
                   i++
                 ) {
                   var u;
-                  if (0 === (u = r[i]).refs) {
-                    for (var c = 0; c < u.parts.length; c++) u.parts[c]();
+                  if (0 === (u = n[i]).refs) {
+                    for (var l = 0; l < u.parts.length; l++) u.parts[l]();
                     delete a[u.id];
                   }
                 }
               }
             );
           }
-          function m(e) {
+          function p(e) {
             for (var t = 0; t < e.length; t++) {
-              var r = e[t],
-                n = a[r.id];
-              if (n) {
-                n.refs++;
-                for (var i = 0; i < n.parts.length; i++) n.parts[i](r.parts[i]);
-                for (; i < r.parts.length; i++) n.parts.push(h(r.parts[i]));
-                n.parts.length > r.parts.length &&
-                  (n.parts.length = r.parts.length);
+              var n = e[t],
+                r = a[n.id];
+              if (r) {
+                r.refs++;
+                for (var i = 0; i < r.parts.length; i++) r.parts[i](n.parts[i]);
+                for (; i < n.parts.length; i++) r.parts.push(_(n.parts[i]));
+                r.parts.length > n.parts.length &&
+                  (r.parts.length = n.parts.length);
               } else {
-                var o = [];
-                for (i = 0; i < r.parts.length; i++) o.push(h(r.parts[i]));
-                a[r.id] = { id: r.id, refs: 1, parts: o };
+                var s = [];
+                for (i = 0; i < n.parts.length; i++) s.push(_(n.parts[i]));
+                a[n.id] = { id: n.id, refs: 1, parts: s };
               }
             }
           }
-          function g() {
+          function h() {
             var e = document.createElement('style');
-            return (e.type = 'text/css'), o.appendChild(e), e;
+            return (e.type = 'text/css'), s.appendChild(e), e;
           }
-          function h(e) {
+          function _(e) {
             var t,
-              r,
-              n = document.querySelector('style[' + f + '~="' + e.id + '"]');
-            if (n) {
-              if (c) return d;
-              n.parentNode.removeChild(n);
+              n,
+              r = document.querySelector('style[' + m + '~="' + e.id + '"]');
+            if (r) {
+              if (l) return c;
+              r.parentNode.removeChild(r);
             }
-            if (p) {
+            if (f) {
               var i = u++;
-              (n = s || (s = g())),
-                (t = _.bind(null, n, i, !1)),
-                (r = _.bind(null, n, i, !0));
+              (r = o || (o = h())),
+                (t = y.bind(null, r, i, !1)),
+                (n = y.bind(null, r, i, !0));
             } else
-              (n = g()),
-                (t = C.bind(null, n)),
-                (r = function () {
-                  n.parentNode.removeChild(n);
+              (r = h()),
+                (t = C.bind(null, r)),
+                (n = function () {
+                  r.parentNode.removeChild(r);
                 });
             return (
               t(e),
-              function (n) {
-                if (n) {
+              function (r) {
+                if (r) {
                   if (
-                    n.css === e.css &&
-                    n.media === e.media &&
-                    n.sourceMap === e.sourceMap
+                    r.css === e.css &&
+                    r.media === e.media &&
+                    r.sourceMap === e.sourceMap
                   )
                     return;
-                  t((e = n));
-                } else r();
+                  t((e = r));
+                } else n();
               }
             );
           }
-          var b,
-            y =
-              ((b = []),
+          var g,
+            b =
+              ((g = []),
               function (e, t) {
-                return (b[e] = t), b.filter(Boolean).join('\n');
+                return (g[e] = t), g.filter(Boolean).join('\n');
               });
-          function _(e, t, r, n) {
-            var i = r ? '' : n.css;
-            if (e.styleSheet) e.styleSheet.cssText = y(t, i);
+          function y(e, t, n, r) {
+            var i = n ? '' : r.css;
+            if (e.styleSheet) e.styleSheet.cssText = b(t, i);
             else {
               var a = document.createTextNode(i),
-                o = e.childNodes;
-              o[t] && e.removeChild(o[t]),
-                o.length ? e.insertBefore(a, o[t]) : e.appendChild(a);
+                s = e.childNodes;
+              s[t] && e.removeChild(s[t]),
+                s.length ? e.insertBefore(a, s[t]) : e.appendChild(a);
             }
           }
           function C(e, t) {
-            var r = t.css,
-              n = t.media,
+            var n = t.css,
+              r = t.media,
               i = t.sourceMap;
             if (
-              (n && e.setAttribute('media', n),
-              l.ssrId && e.setAttribute(f, t.id),
+              (r && e.setAttribute('media', r),
+              d.ssrId && e.setAttribute(m, t.id),
               i &&
-                ((r += '\n/*# sourceURL=' + i.sources[0] + ' */'),
-                (r +=
+                ((n += '\n/*# sourceURL=' + i.sources[0] + ' */'),
+                (n +=
                   '\n/*# sourceMappingURL=data:application/json;base64,' +
                   btoa(unescape(encodeURIComponent(JSON.stringify(i)))) +
                   ' */')),
               e.styleSheet)
             )
-              e.styleSheet.cssText = r;
+              e.styleSheet.cssText = n;
             else {
               for (; e.firstChild; ) e.removeChild(e.firstChild);
-              e.appendChild(document.createTextNode(r));
+              e.appendChild(document.createTextNode(n));
             }
           }
         },
       },
       t = {};
-    function r(n) {
-      var i = t[n];
+    function n(r) {
+      var i = t[r];
       if (void 0 !== i) return i.exports;
-      var a = (t[n] = { id: n, exports: {} });
-      return e[n](a, a.exports, r), a.exports;
+      var a = (t[r] = { id: r, exports: {} });
+      return e[r](a, a.exports, n), a.exports;
     }
-    (r.n = function (e) {
+    (n.n = function (e) {
       var t =
         e && e.__esModule
           ? function () {
@@ -192,86 +192,217 @@
           : function () {
               return e;
             };
-      return r.d(t, { a: t }), t;
+      return n.d(t, { a: t }), t;
     }),
-      (r.d = function (e, t) {
-        for (var n in t)
-          r.o(t, n) &&
-            !r.o(e, n) &&
-            Object.defineProperty(e, n, { enumerable: !0, get: t[n] });
+      (n.d = function (e, t) {
+        for (var r in t)
+          n.o(t, r) &&
+            !n.o(e, r) &&
+            Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
       }),
-      (r.o = function (e, t) {
+      (n.o = function (e, t) {
         return Object.prototype.hasOwnProperty.call(e, t);
       }),
-      (r.r = function (e) {
+      (n.r = function (e) {
         'undefined' != typeof Symbol &&
           Symbol.toStringTag &&
           Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
           Object.defineProperty(e, '__esModule', { value: !0 });
       });
-    var n = {};
+    var r = {};
     return (
       (function () {
         'use strict';
-        r.r(n);
+        n.r(r);
         var e = function () {
           var e = this,
             t = e._self._c;
-          return t(
-            'div',
-            { staticClass: 'news-card' },
-            [
-              t('div', { staticClass: 'news-title' }, [
-                e._v('\n    ' + e._s(e.title) + '\n  '),
-              ]),
-              e._v(' '),
-              t('div', { staticClass: 'item-imgbox' }, [
-                t('div', {
-                  staticClass: 'news-img',
-                  style: { backgroundImage: 'url(' + e.backgroundImage + ')' },
-                }),
-                e._v(' '),
-                e.img_count > 0
-                  ? t('div', { staticClass: 'img-count' }, [
-                      e._v('\n      ' + e._s(e.img_count) + '\n    '),
-                    ])
-                  : e._e(),
-              ]),
-              e._v(' '),
-              t('div', { staticClass: 'news-info' }, [
-                t('div', { staticClass: 'left media-mark' }, [
-                  e._v('爱速搭 · 低代码平台'),
+          return t('div', [
+            t(
+              'div',
+              { staticClass: 'news-card' },
+              [
+                t('div', { staticClass: 'news-title' }, [
+                  e._v('\n      ' + e._s(e.title) + '\n    '),
                 ]),
                 e._v(' '),
-                e.comment_count && 0 != e.comment_count
-                  ? t('div', { staticClass: 'cmt-num right' }, [
-                      e._v(
-                        '\n      ' +
-                          e._s(e.agreeDataFormat(e.comment_count)) +
-                          '评\n    ',
-                      ),
-                    ])
-                  : e._e(),
-              ]),
-              e._v(' '),
-              t('rate', {
-                model: {
-                  value: e.rateVal,
-                  callback: function (t) {
-                    e.rateVal = t;
+                t('div', { staticClass: 'item-imgbox' }, [
+                  t('div', {
+                    staticClass: 'news-img',
+                    style: {
+                      backgroundImage: 'url(' + e.backgroundImage + ')',
+                    },
+                  }),
+                  e._v(' '),
+                  e.img_count > 0
+                    ? t('div', { staticClass: 'img-count' }, [
+                        e._v('\n        ' + e._s(e.img_count) + '\n      '),
+                      ])
+                    : e._e(),
+                ]),
+                e._v(' '),
+                t('div', { staticClass: 'news-info' }, [
+                  t('div', { staticClass: 'left media-mark' }, [
+                    e._v('爱速搭 · 低代码平台'),
+                  ]),
+                  e._v(' '),
+                  e.comment_count && 0 != e.comment_count
+                    ? t('div', { staticClass: 'cmt-num right' }, [
+                        e._v(
+                          '\n        ' +
+                            e._s(e.agreeDataFormat(e.comment_count)) +
+                            '评\n      ',
+                        ),
+                      ])
+                    : e._e(),
+                ]),
+                e._v(' '),
+                t('rate', {
+                  model: {
+                    value: e.rateVal,
+                    callback: function (t) {
+                      e.rateVal = t;
+                    },
+                    expression: 'rateVal',
                   },
-                  expression: 'rateVal',
-                },
-              }),
-            ],
-            1,
-          );
+                }),
+              ],
+              1,
+            ),
+            e._v(' '),
+            t(
+              'div',
+              { staticClass: 'demo2' },
+              [
+                t(
+                  'Link',
+                  {
+                    attrs: {
+                      href: 'https://element.eleme.io',
+                      target: '_blank',
+                    },
+                  },
+                  [e._v('默认链接')],
+                ),
+                e._v(' '),
+                t('Link', { attrs: { type: 'primary' } }, [e._v('主要链接')]),
+                e._v(' '),
+                t('Link', { attrs: { type: 'success' } }, [e._v('成功链接')]),
+                e._v(' '),
+                t('Link', { attrs: { type: 'warning' } }, [e._v('警告链接')]),
+                e._v(' '),
+                t('Link', { attrs: { type: 'danger' } }, [e._v('危险链接')]),
+                e._v(' '),
+                t('Link', { attrs: { type: 'info' } }, [e._v('信息链接')]),
+              ],
+              1,
+            ),
+            e._v(' '),
+            t(
+              'div',
+              { staticClass: 'demo3' },
+              [
+                t(
+                  'Menu',
+                  {
+                    staticClass: 'el-menu-vertical-demo',
+                    attrs: { 'default-active': '2' },
+                    on: { open: e.handleOpen, close: e.handleClose },
+                  },
+                  [
+                    t(
+                      'Submenu',
+                      { attrs: { index: '1' } },
+                      [
+                        t('template', { slot: 'title' }, [
+                          t('i', { staticClass: 'el-icon-location' }),
+                          e._v(' '),
+                          t('span', [e._v('导航一')]),
+                        ]),
+                        e._v(' '),
+                        t(
+                          'MenuItemGroup',
+                          [
+                            t('template', { slot: 'title' }, [e._v('分组一')]),
+                            e._v(' '),
+                            t('MenuItem', { attrs: { index: '1-1' } }, [
+                              e._v('选项1'),
+                            ]),
+                            e._v(' '),
+                            t('MenuItem', { attrs: { index: '1-2' } }, [
+                              e._v('选项2'),
+                            ]),
+                          ],
+                          2,
+                        ),
+                        e._v(' '),
+                        t(
+                          'MenuItemGroup',
+                          { attrs: { title: '分组2' } },
+                          [
+                            t('MenuItem', { attrs: { index: '1-3' } }, [
+                              e._v('选项3'),
+                            ]),
+                          ],
+                          1,
+                        ),
+                        e._v(' '),
+                        t(
+                          'Submenu',
+                          { attrs: { index: '1-4' } },
+                          [
+                            t('template', { slot: 'title' }, [e._v('选项4')]),
+                            e._v(' '),
+                            t('MenuItem', { attrs: { index: '1-4-1' } }, [
+                              e._v('选项1'),
+                            ]),
+                          ],
+                          2,
+                        ),
+                      ],
+                      2,
+                    ),
+                    e._v(' '),
+                    t('MenuItem', { attrs: { index: '2' } }, [
+                      t('i', { staticClass: 'el-icon-menu' }),
+                      e._v(' '),
+                      t('span', { attrs: { slot: 'title' }, slot: 'title' }, [
+                        e._v('导航二'),
+                      ]),
+                    ]),
+                  ],
+                  1,
+                ),
+              ],
+              1,
+            ),
+          ]);
         };
         (e._withStripped = !0),
-          require('element-ui/lib/theme-chalk/rate.css'),
+          require('element-ui/lib/theme-chalk/menu-item-group.css'),
           require('element-ui/lib/theme-chalk/base.css');
-        var t = require('element-ui/lib/rate'),
-          i = {
+        var t = require('element-ui/lib/menu-item-group'),
+          i = n.n(t),
+          a =
+            (require('element-ui/lib/theme-chalk/menu-item.css'),
+            require('element-ui/lib/menu-item')),
+          s = n.n(a),
+          o =
+            (require('element-ui/lib/theme-chalk/submenu.css'),
+            require('element-ui/lib/submenu')),
+          u = n.n(o),
+          l =
+            (require('element-ui/lib/theme-chalk/menu.css'),
+            require('element-ui/lib/menu')),
+          c = n.n(l),
+          d =
+            (require('element-ui/lib/theme-chalk/link.css'),
+            require('element-ui/lib/link')),
+          m = n.n(d),
+          f =
+            (require('element-ui/lib/theme-chalk/rate.css'),
+            require('element-ui/lib/rate')),
+          v = {
             props: {
               title: {
                 type: String,
@@ -289,7 +420,14 @@
             data: function () {
               return { isAlive: !0, isFirstVisit: !0, rateVal: 3 };
             },
-            components: { Rate: r.n(t)() },
+            components: {
+              Rate: n.n(f)(),
+              Link: m(),
+              Menu: c(),
+              Submenu: u(),
+              MenuItem: s(),
+              MenuItemGroup: i(),
+            },
             mounted: function () {
               this.isFirstVisit = !1;
             },
@@ -309,36 +447,36 @@
               },
             },
           };
-        r(468);
-        var a = (function (e, t, r, n, i, a, o, s) {
+        n(195);
+        var p = (function (e, t, n, r, i, a, s, o) {
             var u,
-              c = 'function' == typeof e ? e.options : e;
+              l = 'function' == typeof e ? e.options : e;
             if (
               (t &&
-                ((c.render = t), (c.staticRenderFns = []), (c._compiled = !0)),
+                ((l.render = t), (l.staticRenderFns = []), (l._compiled = !0)),
               u)
             )
-              if (c.functional) {
-                c._injectStyles = u;
-                var d = c.render;
-                c.render = function (e, t) {
-                  return u.call(t), d(e, t);
+              if (l.functional) {
+                l._injectStyles = u;
+                var c = l.render;
+                l.render = function (e, t) {
+                  return u.call(t), c(e, t);
                 };
               } else {
-                var l = c.beforeCreate;
-                c.beforeCreate = l ? [].concat(l, u) : [u];
+                var d = l.beforeCreate;
+                l.beforeCreate = d ? [].concat(d, u) : [u];
               }
-            return { exports: e, options: c };
-          })(i, e),
-          o = a.exports;
-        (0, require('amis-widget').registerRendererByType)(o, {
+            return { exports: e, options: l };
+          })(v, e),
+          h = p.exports;
+        (0, require('amis-widget').registerRendererByType)(h, {
           type: 'vue-info-card',
           usage: 'renderer',
           weight: 99,
           framework: 'vue',
         });
       })(),
-      n
+      r
     );
   })();
 });
