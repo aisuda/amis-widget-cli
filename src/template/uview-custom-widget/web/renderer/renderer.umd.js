@@ -1,11 +1,25 @@
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) =>
+  key in obj
+    ? __defProp(obj, key, {
+        enumerable: true,
+        configurable: true,
+        writable: true,
+        value,
+      })
+    : (obj[key] = value);
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== 'symbol' ? key + '' : key, value);
+  return value;
+};
 (function (global2, factory) {
   typeof exports === 'object' && typeof module !== 'undefined'
-    ? (module.exports = factory(require('react'), require('vue')))
+    ? factory(require('react'), require('vue'))
     : typeof define === 'function' && define.amd
     ? define(['react', 'vue'], factory)
     : ((global2 =
         typeof globalThis !== 'undefined' ? globalThis : global2 || self),
-      (global2.plugin = factory(global2.react, global2.vue)));
+      factory(global2.react, global2.vue));
 })(this, function (React, vue) {
   var _a;
   ('use strict');
@@ -19,22 +33,30 @@
       : typeof self !== 'undefined'
       ? self
       : {};
-  function isObject$6(value) {
+  function getDefaultExportFromCjs$1(x) {
+    return x &&
+      x.__esModule &&
+      Object.prototype.hasOwnProperty.call(x, 'default')
+      ? x['default']
+      : x;
+  }
+  function isObject$9(value) {
     var type = typeof value;
     return value != null && (type == 'object' || type == 'function');
   }
-  var isObject_1 = isObject$6;
+  var isObject_1 = isObject$9;
+  const isObject$1$1 = /* @__PURE__ */ getDefaultExportFromCjs$1(isObject_1);
   window.uni || (window.uni = {});
   const toast$1 = '';
   const extend = Object.assign;
-  const hasOwnProperty$7 = Object.prototype.hasOwnProperty;
-  const hasOwn$1 = (val, key) => hasOwnProperty$7.call(val, key);
-  const isArray$7 = Array.isArray;
-  const isFunction$2 = (val) => typeof val === 'function';
-  const isString = (val) => typeof val === 'string';
-  const isObject$5 = (val) => val !== null && typeof val === 'object';
+  const hasOwnProperty$b = Object.prototype.hasOwnProperty;
+  const hasOwn$1 = (val, key) => hasOwnProperty$b.call(val, key);
+  const isArray$a = Array.isArray;
+  const isFunction$3 = (val) => typeof val === 'function';
+  const isString$1 = (val) => typeof val === 'string';
+  const isObject$8 = (val) => val !== null && typeof val === 'object';
   const isPromise = (val) => {
-    return isObject$5(val) && isFunction$2(val.then) && isFunction$2(val.catch);
+    return isObject$8(val) && isFunction$3(val.then) && isFunction$3(val.catch);
   };
   const objectToString$2 = Object.prototype.toString;
   const toTypeString = (value) => objectToString$2.call(value);
@@ -48,6 +70,15 @@
   const ON_UNLOAD = 'onUnload';
   const ON_BACK_PRESS = 'onBackPress';
   const ON_NAVIGATION_BAR_CHANGE = 'onNavigationBarChange';
+  function isComponentInternalInstance(vm) {
+    return !!vm.appContext;
+  }
+  function resolveComponentInstance(instance) {
+    return (
+      instance &&
+      (isComponentInternalInstance(instance) ? instance.proxy : instance)
+    );
+  }
   function getLen(str = '') {
     return ('' + str).replace(/[^\x00-\xff]/g, '**').length;
   }
@@ -77,6 +108,26 @@
       return res;
     };
   }
+  function callOptions(options, data) {
+    options = options || {};
+    if (isString$1(data)) {
+      data = {
+        errMsg: data,
+      };
+    }
+    if (/:ok$/.test(data.errMsg)) {
+      if (isFunction$3(options.success)) {
+        options.success(data);
+      }
+    } else {
+      if (isFunction$3(options.fail)) {
+        options.fail(data);
+      }
+    }
+    if (isFunction$3(options.complete)) {
+      options.complete(data);
+    }
+  }
   function sortObject(obj) {
     let sortObj = {};
     if (isPlainObject(obj)) {
@@ -89,14 +140,26 @@
     }
     return !Object.keys(sortObj) ? obj : sortObj;
   }
+  function getCustomDataset(el) {
+    return extend({}, el.dataset, el.__uniDataset);
+  }
   function passive(passive2) {
     return { passive: passive2 };
   }
-  function decode(text) {
+  function normalizeTarget(el) {
+    const { id: id2, offsetTop, offsetLeft } = el;
+    return {
+      id: id2,
+      dataset: getCustomDataset(el),
+      offsetTop,
+      offsetLeft,
+    };
+  }
+  function decode(text2) {
     try {
-      return decodeURIComponent('' + text);
+      return decodeURIComponent('' + text2);
     } catch (err) {}
-    return '' + text;
+    return '' + text2;
   }
   const PLUS_RE = /\+/g;
   function parseQuery(search) {
@@ -111,7 +174,7 @@
       let value = eqPos < 0 ? null : decode(searchParam.slice(eqPos + 1));
       if (key in query) {
         let currentValue = query[key];
-        if (!isArray$7(currentValue)) {
+        if (!isArray$a(currentValue)) {
           currentValue = query[key] = [currentValue];
         }
         currentValue.push(value);
@@ -270,13 +333,13 @@
       styles[key] = (() => {
         if (isPlainObject(styleItem)) {
           return normalizeStyles(styleItem, themeConfig, mode);
-        } else if (isArray$7(styleItem)) {
+        } else if (isArray$a(styleItem)) {
           return styleItem.map((item) =>
             isPlainObject(item)
               ? normalizeStyles(item, themeConfig, mode)
               : item,
           );
-        } else if (isString(styleItem) && styleItem.startsWith('@')) {
+        } else if (isString$1(styleItem) && styleItem.startsWith('@')) {
           const _key = styleItem.replace('@', '');
           let _styleItem = modeStyle[_key] || styleItem;
           switch (key) {
@@ -294,7 +357,7 @@
     });
     return styles;
   }
-  const isObject$4 = (val) => val !== null && typeof val === 'object';
+  const isObject$7 = (val) => val !== null && typeof val === 'object';
   const defaultDelimiters = ['{', '}'];
   class BaseFormatter {
     constructor() {
@@ -317,14 +380,14 @@
   function parse(format, [startDelimiter, endDelimiter]) {
     const tokens = [];
     let position = 0;
-    let text = '';
+    let text2 = '';
     while (position < format.length) {
       let char = format[position++];
       if (char === startDelimiter) {
-        if (text) {
-          tokens.push({ type: 'text', value: text });
+        if (text2) {
+          tokens.push({ type: 'text', value: text2 });
         }
-        text = '';
+        text2 = '';
         let sub = '';
         char = format[position++];
         while (char !== void 0 && char !== endDelimiter) {
@@ -339,10 +402,10 @@
           : 'unknown';
         tokens.push({ value: sub, type });
       } else {
-        text += char;
+        text2 += char;
       }
     }
-    text && tokens.push({ type: 'text', value: text });
+    text2 && tokens.push({ type: 'text', value: text2 });
     return tokens;
   }
   function compile(tokens, values) {
@@ -350,7 +413,7 @@
     let index = 0;
     const mode = Array.isArray(values)
       ? 'list'
-      : isObject$4(values)
+      : isObject$7(values)
       ? 'named'
       : 'unknown';
     if (mode === 'unknown') {
@@ -380,8 +443,8 @@
   const LOCALE_EN = 'en';
   const LOCALE_FR = 'fr';
   const LOCALE_ES = 'es';
-  const hasOwnProperty$6 = Object.prototype.hasOwnProperty;
-  const hasOwn = (val, key) => hasOwnProperty$6.call(val, key);
+  const hasOwnProperty$a = Object.prototype.hasOwnProperty;
+  const hasOwn = (val, key) => hasOwnProperty$a.call(val, key);
   const defaultFormatter = new BaseFormatter();
   function include(str, parts) {
     return !!parts.find((part) => str.indexOf(part) !== -1);
@@ -625,19 +688,19 @@
     }
     return i18n;
   }
-  function normalizeMessages(module2, keys, values) {
-    return keys.reduce((res, name, index2) => {
+  function normalizeMessages(module2, keys2, values) {
+    return keys2.reduce((res, name, index2) => {
       res[module2 + name] = values[index2];
       return res;
     }, {});
   }
   const initI18nShowToastMsgsOnce = /* @__PURE__ */ once(() => {
     const name = 'uni.showToast.';
-    const keys = ['unpaired'];
+    const keys2 = ['unpaired'];
     {
       useI18n().add(
         LOCALE_EN,
-        normalizeMessages(name, keys, [
+        normalizeMessages(name, keys2, [
           'Please note showToast must be paired with hideToast',
         ]),
         false,
@@ -646,7 +709,7 @@
     {
       useI18n().add(
         LOCALE_ES,
-        normalizeMessages(name, keys, [
+        normalizeMessages(name, keys2, [
           'Tenga en cuenta que showToast debe estar emparejado con hideToast',
         ]),
         false,
@@ -655,7 +718,7 @@
     {
       useI18n().add(
         LOCALE_FR,
-        normalizeMessages(name, keys, [
+        normalizeMessages(name, keys2, [
           'Veuillez noter que showToast doit être associé à hideToast',
         ]),
         false,
@@ -664,7 +727,7 @@
     {
       useI18n().add(
         LOCALE_ZH_HANS,
-        normalizeMessages(name, keys, [
+        normalizeMessages(name, keys2, [
           '请注意 showToast 与 hideToast 必须配对使用',
         ]),
         false,
@@ -673,7 +736,7 @@
     {
       useI18n().add(
         LOCALE_ZH_HANT,
-        normalizeMessages(name, keys, [
+        normalizeMessages(name, keys2, [
           '請注意 showToast 與 hideToast 必須配對使用',
         ]),
         false,
@@ -682,11 +745,11 @@
   });
   const initI18nShowLoadingMsgsOnce = /* @__PURE__ */ once(() => {
     const name = 'uni.showLoading.';
-    const keys = ['unpaired'];
+    const keys2 = ['unpaired'];
     {
       useI18n().add(
         LOCALE_EN,
-        normalizeMessages(name, keys, [
+        normalizeMessages(name, keys2, [
           'Please note showLoading must be paired with hideLoading',
         ]),
         false,
@@ -695,7 +758,7 @@
     {
       useI18n().add(
         LOCALE_ES,
-        normalizeMessages(name, keys, [
+        normalizeMessages(name, keys2, [
           'Tenga en cuenta que showLoading debe estar emparejado con hideLoading',
         ]),
         false,
@@ -704,7 +767,7 @@
     {
       useI18n().add(
         LOCALE_FR,
-        normalizeMessages(name, keys, [
+        normalizeMessages(name, keys2, [
           'Veuillez noter que showLoading doit être associé à hideLoading',
         ]),
         false,
@@ -713,7 +776,7 @@
     {
       useI18n().add(
         LOCALE_ZH_HANS,
-        normalizeMessages(name, keys, [
+        normalizeMessages(name, keys2, [
           '请注意 showLoading 与 hideLoading 必须配对使用',
         ]),
         false,
@@ -722,7 +785,7 @@
     {
       useI18n().add(
         LOCALE_ZH_HANT,
-        normalizeMessages(name, keys, [
+        normalizeMessages(name, keys2, [
           '請注意 showLoading 與 hideLoading 必須配對使用',
         ]),
         false,
@@ -1025,6 +1088,19 @@
       ['width', 'height'],
     );
   }
+  function getPageIdByVm(instance2) {
+    const vm = resolveComponentInstance(instance2);
+    if (vm.$page) {
+      return vm.$page.id;
+    }
+    if (!vm.$) {
+      return;
+    }
+    {
+      const { $pageInstance } = vm.$;
+      return $pageInstance && $pageInstance.proxy.$page.id;
+    }
+  }
   function getCurrentPage() {
     const pages = getCurrentPages$1();
     const len = pages.length;
@@ -1068,7 +1144,7 @@
     return res;
   }
   function invokeHook(vm, name, args) {
-    if (isString(vm)) {
+    if (isString$1(vm)) {
       args = name;
       name = vm;
       vm = getCurrentPageVm();
@@ -1399,6 +1475,23 @@
       },
     };
   }
+  function useCustomEvent(ref2, emit2) {
+    return (name, evt, detail) => {
+      if (ref2.value) {
+        emit2(name, normalizeCustomEvent(name, evt, ref2.value, detail || {}));
+      }
+    };
+  }
+  function normalizeCustomEvent(name, domEvt, el, detail) {
+    const target = normalizeTarget(el);
+    return {
+      type: detail.type || name,
+      timeStamp: domEvt.timeStamp || 0,
+      target,
+      currentTarget: target,
+      detail,
+    };
+  }
   function addBase(filePath) {
     const { base: baseUrl } = __uniConfig.router;
     if (addLeadingSlash(filePath).indexOf(baseUrl) === 0) {
@@ -1483,6 +1576,178 @@
       windowWidth,
     };
   }
+  function operateVideoPlayer(videoId, pageId, type, data) {
+    UniServiceJSBridge$1.invokeViewMethod(
+      'video.' + videoId,
+      {
+        videoId,
+        type,
+        data,
+      },
+      pageId,
+    );
+  }
+  function operateMap(id2, pageId, type, data, operateMapCallback2) {
+    UniServiceJSBridge$1.invokeViewMethod(
+      'map.' + id2,
+      {
+        type,
+        data,
+      },
+      pageId,
+      operateMapCallback2,
+    );
+  }
+  function getRootInfo(fields2) {
+    const info = {};
+    if (fields2.id) {
+      info.id = '';
+    }
+    if (fields2.dataset) {
+      info.dataset = {};
+    }
+    if (fields2.rect) {
+      info.left = 0;
+      info.right = 0;
+      info.top = 0;
+      info.bottom = 0;
+    }
+    if (fields2.size) {
+      info.width = document.documentElement.clientWidth;
+      info.height = document.documentElement.clientHeight;
+    }
+    if (fields2.scrollOffset) {
+      const documentElement2 = document.documentElement;
+      const body = document.body;
+      info.scrollLeft = documentElement2.scrollLeft || body.scrollLeft || 0;
+      info.scrollTop = documentElement2.scrollTop || body.scrollTop || 0;
+      info.scrollHeight =
+        documentElement2.scrollHeight || body.scrollHeight || 0;
+      info.scrollWidth = documentElement2.scrollWidth || body.scrollWidth || 0;
+    }
+    return info;
+  }
+  function getNodeInfo(el, fields2) {
+    const info = {};
+    const { top, topWindowHeight } = getWindowOffset();
+    if (fields2.id) {
+      info.id = el.id;
+    }
+    if (fields2.dataset) {
+      info.dataset = getCustomDataset(el);
+    }
+    if (fields2.rect || fields2.size) {
+      const rect = el.getBoundingClientRect();
+      if (fields2.rect) {
+        info.left = rect.left;
+        info.right = rect.right;
+        info.top = rect.top - top - topWindowHeight;
+        info.bottom = rect.bottom - top - topWindowHeight;
+      }
+      if (fields2.size) {
+        info.width = rect.width;
+        info.height = rect.height;
+      }
+    }
+    if (isArray$a(fields2.properties)) {
+      fields2.properties.forEach((prop) => {
+        prop = prop.replace(/-([a-z])/g, function (e2, t2) {
+          return t2.toUpperCase();
+        });
+      });
+    }
+    if (fields2.scrollOffset) {
+      if (el.tagName === 'UNI-SCROLL-VIEW') {
+        const scroll = el.children[0].children[0];
+        info.scrollLeft = scroll.scrollLeft;
+        info.scrollTop = scroll.scrollTop;
+        info.scrollHeight = scroll.scrollHeight;
+        info.scrollWidth = scroll.scrollWidth;
+      } else {
+        info.scrollLeft = 0;
+        info.scrollTop = 0;
+        info.scrollHeight = 0;
+        info.scrollWidth = 0;
+      }
+    }
+    if (isArray$a(fields2.computedStyle)) {
+      const sytle = getComputedStyle(el);
+      fields2.computedStyle.forEach((name) => {
+        info[name] = sytle[name];
+      });
+    }
+    if (fields2.context) {
+      info.contextInfo = getContextInfo(el);
+    }
+    return info;
+  }
+  function findElm(component, pageVm) {
+    if (!component) {
+      return pageVm.$el;
+    }
+    return component.$el;
+  }
+  function matches(element, selectors) {
+    const matches2 =
+      element.matches ||
+      element.matchesSelector ||
+      element.mozMatchesSelector ||
+      element.msMatchesSelector ||
+      element.oMatchesSelector ||
+      element.webkitMatchesSelector ||
+      function (selectors2) {
+        const matches3 = this.parentElement.querySelectorAll(selectors2);
+        let i = matches3.length;
+        while (--i >= 0 && matches3.item(i) !== this) {}
+        return i > -1;
+      };
+    return matches2.call(element, selectors);
+  }
+  function getNodesInfo(pageVm, component, selector, single, fields2) {
+    const selfElement = findElm(component, pageVm);
+    const parentElement = selfElement.parentElement;
+    if (!parentElement) {
+      return single ? null : [];
+    }
+    const { nodeType } = selfElement;
+    const maybeFragment = nodeType === 3 || nodeType === 8;
+    if (single) {
+      const node = maybeFragment
+        ? parentElement.querySelector(selector)
+        : matches(selfElement, selector)
+        ? selfElement
+        : selfElement.querySelector(selector);
+      if (node) {
+        return getNodeInfo(node, fields2);
+      }
+      return null;
+    } else {
+      let infos = [];
+      const nodeList = (
+        maybeFragment ? parentElement : selfElement
+      ).querySelectorAll(selector);
+      if (nodeList && nodeList.length) {
+        [].forEach.call(nodeList, (node) => {
+          infos.push(getNodeInfo(node, fields2));
+        });
+      }
+      if (!maybeFragment && matches(selfElement, selector)) {
+        infos.unshift(getNodeInfo(selfElement, fields2));
+      }
+      return infos;
+    }
+  }
+  function requestComponentInfo(page, reqs, callback) {
+    const result = [];
+    reqs.forEach(({ component, selector, single, fields: fields2 }) => {
+      if (component === null) {
+        result.push(getRootInfo(fields2));
+      } else {
+        result.push(getNodesInfo(page, component, selector, single, fields2));
+      }
+    });
+    callback(result);
+  }
   const HTTP_METHODS = [
     'GET',
     'OPTIONS',
@@ -1538,7 +1803,7 @@
     const apiCallbacks = {};
     for (const name in args) {
       const fn = args[name];
-      if (isFunction$2(fn)) {
+      if (isFunction$3(fn)) {
         apiCallbacks[name] = tryCatch(fn);
         delete args[name];
       }
@@ -1560,16 +1825,16 @@
       args = {};
     }
     const { success, fail, complete } = getApiCallbacks(args);
-    const hasSuccess = isFunction$2(success);
-    const hasFail = isFunction$2(fail);
-    const hasComplete = isFunction$2(complete);
+    const hasSuccess = isFunction$3(success);
+    const hasFail = isFunction$3(fail);
+    const hasComplete = isFunction$3(complete);
     const callbackId = invokeCallbackId++;
     addInvokeCallback(callbackId, name, (res) => {
       res = res || {};
       res.errMsg = normalizeErrMsg$1(res.errMsg, name);
-      isFunction$2(beforeAll) && beforeAll(res);
+      isFunction$3(beforeAll) && beforeAll(res);
       if (res.errMsg === name + ':ok') {
-        isFunction$2(beforeSuccess) && beforeSuccess(res, args);
+        isFunction$3(beforeSuccess) && beforeSuccess(res, args);
         hasSuccess && success(res);
       } else {
         hasFail && fail(res);
@@ -1619,13 +1884,13 @@
   function wrapperOptions(interceptors2, options = {}) {
     [HOOK_SUCCESS, HOOK_FAIL, HOOK_COMPLETE].forEach((name) => {
       const hooks = interceptors2[name];
-      if (!isArray$7(hooks)) {
+      if (!isArray$a(hooks)) {
         return;
       }
       const oldCallback = options[name];
       options[name] = function callbackInterceptor(res) {
         queue(hooks, res, options).then((res2) => {
-          return (isFunction$2(oldCallback) && oldCallback(res2)) || res2;
+          return (isFunction$3(oldCallback) && oldCallback(res2)) || res2;
         });
       };
     });
@@ -1633,11 +1898,11 @@
   }
   function wrapperReturnValue(method, returnValue) {
     const returnValueHooks = [];
-    if (isArray$7(globalInterceptors.returnValue)) {
+    if (isArray$a(globalInterceptors.returnValue)) {
       returnValueHooks.push(...globalInterceptors.returnValue);
     }
     const interceptor = scopedInterceptors[method];
-    if (interceptor && isArray$7(interceptor.returnValue)) {
+    if (interceptor && isArray$a(interceptor.returnValue)) {
       returnValueHooks.push(...interceptor.returnValue);
     }
     returnValueHooks.forEach((hook) => {
@@ -1667,7 +1932,7 @@
   function invokeApi(method, api2, options, params) {
     const interceptor = getApiInterceptorHooks(method);
     if (interceptor && Object.keys(interceptor).length) {
-      if (isArray$7(interceptor.invoke)) {
+      if (isArray$a(interceptor.invoke)) {
         const res = queue(interceptor.invoke, options);
         return res.then((options2) => {
           return api2(
@@ -1684,7 +1949,7 @@
   function hasCallback(args) {
     if (
       isPlainObject(args) &&
-      [API_SUCCESS, API_FAIL, API_COMPLETE].find((cb) => isFunction$2(args[cb]))
+      [API_SUCCESS, API_FAIL, API_COMPLETE].find((cb) => isFunction$3(args[cb]))
     ) {
       return true;
     }
@@ -1722,13 +1987,13 @@
       return;
     }
     const formatArgs = options.formatArgs;
-    const keys = Object.keys(formatArgs);
-    for (let i = 0; i < keys.length; i++) {
-      const name = keys[i];
+    const keys2 = Object.keys(formatArgs);
+    for (let i = 0; i < keys2.length; i++) {
+      const name = keys2[i];
       const formatterOrDefaultValue = formatArgs[name];
-      if (isFunction$2(formatterOrDefaultValue)) {
+      if (isFunction$3(formatterOrDefaultValue)) {
         const errMsg = formatterOrDefaultValue(args[0][name], params);
-        if (isString(errMsg)) {
+        if (isString$1(errMsg)) {
           return errMsg;
         }
       } else {
@@ -1750,7 +2015,7 @@
   function beforeInvokeApi(name, args, protocol, options) {
     if (options && options.beforeInvoke) {
       const errMsg2 = options.beforeInvoke(args);
-      if (isString(errMsg2)) {
+      if (isString$1(errMsg2)) {
         return errMsg2;
       }
     }
@@ -1760,7 +2025,7 @@
     }
   }
   function normalizeErrMsg(errMsg) {
-    if (!errMsg || isString(errMsg)) {
+    if (!errMsg || isString$1(errMsg)) {
       return errMsg;
     }
     if (errMsg.stack) {
@@ -1866,6 +2131,923 @@
       return number2 < 0 ? -result : result;
     },
   );
+  const API_EMIT = '$emit';
+  const emitter = new E$1();
+  const $emit = /* @__PURE__ */ defineSyncApi(API_EMIT, (name, ...args) => {
+    emitter.emit(name, ...args);
+  });
+  const RATES = [0.5, 0.8, 1, 1.25, 1.5, 2];
+  class VideoContext {
+    constructor(id2, pageId) {
+      this.id = id2;
+      this.pageId = pageId;
+    }
+    play() {
+      operateVideoPlayer(this.id, this.pageId, 'play');
+    }
+    pause() {
+      operateVideoPlayer(this.id, this.pageId, 'pause');
+    }
+    stop() {
+      operateVideoPlayer(this.id, this.pageId, 'stop');
+    }
+    seek(position) {
+      operateVideoPlayer(this.id, this.pageId, 'seek', {
+        position,
+      });
+    }
+    sendDanmu(args) {
+      operateVideoPlayer(this.id, this.pageId, 'sendDanmu', args);
+    }
+    playbackRate(rate) {
+      if (!~RATES.indexOf(rate)) {
+        rate = 1;
+      }
+      operateVideoPlayer(this.id, this.pageId, 'playbackRate', {
+        rate,
+      });
+    }
+    requestFullScreen(args = {}) {
+      operateVideoPlayer(this.id, this.pageId, 'requestFullScreen', args);
+    }
+    exitFullScreen() {
+      operateVideoPlayer(this.id, this.pageId, 'exitFullScreen');
+    }
+    showStatusBar() {
+      operateVideoPlayer(this.id, this.pageId, 'showStatusBar');
+    }
+    hideStatusBar() {
+      operateVideoPlayer(this.id, this.pageId, 'hideStatusBar');
+    }
+  }
+  const operateMapCallback = (options, res) => {
+    const errMsg = res.errMsg || '';
+    if (new RegExp('\\:\\s*fail').test(errMsg)) {
+      options.fail && options.fail(res);
+    } else {
+      options.success && options.success(res);
+    }
+    options.complete && options.complete(res);
+  };
+  const operateMapWrap = (id2, pageId, type, options) => {
+    operateMap(id2, pageId, type, options, (res) => {
+      options && operateMapCallback(options, res);
+    });
+  };
+  class MapContext {
+    constructor(id2, pageId) {
+      this.id = id2;
+      this.pageId = pageId;
+    }
+    getCenterLocation(options) {
+      operateMapWrap(this.id, this.pageId, 'getCenterLocation', options);
+    }
+    moveToLocation(options) {
+      operateMapWrap(this.id, this.pageId, 'moveToLocation', options);
+    }
+    getScale(options) {
+      operateMapWrap(this.id, this.pageId, 'getScale', options);
+    }
+    getRegion(options) {
+      operateMapWrap(this.id, this.pageId, 'getRegion', options);
+    }
+    includePoints(options) {
+      operateMapWrap(this.id, this.pageId, 'includePoints', options);
+    }
+    translateMarker(options) {
+      operateMapWrap(this.id, this.pageId, 'translateMarker', options);
+    }
+    $getAppMap() {}
+    addCustomLayer(options) {
+      operateMapWrap(this.id, this.pageId, 'addCustomLayer', options);
+    }
+    removeCustomLayer(options) {
+      operateMapWrap(this.id, this.pageId, 'removeCustomLayer', options);
+    }
+    addGroundOverlay(options) {
+      operateMapWrap(this.id, this.pageId, 'addGroundOverlay', options);
+    }
+    removeGroundOverlay(options) {
+      operateMapWrap(this.id, this.pageId, 'removeGroundOverlay', options);
+    }
+    updateGroundOverlay(options) {
+      operateMapWrap(this.id, this.pageId, 'updateGroundOverlay', options);
+    }
+    initMarkerCluster(options) {
+      operateMapWrap(this.id, this.pageId, 'initMarkerCluster', options);
+    }
+    addMarkers(options) {
+      operateMapWrap(this.id, this.pageId, 'addMarkers', options);
+    }
+    removeMarkers(options) {
+      operateMapWrap(this.id, this.pageId, 'removeMarkers', options);
+    }
+    moveAlong(options) {
+      operateMapWrap(this.id, this.pageId, 'moveAlong', options);
+    }
+    setLocMarkerIcon(options) {
+      operateMapWrap(this.id, this.pageId, 'setLocMarkerIcon', options);
+    }
+    openMapApp(options) {
+      operateMapWrap(this.id, this.pageId, 'openMapApp', options);
+    }
+    on(options) {
+      operateMapWrap(this.id, this.pageId, 'on', options);
+    }
+  }
+  function operateCanvas(canvasId, pageId, type, data, callback) {
+    UniServiceJSBridge$1.invokeViewMethod(
+      `canvas.${canvasId}`,
+      {
+        type,
+        data,
+      },
+      pageId,
+      (data2) => {
+        if (callback) callback(data2);
+      },
+    );
+  }
+  function measureText(text2, font2) {
+    const canvas = document.createElement('canvas');
+    const c2d = canvas.getContext('2d');
+    c2d.font = font2;
+    return c2d.measureText(text2).width || 0;
+  }
+  const predefinedColor = {
+    aliceblue: '#f0f8ff',
+    antiquewhite: '#faebd7',
+    aqua: '#00ffff',
+    aquamarine: '#7fffd4',
+    azure: '#f0ffff',
+    beige: '#f5f5dc',
+    bisque: '#ffe4c4',
+    black: '#000000',
+    blanchedalmond: '#ffebcd',
+    blue: '#0000ff',
+    blueviolet: '#8a2be2',
+    brown: '#a52a2a',
+    burlywood: '#deb887',
+    cadetblue: '#5f9ea0',
+    chartreuse: '#7fff00',
+    chocolate: '#d2691e',
+    coral: '#ff7f50',
+    cornflowerblue: '#6495ed',
+    cornsilk: '#fff8dc',
+    crimson: '#dc143c',
+    cyan: '#00ffff',
+    darkblue: '#00008b',
+    darkcyan: '#008b8b',
+    darkgoldenrod: '#b8860b',
+    darkgray: '#a9a9a9',
+    darkgrey: '#a9a9a9',
+    darkgreen: '#006400',
+    darkkhaki: '#bdb76b',
+    darkmagenta: '#8b008b',
+    darkolivegreen: '#556b2f',
+    darkorange: '#ff8c00',
+    darkorchid: '#9932cc',
+    darkred: '#8b0000',
+    darksalmon: '#e9967a',
+    darkseagreen: '#8fbc8f',
+    darkslateblue: '#483d8b',
+    darkslategray: '#2f4f4f',
+    darkslategrey: '#2f4f4f',
+    darkturquoise: '#00ced1',
+    darkviolet: '#9400d3',
+    deeppink: '#ff1493',
+    deepskyblue: '#00bfff',
+    dimgray: '#696969',
+    dimgrey: '#696969',
+    dodgerblue: '#1e90ff',
+    firebrick: '#b22222',
+    floralwhite: '#fffaf0',
+    forestgreen: '#228b22',
+    fuchsia: '#ff00ff',
+    gainsboro: '#dcdcdc',
+    ghostwhite: '#f8f8ff',
+    gold: '#ffd700',
+    goldenrod: '#daa520',
+    gray: '#808080',
+    grey: '#808080',
+    green: '#008000',
+    greenyellow: '#adff2f',
+    honeydew: '#f0fff0',
+    hotpink: '#ff69b4',
+    indianred: '#cd5c5c',
+    indigo: '#4b0082',
+    ivory: '#fffff0',
+    khaki: '#f0e68c',
+    lavender: '#e6e6fa',
+    lavenderblush: '#fff0f5',
+    lawngreen: '#7cfc00',
+    lemonchiffon: '#fffacd',
+    lightblue: '#add8e6',
+    lightcoral: '#f08080',
+    lightcyan: '#e0ffff',
+    lightgoldenrodyellow: '#fafad2',
+    lightgray: '#d3d3d3',
+    lightgrey: '#d3d3d3',
+    lightgreen: '#90ee90',
+    lightpink: '#ffb6c1',
+    lightsalmon: '#ffa07a',
+    lightseagreen: '#20b2aa',
+    lightskyblue: '#87cefa',
+    lightslategray: '#778899',
+    lightslategrey: '#778899',
+    lightsteelblue: '#b0c4de',
+    lightyellow: '#ffffe0',
+    lime: '#00ff00',
+    limegreen: '#32cd32',
+    linen: '#faf0e6',
+    magenta: '#ff00ff',
+    maroon: '#800000',
+    mediumaquamarine: '#66cdaa',
+    mediumblue: '#0000cd',
+    mediumorchid: '#ba55d3',
+    mediumpurple: '#9370db',
+    mediumseagreen: '#3cb371',
+    mediumslateblue: '#7b68ee',
+    mediumspringgreen: '#00fa9a',
+    mediumturquoise: '#48d1cc',
+    mediumvioletred: '#c71585',
+    midnightblue: '#191970',
+    mintcream: '#f5fffa',
+    mistyrose: '#ffe4e1',
+    moccasin: '#ffe4b5',
+    navajowhite: '#ffdead',
+    navy: '#000080',
+    oldlace: '#fdf5e6',
+    olive: '#808000',
+    olivedrab: '#6b8e23',
+    orange: '#ffa500',
+    orangered: '#ff4500',
+    orchid: '#da70d6',
+    palegoldenrod: '#eee8aa',
+    palegreen: '#98fb98',
+    paleturquoise: '#afeeee',
+    palevioletred: '#db7093',
+    papayawhip: '#ffefd5',
+    peachpuff: '#ffdab9',
+    peru: '#cd853f',
+    pink: '#ffc0cb',
+    plum: '#dda0dd',
+    powderblue: '#b0e0e6',
+    purple: '#800080',
+    rebeccapurple: '#663399',
+    red: '#ff0000',
+    rosybrown: '#bc8f8f',
+    royalblue: '#4169e1',
+    saddlebrown: '#8b4513',
+    salmon: '#fa8072',
+    sandybrown: '#f4a460',
+    seagreen: '#2e8b57',
+    seashell: '#fff5ee',
+    sienna: '#a0522d',
+    silver: '#c0c0c0',
+    skyblue: '#87ceeb',
+    slateblue: '#6a5acd',
+    slategray: '#708090',
+    slategrey: '#708090',
+    snow: '#fffafa',
+    springgreen: '#00ff7f',
+    steelblue: '#4682b4',
+    tan: '#d2b48c',
+    teal: '#008080',
+    thistle: '#d8bfd8',
+    tomato: '#ff6347',
+    turquoise: '#40e0d0',
+    violet: '#ee82ee',
+    wheat: '#f5deb3',
+    white: '#ffffff',
+    whitesmoke: '#f5f5f5',
+    yellow: '#ffff00',
+    yellowgreen: '#9acd32',
+    transparent: '#00000000',
+  };
+  function checkColor(e2) {
+    e2 = e2 || '#000000';
+    var t2 = null;
+    if ((t2 = /^#([0-9|A-F|a-f]{6})$/.exec(e2)) != null) {
+      const n = parseInt(t2[1].slice(0, 2), 16);
+      const o2 = parseInt(t2[1].slice(2, 4), 16);
+      const r = parseInt(t2[1].slice(4), 16);
+      return [n, o2, r, 255];
+    }
+    if ((t2 = /^#([0-9|A-F|a-f]{3})$/.exec(e2)) != null) {
+      let n = t2[1].slice(0, 1);
+      let o2 = t2[1].slice(1, 2);
+      let r = t2[1].slice(2, 3);
+      n = parseInt(n + n, 16);
+      o2 = parseInt(o2 + o2, 16);
+      r = parseInt(r + r, 16);
+      return [n, o2, r, 255];
+    }
+    if ((t2 = /^rgb\((.+)\)$/.exec(e2)) != null) {
+      return t2[1]
+        .split(',')
+        .map(function (e22) {
+          return Math.min(255, parseInt(e22.trim()));
+        })
+        .concat(255);
+    }
+    if ((t2 = /^rgba\((.+)\)$/.exec(e2)) != null) {
+      return t2[1].split(',').map(function (e22, t22) {
+        return t22 === 3
+          ? Math.floor(255 * parseFloat(e22.trim()))
+          : Math.min(255, parseInt(e22.trim()));
+      });
+    }
+    var i = e2.toLowerCase();
+    if (hasOwn$1(predefinedColor, i)) {
+      t2 = /^#([0-9|A-F|a-f]{6,8})$/.exec(predefinedColor[i]);
+      const n = parseInt(t2[1].slice(0, 2), 16);
+      const o2 = parseInt(t2[1].slice(2, 4), 16);
+      const r = parseInt(t2[1].slice(4, 6), 16);
+      let a2 = parseInt(t2[1].slice(6, 8), 16);
+      a2 = a2 >= 0 ? a2 : 255;
+      return [n, o2, r, a2];
+    }
+    console.error('unsupported color:' + e2);
+    return [0, 0, 0, 255];
+  }
+  class CanvasGradient {
+    constructor(type, data) {
+      this.type = type;
+      this.data = data;
+      this.colorStop = [];
+    }
+    addColorStop(position, color2) {
+      this.colorStop.push([position, checkColor(color2)]);
+    }
+  }
+  class Pattern {
+    constructor(image2, repetition) {
+      this.type = 'pattern';
+      this.data = image2;
+      this.colorStop = repetition;
+    }
+  }
+  class TextMetrics {
+    constructor(width) {
+      this.width = width;
+    }
+  }
+  class CanvasContext {
+    constructor(id2, pageId) {
+      this.id = id2;
+      this.pageId = pageId;
+      this.actions = [];
+      this.path = [];
+      this.subpath = [];
+      this.drawingState = [];
+      this.state = {
+        lineDash: [0, 0],
+        shadowOffsetX: 0,
+        shadowOffsetY: 0,
+        shadowBlur: 0,
+        shadowColor: [0, 0, 0, 0],
+        font: '10px sans-serif',
+        fontSize: 10,
+        fontWeight: 'normal',
+        fontStyle: 'normal',
+        fontFamily: 'sans-serif',
+      };
+    }
+    draw(reserve = false, callback) {
+      var actions = [...this.actions];
+      this.actions = [];
+      this.path = [];
+      operateCanvas(
+        this.id,
+        this.pageId,
+        'actionsChanged',
+        {
+          actions,
+          reserve,
+        },
+        callback,
+      );
+    }
+    createLinearGradient(x0, y0, x1, y1) {
+      return new CanvasGradient('linear', [x0, y0, x1, y1]);
+    }
+    createCircularGradient(x, y, r) {
+      return new CanvasGradient('radial', [x, y, r]);
+    }
+    createPattern(image2, repetition) {
+      if (void 0 === repetition) {
+        console.error(
+          "Failed to execute 'createPattern' on 'CanvasContext': 2 arguments required, but only 1 present.",
+        );
+      } else if (
+        ['repeat', 'repeat-x', 'repeat-y', 'no-repeat'].indexOf(repetition) < 0
+      ) {
+        console.error(
+          "Failed to execute 'createPattern' on 'CanvasContext': The provided type ('" +
+            repetition +
+            "') is not one of 'repeat', 'no-repeat', 'repeat-x', or 'repeat-y'.",
+        );
+      } else {
+        return new Pattern(image2, repetition);
+      }
+    }
+    measureText(text2) {
+      const font2 = this.state.font;
+      let width = 0;
+      {
+        width = measureText(text2, font2);
+      }
+      return new TextMetrics(width);
+    }
+    save() {
+      this.actions.push({
+        method: 'save',
+        data: [],
+      });
+      this.drawingState.push(this.state);
+    }
+    restore() {
+      this.actions.push({
+        method: 'restore',
+        data: [],
+      });
+      this.state = this.drawingState.pop() || {
+        lineDash: [0, 0],
+        shadowOffsetX: 0,
+        shadowOffsetY: 0,
+        shadowBlur: 0,
+        shadowColor: [0, 0, 0, 0],
+        font: '10px sans-serif',
+        fontSize: 10,
+        fontWeight: 'normal',
+        fontStyle: 'normal',
+        fontFamily: 'sans-serif',
+      };
+    }
+    beginPath() {
+      this.path = [];
+      this.subpath = [];
+      this.path.push({
+        method: 'beginPath',
+        data: [],
+      });
+    }
+    moveTo(x, y) {
+      this.path.push({
+        method: 'moveTo',
+        data: [x, y],
+      });
+      this.subpath = [[x, y]];
+    }
+    lineTo(x, y) {
+      if (this.path.length === 0 && this.subpath.length === 0) {
+        this.path.push({
+          method: 'moveTo',
+          data: [x, y],
+        });
+      } else {
+        this.path.push({
+          method: 'lineTo',
+          data: [x, y],
+        });
+      }
+      this.subpath.push([x, y]);
+    }
+    quadraticCurveTo(cpx, cpy, x, y) {
+      this.path.push({
+        method: 'quadraticCurveTo',
+        data: [cpx, cpy, x, y],
+      });
+      this.subpath.push([x, y]);
+    }
+    bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y) {
+      this.path.push({
+        method: 'bezierCurveTo',
+        data: [cp1x, cp1y, cp2x, cp2y, x, y],
+      });
+      this.subpath.push([x, y]);
+    }
+    arc(x, y, r, sAngle, eAngle, counterclockwise = false) {
+      this.path.push({
+        method: 'arc',
+        data: [x, y, r, sAngle, eAngle, counterclockwise],
+      });
+      this.subpath.push([x, y]);
+    }
+    rect(x, y, width, height) {
+      this.path.push({
+        method: 'rect',
+        data: [x, y, width, height],
+      });
+      this.subpath = [[x, y]];
+    }
+    arcTo(x1, y1, x2, y2, radius) {
+      this.path.push({
+        method: 'arcTo',
+        data: [x1, y1, x2, y2, radius],
+      });
+      this.subpath.push([x2, y2]);
+    }
+    clip() {
+      this.actions.push({
+        method: 'clip',
+        data: [...this.path],
+      });
+    }
+    closePath() {
+      this.path.push({
+        method: 'closePath',
+        data: [],
+      });
+      if (this.subpath.length) {
+        this.subpath = [this.subpath.shift()];
+      }
+    }
+    clearActions() {
+      this.actions = [];
+      this.path = [];
+      this.subpath = [];
+    }
+    getActions() {
+      var actions = [...this.actions];
+      this.clearActions();
+      return actions;
+    }
+    set lineDashOffset(value) {
+      this.actions.push({
+        method: 'setLineDashOffset',
+        data: [value],
+      });
+    }
+    set globalCompositeOperation(type) {
+      this.actions.push({
+        method: 'setGlobalCompositeOperation',
+        data: [type],
+      });
+    }
+    set shadowBlur(level) {
+      this.actions.push({
+        method: 'setShadowBlur',
+        data: [level],
+      });
+    }
+    set shadowColor(color2) {
+      this.actions.push({
+        method: 'setShadowColor',
+        data: [color2],
+      });
+    }
+    set shadowOffsetX(x) {
+      this.actions.push({
+        method: 'setShadowOffsetX',
+        data: [x],
+      });
+    }
+    set shadowOffsetY(y) {
+      this.actions.push({
+        method: 'setShadowOffsetY',
+        data: [y],
+      });
+    }
+    set font(value) {
+      var self2 = this;
+      this.state.font = value;
+      var fontFormat = value.match(
+        /^(([\w\-]+\s)*)(\d+r?px)(\/(\d+\.?\d*(r?px)?))?\s+(.*)/,
+      );
+      if (fontFormat) {
+        var style = fontFormat[1].trim().split(/\s/);
+        var fontSize = parseFloat(fontFormat[3]);
+        var fontFamily = fontFormat[7];
+        var actions = [];
+        style.forEach(function (value2, index2) {
+          if (['italic', 'oblique', 'normal'].indexOf(value2) > -1) {
+            actions.push({
+              method: 'setFontStyle',
+              data: [value2],
+            });
+            self2.state.fontStyle = value2;
+          } else if (['bold', 'normal'].indexOf(value2) > -1) {
+            actions.push({
+              method: 'setFontWeight',
+              data: [value2],
+            });
+            self2.state.fontWeight = value2;
+          } else if (index2 === 0) {
+            actions.push({
+              method: 'setFontStyle',
+              data: ['normal'],
+            });
+            self2.state.fontStyle = 'normal';
+          } else if (index2 === 1) {
+            pushAction();
+          }
+        });
+        if (style.length === 1) {
+          pushAction();
+        }
+        style = actions
+          .map(function (action) {
+            return action.data[0];
+          })
+          .join(' ');
+        this.state.fontSize = fontSize;
+        this.state.fontFamily = fontFamily;
+        this.actions.push({
+          method: 'setFont',
+          data: [`${style} ${fontSize}px ${fontFamily}`],
+        });
+      } else {
+        console.warn(
+          "Failed to set 'font' on 'CanvasContext': invalid format.",
+        );
+      }
+      function pushAction() {
+        actions.push({
+          method: 'setFontWeight',
+          data: ['normal'],
+        });
+        self2.state.fontWeight = 'normal';
+      }
+    }
+    get font() {
+      return this.state.font;
+    }
+    set fillStyle(color2) {
+      this.setFillStyle(color2);
+    }
+    set strokeStyle(color2) {
+      this.setStrokeStyle(color2);
+    }
+    set globalAlpha(value) {
+      value = Math.floor(255 * parseFloat(value));
+      this.actions.push({
+        method: 'setGlobalAlpha',
+        data: [value],
+      });
+    }
+    set textAlign(align2) {
+      this.actions.push({
+        method: 'setTextAlign',
+        data: [align2],
+      });
+    }
+    set lineCap(type) {
+      this.actions.push({
+        method: 'setLineCap',
+        data: [type],
+      });
+    }
+    set lineJoin(type) {
+      this.actions.push({
+        method: 'setLineJoin',
+        data: [type],
+      });
+    }
+    set lineWidth(value) {
+      this.actions.push({
+        method: 'setLineWidth',
+        data: [value],
+      });
+    }
+    set miterLimit(value) {
+      this.actions.push({
+        method: 'setMiterLimit',
+        data: [value],
+      });
+    }
+    set textBaseline(type) {
+      this.actions.push({
+        method: 'setTextBaseline',
+        data: [type],
+      });
+    }
+  }
+  let index$w = 0;
+  let optionsCache = {};
+  function operateEditor(componentId, pageId, type, options) {
+    const data = { options };
+    const needCallOptions =
+      options &&
+      ('success' in options || 'fail' in options || 'complete' in options);
+    if (needCallOptions) {
+      const callbackId = String(index$w++);
+      data.callbackId = callbackId;
+      optionsCache[callbackId] = options;
+    }
+    UniServiceJSBridge$1.invokeViewMethod(
+      `editor.${componentId}`,
+      {
+        type,
+        data,
+      },
+      pageId,
+      ({ callbackId, data: data2 }) => {
+        if (needCallOptions) {
+          callOptions(optionsCache[callbackId], data2);
+          delete optionsCache[callbackId];
+        }
+      },
+    );
+  }
+  class EditorContext {
+    constructor(id2, pageId) {
+      this.id = id2;
+      this.pageId = pageId;
+    }
+    format(name, value) {
+      this._exec('format', {
+        name,
+        value,
+      });
+    }
+    insertDivider() {
+      this._exec('insertDivider');
+    }
+    insertImage(options) {
+      this._exec('insertImage', options);
+    }
+    insertText(options) {
+      this._exec('insertText', options);
+    }
+    setContents(options) {
+      this._exec('setContents', options);
+    }
+    getContents(options) {
+      this._exec('getContents', options);
+    }
+    clear(options) {
+      this._exec('clear', options);
+    }
+    removeFormat(options) {
+      this._exec('removeFormat', options);
+    }
+    undo(options) {
+      this._exec('undo', options);
+    }
+    redo(options) {
+      this._exec('redo', options);
+    }
+    blur(options) {
+      this._exec('blur', options);
+    }
+    getSelectionText(options) {
+      this._exec('getSelectionText', options);
+    }
+    scrollIntoView(options) {
+      this._exec('scrollIntoView', options);
+    }
+    _exec(method, options) {
+      operateEditor(this.id, this.pageId, method, options);
+    }
+  }
+  const ContextClasss = {
+    canvas: CanvasContext,
+    map: MapContext,
+    video: VideoContext,
+    editor: EditorContext,
+  };
+  function convertContext(result) {
+    if (result && result.contextInfo) {
+      const { id: id2, type, page } = result.contextInfo;
+      const ContextClass = ContextClasss[type];
+      result.context = new ContextClass(id2, page);
+      delete result.contextInfo;
+    }
+  }
+  class NodesRef {
+    constructor(selectorQuery, component, selector, single) {
+      this._selectorQuery = selectorQuery;
+      this._component = component;
+      this._selector = selector;
+      this._single = single;
+    }
+    boundingClientRect(callback) {
+      this._selectorQuery._push(
+        this._selector,
+        this._component,
+        this._single,
+        {
+          id: true,
+          dataset: true,
+          rect: true,
+          size: true,
+        },
+        callback,
+      );
+      return this._selectorQuery;
+    }
+    fields(fields2, callback) {
+      this._selectorQuery._push(
+        this._selector,
+        this._component,
+        this._single,
+        fields2,
+        callback,
+      );
+      return this._selectorQuery;
+    }
+    scrollOffset(callback) {
+      this._selectorQuery._push(
+        this._selector,
+        this._component,
+        this._single,
+        {
+          id: true,
+          dataset: true,
+          scrollOffset: true,
+        },
+        callback,
+      );
+      return this._selectorQuery;
+    }
+    context(callback) {
+      this._selectorQuery._push(
+        this._selector,
+        this._component,
+        this._single,
+        {
+          context: true,
+        },
+        callback,
+      );
+      return this._selectorQuery;
+    }
+    node(_callback) {
+      return this._selectorQuery;
+    }
+  }
+  class SelectorQuery {
+    constructor(page) {
+      this._component = void 0;
+      this._page = page;
+      this._queue = [];
+      this._queueCb = [];
+    }
+    exec(callback) {
+      requestComponentInfo(this._page, this._queue, (res) => {
+        const queueCbs = this._queueCb;
+        res.forEach((result, index2) => {
+          if (isArray$a(result)) {
+            result.forEach(convertContext);
+          } else {
+            convertContext(result);
+          }
+          const queueCb = queueCbs[index2];
+          if (isFunction$3(queueCb)) {
+            queueCb.call(this, result);
+          }
+        });
+        if (isFunction$3(callback)) {
+          callback.call(this, res);
+        }
+      });
+      return this._nodesRef;
+    }
+    in(component) {
+      this._component = resolveComponentInstance(component);
+      return this;
+    }
+    select(selector) {
+      return (this._nodesRef = new NodesRef(
+        this,
+        this._component,
+        selector,
+        true,
+      ));
+    }
+    selectAll(selector) {
+      return (this._nodesRef = new NodesRef(
+        this,
+        this._component,
+        selector,
+        false,
+      ));
+    }
+    selectViewport() {
+      return (this._nodesRef = new NodesRef(this, null, '', true));
+    }
+    _push(selector, component, single, fields2, callback) {
+      this._queue.push({
+        component,
+        selector,
+        single,
+        fields: fields2,
+      });
+      this._queueCb.push(callback);
+    }
+  }
+  const createSelectorQuery = /* @__PURE__ */ defineSyncApi(
+    'createSelectorQuery',
+    (context) => {
+      context = resolveComponentInstance(context);
+      if (context && !getPageIdByVm(context)) {
+        context = null;
+      }
+      return new SelectorQuery(context || getCurrentPageVm());
+    },
+  );
   const API_GET_LOCALE = 'getLocale';
   const getLocale = /* @__PURE__ */ defineSyncApi(API_GET_LOCALE, () => {
     return useI18n().getLocale();
@@ -1958,7 +3140,7 @@
     },
   };
   function encodeQueryString(url2) {
-    if (!isString(url2)) {
+    if (!isString$1(url2)) {
       return url2;
     }
     const index2 = url2.indexOf('?');
@@ -2224,6 +3406,320 @@
       IndexOptions.formatArgs,
     ),
   });
+  const ResizeSensor = /* @__PURE__ */ defineBuiltInComponent({
+    name: 'ResizeSensor',
+    props: {
+      initial: {
+        type: Boolean,
+        default: false,
+      },
+    },
+    emits: ['resize'],
+    setup(props2, { emit: emit2 }) {
+      const rootRef = vue.ref(null);
+      const reset = useResizeSensorReset(rootRef);
+      const update = useResizeSensorUpdate(rootRef, emit2, reset);
+      useResizeSensorLifecycle(rootRef, props2, update, reset);
+      return () =>
+        vue.createVNode(
+          'uni-resize-sensor',
+          {
+            ref: rootRef,
+            onAnimationstartOnce: update,
+          },
+          [
+            vue.createVNode(
+              'div',
+              {
+                onScroll: update,
+              },
+              [vue.createVNode('div', null, null)],
+              40,
+              ['onScroll'],
+            ),
+            vue.createVNode(
+              'div',
+              {
+                onScroll: update,
+              },
+              [vue.createVNode('div', null, null)],
+              40,
+              ['onScroll'],
+            ),
+          ],
+          40,
+          ['onAnimationstartOnce'],
+        );
+    },
+  });
+  function useResizeSensorUpdate(rootRef, emit2, reset) {
+    const size = vue.reactive({
+      width: -1,
+      height: -1,
+    });
+    vue.watch(
+      () => extend({}, size),
+      (value) => emit2('resize', value),
+    );
+    return () => {
+      const rootEl = rootRef.value;
+      size.width = rootEl.offsetWidth;
+      size.height = rootEl.offsetHeight;
+      reset();
+    };
+  }
+  function useResizeSensorReset(rootRef) {
+    return () => {
+      const { firstElementChild, lastElementChild } = rootRef.value;
+      firstElementChild.scrollLeft = 1e5;
+      firstElementChild.scrollTop = 1e5;
+      lastElementChild.scrollLeft = 1e5;
+      lastElementChild.scrollTop = 1e5;
+    };
+  }
+  function useResizeSensorLifecycle(rootRef, props2, update, reset) {
+    vue.onActivated(reset);
+    vue.onMounted(() => {
+      if (props2.initial) {
+        vue.nextTick(update);
+      }
+      const rootEl = rootRef.value;
+      if (rootEl.offsetParent !== rootEl.parentElement) {
+        rootEl.parentElement.style.position = 'relative';
+      }
+      if (!('AnimationEvent' in window)) {
+        reset();
+      }
+    });
+  }
+  const props$s = {
+    src: {
+      type: String,
+      default: '',
+    },
+    mode: {
+      type: String,
+      default: 'scaleToFill',
+    },
+    lazyLoad: {
+      type: [Boolean, String],
+      default: false,
+    },
+    draggable: {
+      type: Boolean,
+      default: false,
+    },
+  };
+  const FIX_MODES = {
+    widthFix: ['offsetWidth', 'height', (value, ratio) => value / ratio],
+    heightFix: ['offsetHeight', 'width', (value, ratio) => value * ratio],
+  };
+  const IMAGE_MODES = {
+    aspectFit: ['center center', 'contain'],
+    aspectFill: ['center center', 'cover'],
+    widthFix: [, '100% 100%'],
+    heightFix: [, '100% 100%'],
+    top: ['center top'],
+    bottom: ['center bottom'],
+    center: ['center center'],
+    left: ['left center'],
+    right: ['right center'],
+    'top left': ['left top'],
+    'top right': ['right top'],
+    'bottom left': ['left bottom'],
+    'bottom right': ['right bottom'],
+  };
+  const index$q = /* @__PURE__ */ defineBuiltInComponent({
+    name: 'Image',
+    props: props$s,
+    setup(props2, { emit: emit2 }) {
+      const rootRef = vue.ref(null);
+      const state2 = useImageState(rootRef, props2);
+      const trigger = useCustomEvent(rootRef, emit2);
+      const { fixSize } = useImageSize(rootRef, props2, state2);
+      useImageLoader(state2, props2, rootRef, fixSize, trigger);
+      return () => {
+        return vue.createVNode(
+          'uni-image',
+          {
+            ref: rootRef,
+          },
+          [
+            vue.createVNode(
+              'div',
+              {
+                style: state2.modeStyle,
+              },
+              null,
+              4,
+            ),
+            FIX_MODES[props2.mode]
+              ? // @ts-ignore
+                vue.createVNode(
+                  ResizeSensor,
+                  {
+                    onResize: fixSize,
+                  },
+                  null,
+                  8,
+                  ['onResize'],
+                )
+              : vue.createVNode('span', null, null),
+          ],
+          512,
+        );
+      };
+    },
+  });
+  function useImageState(rootRef, props2) {
+    const imgSrc = vue.ref('');
+    const modeStyleRef = vue.computed(() => {
+      let size = 'auto';
+      let position = '';
+      const opts = IMAGE_MODES[props2.mode];
+      if (!opts) {
+        position = '0% 0%';
+        size = '100% 100%';
+      } else {
+        opts[0] && (position = opts[0]);
+        opts[1] && (size = opts[1]);
+      }
+      return `background-image:${
+        imgSrc.value ? 'url("' + imgSrc.value + '")' : 'none'
+      };background-position:${position};background-size:${size};`;
+    });
+    const state2 = vue.reactive({
+      rootEl: rootRef,
+      src: vue.computed(() => (props2.src ? getRealPath(props2.src) : '')),
+      origWidth: 0,
+      origHeight: 0,
+      origStyle: {
+        width: '',
+        height: '',
+      },
+      modeStyle: modeStyleRef,
+      imgSrc,
+    });
+    vue.onMounted(() => {
+      const rootEl = rootRef.value;
+      const style = rootEl.style;
+      state2.origWidth = Number(style.width) || 0;
+      state2.origHeight = Number(style.height) || 0;
+    });
+    return state2;
+  }
+  function useImageLoader(state2, props2, rootRef, fixSize, trigger) {
+    let img;
+    let draggableImg;
+    const setState = (width = 0, height = 0, imgSrc = '') => {
+      state2.origWidth = width;
+      state2.origHeight = height;
+      state2.imgSrc = imgSrc;
+    };
+    const loadImage = (src) => {
+      if (!src) {
+        resetImage();
+        setState();
+        return;
+      }
+      img = img || new Image();
+      img.onload = (evt) => {
+        const { width, height } = img;
+        setState(width, height, src);
+        fixSize();
+        img.draggable = props2.draggable;
+        if (draggableImg) {
+          draggableImg.remove();
+        }
+        draggableImg = img;
+        rootRef.value.appendChild(img);
+        resetImage();
+        trigger('load', evt, {
+          width,
+          height,
+        });
+      };
+      img.onerror = (evt) => {
+        setState();
+        resetImage();
+        trigger('error', evt, {
+          errMsg: `GET ${state2.src} 404 (Not Found)`,
+        });
+      };
+      img.src = src;
+    };
+    const resetImage = () => {
+      if (img) {
+        img.onload = null;
+        img.onerror = null;
+        img = null;
+      }
+    };
+    vue.watch(
+      () => state2.src,
+      (value) => loadImage(value),
+    );
+    vue.watch(
+      () => state2.imgSrc,
+      (value) => {
+        if (!value && draggableImg) {
+          draggableImg.remove();
+          draggableImg = null;
+        }
+      },
+    );
+    vue.onMounted(() => loadImage(state2.src));
+    vue.onBeforeUnmount(() => resetImage());
+  }
+  const isChrome = navigator.vendor === 'Google Inc.';
+  function fixNumber(num) {
+    if (isChrome && num > 10) {
+      num = Math.round(num / 2) * 2;
+    }
+    return num;
+  }
+  function useImageSize(rootRef, props2, state2) {
+    const fixSize = () => {
+      const { mode: mode2 } = props2;
+      const names = FIX_MODES[mode2];
+      if (!names) {
+        return;
+      }
+      const { origWidth, origHeight } = state2;
+      const ratio = origWidth && origHeight ? origWidth / origHeight : 0;
+      if (!ratio) {
+        return;
+      }
+      const rootEl = rootRef.value;
+      const value = rootEl[names[0]];
+      if (value) {
+        rootEl.style[names[1]] = fixNumber(names[2](value, ratio)) + 'px';
+      }
+    };
+    const resetSize = () => {
+      const { style } = rootRef.value;
+      const {
+        origStyle: { width, height },
+      } = state2;
+      style.width = width;
+      style.height = height;
+    };
+    vue.watch(
+      () => props2.mode,
+      (value, oldValue) => {
+        if (FIX_MODES[oldValue]) {
+          resetSize();
+        }
+        if (FIX_MODES[value]) {
+          fixSize();
+        }
+      },
+    );
+    return {
+      fixSize,
+      resetSize,
+    };
+  }
   const passiveOptions$1 = /* @__PURE__ */ passive(true);
   const states = [];
   let userInteract = 0;
@@ -2433,7 +3929,93 @@
       };
     },
   });
-  /* @__PURE__ */ defineBuiltInComponent({
+  const SPACE_UNICODE = {
+    ensp: ' ',
+    emsp: ' ',
+    nbsp: ' ',
+  };
+  function parseText(text2, options) {
+    return text2
+      .replace(/\\n/g, LINEFEED)
+      .split(LINEFEED)
+      .map((text22) => {
+        return normalizeText(text22, options);
+      });
+  }
+  function normalizeText(text2, { space, decode: decode2 }) {
+    if (!text2) {
+      return text2;
+    }
+    if (space && SPACE_UNICODE[space]) {
+      text2 = text2.replace(/ /g, SPACE_UNICODE[space]);
+    }
+    if (!decode2) {
+      return text2;
+    }
+    return text2
+      .replace(/&nbsp;/g, SPACE_UNICODE.nbsp)
+      .replace(/&ensp;/g, SPACE_UNICODE.ensp)
+      .replace(/&emsp;/g, SPACE_UNICODE.emsp)
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&amp;/g, '&')
+      .replace(/&quot;/g, '"')
+      .replace(/&apos;/g, "'");
+  }
+  const index$i = /* @__PURE__ */ defineBuiltInComponent({
+    name: 'Text',
+    props: {
+      selectable: {
+        type: [Boolean, String],
+        default: false,
+      },
+      space: {
+        type: String,
+        default: '',
+      },
+      decode: {
+        type: [Boolean, String],
+        default: false,
+      },
+    },
+    setup(props2, { slots }) {
+      return () => {
+        const children = [];
+        if (slots.default) {
+          slots.default().forEach((vnode) => {
+            if (vnode.shapeFlag & 8 && vnode.type !== vue.Comment) {
+              const lines = parseText(vnode.children, {
+                space: props2.space,
+                decode: props2.decode,
+              });
+              const len = lines.length - 1;
+              lines.forEach((line, index2) => {
+                if (index2 === 0 && !line);
+                else {
+                  children.push(vue.createTextVNode(line));
+                }
+                if (index2 !== len) {
+                  children.push(vue.createVNode('br'));
+                }
+              });
+            } else {
+              children.push(vnode);
+            }
+          });
+        }
+        return vue.createVNode(
+          'uni-text',
+          {
+            selectable: props2.selectable ? true : null,
+          },
+          [vue.createVNode('span', null, children)],
+          8,
+          ['selectable'],
+        );
+      };
+    },
+  });
+  const index$g = /* @__PURE__ */ defineBuiltInComponent({
     name: 'View',
     props: extend({}, hoverProps),
     setup(props2, { slots }) {
@@ -2459,6 +4041,9 @@
       };
     },
   });
+  function getContextInfo(el) {
+    return el.__uniContextInfo;
+  }
   const pageMetaKey = PolySymbol('upm');
   function usePageMeta() {
     return vue.inject(pageMetaKey);
@@ -2620,7 +4205,7 @@
   }
   function getTheme() {
     if (__uniConfig.darkmode !== true)
-      return isString(__uniConfig.darkmode) ? __uniConfig.darkmode : 'light';
+      return isString$1(__uniConfig.darkmode) ? __uniConfig.darkmode : 'light';
     try {
       return window.matchMedia('(prefers-color-scheme: light)').matches
         ? 'light'
@@ -2687,7 +4272,7 @@
       model = 'iPad';
       osname = 'iOS';
       deviceType = 'pad';
-      osversion = isFunction$2(window.BigInt) ? '14.0' : '13.0';
+      osversion = isFunction$3(window.BigInt) ? '14.0' : '13.0';
     } else if (isWindows || isMac || isLinux) {
       model = 'PC';
       osname = 'PC';
@@ -3024,7 +4609,7 @@
       let body = null;
       const contentType = normalizeContentType(header);
       if (method !== 'GET') {
-        if (isString(data) || data instanceof ArrayBuffer) {
+        if (isString$1(data) || data instanceof ArrayBuffer) {
           body = data;
         } else {
           if (contentType === 'json') {
@@ -3218,8 +4803,8 @@
     RedirectToOptions,
   );
   function removeAllPages() {
-    const keys = getCurrentPagesMap().keys();
-    for (const routeKey of keys) {
+    const keys2 = getCurrentPagesMap().keys();
+    for (const routeKey of keys2) {
       removePage(routeKey);
     }
   }
@@ -3240,8 +4825,8 @@
       return;
     }
     const pagesMap = getCurrentPagesMap();
-    const keys = pagesMap.keys();
-    for (const routeKey of keys) {
+    const keys2 = pagesMap.keys();
+    for (const routeKey of keys2) {
       const page = pagesMap.get(routeKey);
       if (!page.$.__isTabBar) {
         removePage(routeKey);
@@ -3809,7 +5394,63 @@
       )
     );
   }
-  function isArray$6(arr) {
+  const mixin = {
+    data() {
+      return {};
+    },
+    onLoad() {
+      this.$u.getRect = this.$uGetRect;
+    },
+    methods: {
+      // 查询节点信息
+      // 目前此方法在支付宝小程序中无法获取组件跟接点的尺寸，为支付宝的bug(2020-07-21)
+      // 解决办法为在组件根部再套一个没有任何作用的view元素
+      $uGetRect(selector, all) {
+        return new Promise((resolve) => {
+          createSelectorQuery()
+            .in(this)
+            [all ? 'selectAll' : 'select'](selector)
+            .boundingClientRect((rect) => {
+              if (all && Array.isArray(rect) && rect.length) {
+                resolve(rect);
+              }
+              if (!all && rect) {
+                resolve(rect);
+              }
+            })
+            .exec();
+        });
+      },
+      getParentData(parentName = '') {
+        if (!this.parent) this.parent = false;
+        this.parent = this.$u.$parent.call(this, parentName);
+        if (this.parent) {
+          Object.keys(this.parentData).map((key) => {
+            this.parentData[key] = this.parent[key];
+          });
+          this.parentData.value = this.parent.modelValue;
+        }
+      },
+      // 阻止事件冒泡
+      preventEvent(e) {
+        e && e.stopPropagation && e.stopPropagation();
+      },
+    },
+    onReachBottom() {
+      $emit('uOnReachBottom');
+    },
+    beforeUnmount() {
+      if (this.parent && uni.$u.test.array(this.parent.children)) {
+        const childrenList = this.parent.children;
+        childrenList.map((child, index) => {
+          if (child === this) {
+            childrenList.splice(index, 1);
+          }
+        });
+      }
+    },
+  };
+  function isArray$9(arr) {
     return Object.prototype.toString.call(arr) === '[object Array]';
   }
   function deepClone(obj) {
@@ -3817,7 +5458,7 @@
     if (typeof obj !== 'object' && typeof obj !== 'function') {
       return obj;
     }
-    var o = isArray$6(obj) ? [] : {};
+    var o = isArray$9(obj) ? [] : {};
     for (let i in obj) {
       if (obj.hasOwnProperty(i)) {
         o[i] = typeof obj[i] === 'object' ? deepClone(obj[i]) : obj[i];
@@ -4595,33 +6236,33 @@
       duration,
     });
   }
-  function getParent(name, keys) {
+  function getParent(name, keys2) {
     let parent = this.$parent;
     while (parent) {
       if (parent.$options.name !== name) {
         parent = parent.$parent;
       } else {
         let data = {};
-        if (Array.isArray(keys)) {
-          keys.map((val) => {
+        if (Array.isArray(keys2)) {
+          keys2.map((val) => {
             data[val] = parent[val] ? parent[val] : '';
           });
         } else {
-          for (let i in keys) {
-            if (Array.isArray(keys[i])) {
-              if (keys[i].length) {
-                data[i] = keys[i];
+          for (let i in keys2) {
+            if (Array.isArray(keys2[i])) {
+              if (keys2[i].length) {
+                data[i] = keys2[i];
               } else {
                 data[i] = parent[i];
               }
-            } else if (keys[i].constructor === Object) {
-              if (Object.keys(keys[i]).length) {
-                data[i] = keys[i];
+            } else if (keys2[i].constructor === Object) {
+              if (Object.keys(keys2[i]).length) {
+                data[i] = keys2[i];
               } else {
                 data[i] = parent[i];
               }
             } else {
-              data[i] = keys[i] || keys[i] === false ? keys[i] : parent[i];
+              data[i] = keys2[i] || keys2[i] === false ? keys2[i] : parent[i];
             }
           }
         }
@@ -4748,8 +6389,15 @@
     throttle,
   };
   uni.$u = $u;
-  var isArray$5 = Array.isArray;
-  var isArray_1 = isArray$5;
+  const install = (Vue) => {
+    Vue.mixin(mixin);
+    Vue.config.globalProperties.$u = $u;
+  };
+  const uView = {
+    install,
+  };
+  var isArray$8 = Array.isArray;
+  var isArray_1 = isArray$8;
   var freeGlobal$1 =
     typeof commonjsGlobal == 'object' &&
     commonjsGlobal &&
@@ -4765,12 +6413,12 @@
   var Symbol$6 = root$7.Symbol;
   var _Symbol = Symbol$6;
   var Symbol$5 = _Symbol;
-  var objectProto$6 = Object.prototype;
-  var hasOwnProperty$5 = objectProto$6.hasOwnProperty;
-  var nativeObjectToString$1 = objectProto$6.toString;
+  var objectProto$c = Object.prototype;
+  var hasOwnProperty$9 = objectProto$c.hasOwnProperty;
+  var nativeObjectToString$1 = objectProto$c.toString;
   var symToStringTag$1 = Symbol$5 ? Symbol$5.toStringTag : void 0;
   function getRawTag$1(value) {
-    var isOwn = hasOwnProperty$5.call(value, symToStringTag$1),
+    var isOwn = hasOwnProperty$9.call(value, symToStringTag$1),
       tag = value[symToStringTag$1];
     try {
       value[symToStringTag$1] = void 0;
@@ -4787,8 +6435,8 @@
     return result;
   }
   var _getRawTag = getRawTag$1;
-  var objectProto$5 = Object.prototype;
-  var nativeObjectToString = objectProto$5.toString;
+  var objectProto$b = Object.prototype;
+  var nativeObjectToString = objectProto$b.toString;
   function objectToString$1(value) {
     return nativeObjectToString.call(value);
   }
@@ -4799,7 +6447,7 @@
   var nullTag = '[object Null]',
     undefinedTag = '[object Undefined]';
   var symToStringTag = Symbol$4 ? Symbol$4.toStringTag : void 0;
-  function baseGetTag$4(value) {
+  function baseGetTag$6(value) {
     if (value == null) {
       return value === void 0 ? undefinedTag : nullTag;
     }
@@ -4807,27 +6455,27 @@
       ? getRawTag(value)
       : objectToString(value);
   }
-  var _baseGetTag = baseGetTag$4;
-  function isObjectLike$3(value) {
+  var _baseGetTag = baseGetTag$6;
+  function isObjectLike$7(value) {
     return value != null && typeof value == 'object';
   }
-  var isObjectLike_1 = isObjectLike$3;
-  var baseGetTag$3 = _baseGetTag,
-    isObjectLike$2 = isObjectLike_1;
-  var symbolTag = '[object Symbol]';
+  var isObjectLike_1 = isObjectLike$7;
+  var baseGetTag$5 = _baseGetTag,
+    isObjectLike$6 = isObjectLike_1;
+  var symbolTag$2 = '[object Symbol]';
   function isSymbol$3(value) {
     return (
       typeof value == 'symbol' ||
-      (isObjectLike$2(value) && baseGetTag$3(value) == symbolTag)
+      (isObjectLike$6(value) && baseGetTag$5(value) == symbolTag$2)
     );
   }
   var isSymbol_1 = isSymbol$3;
-  var isArray$4 = isArray_1,
+  var isArray$7 = isArray_1,
     isSymbol$2 = isSymbol_1;
   var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
     reIsPlainProp = /^\w*$/;
   function isKey$1(value, object2) {
-    if (isArray$4(value)) {
+    if (isArray$7(value)) {
       return false;
     }
     var type = typeof value;
@@ -4847,22 +6495,22 @@
     );
   }
   var _isKey = isKey$1;
-  var baseGetTag$2 = _baseGetTag,
-    isObject$3 = isObject_1;
+  var baseGetTag$4 = _baseGetTag,
+    isObject$6 = isObject_1;
   var asyncTag = '[object AsyncFunction]',
-    funcTag = '[object Function]',
-    genTag = '[object GeneratorFunction]',
+    funcTag$2 = '[object Function]',
+    genTag$1 = '[object GeneratorFunction]',
     proxyTag = '[object Proxy]';
-  function isFunction$1(value) {
-    if (!isObject$3(value)) {
+  function isFunction$2(value) {
+    if (!isObject$6(value)) {
       return false;
     }
-    var tag = baseGetTag$2(value);
+    var tag = baseGetTag$4(value);
     return (
-      tag == funcTag || tag == genTag || tag == asyncTag || tag == proxyTag
+      tag == funcTag$2 || tag == genTag$1 || tag == asyncTag || tag == proxyTag
     );
   }
-  var isFunction_1 = isFunction$1;
+  var isFunction_1 = isFunction$2;
   var root$6 = _root;
   var coreJsData$1 = root$6['__core-js_shared__'];
   var _coreJsData = coreJsData$1;
@@ -4891,20 +6539,20 @@
     return '';
   }
   var _toSource = toSource$2;
-  var isFunction = isFunction_1,
+  var isFunction$1 = isFunction_1,
     isMasked = _isMasked,
-    isObject$2 = isObject_1,
+    isObject$5 = isObject_1,
     toSource$1 = _toSource;
   var reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
   var reIsHostCtor = /^\[object .+?Constructor\]$/;
   var funcProto = Function.prototype,
-    objectProto$4 = Object.prototype;
+    objectProto$a = Object.prototype;
   var funcToString = funcProto.toString;
-  var hasOwnProperty$4 = objectProto$4.hasOwnProperty;
+  var hasOwnProperty$8 = objectProto$a.hasOwnProperty;
   var reIsNative = RegExp(
     '^' +
       funcToString
-        .call(hasOwnProperty$4)
+        .call(hasOwnProperty$8)
         .replace(reRegExpChar, '\\$&')
         .replace(
           /hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g,
@@ -4913,10 +6561,10 @@
       '$',
   );
   function baseIsNative$1(value) {
-    if (!isObject$2(value) || isMasked(value)) {
+    if (!isObject$5(value) || isMasked(value)) {
       return false;
     }
-    var pattern = isFunction(value) ? reIsNative : reIsHostCtor;
+    var pattern = isFunction$1(value) ? reIsNative : reIsHostCtor;
     return pattern.test(toSource$1(value));
   }
   var _baseIsNative = baseIsNative$1;
@@ -4948,25 +6596,25 @@
   var _hashDelete = hashDelete$1;
   var nativeCreate$2 = _nativeCreate;
   var HASH_UNDEFINED$1 = '__lodash_hash_undefined__';
-  var objectProto$3 = Object.prototype;
-  var hasOwnProperty$3 = objectProto$3.hasOwnProperty;
+  var objectProto$9 = Object.prototype;
+  var hasOwnProperty$7 = objectProto$9.hasOwnProperty;
   function hashGet$1(key) {
     var data = this.__data__;
     if (nativeCreate$2) {
       var result = data[key];
       return result === HASH_UNDEFINED$1 ? void 0 : result;
     }
-    return hasOwnProperty$3.call(data, key) ? data[key] : void 0;
+    return hasOwnProperty$7.call(data, key) ? data[key] : void 0;
   }
   var _hashGet = hashGet$1;
   var nativeCreate$1 = _nativeCreate;
-  var objectProto$2 = Object.prototype;
-  var hasOwnProperty$2 = objectProto$2.hasOwnProperty;
+  var objectProto$8 = Object.prototype;
+  var hasOwnProperty$6 = objectProto$8.hasOwnProperty;
   function hashHas$1(key) {
     var data = this.__data__;
     return nativeCreate$1
       ? data[key] !== void 0
-      : hasOwnProperty$2.call(data, key);
+      : hasOwnProperty$6.call(data, key);
   }
   var _hashHas = hashHas$1;
   var nativeCreate = _nativeCreate;
@@ -5067,7 +6715,7 @@
     listCacheGet = _listCacheGet,
     listCacheHas = _listCacheHas,
     listCacheSet = _listCacheSet;
-  function ListCache$1(entries) {
+  function ListCache$4(entries) {
     var index = -1,
       length = entries == null ? 0 : entries.length;
     this.clear();
@@ -5076,24 +6724,24 @@
       this.set(entry[0], entry[1]);
     }
   }
-  ListCache$1.prototype.clear = listCacheClear;
-  ListCache$1.prototype['delete'] = listCacheDelete;
-  ListCache$1.prototype.get = listCacheGet;
-  ListCache$1.prototype.has = listCacheHas;
-  ListCache$1.prototype.set = listCacheSet;
-  var _ListCache = ListCache$1;
+  ListCache$4.prototype.clear = listCacheClear;
+  ListCache$4.prototype['delete'] = listCacheDelete;
+  ListCache$4.prototype.get = listCacheGet;
+  ListCache$4.prototype.has = listCacheHas;
+  ListCache$4.prototype.set = listCacheSet;
+  var _ListCache = ListCache$4;
   var getNative$5 = _getNative,
     root$5 = _root;
-  var Map$3 = getNative$5(root$5, 'Map');
-  var _Map = Map$3;
+  var Map$4 = getNative$5(root$5, 'Map');
+  var _Map = Map$4;
   var Hash = _Hash,
-    ListCache = _ListCache,
-    Map$2 = _Map;
+    ListCache$3 = _ListCache,
+    Map$3 = _Map;
   function mapCacheClear$1() {
     this.size = 0;
     this.__data__ = {
       hash: new Hash(),
-      map: new (Map$2 || ListCache)(),
+      map: new (Map$3 || ListCache$3)(),
       string: new Hash(),
     };
   }
@@ -5147,7 +6795,7 @@
     mapCacheGet = _mapCacheGet,
     mapCacheHas = _mapCacheHas,
     mapCacheSet = _mapCacheSet;
-  function MapCache$1(entries) {
+  function MapCache$2(entries) {
     var index = -1,
       length = entries == null ? 0 : entries.length;
     this.clear();
@@ -5156,13 +6804,13 @@
       this.set(entry[0], entry[1]);
     }
   }
-  MapCache$1.prototype.clear = mapCacheClear;
-  MapCache$1.prototype['delete'] = mapCacheDelete;
-  MapCache$1.prototype.get = mapCacheGet;
-  MapCache$1.prototype.has = mapCacheHas;
-  MapCache$1.prototype.set = mapCacheSet;
-  var _MapCache = MapCache$1;
-  var MapCache = _MapCache;
+  MapCache$2.prototype.clear = mapCacheClear;
+  MapCache$2.prototype['delete'] = mapCacheDelete;
+  MapCache$2.prototype.get = mapCacheGet;
+  MapCache$2.prototype.has = mapCacheHas;
+  MapCache$2.prototype.set = mapCacheSet;
+  var _MapCache = MapCache$2;
+  var MapCache$1 = _MapCache;
   var FUNC_ERROR_TEXT = 'Expected a function';
   function memoize$1(func, resolver) {
     if (
@@ -5182,10 +6830,10 @@
       memoized.cache = cache.set(key, result) || cache;
       return result;
     };
-    memoized.cache = new (memoize$1.Cache || MapCache)();
+    memoized.cache = new (memoize$1.Cache || MapCache$1)();
     return memoized;
   }
-  memoize$1.Cache = MapCache;
+  memoize$1.Cache = MapCache$1;
   var memoize_1 = memoize$1;
   var memoize = memoize_1;
   var MAX_MEMOIZE_SIZE = 500;
@@ -5229,7 +6877,7 @@
   var _arrayMap = arrayMap$1;
   var Symbol$3 = _Symbol,
     arrayMap = _arrayMap,
-    isArray$3 = isArray_1,
+    isArray$6 = isArray_1,
     isSymbol$1 = isSymbol_1;
   var INFINITY$1 = 1 / 0;
   var symbolProto$1 = Symbol$3 ? Symbol$3.prototype : void 0,
@@ -5238,7 +6886,7 @@
     if (typeof value == 'string') {
       return value;
     }
-    if (isArray$3(value)) {
+    if (isArray$6(value)) {
       return arrayMap(value, baseToString$1) + '';
     }
     if (isSymbol$1(value)) {
@@ -5253,12 +6901,12 @@
     return value == null ? '' : baseToString(value);
   }
   var toString_1 = toString$1;
-  var isArray$2 = isArray_1,
+  var isArray$5 = isArray_1,
     isKey = _isKey,
     stringToPath = _stringToPath,
     toString = toString_1;
   function castPath$4(value, object2) {
-    if (isArray$2(value)) {
+    if (isArray$5(value)) {
       return value;
     }
     return isKey(value, object2) ? [value] : stringToPath(toString(value));
@@ -5296,7 +6944,7 @@
   })();
   var _defineProperty = defineProperty$2;
   var defineProperty$1 = _defineProperty;
-  function baseAssignValue$1(object2, key, value) {
+  function baseAssignValue$2(object2, key, value) {
     if (key == '__proto__' && defineProperty$1) {
       defineProperty$1(object2, key, {
         configurable: true,
@@ -5308,24 +6956,24 @@
       object2[key] = value;
     }
   }
-  var _baseAssignValue = baseAssignValue$1;
-  var baseAssignValue = _baseAssignValue,
+  var _baseAssignValue = baseAssignValue$2;
+  var baseAssignValue$1 = _baseAssignValue,
     eq = eq_1;
-  var objectProto$1 = Object.prototype;
-  var hasOwnProperty$1 = objectProto$1.hasOwnProperty;
-  function assignValue$1(object2, key, value) {
+  var objectProto$7 = Object.prototype;
+  var hasOwnProperty$5 = objectProto$7.hasOwnProperty;
+  function assignValue$3(object2, key, value) {
     var objValue = object2[key];
     if (
-      !(hasOwnProperty$1.call(object2, key) && eq(objValue, value)) ||
+      !(hasOwnProperty$5.call(object2, key) && eq(objValue, value)) ||
       (value === void 0 && !(key in object2))
     ) {
-      baseAssignValue(object2, key, value);
+      baseAssignValue$1(object2, key, value);
     }
   }
-  var _assignValue = assignValue$1;
+  var _assignValue = assignValue$3;
   var MAX_SAFE_INTEGER$1 = 9007199254740991;
   var reIsUint = /^(?:0|[1-9]\d*)$/;
-  function isIndex$2(value, length) {
+  function isIndex$3(value, length) {
     var type = typeof value;
     length = length == null ? MAX_SAFE_INTEGER$1 : length;
     return (
@@ -5336,14 +6984,14 @@
       value < length
     );
   }
-  var _isIndex = isIndex$2;
-  var assignValue = _assignValue,
+  var _isIndex = isIndex$3;
+  var assignValue$2 = _assignValue,
     castPath$2 = _castPath,
-    isIndex$1 = _isIndex,
-    isObject$1 = isObject_1,
+    isIndex$2 = _isIndex,
+    isObject$4 = isObject_1,
     toKey$1 = _toKey;
   function baseSet$1(object2, path, value, customizer) {
-    if (!isObject$1(object2)) {
+    if (!isObject$4(object2)) {
       return object2;
     }
     path = castPath$2(path, object2);
@@ -5361,14 +7009,14 @@
         var objValue = nested[key];
         newValue = customizer ? customizer(objValue, key, nested) : void 0;
         if (newValue === void 0) {
-          newValue = isObject$1(objValue)
+          newValue = isObject$4(objValue)
             ? objValue
-            : isIndex$1(path[index + 1])
+            : isIndex$2(path[index + 1])
             ? []
             : {};
         }
       }
-      assignValue(nested, key, newValue);
+      assignValue$2(nested, key, newValue);
       nested = nested[key];
     }
     return object2;
@@ -5395,19 +7043,19 @@
     return object2 != null && key in Object(object2);
   }
   var _baseHasIn = baseHasIn$1;
-  var baseGetTag$1 = _baseGetTag,
-    isObjectLike$1 = isObjectLike_1;
-  var argsTag = '[object Arguments]';
+  var baseGetTag$3 = _baseGetTag,
+    isObjectLike$5 = isObjectLike_1;
+  var argsTag$2 = '[object Arguments]';
   function baseIsArguments$1(value) {
-    return isObjectLike$1(value) && baseGetTag$1(value) == argsTag;
+    return isObjectLike$5(value) && baseGetTag$3(value) == argsTag$2;
   }
   var _baseIsArguments = baseIsArguments$1;
   var baseIsArguments = _baseIsArguments,
-    isObjectLike = isObjectLike_1;
-  var objectProto = Object.prototype;
-  var hasOwnProperty = objectProto.hasOwnProperty;
-  var propertyIsEnumerable = objectProto.propertyIsEnumerable;
-  var isArguments$2 = baseIsArguments(
+    isObjectLike$4 = isObjectLike_1;
+  var objectProto$6 = Object.prototype;
+  var hasOwnProperty$4 = objectProto$6.hasOwnProperty;
+  var propertyIsEnumerable$1 = objectProto$6.propertyIsEnumerable;
+  var isArguments$3 = baseIsArguments(
     (function () {
       return arguments;
     })(),
@@ -5415,14 +7063,14 @@
     ? baseIsArguments
     : function (value) {
         return (
-          isObjectLike(value) &&
-          hasOwnProperty.call(value, 'callee') &&
-          !propertyIsEnumerable.call(value, 'callee')
+          isObjectLike$4(value) &&
+          hasOwnProperty$4.call(value, 'callee') &&
+          !propertyIsEnumerable$1.call(value, 'callee')
         );
       };
-  var isArguments_1 = isArguments$2;
+  var isArguments_1 = isArguments$3;
   var MAX_SAFE_INTEGER = 9007199254740991;
-  function isLength$1(value) {
+  function isLength$3(value) {
     return (
       typeof value == 'number' &&
       value > -1 &&
@@ -5430,12 +7078,12 @@
       value <= MAX_SAFE_INTEGER
     );
   }
-  var isLength_1 = isLength$1;
+  var isLength_1 = isLength$3;
   var castPath = _castPath,
-    isArguments$1 = isArguments_1,
-    isArray$1 = isArray_1,
-    isIndex = _isIndex,
-    isLength = isLength_1,
+    isArguments$2 = isArguments_1,
+    isArray$4 = isArray_1,
+    isIndex$1 = _isIndex,
+    isLength$2 = isLength_1,
     toKey = _toKey;
   function hasPath$1(object2, path, hasFunc) {
     path = castPath(path, object2);
@@ -5455,9 +7103,9 @@
     length = object2 == null ? 0 : object2.length;
     return (
       !!length &&
-      isLength(length) &&
-      isIndex(key, length) &&
-      (isArray$1(object2) || isArguments$1(object2))
+      isLength$2(length) &&
+      isIndex$1(key, length) &&
+      (isArray$4(object2) || isArguments$2(object2))
     );
   }
   var _hasPath = hasPath$1;
@@ -5475,7 +7123,7 @@
     });
   }
   var _basePick = basePick$1;
-  function arrayPush$1(array2, values) {
+  function arrayPush$3(array2, values) {
     var index = -1,
       length = values.length,
       offset = array2.length;
@@ -5484,20 +7132,20 @@
     }
     return array2;
   }
-  var _arrayPush = arrayPush$1;
+  var _arrayPush = arrayPush$3;
   var Symbol$2 = _Symbol,
-    isArguments = isArguments_1,
-    isArray = isArray_1;
+    isArguments$1 = isArguments_1,
+    isArray$3 = isArray_1;
   var spreadableSymbol = Symbol$2 ? Symbol$2.isConcatSpreadable : void 0;
   function isFlattenable$1(value) {
     return (
-      isArray(value) ||
-      isArguments(value) ||
+      isArray$3(value) ||
+      isArguments$1(value) ||
       !!(spreadableSymbol && value && value[spreadableSymbol])
     );
   }
   var _isFlattenable = isFlattenable$1;
-  var arrayPush = _arrayPush,
+  var arrayPush$2 = _arrayPush,
     isFlattenable = _isFlattenable;
   function baseFlatten$1(array2, depth, predicate, isStrict, result) {
     var index = -1,
@@ -5510,7 +7158,7 @@
         if (depth > 1) {
           baseFlatten$1(value, depth - 1, predicate, isStrict, result);
         } else {
-          arrayPush(result, value);
+          arrayPush$2(result, value);
         }
       } else if (!isStrict) {
         result[result.length] = value;
@@ -5619,15 +7267,129 @@
   var _flatRest = flatRest$1;
   var basePick = _basePick,
     flatRest = _flatRest;
-  flatRest(function (object2, paths) {
+  var pick = flatRest(function (object2, paths) {
     return object2 == null ? {} : basePick(object2, paths);
   });
-  var isBuffer = { exports: {} };
+  var pick_1 = pick;
+  const pick$1 = /* @__PURE__ */ getDefaultExportFromCjs$1(pick_1);
+  var baseGetTag$2 = _baseGetTag,
+    isObjectLike$3 = isObjectLike_1;
+  var numberTag$3 = '[object Number]';
+  function isNumber(value) {
+    return (
+      typeof value == 'number' ||
+      (isObjectLike$3(value) && baseGetTag$2(value) == numberTag$3)
+    );
+  }
+  var isNumber_1 = isNumber;
+  const isNumber$1 = /* @__PURE__ */ getDefaultExportFromCjs$1(isNumber_1);
+  var ListCache$2 = _ListCache;
+  function stackClear$1() {
+    this.__data__ = new ListCache$2();
+    this.size = 0;
+  }
+  var _stackClear = stackClear$1;
+  function stackDelete$1(key) {
+    var data = this.__data__,
+      result = data['delete'](key);
+    this.size = data.size;
+    return result;
+  }
+  var _stackDelete = stackDelete$1;
+  function stackGet$1(key) {
+    return this.__data__.get(key);
+  }
+  var _stackGet = stackGet$1;
+  function stackHas$1(key) {
+    return this.__data__.has(key);
+  }
+  var _stackHas = stackHas$1;
+  var ListCache$1 = _ListCache,
+    Map$2 = _Map,
+    MapCache = _MapCache;
+  var LARGE_ARRAY_SIZE = 200;
+  function stackSet$1(key, value) {
+    var data = this.__data__;
+    if (data instanceof ListCache$1) {
+      var pairs = data.__data__;
+      if (!Map$2 || pairs.length < LARGE_ARRAY_SIZE - 1) {
+        pairs.push([key, value]);
+        this.size = ++data.size;
+        return this;
+      }
+      data = this.__data__ = new MapCache(pairs);
+    }
+    data.set(key, value);
+    this.size = data.size;
+    return this;
+  }
+  var _stackSet = stackSet$1;
+  var ListCache = _ListCache,
+    stackClear = _stackClear,
+    stackDelete = _stackDelete,
+    stackGet = _stackGet,
+    stackHas = _stackHas,
+    stackSet = _stackSet;
+  function Stack$1(entries) {
+    var data = (this.__data__ = new ListCache(entries));
+    this.size = data.size;
+  }
+  Stack$1.prototype.clear = stackClear;
+  Stack$1.prototype['delete'] = stackDelete;
+  Stack$1.prototype.get = stackGet;
+  Stack$1.prototype.has = stackHas;
+  Stack$1.prototype.set = stackSet;
+  var _Stack = Stack$1;
+  function arrayEach$1(array2, iteratee) {
+    var index = -1,
+      length = array2 == null ? 0 : array2.length;
+    while (++index < length) {
+      if (iteratee(array2[index], index, array2) === false) {
+        break;
+      }
+    }
+    return array2;
+  }
+  var _arrayEach = arrayEach$1;
+  var assignValue$1 = _assignValue,
+    baseAssignValue = _baseAssignValue;
+  function copyObject$4(source, props, object2, customizer) {
+    var isNew = !object2;
+    object2 || (object2 = {});
+    var index = -1,
+      length = props.length;
+    while (++index < length) {
+      var key = props[index];
+      var newValue = customizer
+        ? customizer(object2[key], source[key], key, object2, source)
+        : void 0;
+      if (newValue === void 0) {
+        newValue = source[key];
+      }
+      if (isNew) {
+        baseAssignValue(object2, key, newValue);
+      } else {
+        assignValue$1(object2, key, newValue);
+      }
+    }
+    return object2;
+  }
+  var _copyObject = copyObject$4;
+  function baseTimes$1(n, iteratee) {
+    var index = -1,
+      result = Array(n);
+    while (++index < n) {
+      result[index] = iteratee(index);
+    }
+    return result;
+  }
+  var _baseTimes = baseTimes$1;
+  var isBuffer$2 = { exports: {} };
   function stubFalse() {
     return false;
   }
   var stubFalse_1 = stubFalse;
-  isBuffer.exports;
+  isBuffer$2.exports;
   (function (module2, exports2) {
     var root2 = _root,
       stubFalse2 = stubFalse_1;
@@ -5635,12 +7397,80 @@
     var freeModule =
       freeExports && true && module2 && !module2.nodeType && module2;
     var moduleExports = freeModule && freeModule.exports === freeExports;
-    var Buffer = moduleExports ? root2.Buffer : void 0;
-    var nativeIsBuffer = Buffer ? Buffer.isBuffer : void 0;
+    var Buffer2 = moduleExports ? root2.Buffer : void 0;
+    var nativeIsBuffer = Buffer2 ? Buffer2.isBuffer : void 0;
     var isBuffer2 = nativeIsBuffer || stubFalse2;
     module2.exports = isBuffer2;
-  })(isBuffer, isBuffer.exports);
-  isBuffer.exports;
+  })(isBuffer$2, isBuffer$2.exports);
+  var isBufferExports = isBuffer$2.exports;
+  var baseGetTag$1 = _baseGetTag,
+    isLength$1 = isLength_1,
+    isObjectLike$2 = isObjectLike_1;
+  var argsTag$1 = '[object Arguments]',
+    arrayTag$1 = '[object Array]',
+    boolTag$2 = '[object Boolean]',
+    dateTag$2 = '[object Date]',
+    errorTag$1 = '[object Error]',
+    funcTag$1 = '[object Function]',
+    mapTag$4 = '[object Map]',
+    numberTag$2 = '[object Number]',
+    objectTag$2 = '[object Object]',
+    regexpTag$2 = '[object RegExp]',
+    setTag$4 = '[object Set]',
+    stringTag$2 = '[object String]',
+    weakMapTag$2 = '[object WeakMap]';
+  var arrayBufferTag$2 = '[object ArrayBuffer]',
+    dataViewTag$3 = '[object DataView]',
+    float32Tag$2 = '[object Float32Array]',
+    float64Tag$2 = '[object Float64Array]',
+    int8Tag$2 = '[object Int8Array]',
+    int16Tag$2 = '[object Int16Array]',
+    int32Tag$2 = '[object Int32Array]',
+    uint8Tag$2 = '[object Uint8Array]',
+    uint8ClampedTag$2 = '[object Uint8ClampedArray]',
+    uint16Tag$2 = '[object Uint16Array]',
+    uint32Tag$2 = '[object Uint32Array]';
+  var typedArrayTags = {};
+  typedArrayTags[float32Tag$2] =
+    typedArrayTags[float64Tag$2] =
+    typedArrayTags[int8Tag$2] =
+    typedArrayTags[int16Tag$2] =
+    typedArrayTags[int32Tag$2] =
+    typedArrayTags[uint8Tag$2] =
+    typedArrayTags[uint8ClampedTag$2] =
+    typedArrayTags[uint16Tag$2] =
+    typedArrayTags[uint32Tag$2] =
+      true;
+  typedArrayTags[argsTag$1] =
+    typedArrayTags[arrayTag$1] =
+    typedArrayTags[arrayBufferTag$2] =
+    typedArrayTags[boolTag$2] =
+    typedArrayTags[dataViewTag$3] =
+    typedArrayTags[dateTag$2] =
+    typedArrayTags[errorTag$1] =
+    typedArrayTags[funcTag$1] =
+    typedArrayTags[mapTag$4] =
+    typedArrayTags[numberTag$2] =
+    typedArrayTags[objectTag$2] =
+    typedArrayTags[regexpTag$2] =
+    typedArrayTags[setTag$4] =
+    typedArrayTags[stringTag$2] =
+    typedArrayTags[weakMapTag$2] =
+      false;
+  function baseIsTypedArray$1(value) {
+    return (
+      isObjectLike$2(value) &&
+      isLength$1(value.length) &&
+      !!typedArrayTags[baseGetTag$1(value)]
+    );
+  }
+  var _baseIsTypedArray = baseIsTypedArray$1;
+  function baseUnary$3(func) {
+    return function (value) {
+      return func(value);
+    };
+  }
+  var _baseUnary = baseUnary$3;
   var _nodeUtil = { exports: {} };
   _nodeUtil.exports;
   (function (module2, exports2) {
@@ -5665,8 +7495,153 @@
     module2.exports = nodeUtil2;
   })(_nodeUtil, _nodeUtil.exports);
   var _nodeUtilExports = _nodeUtil.exports;
-  var nodeUtil$2 = _nodeUtilExports;
-  nodeUtil$2 && nodeUtil$2.isTypedArray;
+  var baseIsTypedArray = _baseIsTypedArray,
+    baseUnary$2 = _baseUnary,
+    nodeUtil$2 = _nodeUtilExports;
+  var nodeIsTypedArray = nodeUtil$2 && nodeUtil$2.isTypedArray;
+  var isTypedArray$1 = nodeIsTypedArray
+    ? baseUnary$2(nodeIsTypedArray)
+    : baseIsTypedArray;
+  var isTypedArray_1 = isTypedArray$1;
+  var baseTimes = _baseTimes,
+    isArguments = isArguments_1,
+    isArray$2 = isArray_1,
+    isBuffer$1 = isBufferExports,
+    isIndex = _isIndex,
+    isTypedArray = isTypedArray_1;
+  var objectProto$5 = Object.prototype;
+  var hasOwnProperty$3 = objectProto$5.hasOwnProperty;
+  function arrayLikeKeys$2(value, inherited) {
+    var isArr = isArray$2(value),
+      isArg = !isArr && isArguments(value),
+      isBuff = !isArr && !isArg && isBuffer$1(value),
+      isType = !isArr && !isArg && !isBuff && isTypedArray(value),
+      skipIndexes = isArr || isArg || isBuff || isType,
+      result = skipIndexes ? baseTimes(value.length, String) : [],
+      length = result.length;
+    for (var key in value) {
+      if (
+        (inherited || hasOwnProperty$3.call(value, key)) &&
+        !(
+          skipIndexes && // Safari 9 has enumerable `arguments.length` in strict mode.
+          (key == 'length' || // Node.js 0.10 has enumerable non-index properties on buffers.
+            (isBuff && (key == 'offset' || key == 'parent')) || // PhantomJS 2 has enumerable non-index properties on typed arrays.
+            (isType &&
+              (key == 'buffer' ||
+                key == 'byteLength' ||
+                key == 'byteOffset')) || // Skip index properties.
+            isIndex(key, length))
+        )
+      ) {
+        result.push(key);
+      }
+    }
+    return result;
+  }
+  var _arrayLikeKeys = arrayLikeKeys$2;
+  var objectProto$4 = Object.prototype;
+  function isPrototype$3(value) {
+    var Ctor = value && value.constructor,
+      proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto$4;
+    return value === proto;
+  }
+  var _isPrototype = isPrototype$3;
+  function overArg$2(func, transform) {
+    return function (arg) {
+      return func(transform(arg));
+    };
+  }
+  var _overArg = overArg$2;
+  var overArg$1 = _overArg;
+  var nativeKeys$1 = overArg$1(Object.keys, Object);
+  var _nativeKeys = nativeKeys$1;
+  var isPrototype$2 = _isPrototype,
+    nativeKeys = _nativeKeys;
+  var objectProto$3 = Object.prototype;
+  var hasOwnProperty$2 = objectProto$3.hasOwnProperty;
+  function baseKeys$1(object2) {
+    if (!isPrototype$2(object2)) {
+      return nativeKeys(object2);
+    }
+    var result = [];
+    for (var key in Object(object2)) {
+      if (hasOwnProperty$2.call(object2, key) && key != 'constructor') {
+        result.push(key);
+      }
+    }
+    return result;
+  }
+  var _baseKeys = baseKeys$1;
+  var isFunction = isFunction_1,
+    isLength = isLength_1;
+  function isArrayLike$2(value) {
+    return value != null && isLength(value.length) && !isFunction(value);
+  }
+  var isArrayLike_1 = isArrayLike$2;
+  var arrayLikeKeys$1 = _arrayLikeKeys,
+    baseKeys = _baseKeys,
+    isArrayLike$1 = isArrayLike_1;
+  function keys$3(object2) {
+    return isArrayLike$1(object2)
+      ? arrayLikeKeys$1(object2)
+      : baseKeys(object2);
+  }
+  var keys_1 = keys$3;
+  var copyObject$3 = _copyObject,
+    keys$2 = keys_1;
+  function baseAssign$1(object2, source) {
+    return object2 && copyObject$3(source, keys$2(source), object2);
+  }
+  var _baseAssign = baseAssign$1;
+  function nativeKeysIn$1(object2) {
+    var result = [];
+    if (object2 != null) {
+      for (var key in Object(object2)) {
+        result.push(key);
+      }
+    }
+    return result;
+  }
+  var _nativeKeysIn = nativeKeysIn$1;
+  var isObject$3 = isObject_1,
+    isPrototype$1 = _isPrototype,
+    nativeKeysIn = _nativeKeysIn;
+  var objectProto$2 = Object.prototype;
+  var hasOwnProperty$1 = objectProto$2.hasOwnProperty;
+  function baseKeysIn$1(object2) {
+    if (!isObject$3(object2)) {
+      return nativeKeysIn(object2);
+    }
+    var isProto = isPrototype$1(object2),
+      result = [];
+    for (var key in object2) {
+      if (
+        !(
+          key == 'constructor' &&
+          (isProto || !hasOwnProperty$1.call(object2, key))
+        )
+      ) {
+        result.push(key);
+      }
+    }
+    return result;
+  }
+  var _baseKeysIn = baseKeysIn$1;
+  var arrayLikeKeys = _arrayLikeKeys,
+    baseKeysIn = _baseKeysIn,
+    isArrayLike = isArrayLike_1;
+  function keysIn$3(object2) {
+    return isArrayLike(object2)
+      ? arrayLikeKeys(object2, true)
+      : baseKeysIn(object2);
+  }
+  var keysIn_1 = keysIn$3;
+  var copyObject$2 = _copyObject,
+    keysIn$2 = keysIn_1;
+  function baseAssignIn$1(object2, source) {
+    return object2 && copyObject$2(source, keysIn$2(source), object2);
+  }
+  var _baseAssignIn = baseAssignIn$1;
   var _cloneBuffer = { exports: {} };
   _cloneBuffer.exports;
   (function (module2, exports2) {
@@ -5675,9 +7650,9 @@
     var freeModule =
       freeExports && true && module2 && !module2.nodeType && module2;
     var moduleExports = freeModule && freeModule.exports === freeExports;
-    var Buffer = moduleExports ? root2.Buffer : void 0,
-      allocUnsafe = Buffer ? Buffer.allocUnsafe : void 0;
-    function cloneBuffer(buffer, isDeep) {
+    var Buffer2 = moduleExports ? root2.Buffer : void 0,
+      allocUnsafe = Buffer2 ? Buffer2.allocUnsafe : void 0;
+    function cloneBuffer2(buffer, isDeep) {
       if (isDeep) {
         return buffer.slice();
       }
@@ -5688,9 +7663,108 @@
       buffer.copy(result);
       return result;
     }
-    module2.exports = cloneBuffer;
+    module2.exports = cloneBuffer2;
   })(_cloneBuffer, _cloneBuffer.exports);
-  _cloneBuffer.exports;
+  var _cloneBufferExports = _cloneBuffer.exports;
+  function copyArray$1(source, array2) {
+    var index = -1,
+      length = source.length;
+    array2 || (array2 = Array(length));
+    while (++index < length) {
+      array2[index] = source[index];
+    }
+    return array2;
+  }
+  var _copyArray = copyArray$1;
+  function arrayFilter$1(array2, predicate) {
+    var index = -1,
+      length = array2 == null ? 0 : array2.length,
+      resIndex = 0,
+      result = [];
+    while (++index < length) {
+      var value = array2[index];
+      if (predicate(value, index, array2)) {
+        result[resIndex++] = value;
+      }
+    }
+    return result;
+  }
+  var _arrayFilter = arrayFilter$1;
+  function stubArray$2() {
+    return [];
+  }
+  var stubArray_1 = stubArray$2;
+  var arrayFilter = _arrayFilter,
+    stubArray$1 = stubArray_1;
+  var objectProto$1 = Object.prototype;
+  var propertyIsEnumerable = objectProto$1.propertyIsEnumerable;
+  var nativeGetSymbols$1 = Object.getOwnPropertySymbols;
+  var getSymbols$3 = !nativeGetSymbols$1
+    ? stubArray$1
+    : function (object2) {
+        if (object2 == null) {
+          return [];
+        }
+        object2 = Object(object2);
+        return arrayFilter(nativeGetSymbols$1(object2), function (symbol) {
+          return propertyIsEnumerable.call(object2, symbol);
+        });
+      };
+  var _getSymbols = getSymbols$3;
+  var copyObject$1 = _copyObject,
+    getSymbols$2 = _getSymbols;
+  function copySymbols$1(source, object2) {
+    return copyObject$1(source, getSymbols$2(source), object2);
+  }
+  var _copySymbols = copySymbols$1;
+  var overArg = _overArg;
+  var getPrototype$2 = overArg(Object.getPrototypeOf, Object);
+  var _getPrototype = getPrototype$2;
+  var arrayPush$1 = _arrayPush,
+    getPrototype$1 = _getPrototype,
+    getSymbols$1 = _getSymbols,
+    stubArray = stubArray_1;
+  var nativeGetSymbols = Object.getOwnPropertySymbols;
+  var getSymbolsIn$2 = !nativeGetSymbols
+    ? stubArray
+    : function (object2) {
+        var result = [];
+        while (object2) {
+          arrayPush$1(result, getSymbols$1(object2));
+          object2 = getPrototype$1(object2);
+        }
+        return result;
+      };
+  var _getSymbolsIn = getSymbolsIn$2;
+  var copyObject = _copyObject,
+    getSymbolsIn$1 = _getSymbolsIn;
+  function copySymbolsIn$1(source, object2) {
+    return copyObject(source, getSymbolsIn$1(source), object2);
+  }
+  var _copySymbolsIn = copySymbolsIn$1;
+  var arrayPush = _arrayPush,
+    isArray$1 = isArray_1;
+  function baseGetAllKeys$2(object2, keysFunc, symbolsFunc) {
+    var result = keysFunc(object2);
+    return isArray$1(object2)
+      ? result
+      : arrayPush(result, symbolsFunc(object2));
+  }
+  var _baseGetAllKeys = baseGetAllKeys$2;
+  var baseGetAllKeys$1 = _baseGetAllKeys,
+    getSymbols = _getSymbols,
+    keys$1 = keys_1;
+  function getAllKeys$1(object2) {
+    return baseGetAllKeys$1(object2, keys$1, getSymbols);
+  }
+  var _getAllKeys = getAllKeys$1;
+  var baseGetAllKeys = _baseGetAllKeys,
+    getSymbolsIn = _getSymbolsIn,
+    keysIn$1 = keysIn_1;
+  function getAllKeysIn$1(object2) {
+    return baseGetAllKeys(object2, keysIn$1, getSymbolsIn);
+  }
+  var _getAllKeysIn = getAllKeysIn$1;
   var getNative$3 = _getNative,
     root$4 = _root;
   var DataView$1 = getNative$3(root$4, 'DataView');
@@ -5714,55 +7788,391 @@
     WeakMap = _WeakMap,
     baseGetTag = _baseGetTag,
     toSource = _toSource;
-  var mapTag = '[object Map]',
-    objectTag = '[object Object]',
+  var mapTag$3 = '[object Map]',
+    objectTag$1 = '[object Object]',
     promiseTag = '[object Promise]',
-    setTag = '[object Set]',
-    weakMapTag = '[object WeakMap]';
-  var dataViewTag = '[object DataView]';
+    setTag$3 = '[object Set]',
+    weakMapTag$1 = '[object WeakMap]';
+  var dataViewTag$2 = '[object DataView]';
   var dataViewCtorString = toSource(DataView),
     mapCtorString = toSource(Map$1),
     promiseCtorString = toSource(Promise$1),
     setCtorString = toSource(Set),
     weakMapCtorString = toSource(WeakMap);
-  var getTag = baseGetTag;
+  var getTag$3 = baseGetTag;
   if (
-    (DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag) ||
-    (Map$1 && getTag(new Map$1()) != mapTag) ||
-    (Promise$1 && getTag(Promise$1.resolve()) != promiseTag) ||
-    (Set && getTag(new Set()) != setTag) ||
-    (WeakMap && getTag(new WeakMap()) != weakMapTag)
+    (DataView && getTag$3(new DataView(new ArrayBuffer(1))) != dataViewTag$2) ||
+    (Map$1 && getTag$3(new Map$1()) != mapTag$3) ||
+    (Promise$1 && getTag$3(Promise$1.resolve()) != promiseTag) ||
+    (Set && getTag$3(new Set()) != setTag$3) ||
+    (WeakMap && getTag$3(new WeakMap()) != weakMapTag$1)
   ) {
-    getTag = function (value) {
+    getTag$3 = function (value) {
       var result = baseGetTag(value),
-        Ctor = result == objectTag ? value.constructor : void 0,
+        Ctor = result == objectTag$1 ? value.constructor : void 0,
         ctorString = Ctor ? toSource(Ctor) : '';
       if (ctorString) {
         switch (ctorString) {
           case dataViewCtorString:
-            return dataViewTag;
+            return dataViewTag$2;
           case mapCtorString:
-            return mapTag;
+            return mapTag$3;
           case promiseCtorString:
             return promiseTag;
           case setCtorString:
-            return setTag;
+            return setTag$3;
           case weakMapCtorString:
-            return weakMapTag;
+            return weakMapTag$1;
         }
       }
       return result;
     };
   }
+  var _getTag = getTag$3;
+  var objectProto = Object.prototype;
+  var hasOwnProperty = objectProto.hasOwnProperty;
+  function initCloneArray$1(array2) {
+    var length = array2.length,
+      result = new array2.constructor(length);
+    if (
+      length &&
+      typeof array2[0] == 'string' &&
+      hasOwnProperty.call(array2, 'index')
+    ) {
+      result.index = array2.index;
+      result.input = array2.input;
+    }
+    return result;
+  }
+  var _initCloneArray = initCloneArray$1;
   var root = _root;
-  root.Uint8Array;
+  var Uint8Array$1 = root.Uint8Array;
+  var _Uint8Array = Uint8Array$1;
+  var Uint8Array2 = _Uint8Array;
+  function cloneArrayBuffer$3(arrayBuffer) {
+    var result = new arrayBuffer.constructor(arrayBuffer.byteLength);
+    new Uint8Array2(result).set(new Uint8Array2(arrayBuffer));
+    return result;
+  }
+  var _cloneArrayBuffer = cloneArrayBuffer$3;
+  var cloneArrayBuffer$2 = _cloneArrayBuffer;
+  function cloneDataView$1(dataView, isDeep) {
+    var buffer = isDeep ? cloneArrayBuffer$2(dataView.buffer) : dataView.buffer;
+    return new dataView.constructor(
+      buffer,
+      dataView.byteOffset,
+      dataView.byteLength,
+    );
+  }
+  var _cloneDataView = cloneDataView$1;
+  var reFlags = /\w*$/;
+  function cloneRegExp$1(regexp) {
+    var result = new regexp.constructor(regexp.source, reFlags.exec(regexp));
+    result.lastIndex = regexp.lastIndex;
+    return result;
+  }
+  var _cloneRegExp = cloneRegExp$1;
   var Symbol$1 = _Symbol;
-  var symbolProto = Symbol$1 ? Symbol$1.prototype : void 0;
-  symbolProto ? symbolProto.valueOf : void 0;
-  var nodeUtil$1 = _nodeUtilExports;
-  nodeUtil$1 && nodeUtil$1.isMap;
-  var nodeUtil = _nodeUtilExports;
-  nodeUtil && nodeUtil.isSet;
+  var symbolProto = Symbol$1 ? Symbol$1.prototype : void 0,
+    symbolValueOf = symbolProto ? symbolProto.valueOf : void 0;
+  function cloneSymbol$1(symbol) {
+    return symbolValueOf ? Object(symbolValueOf.call(symbol)) : {};
+  }
+  var _cloneSymbol = cloneSymbol$1;
+  var cloneArrayBuffer$1 = _cloneArrayBuffer;
+  function cloneTypedArray$1(typedArray, isDeep) {
+    var buffer = isDeep
+      ? cloneArrayBuffer$1(typedArray.buffer)
+      : typedArray.buffer;
+    return new typedArray.constructor(
+      buffer,
+      typedArray.byteOffset,
+      typedArray.length,
+    );
+  }
+  var _cloneTypedArray = cloneTypedArray$1;
+  var cloneArrayBuffer = _cloneArrayBuffer,
+    cloneDataView = _cloneDataView,
+    cloneRegExp = _cloneRegExp,
+    cloneSymbol = _cloneSymbol,
+    cloneTypedArray = _cloneTypedArray;
+  var boolTag$1 = '[object Boolean]',
+    dateTag$1 = '[object Date]',
+    mapTag$2 = '[object Map]',
+    numberTag$1 = '[object Number]',
+    regexpTag$1 = '[object RegExp]',
+    setTag$2 = '[object Set]',
+    stringTag$1 = '[object String]',
+    symbolTag$1 = '[object Symbol]';
+  var arrayBufferTag$1 = '[object ArrayBuffer]',
+    dataViewTag$1 = '[object DataView]',
+    float32Tag$1 = '[object Float32Array]',
+    float64Tag$1 = '[object Float64Array]',
+    int8Tag$1 = '[object Int8Array]',
+    int16Tag$1 = '[object Int16Array]',
+    int32Tag$1 = '[object Int32Array]',
+    uint8Tag$1 = '[object Uint8Array]',
+    uint8ClampedTag$1 = '[object Uint8ClampedArray]',
+    uint16Tag$1 = '[object Uint16Array]',
+    uint32Tag$1 = '[object Uint32Array]';
+  function initCloneByTag$1(object2, tag, isDeep) {
+    var Ctor = object2.constructor;
+    switch (tag) {
+      case arrayBufferTag$1:
+        return cloneArrayBuffer(object2);
+      case boolTag$1:
+      case dateTag$1:
+        return new Ctor(+object2);
+      case dataViewTag$1:
+        return cloneDataView(object2, isDeep);
+      case float32Tag$1:
+      case float64Tag$1:
+      case int8Tag$1:
+      case int16Tag$1:
+      case int32Tag$1:
+      case uint8Tag$1:
+      case uint8ClampedTag$1:
+      case uint16Tag$1:
+      case uint32Tag$1:
+        return cloneTypedArray(object2, isDeep);
+      case mapTag$2:
+        return new Ctor();
+      case numberTag$1:
+      case stringTag$1:
+        return new Ctor(object2);
+      case regexpTag$1:
+        return cloneRegExp(object2);
+      case setTag$2:
+        return new Ctor();
+      case symbolTag$1:
+        return cloneSymbol(object2);
+    }
+  }
+  var _initCloneByTag = initCloneByTag$1;
+  var isObject$2 = isObject_1;
+  var objectCreate = Object.create;
+  var baseCreate$1 = (function () {
+    function object2() {}
+    return function (proto) {
+      if (!isObject$2(proto)) {
+        return {};
+      }
+      if (objectCreate) {
+        return objectCreate(proto);
+      }
+      object2.prototype = proto;
+      var result = new object2();
+      object2.prototype = void 0;
+      return result;
+    };
+  })();
+  var _baseCreate = baseCreate$1;
+  var baseCreate = _baseCreate,
+    getPrototype = _getPrototype,
+    isPrototype = _isPrototype;
+  function initCloneObject$1(object2) {
+    return typeof object2.constructor == 'function' && !isPrototype(object2)
+      ? baseCreate(getPrototype(object2))
+      : {};
+  }
+  var _initCloneObject = initCloneObject$1;
+  var getTag$2 = _getTag,
+    isObjectLike$1 = isObjectLike_1;
+  var mapTag$1 = '[object Map]';
+  function baseIsMap$1(value) {
+    return isObjectLike$1(value) && getTag$2(value) == mapTag$1;
+  }
+  var _baseIsMap = baseIsMap$1;
+  var baseIsMap = _baseIsMap,
+    baseUnary$1 = _baseUnary,
+    nodeUtil$1 = _nodeUtilExports;
+  var nodeIsMap = nodeUtil$1 && nodeUtil$1.isMap;
+  var isMap$1 = nodeIsMap ? baseUnary$1(nodeIsMap) : baseIsMap;
+  var isMap_1 = isMap$1;
+  var getTag$1 = _getTag,
+    isObjectLike = isObjectLike_1;
+  var setTag$1 = '[object Set]';
+  function baseIsSet$1(value) {
+    return isObjectLike(value) && getTag$1(value) == setTag$1;
+  }
+  var _baseIsSet = baseIsSet$1;
+  var baseIsSet = _baseIsSet,
+    baseUnary = _baseUnary,
+    nodeUtil = _nodeUtilExports;
+  var nodeIsSet = nodeUtil && nodeUtil.isSet;
+  var isSet$1 = nodeIsSet ? baseUnary(nodeIsSet) : baseIsSet;
+  var isSet_1 = isSet$1;
+  var Stack = _Stack,
+    arrayEach = _arrayEach,
+    assignValue = _assignValue,
+    baseAssign = _baseAssign,
+    baseAssignIn = _baseAssignIn,
+    cloneBuffer = _cloneBufferExports,
+    copyArray = _copyArray,
+    copySymbols = _copySymbols,
+    copySymbolsIn = _copySymbolsIn,
+    getAllKeys = _getAllKeys,
+    getAllKeysIn = _getAllKeysIn,
+    getTag = _getTag,
+    initCloneArray = _initCloneArray,
+    initCloneByTag = _initCloneByTag,
+    initCloneObject = _initCloneObject,
+    isArray = isArray_1,
+    isBuffer = isBufferExports,
+    isMap = isMap_1,
+    isObject$1 = isObject_1,
+    isSet = isSet_1,
+    keys = keys_1,
+    keysIn = keysIn_1;
+  var CLONE_DEEP_FLAG$1 = 1,
+    CLONE_FLAT_FLAG = 2,
+    CLONE_SYMBOLS_FLAG$1 = 4;
+  var argsTag = '[object Arguments]',
+    arrayTag = '[object Array]',
+    boolTag = '[object Boolean]',
+    dateTag = '[object Date]',
+    errorTag = '[object Error]',
+    funcTag = '[object Function]',
+    genTag = '[object GeneratorFunction]',
+    mapTag = '[object Map]',
+    numberTag = '[object Number]',
+    objectTag = '[object Object]',
+    regexpTag = '[object RegExp]',
+    setTag = '[object Set]',
+    stringTag = '[object String]',
+    symbolTag = '[object Symbol]',
+    weakMapTag = '[object WeakMap]';
+  var arrayBufferTag = '[object ArrayBuffer]',
+    dataViewTag = '[object DataView]',
+    float32Tag = '[object Float32Array]',
+    float64Tag = '[object Float64Array]',
+    int8Tag = '[object Int8Array]',
+    int16Tag = '[object Int16Array]',
+    int32Tag = '[object Int32Array]',
+    uint8Tag = '[object Uint8Array]',
+    uint8ClampedTag = '[object Uint8ClampedArray]',
+    uint16Tag = '[object Uint16Array]',
+    uint32Tag = '[object Uint32Array]';
+  var cloneableTags = {};
+  cloneableTags[argsTag] =
+    cloneableTags[arrayTag] =
+    cloneableTags[arrayBufferTag] =
+    cloneableTags[dataViewTag] =
+    cloneableTags[boolTag] =
+    cloneableTags[dateTag] =
+    cloneableTags[float32Tag] =
+    cloneableTags[float64Tag] =
+    cloneableTags[int8Tag] =
+    cloneableTags[int16Tag] =
+    cloneableTags[int32Tag] =
+    cloneableTags[mapTag] =
+    cloneableTags[numberTag] =
+    cloneableTags[objectTag] =
+    cloneableTags[regexpTag] =
+    cloneableTags[setTag] =
+    cloneableTags[stringTag] =
+    cloneableTags[symbolTag] =
+    cloneableTags[uint8Tag] =
+    cloneableTags[uint8ClampedTag] =
+    cloneableTags[uint16Tag] =
+    cloneableTags[uint32Tag] =
+      true;
+  cloneableTags[errorTag] =
+    cloneableTags[funcTag] =
+    cloneableTags[weakMapTag] =
+      false;
+  function baseClone$1(value, bitmask, customizer, key, object2, stack) {
+    var result,
+      isDeep = bitmask & CLONE_DEEP_FLAG$1,
+      isFlat = bitmask & CLONE_FLAT_FLAG,
+      isFull = bitmask & CLONE_SYMBOLS_FLAG$1;
+    if (customizer) {
+      result = object2
+        ? customizer(value, key, object2, stack)
+        : customizer(value);
+    }
+    if (result !== void 0) {
+      return result;
+    }
+    if (!isObject$1(value)) {
+      return value;
+    }
+    var isArr = isArray(value);
+    if (isArr) {
+      result = initCloneArray(value);
+      if (!isDeep) {
+        return copyArray(value, result);
+      }
+    } else {
+      var tag = getTag(value),
+        isFunc = tag == funcTag || tag == genTag;
+      if (isBuffer(value)) {
+        return cloneBuffer(value, isDeep);
+      }
+      if (tag == objectTag || tag == argsTag || (isFunc && !object2)) {
+        result = isFlat || isFunc ? {} : initCloneObject(value);
+        if (!isDeep) {
+          return isFlat
+            ? copySymbolsIn(value, baseAssignIn(result, value))
+            : copySymbols(value, baseAssign(result, value));
+        }
+      } else {
+        if (!cloneableTags[tag]) {
+          return object2 ? value : {};
+        }
+        result = initCloneByTag(value, tag, isDeep);
+      }
+    }
+    stack || (stack = new Stack());
+    var stacked = stack.get(value);
+    if (stacked) {
+      return stacked;
+    }
+    stack.set(value, result);
+    if (isSet(value)) {
+      value.forEach(function (subValue) {
+        result.add(
+          baseClone$1(subValue, bitmask, customizer, subValue, value, stack),
+        );
+      });
+    } else if (isMap(value)) {
+      value.forEach(function (subValue, key2) {
+        result.set(
+          key2,
+          baseClone$1(subValue, bitmask, customizer, key2, value, stack),
+        );
+      });
+    }
+    var keysFunc = isFull
+      ? isFlat
+        ? getAllKeysIn
+        : getAllKeys
+      : isFlat
+      ? keysIn
+      : keys;
+    var props = isArr ? void 0 : keysFunc(value);
+    arrayEach(props || value, function (subValue, key2) {
+      if (props) {
+        key2 = subValue;
+        subValue = value[key2];
+      }
+      assignValue(
+        result,
+        key2,
+        baseClone$1(subValue, bitmask, customizer, key2, value, stack),
+      );
+    });
+    return result;
+  }
+  var _baseClone = baseClone$1;
+  var baseClone = _baseClone;
+  var CLONE_DEEP_FLAG = 1,
+    CLONE_SYMBOLS_FLAG = 4;
+  function cloneDeep(value) {
+    return baseClone(value, CLONE_DEEP_FLAG | CLONE_SYMBOLS_FLAG);
+  }
+  var cloneDeep_1 = cloneDeep;
+  const cloneDeep$1 = /* @__PURE__ */ getDefaultExportFromCjs$1(cloneDeep_1);
   var classnames = { exports: {} };
   /*!
   	Copyright (c) 2018 Jed Watson.
@@ -5813,6 +8223,38 @@
     })();
   })(classnames);
   const consoleTag = '[vue3-aipage-widget]';
+  function getFramework(_framework) {
+    let defaultFramework = Framework.react;
+    if (!_framework) {
+      return defaultFramework;
+    }
+    let curFramework = _framework.toLowerCase().trim();
+    switch (curFramework) {
+      case 'jquery':
+      case 'jq':
+        curFramework = Framework.jquery;
+        break;
+      case 'vue2':
+      case 'vue 2':
+      case 'vue2.0':
+      case 'vue 2.0':
+        curFramework = Framework.vue2;
+        console.error(
+          'vue3-aipage-widget 不支持 vue2.0 技术栈，请改用aipage-widget支持。',
+        );
+        break;
+      case 'vue':
+      case 'vue3':
+      case 'vue 3':
+      case 'vue3.0':
+      case 'vue 3.0':
+        curFramework = Framework.vue3;
+        break;
+      default:
+        curFramework = Framework.react;
+    }
+    return curFramework;
+  }
   var Framework;
   (function (Framework2) {
     Framework2['react'] = 'react';
@@ -5820,44 +8262,8 @@
     Framework2['vue3'] = 'vue3';
     Framework2['jquery'] = 'jquery';
   })(Framework || (Framework = {}));
-  function isEditorPlugin(EditorPlugin) {
-    let _isEditorPlugin = false;
-    if (!EditorPlugin || !isObject(EditorPlugin)) {
-      return false;
-    }
-    const _editorPluginObj = EditorPlugin;
-    if (!_editorPluginObj.name) {
-      console.error(
-        `${consoleTag}自定义插件注册失败，插件名称（name）不能为空。`,
-      );
-    } else if (!_editorPluginObj.id) {
-      console.error(`${consoleTag}自定义插件注册失败，插件ID（id）不能为空。`);
-    } else if (!_editorPluginObj.componentId) {
-      console.error(
-        `${consoleTag}自定义插件注册失败，渲染器ID（componentId）不能为空。`,
-      );
-    } else if (!_editorPluginObj.description) {
-      console.error(
-        `${consoleTag}自定义插件注册失败，插件描述（description）不能为空。`,
-      );
-    } else if (
-      !_editorPluginObj.tags ||
-      (Array.isArray(_editorPluginObj.tags) &&
-        _editorPluginObj.tags.length === 0)
-    ) {
-      console.error(
-        `${consoleTag}自定义插件注册失败，插件分类（tags）不能为空。`,
-      );
-    } else {
-      if (!_editorPluginObj.pluginIcon) {
-        _editorPluginObj.pluginIcon = 'cards-plugin';
-      }
-      if (!_editorPluginObj.type) {
-        _editorPluginObj.type = 'element';
-      }
-      _isEditorPlugin = true;
-    }
-    return _isEditorPlugin;
+  function isString(str) {
+    return Object.prototype.toString.call(str).slice(8, -1) === 'String';
   }
   function isObject(curObj) {
     let isObject2 = false;
@@ -5866,194 +8272,1122 @@
     }
     return isObject2;
   }
+  function isNumberFormat(val) {
+    return parseFloat(String(val)).toString() !== 'NaN';
+  }
+  function camelToKebab(str) {
+    return str.replace(/([A-Z])/g, '-$1').toLowerCase();
+  }
   function transformComponentId(str) {
     return `-${str}`.replace(/(-[A-Za-z0-9])/g, (m) => {
       return m.toUpperCase().replace('-', '');
     });
   }
-  function registerPlugin(newEditorPlugin) {
-    if (isEditorPlugin(newEditorPlugin)) {
-      if (window && window.postMessage) {
-        const newComponentId = AddCustomPlugin(
-          newEditorPlugin.id,
-          newEditorPlugin,
+  function cloneObject(target, persistOwnProps = true) {
+    const obj =
+      target && target.__super
+        ? Object.create(target.__super, {
+            __super: {
+              value: target.__super,
+              writable: false,
+              enumerable: false,
+            },
+          })
+        : Object.create(Object.prototype);
+    persistOwnProps &&
+      target &&
+      Object.keys(target).forEach((key) => (obj[key] = target[key]));
+    return obj;
+  }
+  function extendObject(target, src, persistOwnProps = true) {
+    const obj = cloneObject(target, persistOwnProps);
+    src && Object.keys(src).forEach((key) => (obj[key] = src[key]));
+    return obj;
+  }
+  const viewportWidth = 375;
+  const parseThemeColor = function (color2) {
+    return color2;
+  };
+  function toRpx(size) {
+    const result = (+[size][size && 0] / 375) * viewportWidth;
+    return Number.isNaN(result) ? void 0 : `${Math.round(result)}px`;
+  }
+  function getBackgroundStyle(background = {}) {
+    const newBackground = pick$1(
+      cloneDeep$1(background) || {},
+      'backgroundImage',
+      'backgroundRepeat',
+      'backgroundSize',
+      'backgroundPosition',
+      'backgroundColor',
+    );
+    if (
+      background.backgroundImage &&
+      /linear-gradient/g.test(background.backgroundImage)
+    ) {
+      newBackground.backgroundImage = background.backgroundImage;
+    } else {
+      if (background.backgroundColor) {
+        newBackground.backgroundColor = parseThemeColor(
+          background.backgroundColor,
+        );
+      }
+      if (background.backgroundImage) {
+        newBackground.backgroundImage = `url('${background.backgroundImage}')`;
+      }
+    }
+    return newBackground;
+  }
+  function getFontStyle(rawFont = {}) {
+    let font = pick$1(
+      cloneDeep$1(rawFont) || {},
+      'color',
+      'fontFamily',
+      'lineHeight',
+      'textAlign',
+    );
+    if (rawFont.bold) {
+      font.fontWeight = 'bold';
+    }
+    if (rawFont.italic) {
+      font.fontStyle = 'italic';
+    }
+    if (rawFont.underline) {
+      font.textDecoration = 'underline';
+    }
+    if (rawFont.lines) {
+      font.WebkitLineClamp = `${rawFont.lines}`;
+    }
+    if (font.lineHeight) {
+      font.lineHeight =
+        font.lineHeight >= 12
+          ? `${parseInt(font.lineHeight, 10)}px`
+          : parseInt(font.lineHeight, 10);
+    }
+    font.fontSize = toRpx(+rawFont.fontSize);
+    font.letterSpacing = toRpx(+rawFont.letterSpacing);
+    return font;
+  }
+  function getBoxStyle(box = {}) {
+    const newBox = pick$1(
+      cloneDeep$1(box) || {},
+      'borderLeftStyle',
+      'borderRightStyle',
+      'borderTopStyle',
+      'borderBottomStyle',
+      'borderLeftColor',
+      'borderRightColor',
+      'borderTopColor',
+      'borderBottomColor',
+    );
+    if (+box.borderTopWidth > 0) {
+      newBox.borderTopWidth = toRpx(+box.borderTopWidth);
+      newBox.borderTopColor = parseThemeColor(box.borderTopColor);
+    } else {
+      delete newBox.borderTopStyle;
+    }
+    if (+box.borderLeftWidth > 0) {
+      newBox.borderLeftWidth = toRpx(+box.borderLeftWidth);
+      newBox.borderLeftColor = parseThemeColor(box.borderLeftColor);
+    } else {
+      delete newBox.borderLeftStyle;
+    }
+    if (+box.borderRightWidth > 0) {
+      newBox.borderRightWidth = toRpx(+box.borderRightWidth);
+      newBox.borderRightColor = parseThemeColor(box.borderRightColor);
+    } else {
+      delete newBox.borderRightStyle;
+    }
+    if (+box.borderBottomWidth > 0) {
+      newBox.borderBottomWidth = toRpx(+box.borderBottomWidth);
+      newBox.borderBottomColor = parseThemeColor(box.borderBottomColor);
+    } else {
+      delete newBox.borderBottomStyle;
+    }
+    newBox.marginTop = toRpx(+box.marginTop);
+    newBox.marginLeft = toRpx(+box.marginLeft);
+    newBox.marginRight = toRpx(+box.marginRight);
+    newBox.marginBottom = toRpx(+box.marginBottom);
+    newBox.paddingTop = toRpx(+box.paddingTop);
+    newBox.paddingLeft = toRpx(+box.paddingLeft);
+    newBox.paddingRight = toRpx(+box.paddingRight);
+    newBox.paddingBottom = toRpx(+box.paddingBottom);
+    newBox.borderTopLeftRadius = toRpx(+box.borderTopLeftRadius);
+    newBox.borderTopRightRadius = toRpx(+box.borderTopRightRadius);
+    newBox.borderBottomLeftRadius = toRpx(+box.borderBottomLeftRadius);
+    newBox.borderBottomRightRadius = toRpx(+box.borderBottomRightRadius);
+    return newBox;
+  }
+  function getFlexStyle(style = {}) {
+    var _a2, _b;
+    let result = {};
+    if (style.display) {
+      result.display = style.display;
+    }
+    if (result.display === 'flex') {
+      let flexSetting = style.flexSetting || {};
+      result.flexDirection = flexSetting.direction || 'row';
+      result.alignItems = flexSetting.align || 'stretch';
+      result.justifyContent = flexSetting.justify || 'flex-start';
+    }
+    if (((_a2 = style.flexSetting) == null ? void 0 : _a2.flexShrink) >= 0) {
+      result.flexShrink = +style.flexSetting.flexShrink;
+    }
+    if (((_b = style.flexSetting) == null ? void 0 : _b.flex) >= 0) {
+      result.flex = +style.flexSetting.flex;
+    }
+    return result;
+  }
+  function toWHset(style, label) {
+    const unit = style[label + 'Unit'] || 'px';
+    if (unit === 'auto' || style[label] <= 0) {
+      return 'auto';
+    } else if (unit === 'px') {
+      return toRpx(+style[label]);
+    }
+    return style[label] + unit;
+  }
+  function getBoxPosition(component) {
+    let { style = {}, isFlow } =
+      (component == null ? void 0 : component.componentProperties) || {};
+    let pos = (style.justification || 'top left').split(' ');
+    let result = {};
+    if (isFlow) {
+      result.height = toWHset(style, 'height');
+      result.width = toWHset(style, 'width');
+      result.maxWidth = '100%';
+      if (result.width > 0) {
+        result.flexShrink = 0;
+      }
+    } else {
+      result[pos[1]] = +style.x + 'px';
+      result[pos[0]] = +style.y + 'px';
+      result.height = toWHset(style, 'height') || 'auto';
+      result.width = toWHset(style, 'width') || '100%';
+      result.position = style.position || 'absolute';
+    }
+    if (style.opacity >= 0) {
+      result.opacity = +style.opacity / 100;
+    }
+    if (style.display) {
+      result.display = style.display;
+    }
+    return result;
+  }
+  function getBoxShadow(config2 = {}) {
+    const { angle = 0, x, y, blur, size, color: color2, distance } = config2;
+    const shadowX =
+      typeof x !== 'undefined'
+        ? x
+        : Math.round(Math.sin(angle * (Math.PI / 180)) * distance);
+    const shadowY =
+      typeof y !== 'undefined'
+        ? y
+        : -Math.round(Math.cos(angle * (Math.PI / 180)) * distance);
+    if (!x && !y && !blur && !size && !distance) {
+      return {};
+    }
+    if (isNumber$1(shadowX) && isNumber$1(shadowY)) {
+      return {
+        boxShadow: `${toRpx(shadowX)} ${toRpx(shadowY)} ${toRpx(
+          blur || 0,
+        )} ${toRpx(size || 0)} ${parseThemeColor(color2)}`,
+      };
+    }
+    return {};
+  }
+  function isValidCSS(rule, val) {
+    return CSS.supports(rule, val);
+  }
+  function transformStyle(style = {}) {
+    let result = {};
+    Object.keys(style).forEach((key) => {
+      switch (key) {
+        case 'box':
+          result = Object.assign(result, getBoxStyle(style.box));
+          break;
+        case 'background':
+          result = Object.assign(result, getBackgroundStyle(style.background));
+          break;
+        case 'font':
+          result = Object.assign(result, getFontStyle(style.font));
+          break;
+        case 'lineHeight':
+          result.lineHeight =
+            style[key] >= 12
+              ? `${parseInt(style[key], 10)}px`
+              : parseInt(style[key], 10);
+          break;
+        case 'boxShadow':
+          result = Object.assign(result, getBoxShadow(style.boxShadow));
+          break;
+        case 'opacity':
+          result.opacity = +style[key] / 100;
+          break;
+        case 'width':
+          result.width = style.autoWidth ? 'auto' : toWHset(style, 'width');
+          break;
+        case 'flexSetting':
+          result = Object.assign(result, getFlexStyle(style));
+          break;
+        case 'height':
+          result.height = toWHset(style, 'height');
+          break;
+        default:
+          let val = isNumberFormat(style[key])
+            ? `${+style[key]}px`
+            : style[key];
+          if (isObject(style[key])) {
+            result = Object.assign(result, {
+              [key]: transformStyle(style[key]),
+            });
+          } else if (
+            ![
+              'x',
+              'y',
+              'css',
+              'lineClamp',
+              'columns',
+              'flex',
+              'scrollX',
+            ].includes(key) &&
+            isValidCSS(camelToKebab(key), val)
+          ) {
+            result[key] = isNumberFormat(style[key])
+              ? `${+style[key]}px`
+              : style[key];
+          }
+          break;
+      }
+    });
+    return result;
+  }
+  (_a = window.matchMedia) == null
+    ? void 0
+    : _a.call(window, '(max-width: 768px)').matches;
+  function createVue3Component(vueObj) {
+    if (
+      !vueObj ||
+      (typeof vueObj !== 'function' && typeof vueObj !== 'object')
+    ) {
+      return;
+    }
+    class VueFactory extends React.Component {
+      constructor(props) {
+        super(props);
+        __publicField(this, 'domRef');
+        __publicField(this, 'app');
+        __publicField(this, 'vm');
+        __publicField(this, 'isUnmount');
+        this.domRef = React.createRef();
+        this.resolveAmisProps = this.resolveAmisProps.bind(this);
+      }
+      componentDidMount() {
+        const { amisData, amisFunc } = this.resolveAmisProps();
+        const { data, ...rest } = (vueObj =
+          typeof vueObj === 'function' ? new vueObj() : vueObj);
+        this.app = vue.createApp({
+          data: () =>
+            extendObject(amisData, typeof data === 'function' ? data() : data),
+          ...rest,
+          props: rest.props || {},
+        });
+        if (this.app && !this.app.prototype) {
+          this.app.prototype = {};
+        }
+        if (this.app && !this.app.filter) {
+          this.app.filter = () => {};
+        }
+        this.app.use(uView);
+        Object.keys(amisFunc).forEach((key) => {
+          this.app.$props[key] = amisFunc[key];
+        });
+        this.vm = this.app.mount(this.domRef.current);
+        this.domRef.current.setAttribute('data-component-id', this.props.id);
+      }
+      componentDidUpdate() {
+        if (!this.isUnmount) {
+          const { amisData } = this.resolveAmisProps();
+          if (this.vm) {
+            Object.keys(amisData).forEach((key) => {
+              this.vm[key] = amisData[key];
+            });
+            this.vm.$forceUpdate();
+          }
+        }
+      }
+      componentWillUnmount() {
+        this.isUnmount = true;
+        this.app.unmount();
+      }
+      resolveAmisProps() {
+        let amisFunc = {};
+        let amisData = {};
+        Object.keys(this.props).forEach((key) => {
+          const value = this.props[key];
+          if (typeof value === 'function') {
+            amisFunc[key] = value;
+          } else {
+            if (vue.isProxy(value)) {
+              amisData[key] = vue.shallowRef(value);
+            } else if (isObject$1$1(value)) {
+              amisData[key] = vue.ref(value);
+            } else {
+              amisData[key] = value;
+            }
+          }
+        });
+        return { amisData, amisFunc };
+      }
+      render() {
+        const { componentProperties, node } = this.props;
+        const style =
+          componentProperties && componentProperties.style
+            ? componentProperties.style
+            : {};
+        const curStyle = {
+          ...getBoxPosition(node || this.props),
+          ...transformStyle(style),
+        };
+        return React.createElement('div', {
+          ref: this.domRef,
+          style: curStyle,
+        });
+      }
+    }
+    return VueFactory;
+  }
+  function registerRenderer(newRenderer, rendererOption) {
+    if (!newRenderer) {
+      return;
+    }
+    const curRendererOption = {
+      type: '',
+      framework: Framework.react,
+      // 默认为 react 技术栈
+    };
+    if (rendererOption && isString(rendererOption)) {
+      Object.assign(curRendererOption, {
+        type: rendererOption,
+      });
+    } else {
+      Object.assign(curRendererOption, rendererOption);
+    }
+    if (curRendererOption && !curRendererOption.type) {
+      console.error(
+        `${consoleTag}自定义组件注册失败，自定义组件类型（type）不能为空。`,
+      );
+    } else {
+      curRendererOption.framework = getFramework(curRendererOption.framework);
+      const resolverMap = {
+        react: (i) => i,
+        // vue2: createVue2Component,
+        vue3: createVue3Component,
+      };
+      const curRendererComponent =
+        resolverMap[curRendererOption.framework](newRenderer);
+      if (window) {
+        const newComponentId = AddCustomRenderer(
+          curRendererOption.type,
+          curRendererComponent,
         );
         if (newComponentId) {
           console.info(
-            `${consoleTag}触发注册自定义插件(${newEditorPlugin.name})事件:`,
-            newEditorPlugin,
+            `${consoleTag}触发注册自定义渲染器(${curRendererOption.type})事件:`,
+            {
+              type: curRendererOption.type,
+              component: curRendererComponent,
+              framework: curRendererOption.framework,
+            },
           );
           window.postMessage(
             {
-              type: 'aipage-editor-register-plugin-event',
-              eventMsg: `${consoleTag}注册一个自定义aipage-editor插件`,
-              editorPluginName: newEditorPlugin.name,
-              customEditorPlugin: newEditorPlugin,
+              type: 'aipage-editor-register-renderer-event',
+              eventMsg: `${consoleTag}注册一个自定义aipage-editor渲染器`,
+              customComponentId: newComponentId,
             },
             '*',
           );
         }
       }
     }
-    return newEditorPlugin;
   }
-  function AddCustomPlugin(id2, plugin) {
-    if (window && !window.AIPageEditorCustomPlugins) {
-      window.AIPageEditorCustomPlugins = {};
+  function AddCustomRenderer(type, component) {
+    if (window && !window.AIPageEditorCustomRenderers) {
+      window.AIPageEditorCustomRenderers = {};
     }
-    const componentId = transformComponentId(id2);
-    if (!window.AIPageEditorCustomPlugins[componentId]) {
-      window.AIPageEditorCustomPlugins[componentId] = plugin;
+    const componentId = transformComponentId(type);
+    if (!window.AIPageEditorCustomRenderers[componentId]) {
+      window.AIPageEditorCustomRenderers[componentId] = component;
       return componentId;
     } else {
       console.error(
-        `${consoleTag}注册自定义插件失败，已存在同名插件(${id2})。`,
+        `${consoleTag}注册自定义渲染器失败，已存在同名渲染器类型(${type})。`,
       );
     }
     return null;
   }
-  (_a = window.matchMedia) == null
-    ? void 0
-    : _a.call(window, '(max-width: 768px)').matches;
-  const InfoCardPlugin = {
-    name: '物流节点',
-    description: 'uview版TimeLine组件示例',
-    componentId: 'uni-time-line',
-    id: 'uni-time-line',
-    tags: ['uview组件'],
-    // 组件分类
-    pluginIcon: 'cards-plugin',
-    order: 1,
-    // 展示顺序（从小到大展示）
-    type: 'element',
-    // 渲染器类型
-    device: ['mobile', 'app'],
-    // 设置类型，目前支持3种类型: pc、mobile、app
-    docLink: '',
-    demoProperties: {
-      componentId: 'uni-time-line',
-      type: 'element',
-      componentProperties: {
-        data: {
-          timeLine: [
-            {
-              status: '运输中',
-              desc: '【深圳市】日照香炉生紫烟，遥看瀑布挂前川，飞流直下三千尺，疑是银河落九天。',
-              time: '2019-05-10 12:12',
-            },
-            {
-              status: '运输中',
-              desc: '【深圳市】日照香炉生紫烟，遥看瀑布挂前川，飞流直下三千尺，疑是银河落九天。',
-              time: '2019-05-08 12:12',
-            },
-            {
-              status: '待取件',
-              desc: '[自提柜]您的快件已放在楼下侧门，直走前方53.6米，左拐约10步，再右拐直走，见一红灯笼停下，叩门三下，喊“芝麻开门”即可。',
-              time: '2019-05-12 12:12',
-            },
-          ],
+  const image = '';
+  const resizeSensor = '';
+  const text = '';
+  const view = '';
+  const uIcon_vue_vue_type_style_index_0_scoped_930a2c40_lang = '';
+  const _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
+  const _sfc_main$3 = {
+    name: 'u-icon',
+    emits: ['click', 'touchstart'],
+    props: {
+      // 图标类名
+      name: {
+        type: String,
+        default: '',
+      },
+      // 图标颜色，可接受主题色
+      color: {
+        type: String,
+        default: '',
+      },
+      // 字体大小，单位rpx
+      size: {
+        type: [Number, String],
+        default: 'inherit',
+      },
+      // 是否显示粗体
+      bold: {
+        type: Boolean,
+        default: false,
+      },
+      // 点击图标的时候传递事件出去的index（用于区分点击了哪一个）
+      index: {
+        type: [Number, String],
+        default: '',
+      },
+      // 触摸图标时的类名
+      hoverClass: {
+        type: String,
+        default: '',
+      },
+      // 自定义扩展前缀，方便用户扩展自己的图标库
+      customPrefix: {
+        type: String,
+        default: 'uicon',
+      },
+      // 图标右边或者下面的文字
+      label: {
+        type: [String, Number],
+        default: '',
+      },
+      // label的位置，只能右边或者下边
+      labelPos: {
+        type: String,
+        default: 'right',
+      },
+      // label的大小
+      labelSize: {
+        type: [String, Number],
+        default: '28',
+      },
+      // label的颜色
+      labelColor: {
+        type: String,
+        default: '#606266',
+      },
+      // label与图标的距离(横向排列)
+      marginLeft: {
+        type: [String, Number],
+        default: '6',
+      },
+      // label与图标的距离(竖向排列)
+      marginTop: {
+        type: [String, Number],
+        default: '6',
+      },
+      // label与图标的距离(竖向排列)
+      marginRight: {
+        type: [String, Number],
+        default: '6',
+      },
+      // label与图标的距离(竖向排列)
+      marginBottom: {
+        type: [String, Number],
+        default: '6',
+      },
+      // 图片的mode
+      imgMode: {
+        type: String,
+        default: 'widthFix',
+      },
+      // 自定义样式
+      customStyle: {
+        type: Object,
+        default() {
+          return {};
         },
-        style: {},
+      },
+      // 用于显示图片小图标时，图片的宽度
+      width: {
+        type: [String, Number],
+        default: '',
+      },
+      // 用于显示图片小图标时，图片的高度
+      height: {
+        type: [String, Number],
+        default: '',
+      },
+      // 用于解决某些情况下，让图标垂直居中的用途
+      top: {
+        type: [String, Number],
+        default: 0,
+      },
+      // 是否为DecimalIcon
+      showDecimalIcon: {
+        type: Boolean,
+        default: false,
+      },
+      // 背景颜色，可接受主题色，仅Decimal时有效
+      inactiveColor: {
+        type: String,
+        default: '#ececec',
+      },
+      // 显示的百分比，仅Decimal时有效
+      percent: {
+        type: [Number, String],
+        default: '50',
       },
     },
-    panelControls: {
-      type: 'tabs',
-      tabs: [
-        {
-          title: '属性',
-          controls: [
-            {
-              type: 'collapse',
-              title: '数据',
-              controls: [
-                {
-                  name: 'data.timeLine',
-                  type: 'setting-list',
-                  label: '物流节点',
-                  mode: 'normal',
-                  fullSize: true,
-                  setting: [
-                    {
-                      type: 'input-text',
-                      name: 'status',
-                      label: '状态',
-                    },
-                    {
-                      type: 'textarea',
-                      name: 'desc',
-                      label: '详细',
-                    },
-                    {
-                      type: 'input-datetime',
-                      name: 'time',
-                      label: '时间',
-                      format: 'YYYY-MM-DD HH:mm',
-                    },
-                  ],
-                  enableDataBinding: true,
-                  // 有这个属性则组件会自动开启动态数据绑定
-                },
-              ],
-            },
-          ],
-        },
-        {
-          title: '外观',
-          controls: [
-            {
-              title: '布局',
-              type: 'collapse',
-              controls: [
-                {
-                  type: 'button-icon-group',
-                  name: 'style.display',
-                  label: '显示',
-                  value: 'block',
-                  options: [
-                    {
-                      label: '块级(block)',
-                      icon: 'block',
-                      value: 'block',
-                    },
-                    {
-                      label: '行内区块(inline-block)',
-                      icon: 'inlineBlock',
-                      value: 'inline-block',
-                    },
-                    {
-                      label: '行内元素(inline)',
-                      icon: 'inline',
-                      value: 'inline',
-                    },
-                  ],
-                },
-                {
-                  name: 'style',
-                  type: 'whSet',
-                  label: '宽度',
-                  options: [
-                    {
-                      label: '',
-                      value: 'width',
-                    },
-                  ],
-                },
-              ],
-            },
-            {
-              type: 'collapse',
-              title: '边距',
-              controls: {
-                name: 'style.box',
-                type: 'boxModel',
-                label: false,
-              },
-            },
-          ],
-        },
-      ],
+    computed: {
+      customClass() {
+        let classes = [];
+        let { customPrefix, name } = this;
+        let index = name.indexOf('-icon-');
+        if (index > -1) {
+          customPrefix = name.substring(0, index + 5);
+          classes.push(name);
+        } else {
+          classes.push(`${customPrefix}-${name}`);
+        }
+        if (customPrefix === 'uicon') {
+          classes.push('u-iconfont');
+        } else {
+          classes.push(customPrefix);
+        }
+        if (
+          this.showDecimalIcon &&
+          this.inactiveColor &&
+          this.$u.config.type.includes(this.inactiveColor)
+        ) {
+          classes.push('u-icon__icon--' + this.inactiveColor);
+        } else if (this.color && this.$u.config.type.includes(this.color))
+          classes.push('u-icon__icon--' + this.color);
+        return classes;
+      },
+      iconStyle() {
+        let style = {};
+        style = {
+          fontSize:
+            this.size == 'inherit' ? 'inherit' : this.$u.addUnit(this.size),
+          fontWeight: this.bold ? 'bold' : 'normal',
+          // 某些特殊情况需要设置一个到顶部的距离，才能更好的垂直居中
+          top: this.$u.addUnit(this.top),
+        };
+        if (
+          this.showDecimalIcon &&
+          this.inactiveColor &&
+          !this.$u.config.type.includes(this.inactiveColor)
+        ) {
+          style.color = this.inactiveColor;
+        } else if (this.color && !this.$u.config.type.includes(this.color))
+          style.color = this.color;
+        return style;
+      },
+      // 判断传入的name属性，是否图片路径，只要带有"/"均认为是图片形式
+      isImg() {
+        return this.name.indexOf('/') !== -1;
+      },
+      imgStyle() {
+        let style = {};
+        style.width = this.width
+          ? this.$u.addUnit(this.width)
+          : this.$u.addUnit(this.size);
+        style.height = this.height
+          ? this.$u.addUnit(this.height)
+          : this.$u.addUnit(this.size);
+        return style;
+      },
+      decimalIconStyle() {
+        let style = {};
+        style = {
+          fontSize:
+            this.size == 'inherit' ? 'inherit' : this.$u.addUnit(this.size),
+          fontWeight: this.bold ? 'bold' : 'normal',
+          // 某些特殊情况需要设置一个到顶部的距离，才能更好的垂直居中
+          top: this.$u.addUnit(this.top),
+          width: this.percent + '%',
+        };
+        if (this.color && !this.$u.config.type.includes(this.color))
+          style.color = this.color;
+        return style;
+      },
+      decimalIconClass() {
+        let classes = [];
+        classes.push(this.customPrefix + '-' + this.name);
+        if (this.customPrefix == 'uicon') {
+          classes.push('u-iconfont');
+        } else {
+          classes.push(this.customPrefix);
+        }
+        if (this.color && this.$u.config.type.includes(this.color))
+          classes.push('u-icon__icon--' + this.color);
+        else classes.push('u-icon__icon--primary');
+        return classes;
+      },
+    },
+    methods: {
+      click() {
+        this.$emit('click', this.index);
+      },
+      touchstart() {
+        this.$emit('touchstart', this.index);
+      },
     },
   };
-  registerPlugin(InfoCardPlugin);
-  return InfoCardPlugin;
+  function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_v_uni_image = index$q;
+    const _component_v_uni_text = index$i;
+    const _component_v_uni_view = index$g;
+    return (
+      vue.openBlock(),
+      vue.createBlock(
+        _component_v_uni_view,
+        {
+          style: vue.normalizeStyle([$props.customStyle]),
+          class: vue.normalizeClass(['u-icon', ['u-icon--' + $props.labelPos]]),
+          onClick: $options.click,
+        },
+        {
+          default: vue.withCtx(() => [
+            $options.isImg
+              ? (vue.openBlock(),
+                vue.createBlock(
+                  _component_v_uni_image,
+                  {
+                    key: 0,
+                    class: 'u-icon__img',
+                    src: $props.name,
+                    mode: $props.imgMode,
+                    style: vue.normalizeStyle([$options.imgStyle]),
+                  },
+                  null,
+                  8,
+                  ['src', 'mode', 'style'],
+                ))
+              : (vue.openBlock(),
+                vue.createBlock(
+                  _component_v_uni_view,
+                  {
+                    key: 1,
+                    class: vue.normalizeClass([
+                      'u-icon__icon',
+                      $options.customClass,
+                    ]),
+                    style: vue.normalizeStyle([$options.iconStyle]),
+                    'hover-class': $props.hoverClass,
+                    onTouchstart: $options.touchstart,
+                  },
+                  {
+                    default: vue.withCtx(() => [
+                      $props.showDecimalIcon
+                        ? (vue.openBlock(),
+                          vue.createBlock(
+                            _component_v_uni_text,
+                            {
+                              key: 0,
+                              style: vue.normalizeStyle([
+                                $options.decimalIconStyle,
+                              ]),
+                              class: vue.normalizeClass([
+                                $options.decimalIconClass,
+                                'u-icon__decimal',
+                              ]),
+                              'hover-class': $props.hoverClass,
+                            },
+                            null,
+                            8,
+                            ['style', 'class', 'hover-class'],
+                          ))
+                        : vue.createCommentVNode('v-if', true),
+                    ]),
+                    _: 1,
+                    /* STABLE */
+                  },
+                  8,
+                  ['class', 'style', 'hover-class', 'onTouchstart'],
+                )),
+            vue.createCommentVNode(
+              ' 这里进行空字符串判断，如果仅仅是v-if="label"，可能会出现传递0的时候，结果也无法显示，微信小程序不传值默认为null，故需要增加null的判断 ',
+            ),
+            $props.label !== '' && $props.label !== null
+              ? (vue.openBlock(),
+                vue.createBlock(
+                  _component_v_uni_text,
+                  {
+                    key: 2,
+                    class: 'u-icon__label',
+                    style: vue.normalizeStyle({
+                      color: $props.labelColor,
+                      fontSize: _ctx.$u.addUnit($props.labelSize),
+                      marginLeft:
+                        $props.labelPos == 'right'
+                          ? _ctx.$u.addUnit($props.marginLeft)
+                          : 0,
+                      marginTop:
+                        $props.labelPos == 'bottom'
+                          ? _ctx.$u.addUnit($props.marginTop)
+                          : 0,
+                      marginRight:
+                        $props.labelPos == 'left'
+                          ? _ctx.$u.addUnit($props.marginRight)
+                          : 0,
+                      marginBottom:
+                        $props.labelPos == 'top'
+                          ? _ctx.$u.addUnit($props.marginBottom)
+                          : 0,
+                    }),
+                  },
+                  {
+                    default: vue.withCtx(() => [
+                      vue.createTextVNode(
+                        vue.toDisplayString($props.label),
+                        1,
+                        /* TEXT */
+                      ),
+                    ]),
+                    _: 1,
+                    /* STABLE */
+                  },
+                  8,
+                  ['style'],
+                ))
+              : vue.createCommentVNode('v-if', true),
+          ]),
+          _: 1,
+          /* STABLE */
+        },
+        8,
+        ['style', 'onClick', 'class'],
+      )
+    );
+  }
+  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [
+    ['render', _sfc_render$3],
+    ['__scopeId', 'data-v-930a2c40'],
+  ]);
+  function resolveEasycom(component, easycom) {
+    return isString$1(component) ? easycom : component;
+  }
+  const uTimeLineItem_vue_vue_type_style_index_0_scoped_695bec6f_lang = '';
+  const _sfc_main$2 = {
+    name: 'u-time-line-item',
+    props: {
+      // 节点的背景颜色
+      bgColor: {
+        type: String,
+        default: '#ffffff',
+      },
+      // 节点左边图标绝对定位的top值
+      nodeTop: {
+        type: [String, Number],
+        default: '',
+      },
+    },
+    data() {
+      return {};
+    },
+    computed: {
+      nodeStyle() {
+        let style = {
+          backgroundColor: this.bgColor,
+        };
+        if (this.nodeTop != '') style.top = this.nodeTop + 'rpx';
+        return style;
+      },
+    },
+  };
+  function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_v_uni_view = index$g;
+    return (
+      vue.openBlock(),
+      vue.createBlock(
+        _component_v_uni_view,
+        { class: 'u-time-axis-item' },
+        {
+          default: vue.withCtx(() => [
+            vue.renderSlot(_ctx.$slots, 'content', {}, void 0, true),
+            vue.createVNode(
+              _component_v_uni_view,
+              {
+                class: 'u-time-axis-node',
+                style: vue.normalizeStyle([$options.nodeStyle]),
+              },
+              {
+                default: vue.withCtx(() => [
+                  vue.renderSlot(
+                    _ctx.$slots,
+                    'node',
+                    {},
+                    () => [
+                      vue.createVNode(_component_v_uni_view, {
+                        class: 'u-dot',
+                      }),
+                    ],
+                    true,
+                  ),
+                ]),
+                _: 3,
+                /* FORWARDED */
+              },
+              8,
+              ['style'],
+            ),
+          ]),
+          _: 3,
+          /* FORWARDED */
+        },
+      )
+    );
+  }
+  const __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$2, [
+    ['render', _sfc_render$2],
+    ['__scopeId', 'data-v-695bec6f'],
+  ]);
+  const uTimeLine_vue_vue_type_style_index_0_scoped_9e5e36b9_lang = '';
+  const _sfc_main$1 = {
+    name: 'u-time-line',
+    data() {
+      return {};
+    },
+  };
+  function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_v_uni_view = index$g;
+    return (
+      vue.openBlock(),
+      vue.createBlock(
+        _component_v_uni_view,
+        { class: 'u-time-axis' },
+        {
+          default: vue.withCtx(() => [
+            vue.renderSlot(_ctx.$slots, 'default', {}, void 0, true),
+          ]),
+          _: 3,
+          /* FORWARDED */
+        },
+      )
+    );
+  }
+  const __easycom_3 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [
+    ['render', _sfc_render$1],
+    ['__scopeId', 'data-v-9e5e36b9'],
+  ]);
+  const uniTimeLine_vue_vue_type_style_index_0_scoped_abcdfb0a_lang = '';
+  const _sfc_main = {
+    props: ['componentProperties', 'id'],
+    data() {
+      return {
+        show: true,
+        mode: 'date',
+        timeLineDemo: [
+          {
+            status: '运输中',
+            desc: '【深圳市】日照香炉生紫烟，遥看瀑布挂前川，飞流直下三千尺，疑是银河落九天。',
+            time: '2019-05-10 12:12',
+          },
+          {
+            status: '运输中',
+            desc: '【深圳市】日照香炉生紫烟，遥看瀑布挂前川，飞流直下三千尺，疑是银河落九天。',
+            time: '2019-05-08 12:12',
+          },
+          {
+            status: '待取件',
+            desc: '[自提柜]您的快件已放在楼下侧门，直走前方53.6米，左拐约10步，再右拐直走，见一红灯笼停下，叩门三下，喊“芝麻开门”即可。',
+            time: '2019-05-12 12:12',
+          },
+        ],
+      };
+    },
+    computed: {
+      timeLine() {
+        return (
+          (this.componentProperties &&
+            this.componentProperties.data &&
+            this.componentProperties.data.timeLine) ||
+          this.timeLineDemo
+        );
+      },
+      timeLineReverse() {
+        return this.timeLine ? this.timeLine.reverse() : [];
+      },
+    },
+  };
+  function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_u_icon = resolveEasycom(
+      vue.resolveDynamicComponent('u-icon'),
+      __easycom_0,
+    );
+    const _component_v_uni_view = index$g;
+    const _component_u_time_line_item = resolveEasycom(
+      vue.resolveDynamicComponent('u-time-line-item'),
+      __easycom_2,
+    );
+    const _component_u_time_line = resolveEasycom(
+      vue.resolveDynamicComponent('u-time-line'),
+      __easycom_3,
+    );
+    return (
+      vue.openBlock(),
+      vue.createBlock(
+        _component_u_time_line,
+        { class: 'time-line' },
+        {
+          default: vue.withCtx(() => [
+            (vue.openBlock(true),
+            vue.createElementBlock(
+              vue.Fragment,
+              null,
+              vue.renderList($options.timeLineReverse, (item, index) => {
+                return (
+                  vue.openBlock(),
+                  vue.createBlock(
+                    _component_u_time_line_item,
+                    { key: index },
+                    vue.createSlots(
+                      {
+                        content: vue.withCtx(() => [
+                          vue.createVNode(
+                            _component_v_uni_view,
+                            null,
+                            {
+                              default: vue.withCtx(() => [
+                                vue.createVNode(
+                                  _component_v_uni_view,
+                                  { class: 'u-order-title' },
+                                  {
+                                    default: vue.withCtx(() => [
+                                      vue.createTextVNode(
+                                        vue.toDisplayString(item.status),
+                                        1,
+                                        /* TEXT */
+                                      ),
+                                    ]),
+                                    _: 2,
+                                    /* DYNAMIC */
+                                  },
+                                  1024,
+                                  /* DYNAMIC_SLOTS */
+                                ),
+                                vue.createVNode(
+                                  _component_v_uni_view,
+                                  { class: 'u-order-desc' },
+                                  {
+                                    default: vue.withCtx(() => [
+                                      vue.createTextVNode(
+                                        vue.toDisplayString(item.desc),
+                                        1,
+                                        /* TEXT */
+                                      ),
+                                    ]),
+                                    _: 2,
+                                    /* DYNAMIC */
+                                  },
+                                  1024,
+                                  /* DYNAMIC_SLOTS */
+                                ),
+                                vue.createVNode(
+                                  _component_v_uni_view,
+                                  { class: 'u-order-time' },
+                                  {
+                                    default: vue.withCtx(() => [
+                                      vue.createTextVNode(
+                                        vue.toDisplayString(item.time),
+                                        1,
+                                        /* TEXT */
+                                      ),
+                                    ]),
+                                    _: 2,
+                                    /* DYNAMIC */
+                                  },
+                                  1024,
+                                  /* DYNAMIC_SLOTS */
+                                ),
+                              ]),
+                              _: 2,
+                              /* DYNAMIC */
+                            },
+                            1024,
+                            /* DYNAMIC_SLOTS */
+                          ),
+                        ]),
+                        _: 2,
+                        /* DYNAMIC */
+                      },
+                      [
+                        index === 0
+                          ? {
+                              name: 'node',
+                              fn: vue.withCtx(() => [
+                                vue.createVNode(
+                                  _component_v_uni_view,
+                                  {
+                                    class: 'u-node',
+                                    style: { background: '#19be6b' },
+                                  },
+                                  {
+                                    default: vue.withCtx(() => [
+                                      vue.createCommentVNode(
+                                        ' 此处为uView的icon组件 ',
+                                      ),
+                                      vue.createVNode(_component_u_icon, {
+                                        name: 'pushpin-fill',
+                                        color: '#fff',
+                                        size: 24,
+                                      }),
+                                    ]),
+                                    _: 1,
+                                    /* STABLE */
+                                  },
+                                ),
+                              ]),
+                              key: '0',
+                            }
+                          : void 0,
+                      ],
+                    ),
+                    1024,
+                    /* DYNAMIC_SLOTS */
+                  )
+                );
+              }),
+              128,
+              /* KEYED_FRAGMENT */
+            )),
+          ]),
+          _: 1,
+          /* STABLE */
+        },
+      )
+    );
+  }
+  const InfoCard = /* @__PURE__ */ _export_sfc(_sfc_main, [
+    ['render', _sfc_render],
+    ['__scopeId', 'data-v-abcdfb0a'],
+  ]);
+  registerRenderer(InfoCard, {
+    type: 'uni-time-line',
+    framework: 'vue3',
+  });
 });
