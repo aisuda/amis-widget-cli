@@ -1,6 +1,6 @@
 {
   "name": "multiple-custom-widget-template",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "amis自定义组件模板（多个自定义组件）",
   "keywords": [
     "自定义组件模板",
@@ -104,7 +104,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^9.1.1",
-    "amis-widget-cli": "^3.1.11",
+    "amis-widget-cli": "^3.2.2",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "prettier": "^2.0.5"

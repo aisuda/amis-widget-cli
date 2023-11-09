@@ -10,209 +10,129 @@
 })(this, function () {
   return (function () {
     var e = {
-        './src/react-widget/info-card.jsx': function (e, t, r) {
-          'use strict';
-          r.r(t),
-            r.d(t, {
-              default: function () {
-                return d;
-              },
-            });
-          var s = r('@babel/runtime/helpers/assertThisInitialized'),
-            n = r.n(s),
-            o = r('@babel/runtime/helpers/inheritsLoose'),
-            i = r.n(o),
-            a = r('react'),
-            d =
-              (r('./src/react-widget/style.scss'),
-              (function (e) {
-                function t() {
-                  var t;
-                  return (
-                    ((t = e.call(this) || this).agreeDataFormat =
-                      t.agreeDataFormat.bind(n()(t))),
-                    t
-                  );
-                }
-                i()(t, e);
-                var r = t.prototype;
-                return (
-                  (r.agreeDataFormat = function (e) {
-                    return e && e <= 9999
-                      ? e
-                      : e && e > 9999
-                      ? Math.floor(e / 1e3) / 10 + 'w'
-                      : void 0;
-                  }),
-                  (r.render = function () {
-                    var e = this.props,
-                      t = e.title,
-                      r = e.backgroundImage,
-                      s = e.img_count,
-                      n = e.comment_count,
-                      o =
-                        r ||
-                        'https://search-operate.cdn.bcebos.com/64c279f23794a831f9a8e7a4e0b722dd.jpg';
-                    return a.createElement(
-                      'div',
-                      { className: 'news-card' },
-                      a.createElement(
-                        'div',
-                        { className: 'news-title' },
-                        t ||
-                          'amis 是一个低代码前端框架，它使用 JSON 配置来生成页面，可以减少页面开发工作量，极大提升效率。',
-                      ),
-                      a.createElement(
-                        'div',
-                        { className: 'item-imgbox' },
-                        a.createElement('div', {
-                          className: 'news-img',
-                          style: { backgroundImage: 'url(' + o + ')' },
-                        }),
-                        s > 0 &&
-                          a.createElement('div', { className: 'img-count' }, s),
-                      ),
-                      a.createElement(
-                        'div',
-                        { className: 'news-info' },
-                        a.createElement(
-                          'div',
-                          { className: 'left media-mark' },
-                          '爱速搭 · 低代码平台',
-                        ),
-                        n &&
-                          n > 0 &&
-                          a.createElement(
-                            'div',
-                            { className: 'cmt-num right' },
-                            this.agreeDataFormat(n),
-                            '评',
-                          ),
-                      ),
-                    );
-                  }),
-                  t
-                );
-              })(a.PureComponent));
+        271: function () {},
+        588: function (e, t, r) {
+          var n = r(271);
+          n.__esModule && (n = n.default),
+            'string' == typeof n && (n = [[e.id, n, '']]),
+            n.locals && (e.exports = n.locals),
+            (0, r(346).Z)('dfa2c9b2', n, !1, { sourceMap: !1 });
         },
-        './node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!./src/react-widget/style.scss':
-          function () {},
-        './src/react-widget/style.scss': function (e, t, r) {
-          var s = r(
-            './node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!./src/react-widget/style.scss',
-          );
-          s.__esModule && (s = s.default),
-            'string' == typeof s && (s = [[e.id, s, '']]),
-            s.locals && (e.exports = s.locals),
-            (0,
-            r('./node_modules/vue-style-loader/lib/addStylesClient.js')
-              .default)('dfa2c9b2', s, !1, { sourceMap: !1 });
-        },
-        './node_modules/vue-style-loader/lib/addStylesClient.js': function (
-          e,
-          t,
-          r,
-        ) {
+        346: function (e, t, r) {
           'use strict';
-          r.r(t),
-            r.d(t, {
-              default: function () {
-                return p;
-              },
-            });
-          var s = r('./node_modules/vue-style-loader/lib/listToStyles.js'),
-            n = 'undefined' != typeof document;
-          if ('undefined' != typeof DEBUG && DEBUG && !n)
+          function n(e, t) {
+            for (var r = [], n = {}, a = 0; a < t.length; a++) {
+              var o = t[a],
+                i = o[0],
+                s = {
+                  id: e + ':' + a,
+                  css: o[1],
+                  media: o[2],
+                  sourceMap: o[3],
+                };
+              n[i]
+                ? n[i].parts.push(s)
+                : r.push((n[i] = { id: i, parts: [s] }));
+            }
+            return r;
+          }
+          r.d(t, {
+            Z: function () {
+              return m;
+            },
+          });
+          var a = 'undefined' != typeof document;
+          if ('undefined' != typeof DEBUG && DEBUG && !a)
             throw new Error(
               "vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.",
             );
           var o = {},
             i =
-              n && (document.head || document.getElementsByTagName('head')[0]),
-            a = null,
-            d = 0,
-            l = !1,
-            u = function () {},
-            c = null,
+              a && (document.head || document.getElementsByTagName('head')[0]),
+            s = null,
+            u = 0,
+            c = !1,
+            d = function () {},
+            l = null,
             f = 'data-vue-ssr-id',
-            m =
+            p =
               'undefined' != typeof navigator &&
               /msie [6-9]\b/.test(navigator.userAgent.toLowerCase());
-          function p(e, t, r, n) {
-            (l = r), (c = n || {});
-            var i = (0, s.default)(e, t);
+          function m(e, t, r, a) {
+            (c = r), (l = a || {});
+            var i = n(e, t);
             return (
-              g(i),
+              v(i),
               function (t) {
-                for (var r = [], n = 0; n < i.length; n++) {
-                  var a = i[n];
-                  (d = o[a.id]).refs--, r.push(d);
+                for (var r = [], a = 0; a < i.length; a++) {
+                  var s = i[a];
+                  (u = o[s.id]).refs--, r.push(u);
                 }
                 for (
-                  t ? g((i = (0, s.default)(e, t))) : (i = []), n = 0;
-                  n < r.length;
-                  n++
+                  t ? v((i = n(e, t))) : (i = []), a = 0;
+                  a < r.length;
+                  a++
                 ) {
-                  var d;
-                  if (0 === (d = r[n]).refs) {
-                    for (var l = 0; l < d.parts.length; l++) d.parts[l]();
-                    delete o[d.id];
+                  var u;
+                  if (0 === (u = r[a]).refs) {
+                    for (var c = 0; c < u.parts.length; c++) u.parts[c]();
+                    delete o[u.id];
                   }
                 }
               }
             );
           }
-          function g(e) {
+          function v(e) {
             for (var t = 0; t < e.length; t++) {
               var r = e[t],
-                s = o[r.id];
-              if (s) {
-                s.refs++;
-                for (var n = 0; n < s.parts.length; n++) s.parts[n](r.parts[n]);
-                for (; n < r.parts.length; n++) s.parts.push(h(r.parts[n]));
-                s.parts.length > r.parts.length &&
-                  (s.parts.length = r.parts.length);
+                n = o[r.id];
+              if (n) {
+                n.refs++;
+                for (var a = 0; a < n.parts.length; a++) n.parts[a](r.parts[a]);
+                for (; a < r.parts.length; a++) n.parts.push(g(r.parts[a]));
+                n.parts.length > r.parts.length &&
+                  (n.parts.length = r.parts.length);
               } else {
                 var i = [];
-                for (n = 0; n < r.parts.length; n++) i.push(h(r.parts[n]));
+                for (a = 0; a < r.parts.length; a++) i.push(g(r.parts[a]));
                 o[r.id] = { id: r.id, refs: 1, parts: i };
               }
             }
           }
-          function v() {
+          function h() {
             var e = document.createElement('style');
             return (e.type = 'text/css'), i.appendChild(e), e;
           }
-          function h(e) {
+          function g(e) {
             var t,
               r,
-              s = document.querySelector('style[' + f + '~="' + e.id + '"]');
-            if (s) {
-              if (l) return u;
-              s.parentNode.removeChild(s);
+              n = document.querySelector('style[' + f + '~="' + e.id + '"]');
+            if (n) {
+              if (c) return d;
+              n.parentNode.removeChild(n);
             }
-            if (m) {
-              var n = d++;
-              (s = a || (a = v())),
-                (t = j.bind(null, s, n, !1)),
-                (r = j.bind(null, s, n, !0));
+            if (p) {
+              var a = u++;
+              (n = s || (s = h())),
+                (t = N.bind(null, n, a, !1)),
+                (r = N.bind(null, n, a, !0));
             } else
-              (s = v()),
-                (t = S.bind(null, s)),
+              (n = h()),
+                (t = x.bind(null, n)),
                 (r = function () {
-                  s.parentNode.removeChild(s);
+                  n.parentNode.removeChild(n);
                 });
             return (
               t(e),
-              function (s) {
-                if (s) {
+              function (n) {
+                if (n) {
                   if (
-                    s.css === e.css &&
-                    s.media === e.media &&
-                    s.sourceMap === e.sourceMap
+                    n.css === e.css &&
+                    n.media === e.media &&
+                    n.sourceMap === e.sourceMap
                   )
                     return;
-                  t((e = s));
+                  t((e = n));
                 } else r();
               }
             );
@@ -223,28 +143,28 @@
               function (e, t) {
                 return (b[e] = t), b.filter(Boolean).join('\n');
               });
-          function j(e, t, r, s) {
-            var n = r ? '' : s.css;
-            if (e.styleSheet) e.styleSheet.cssText = y(t, n);
+          function N(e, t, r, n) {
+            var a = r ? '' : n.css;
+            if (e.styleSheet) e.styleSheet.cssText = y(t, a);
             else {
-              var o = document.createTextNode(n),
+              var o = document.createTextNode(a),
                 i = e.childNodes;
               i[t] && e.removeChild(i[t]),
                 i.length ? e.insertBefore(o, i[t]) : e.appendChild(o);
             }
           }
-          function S(e, t) {
+          function x(e, t) {
             var r = t.css,
-              s = t.media,
-              n = t.sourceMap;
+              n = t.media,
+              a = t.sourceMap;
             if (
-              (s && e.setAttribute('media', s),
-              c.ssrId && e.setAttribute(f, t.id),
-              n &&
-                ((r += '\n/*# sourceURL=' + n.sources[0] + ' */'),
+              (n && e.setAttribute('media', n),
+              l.ssrId && e.setAttribute(f, t.id),
+              a &&
+                ((r += '\n/*# sourceURL=' + a.sources[0] + ' */'),
                 (r +=
                   '\n/*# sourceMappingURL=data:application/json;base64,' +
-                  btoa(unescape(encodeURIComponent(JSON.stringify(n)))) +
+                  btoa(unescape(encodeURIComponent(JSON.stringify(a)))) +
                   ' */')),
               e.styleSheet)
             )
@@ -255,58 +175,13 @@
             }
           }
         },
-        './node_modules/vue-style-loader/lib/listToStyles.js': function (
-          e,
-          t,
-          r,
-        ) {
-          'use strict';
-          function s(e, t) {
-            for (var r = [], s = {}, n = 0; n < t.length; n++) {
-              var o = t[n],
-                i = o[0],
-                a = {
-                  id: e + ':' + n,
-                  css: o[1],
-                  media: o[2],
-                  sourceMap: o[3],
-                };
-              s[i]
-                ? s[i].parts.push(a)
-                : r.push((s[i] = { id: i, parts: [a] }));
-            }
-            return r;
-          }
-          r.r(t),
-            r.d(t, {
-              default: function () {
-                return s;
-              },
-            });
-        },
-        '@babel/runtime/helpers/assertThisInitialized': function (e) {
-          'use strict';
-          e.exports = require('@babel/runtime/helpers/assertThisInitialized');
-        },
-        '@babel/runtime/helpers/inheritsLoose': function (e) {
-          'use strict';
-          e.exports = require('@babel/runtime/helpers/inheritsLoose');
-        },
-        'amis-widget': function (e) {
-          'use strict';
-          e.exports = require('amis-widget');
-        },
-        react: function (e) {
-          'use strict';
-          e.exports = require('react');
-        },
       },
       t = {};
-    function r(s) {
-      var n = t[s];
-      if (void 0 !== n) return n.exports;
-      var o = (t[s] = { id: s, exports: {} });
-      return e[s](o, o.exports, r), o.exports;
+    function r(n) {
+      var a = t[n];
+      if (void 0 !== a) return a.exports;
+      var o = (t[n] = { id: n, exports: {} });
+      return e[n](o, o.exports, r), o.exports;
     }
     (r.n = function (e) {
       var t =
@@ -320,10 +195,10 @@
       return r.d(t, { a: t }), t;
     }),
       (r.d = function (e, t) {
-        for (var s in t)
-          r.o(t, s) &&
-            !r.o(e, s) &&
-            Object.defineProperty(e, s, { enumerable: !0, get: t[s] });
+        for (var n in t)
+          r.o(t, n) &&
+            !r.o(e, n) &&
+            Object.defineProperty(e, n, { enumerable: !0, get: t[n] });
       }),
       (r.o = function (e, t) {
         return Object.prototype.hasOwnProperty.call(e, t);
@@ -334,21 +209,96 @@
           Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
           Object.defineProperty(e, '__esModule', { value: !0 });
       });
-    var s = {};
+    var n = {};
     return (
       (function () {
         'use strict';
-        r.r(s);
-        var e = r('amis-widget'),
-          t = r('./src/react-widget/info-card.jsx');
-        (0, e.registerRendererByType)(t.default, {
+        r.r(n);
+        var e = require('amis-widget'),
+          t = require('@babel/runtime/helpers/assertThisInitialized'),
+          a = r.n(t),
+          o = require('@babel/runtime/helpers/inheritsLoose'),
+          i = r.n(o),
+          s = require('react'),
+          u =
+            (r(588),
+            (function (e) {
+              function t() {
+                var t;
+                return (
+                  ((t = e.call(this) || this).agreeDataFormat =
+                    t.agreeDataFormat.bind(a()(t))),
+                  t
+                );
+              }
+              i()(t, e);
+              var r = t.prototype;
+              return (
+                (r.agreeDataFormat = function (e) {
+                  return e && e <= 9999
+                    ? e
+                    : e && e > 9999
+                    ? Math.floor(e / 1e3) / 10 + 'w'
+                    : void 0;
+                }),
+                (r.render = function () {
+                  var e = this.props,
+                    t = e.title,
+                    r = e.backgroundImage,
+                    n = e.img_count,
+                    a = e.comment_count,
+                    o =
+                      r ||
+                      'https://search-operate.cdn.bcebos.com/64c279f23794a831f9a8e7a4e0b722dd.jpg';
+                  return s.createElement(
+                    'div',
+                    { className: 'news-card' },
+                    s.createElement(
+                      'div',
+                      { className: 'news-title' },
+                      t ||
+                        'amis 是一个低代码前端框架，它使用 JSON 配置来生成页面，可以减少页面开发工作量，极大提升效率。',
+                    ),
+                    s.createElement(
+                      'div',
+                      { className: 'item-imgbox' },
+                      s.createElement('div', {
+                        className: 'news-img',
+                        style: { backgroundImage: 'url(' + o + ')' },
+                      }),
+                      n > 0 &&
+                        s.createElement('div', { className: 'img-count' }, n),
+                    ),
+                    s.createElement(
+                      'div',
+                      { className: 'news-info' },
+                      s.createElement(
+                        'div',
+                        { className: 'left media-mark' },
+                        '爱速搭 · 低代码平台',
+                      ),
+                      a &&
+                        a > 0 &&
+                        s.createElement(
+                          'div',
+                          { className: 'cmt-num right' },
+                          this.agreeDataFormat(a),
+                          '评',
+                        ),
+                    ),
+                  );
+                }),
+                t
+              );
+            })(s.PureComponent));
+        (0, e.registerRendererByType)(u, {
           type: 'react-info-card',
           usage: 'renderer',
           weight: 99,
           framework: 'react',
         });
       })(),
-      s
+      n
     );
   })();
 });

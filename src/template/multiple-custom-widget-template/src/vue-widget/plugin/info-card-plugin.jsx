@@ -1,7 +1,7 @@
 /**
  * @file 编辑器扩展, 增加自定义组件
  */
-import { registerAmisEditorPlugi, getSchemaTpl } from 'amis-widget';
+import { registerAmisEditorPlugin, getSchemaTpl } from 'amis-widget';
 
 export class InfoCardPlugin {
   rendererName = 'vue-info-card';

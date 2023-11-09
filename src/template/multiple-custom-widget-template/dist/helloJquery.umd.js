@@ -11,88 +11,69 @@
   return (function () {
     'use strict';
     var e = {
-        'amis-widget': function (e) {
-          e.exports = require('amis-widget');
+        n: function (t) {
+          var n =
+            t && t.__esModule
+              ? function () {
+                  return t.default;
+                }
+              : function () {
+                  return t;
+                };
+          return e.d(n, { a: n }), n;
         },
-        jquery: function (e) {
-          e.exports = require('jquery');
+        d: function (t, n) {
+          for (var o in n)
+            e.o(n, o) &&
+              !e.o(t, o) &&
+              Object.defineProperty(t, o, { enumerable: !0, get: n[o] });
+        },
+        o: function (e, t) {
+          return Object.prototype.hasOwnProperty.call(e, t);
+        },
+        r: function (e) {
+          'undefined' != typeof Symbol &&
+            Symbol.toStringTag &&
+            Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
+            Object.defineProperty(e, '__esModule', { value: !0 });
         },
       },
       t = {};
-    function n(o) {
-      var r = t[o];
-      if (void 0 !== r) return r.exports;
-      var i = (t[o] = { exports: {} });
-      return e[o](i, i.exports, n), i.exports;
-    }
-    (n.n = function (e) {
-      var t =
-        e && e.__esModule
-          ? function () {
-              return e.default;
-            }
-          : function () {
-              return e;
-            };
-      return n.d(t, { a: t }), t;
-    }),
-      (n.d = function (e, t) {
-        for (var o in t)
-          n.o(t, o) &&
-            !n.o(e, o) &&
-            Object.defineProperty(e, o, { enumerable: !0, get: t[o] });
-      }),
-      (n.o = function (e, t) {
-        return Object.prototype.hasOwnProperty.call(e, t);
-      }),
-      (n.r = function (e) {
-        'undefined' != typeof Symbol &&
-          Symbol.toStringTag &&
-          Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
-          Object.defineProperty(e, '__esModule', { value: !0 });
+    e.r(t),
+      e.d(t, {
+        default: function () {
+          return u;
+        },
       });
-    var o = {};
-    return (
-      (function () {
-        n.r(o);
-        var e = n('jquery'),
-          t = n.n(e),
-          r = n('amis-widget'),
-          i = (function () {
-            function e() {
-              this.template =
-                '\n    <div id="aaa">\n        这是个 jquery 按钮 <button id="btn">点我一下</button>\n    </div>';
-            }
-            var n = e.prototype;
-            return (
-              (n.onMount = function (e) {
-                t()('#btn').click(this.test.bind(this, e));
-              }),
-              (n.test = function (e) {
-                e.onAction(
-                  null,
-                  {
-                    actionType: 'dialog',
-                    dialog: {
-                      title: '来个弹框',
-                      body: 'Bom Bom Bom ${a} ${b}',
-                    },
-                  },
-                  { a: 1, b: 2 },
-                );
-              }),
-              e
+    var n = require('jquery'),
+      o = e.n(n),
+      r = require('amis-widget'),
+      i = (function () {
+        function e() {
+          this.template =
+            '\n    <div id="aaa">\n        这是个 jquery 按钮 <button id="btn">点我一下</button>\n    </div>';
+        }
+        var t = e.prototype;
+        return (
+          (t.onMount = function (e) {
+            o()('#btn').click(this.test.bind(this, e));
+          }),
+          (t.test = function (e) {
+            e.onAction(
+              null,
+              {
+                actionType: 'dialog',
+                dialog: { title: '来个弹框', body: 'Bom Bom Bom ${a} ${b}' },
+              },
+              { a: 1, b: 2 },
             );
-          })();
-        (0, r.registerRendererByType)(i, {
-          type: 'hello-jquery',
-          usage: 'renderer',
-          weight: 98,
-          framework: 'jquery',
-        }),
-          (o.default = i);
-      })(),
-      o
-    );
+          }),
+          e
+        );
+      })();
+    (0,
+    r.registerRendererByType)(i, { type: 'hello-jquery', usage: 'renderer', weight: 98, framework: 'jquery' });
+    var u = i;
+    return t;
   })();
 });
