@@ -10,15 +10,15 @@
 })(this, function () {
   return (function () {
     var e = {
-        271: function () {},
-        588: function (e, t, r) {
-          var n = r(271);
+        731: function () {},
+        387: function (e, t, r) {
+          var n = r(731);
           n.__esModule && (n = n.default),
             'string' == typeof n && (n = [[e.id, n, '']]),
             n.locals && (e.exports = n.locals),
-            (0, r(346).Z)('dfa2c9b2', n, !1, { sourceMap: !1 });
+            (0, r(534).A)('dfa2c9b2', n, !1, { sourceMap: !1 });
         },
-        346: function (e, t, r) {
+        534: function (e, t, r) {
           'use strict';
           function n(e, t) {
             for (var r = [], n = {}, a = 0; a < t.length; a++) {
@@ -37,7 +37,7 @@
             return r;
           }
           r.d(t, {
-            Z: function () {
+            A: function () {
               return m;
             },
           });
@@ -220,8 +220,9 @@
           o = require('@babel/runtime/helpers/inheritsLoose'),
           i = r.n(o),
           s = require('react'),
-          u =
-            (r(588),
+          u = require('amis-core'),
+          c =
+            (r(387),
             (function (e) {
               function t() {
                 var t;
@@ -247,9 +248,18 @@
                     r = e.backgroundImage,
                     n = e.img_count,
                     a = e.comment_count,
-                    o =
-                      r ||
-                      'https://search-operate.cdn.bcebos.com/64c279f23794a831f9a8e7a4e0b722dd.jpg';
+                    o = e.options;
+                  if (null != o && o.testVar) {
+                    var i = (0, u.resolveVariableAndFilter)(
+                      o.testVar,
+                      this.props.data,
+                      '| raw',
+                    );
+                    console.log('optionsVal:', i);
+                  }
+                  var c =
+                    r ||
+                    'https://search-operate.cdn.bcebos.com/64c279f23794a831f9a8e7a4e0b722dd.jpg';
                   return s.createElement(
                     'div',
                     { className: 'news-card' },
@@ -264,7 +274,7 @@
                       { className: 'item-imgbox' },
                       s.createElement('div', {
                         className: 'news-img',
-                        style: { backgroundImage: 'url(' + o + ')' },
+                        style: { backgroundImage: 'url(' + c + ')' },
                       }),
                       n > 0 &&
                         s.createElement('div', { className: 'img-count' }, n),
@@ -291,7 +301,7 @@
                 t
               );
             })(s.PureComponent));
-        (0, e.registerRendererByType)(u, {
+        (0, e.registerRendererByType)(c, {
           type: 'react-info-card',
           usage: 'renderer',
           weight: 99,

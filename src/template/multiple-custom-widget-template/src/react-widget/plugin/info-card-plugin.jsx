@@ -20,6 +20,9 @@ export class InfoCardPlugin {
     type: 'react-info-card',
     label: 'react-info-card',
     name: 'react-info-card',
+    options: {
+      testVar: '${test1}',
+    },
   };
 
   previewSchema = {

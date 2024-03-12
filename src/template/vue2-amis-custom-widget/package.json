@@ -61,7 +61,7 @@
     "url": "https://github.com/aisuda/vue2-amis-custom-widget/issues"
   },
   "dependencies": {
-    "amis-widget": "^3.2.0",
+    "amis-widget": "^3.2.2",
     "vue": "^2.6.14",
     "element-ui": "^2.15.12"
   },

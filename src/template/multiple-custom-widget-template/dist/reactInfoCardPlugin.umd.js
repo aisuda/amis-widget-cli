@@ -12,10 +12,10 @@
     'use strict';
     var e = {
         d: function (t, n) {
-          for (var a in n)
-            e.o(n, a) &&
-              !e.o(t, a) &&
-              Object.defineProperty(t, a, { enumerable: !0, get: n[a] });
+          for (var o in n)
+            e.o(n, o) &&
+              !e.o(t, o) &&
+              Object.defineProperty(t, o, { enumerable: !0, get: n[o] });
         },
         o: function (e, t) {
           return Object.prototype.hasOwnProperty.call(e, t);
@@ -31,14 +31,14 @@
     e.r(t),
       e.d(t, {
         InfoCardPlugin: function () {
-          return a;
+          return o;
         },
         default: function () {
-          return o;
+          return a;
         },
       });
     var n = require('amis-widget'),
-      a = function () {
+      o = function () {
         (this.rendererName = 'react-info-card'),
           (this.$schema = '/schemas/UnkownSchema.json'),
           (this.name = 'react-info-card'),
@@ -49,6 +49,7 @@
             type: 'react-info-card',
             label: 'react-info-card',
             name: 'react-info-card',
+            options: { testVar: '${test1}' },
           }),
           (this.previewSchema = {
             type: 'react-info-card',
@@ -83,8 +84,8 @@
             },
           ]);
       };
-    (0, n.registerAmisEditorPlugin)(a);
-    var o = a;
+    (0, n.registerAmisEditorPlugin)(o);
+    var a = o;
     return t;
   })();
 });

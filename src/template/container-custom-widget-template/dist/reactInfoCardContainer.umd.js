@@ -114,11 +114,11 @@
             if (p) {
               var a = u++;
               (n = s || (s = h())),
-                (t = E.bind(null, n, a, !1)),
-                (r = E.bind(null, n, a, !0));
+                (t = N.bind(null, n, a, !1)),
+                (r = N.bind(null, n, a, !0));
             } else
               (n = h()),
-                (t = N.bind(null, n)),
+                (t = x.bind(null, n)),
                 (r = function () {
                   n.parentNode.removeChild(n);
                 });
@@ -137,15 +137,15 @@
               }
             );
           }
-          var y,
-            b =
-              ((y = []),
+          var b,
+            y =
+              ((b = []),
               function (e, t) {
-                return (y[e] = t), y.filter(Boolean).join('\n');
+                return (b[e] = t), b.filter(Boolean).join('\n');
               });
-          function E(e, t, r, n) {
+          function N(e, t, r, n) {
             var a = r ? '' : n.css;
-            if (e.styleSheet) e.styleSheet.cssText = b(t, a);
+            if (e.styleSheet) e.styleSheet.cssText = y(t, a);
             else {
               var o = document.createTextNode(a),
                 i = e.childNodes;
@@ -153,7 +153,7 @@
                 i.length ? e.insertBefore(o, i[t]) : e.appendChild(o);
             }
           }
-          function N(e, t) {
+          function x(e, t) {
             var r = t.css,
               n = t.media,
               a = t.sourceMap;
@@ -219,9 +219,7 @@
           a = require('@babel/runtime/helpers/inheritsLoose'),
           o = r.n(a),
           i = require('react'),
-          s = require('react-dom'),
-          u = r.n(s),
-          c =
+          s =
             (r(325),
             (function (e) {
               function r() {
@@ -242,10 +240,6 @@
                     ? Math.floor(e / 1e3) / 10 + 'w'
                     : void 0;
                 }),
-                (n.componentDidMount = function () {
-                  var e = i.createElement('h1', null, 'hhh');
-                  u().render(e, document.getElementById('test1111'));
-                }),
                 (n.render = function () {
                   var e = this.props,
                     t = e.title,
@@ -253,11 +247,10 @@
                     n = e.img_count,
                     a = e.comment_count,
                     o = e.body,
-                    s = e.render;
-                  console.log('body:', o), (window.test111 = s('body', o));
-                  var u =
-                    r ||
-                    'https://search-operate.cdn.bcebos.com/64c279f23794a831f9a8e7a4e0b722dd.jpg';
+                    s = e.render,
+                    u =
+                      r ||
+                      'https://search-operate.cdn.bcebos.com/64c279f23794a831f9a8e7a4e0b722dd.jpg';
                   return i.createElement(
                     'div',
                     { className: 'news-card' },
@@ -294,13 +287,13 @@
                           '评',
                         ),
                     ),
-                    i.createElement('div', { id: 'test1111' }),
+                    o ? s('body', o) : null,
                   );
                 }),
                 r
               );
             })(i.PureComponent));
-        (0, require('amis-widget').registerRendererByType)(c, {
+        (0, require('amis-widget').registerRendererByType)(s, {
           type: 'react-info-card-container',
           usage: 'renderer',
           weight: 99,

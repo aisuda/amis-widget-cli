@@ -1,5 +1,4 @@
 import * as React from 'react';
-import ReactDOM from 'react-dom';
 import './style.scss'; // 组件内容样式
 
 export default class InfoCard extends React.PureComponent {
@@ -16,17 +15,9 @@ export default class InfoCard extends React.PureComponent {
     }
   }
 
-  componentDidMount() {
-    const childElem = <h1>hhh</h1>;
-    ReactDOM.render(childElem, document.getElementById('test1111'));
-  }
-
   render() {
     const { title, backgroundImage, img_count, comment_count, body, render } =
       this.props;
-    console.log('body:', body);
-    window.test111 = render('body', body);
-    // {body ? render('body', body) : null}
     const curBackgroundImage =
       backgroundImage ||
       'https://search-operate.cdn.bcebos.com/64c279f23794a831f9a8e7a4e0b722dd.jpg';
@@ -51,7 +42,7 @@ export default class InfoCard extends React.PureComponent {
             </div>
           )}
         </div>
-        <div id="test1111"></div>
+        {body ? render('body', body) : null}
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { resolveVariableAndFilter } from 'amis-core';
 import './style.scss'; // 组件内容样式
 
 export default class InfoCard extends React.PureComponent {
@@ -17,7 +18,18 @@ export default class InfoCard extends React.PureComponent {
   }
 
   render() {
-    const { title, backgroundImage, img_count, comment_count } = this.props;
+    const { title, backgroundImage, img_count, comment_count, options } =
+      this.props;
+
+    if (options?.testVar) {
+      const optionsVal = resolveVariableAndFilter(
+        options.testVar,
+        this.props.data,
+        '| raw',
+      );
+      console.log('optionsVal:', optionsVal);
+    }
+
     const curBackgroundImage =
       backgroundImage ||
       'https://search-operate.cdn.bcebos.com/64c279f23794a831f9a8e7a4e0b722dd.jpg';

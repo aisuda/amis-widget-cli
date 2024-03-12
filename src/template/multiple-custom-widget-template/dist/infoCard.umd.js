@@ -10,15 +10,15 @@
 })(this, function () {
   return (function () {
     var e = {
-        657: function () {},
-        985: function (e, t, n) {
-          var r = n(657);
+        635: function () {},
+        515: function (e, t, n) {
+          var r = n(635);
           r.__esModule && (r = r.default),
             'string' == typeof r && (r = [[e.id, r, '']]),
             r.locals && (e.exports = r.locals),
-            (0, n(346).Z)('52d5aebf', r, !1, { sourceMap: !1 });
+            (0, n(534).A)('0ea06d6c', r, !1, { sourceMap: !1 });
         },
-        346: function (e, t, n) {
+        534: function (e, t, n) {
           'use strict';
           function r(e, t) {
             for (var n = [], r = {}, i = 0; i < t.length; i++) {
@@ -37,7 +37,7 @@
             return n;
           }
           n.d(t, {
-            Z: function () {
+            A: function () {
               return v;
             },
           });
@@ -51,15 +51,15 @@
               i && (document.head || document.getElementsByTagName('head')[0]),
             a = null,
             c = 0,
-            u = !1,
-            d = function () {},
+            d = !1,
+            u = function () {},
             f = null,
             l = 'data-vue-ssr-id',
             p =
               'undefined' != typeof navigator &&
               /msie [6-9]\b/.test(navigator.userAgent.toLowerCase());
           function v(e, t, n, i) {
-            (u = n), (f = i || {});
+            (d = n), (f = i || {});
             var s = r(e, t);
             return (
               m(s),
@@ -75,7 +75,7 @@
                 ) {
                   var c;
                   if (0 === (c = n[i]).refs) {
-                    for (var u = 0; u < c.parts.length; u++) c.parts[u]();
+                    for (var d = 0; d < c.parts.length; d++) c.parts[d]();
                     delete o[c.id];
                   }
                 }
@@ -108,7 +108,7 @@
               n,
               r = document.querySelector('style[' + l + '~="' + e.id + '"]');
             if (r) {
-              if (u) return d;
+              if (d) return u;
               r.parentNode.removeChild(r);
             }
             if (p) {
@@ -242,22 +242,17 @@
           };
         t._withStripped = !0;
         var i = {
-          props: {
-            title: {
-              type: String,
-              default:
-                'amis 是一个低代码前端框架，它使用 JSON 配置来生成页面，可以减少页面开发工作量，极大提升效率。',
-            },
-            backgroundImage: {
-              type: String,
-              default:
-                'https://search-operate.cdn.bcebos.com/64c279f23794a831f9a8e7a4e0b722dd.jpg',
-            },
-            img_count: { type: Number, default: 3 },
-            comment_count: { type: Number, default: 2021 },
-          },
           data: function () {
-            return { isAlive: !0, isFirstVisit: !0 };
+            return {
+              isAlive: !0,
+              isFirstVisit: !0,
+              title:
+                'amis 是一个低代码前端框架，它使用 JSON 配置来生成页面，可以减少页面开发工作量，极大提升效率。',
+              backgroundImage:
+                'https://search-operate.cdn.bcebos.com/64c279f23794a831f9a8e7a4e0b722dd.jpg',
+              img_count: 3,
+              comment_count: 2021,
+            };
           },
           mounted: function () {
             this.isFirstVisit = !1;
@@ -288,28 +283,28 @@
             },
           },
         };
-        n(985);
+        n(515);
         var o = (function (e, t, n, r, i, o, s, a) {
             var c,
-              u = 'function' == typeof e ? e.options : e;
+              d = 'function' == typeof e ? e.options : e;
             if (
               (t &&
-                ((u.render = t), (u.staticRenderFns = []), (u._compiled = !0)),
-              o && (u._scopeId = 'data-v-' + o),
+                ((d.render = t), (d.staticRenderFns = []), (d._compiled = !0)),
+              o && (d._scopeId = 'data-v-' + o),
               c)
             )
-              if (u.functional) {
-                u._injectStyles = c;
-                var d = u.render;
-                u.render = function (e, t) {
-                  return c.call(t), d(e, t);
+              if (d.functional) {
+                d._injectStyles = c;
+                var u = d.render;
+                d.render = function (e, t) {
+                  return c.call(t), u(e, t);
                 };
               } else {
-                var f = u.beforeCreate;
-                u.beforeCreate = f ? [].concat(f, c) : [c];
+                var f = d.beforeCreate;
+                d.beforeCreate = f ? [].concat(f, c) : [c];
               }
-            return { exports: e, options: u };
-          })(i, t, 0, 0, 0, '6f393cf2'),
+            return { exports: e, options: d };
+          })(i, t, 0, 0, 0, 'f5cf004a'),
           s = o.exports;
         (0, e.registerRendererByType)(s, {
           type: 'vue-info-card',
