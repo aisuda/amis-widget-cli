@@ -1,6 +1,6 @@
 {
   "name": "uni-custom-widget-template",
-  "version": "1.0.13",
+  "version": "1.1.0",
   "description": "aipage-editor uniapp版自定义组件模板（vue3技术栈），用于开发小程序自定义组件。",
   "keywords": [
     "自定义组件注册器",
@@ -11,7 +11,7 @@
   "author": "wibetter",
   "scripts": {
     "preview": "uni",
-    "dev": "amis dev",
+    "dev": "npm run build:h5 && amis dev",
     "devDebug": "amis dev",
     "linkDebug": "npm run build:h5 && amis linkDebug",
     "build2lib": "npm run build:h5",
@@ -54,12 +54,12 @@
       "type": "uni-info-card",
       "framework": "vue3",
       "description": "信息展示卡片",
-      "entry": "/web/renderer.umd",
+      "entry": "/web/renderer/renderer.umd",
       "files": [
-        "/web/style.css"
+        "/web/renderer/style.css"
       ],
       "editorPlugin": {
-        "pluginEntry": "/web/plugin.umd",
+        "pluginEntry": "/web/plugin/plugin.umd",
         "tag": [
           "跨端组件"
         ],
@@ -95,18 +95,18 @@
     "url": "https://github.com/aisuda/uni-custom-widget-template/issues"
   },
   "dependencies": {
-    "@dcloudio/uni-app": "3.0.0-alpha-3040820220424001",
-    "@dcloudio/uni-app-plus": "3.0.0-alpha-3040820220424001",
-    "@dcloudio/uni-components": "3.0.0-alpha-3040820220424001",
-    "@dcloudio/uni-h5": "3.0.0-alpha-3040820220424001",
-    "@dcloudio/uni-mp-alipay": "3.0.0-alpha-3040820220424001",
-    "@dcloudio/uni-mp-baidu": "3.0.0-alpha-3040820220424001",
-    "@dcloudio/uni-mp-kuaishou": "3.0.0-alpha-3040820220424001",
-    "@dcloudio/uni-mp-lark": "3.0.0-alpha-3040820220424001",
-    "@dcloudio/uni-mp-qq": "3.0.0-alpha-3040820220424001",
-    "@dcloudio/uni-mp-toutiao": "3.0.0-alpha-3040820220424001",
-    "@dcloudio/uni-mp-weixin": "3.0.0-alpha-3040820220424001",
-    "@dcloudio/uni-quickapp-webview": "3.0.0-alpha-3040820220424001",
+    "@dcloudio/uni-app": "3.0.0-3081220230817001",
+    "@dcloudio/uni-app-plus": "3.0.0-3081220230817001",
+    "@dcloudio/uni-components": "3.0.0-3081220230817001",
+    "@dcloudio/uni-h5": "3.0.0-3081220230817001",
+    "@dcloudio/uni-mp-alipay": "3.0.0-3081220230817001",
+    "@dcloudio/uni-mp-baidu": "3.0.0-3081220230817001",
+    "@dcloudio/uni-mp-kuaishou": "3.0.0-3081220230817001",
+    "@dcloudio/uni-mp-lark": "3.0.0-3081220230817001",
+    "@dcloudio/uni-mp-qq": "3.0.0-3081220230817001",
+    "@dcloudio/uni-mp-toutiao": "3.0.0-3081220230817001",
+    "@dcloudio/uni-mp-weixin": "3.0.0-3081220230817001",
+    "@dcloudio/uni-quickapp-webview": "3.0.0-3081220230817001",
     "vue": "^3.2.37",
     "vue-i18n": "^9.1.9",
     "vue3-aipage-widget": "^1.2.3",
@@ -116,14 +116,14 @@
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^9.1.1",
     "@dcloudio/types": "^3.0.4",
-    "@dcloudio/uni-automator": "3.0.0-alpha-3040820220424001",
-    "@dcloudio/uni-cli-shared": "3.0.0-alpha-3040820220424001",
-    "@dcloudio/vite-plugin-uni": "3.0.0-alpha-3040820220424001",
-    "@wibetter/amis-widget-cli": "^3.1.0",
+    "@dcloudio/uni-automator": "3.0.0-3081220230817001",
+    "@dcloudio/uni-cli-shared": "3.0.0-3081220230817001",
+    "@dcloudio/vite-plugin-uni": "3.0.0-3081220230817001",
+    "@wibetter/amis-widget-cli": "^3.1.10",
     "cross-env": "^7.0.3",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "prettier": "^2.0.5",
-    "vite": "^2.9.9"
+    "vite": "^4.4.9"
   }
 }

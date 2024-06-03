@@ -59,7 +59,7 @@ export default defineConfig(({ command, mode }) => {
               `${process.env.UNI_BUILD_LIB || 'registerRenderer'}.${format}.js`,
             style: 'renderer',
           },
-          cssCodeSplit: false, // https://vitejs.cn/config/#build-csscodesplit
+          // cssCodeSplit: false, // https://vitejs.cn/config/#build-csscodesplit
         },
       };
     } else {

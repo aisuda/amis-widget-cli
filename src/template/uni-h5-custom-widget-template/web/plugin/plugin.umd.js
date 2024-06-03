@@ -561,8 +561,8 @@
     };
   }
   /*!
-   * vue-router v4.2.4
-   * (c) 2023 Eduardo San Martin Morote
+   * vue-router v4.3.2
+   * (c) 2024 Eduardo San Martin Morote
    * @license MIT
    */
   var NavigationType;
@@ -1589,15 +1589,15 @@
     };
   }
   function queue(hooks, data, params) {
-    let promise = false;
+    let promise2 = false;
     for (let i = 0; i < hooks.length; i++) {
       const hook = hooks[i];
-      if (promise) {
-        promise = Promise.resolve(wrapperHook(hook, params));
+      if (promise2) {
+        promise2 = Promise.resolve(wrapperHook(hook, params));
       } else {
         const res = hook(data, params);
         if (isPromise(res)) {
-          promise = Promise.resolve(res);
+          promise2 = Promise.resolve(res);
         }
         if (res === false) {
           return {
@@ -1608,7 +1608,7 @@
       }
     }
     return (
-      promise || {
+      promise2 || {
         then(callback) {
           return callback(data);
         },
@@ -1690,8 +1690,8 @@
     }
     return false;
   }
-  function handlePromise(promise) {
-    return promise;
+  function handlePromise(promise2) {
+    return promise2;
   }
   function promisify(name, fn) {
     return (args = {}, ...rest) => {
@@ -3971,6 +3971,30 @@
   function code(value, len = 6) {
     return new RegExp(`^\\d{${len}}$`).test(value);
   }
+  function func(value) {
+    return typeof value === 'function';
+  }
+  function promise(value) {
+    return object(value) && func(value.then) && func(value.catch);
+  }
+  function image(value) {
+    const newValue = value.split('?')[0];
+    return new RegExp(/\.(jpeg|jpg|gif|png|svg|webp|jfif|bmp|dpg)$/).test(
+      newValue,
+    );
+  }
+  function video(value) {
+    const newValue = value.split('?')[0];
+    return new RegExp(
+      /\.(mp4|mpg|mpeg|dat|asf|avi|rm|rmvb|mov|wmv|flv|mkv|m3u8|3gp)$/,
+    ).test(newValue);
+  }
+  function regExp(o) {
+    return o && Object.prototype.toString.call(o) === '[object RegExp]';
+  }
+  function string(value) {
+    return typeof value === 'string';
+  }
   const test = {
     email,
     mobile,
@@ -3995,6 +4019,12 @@
     object,
     array,
     code,
+    func,
+    promise,
+    video,
+    image,
+    regExp,
+    string,
   };
   class Request {
     // 设置全局默认配置
@@ -4575,7 +4605,7 @@
       return 0;
     }
   }
-  function trim(str, pos = 'both') {
+  function trim$1(str, pos = 'both') {
     if (pos == 'both') {
       return str.replace(/^\s+|\s+$/g, '');
     } else if (pos == 'left') {
@@ -4648,17 +4678,17 @@
     return getSystemInfoSync();
   }
   let timeout = null;
-  function debounce(func, wait = 500, immediate = false) {
+  function debounce(func2, wait = 500, immediate = false) {
     if (timeout !== null) clearTimeout(timeout);
     if (immediate) {
       var callNow = !timeout;
       timeout = setTimeout(function () {
         timeout = null;
       }, wait);
-      if (callNow) typeof func === 'function' && func();
+      if (callNow) typeof func2 === 'function' && func2();
     } else {
       timeout = setTimeout(function () {
-        typeof func === 'function' && func();
+        typeof func2 === 'function' && func2();
       }, wait);
     }
   }
@@ -4688,6 +4718,33 @@
         }, time);
       }
     }
+  }
+  function addStyle(customStyle, target = 'object') {
+    if (
+      test.empty(customStyle) ||
+      (typeof customStyle === 'object' && target === 'object') ||
+      (target === 'string' && typeof customStyle === 'string')
+    ) {
+      return customStyle;
+    }
+    if (target === 'object') {
+      customStyle = trim(customStyle);
+      const styleArray = customStyle.split(';');
+      const style = {};
+      for (let i = 0; i < styleArray.length; i++) {
+        if (styleArray[i]) {
+          const item = styleArray[i].split(':');
+          style[trim(item[0])] = trim(item[1]);
+        }
+      }
+      return style;
+    }
+    let string2 = '';
+    for (const i in customStyle) {
+      const key = i.replace(/([A-Z])/g, '-$1').toLowerCase();
+      string2 += `${key}:${customStyle[i]};`;
+    }
+    return trim(string2);
   }
   let version = '1.10.1';
   const config = {
@@ -4737,7 +4794,7 @@
     getParent,
     $parent,
     addUnit,
-    trim,
+    trim: trim$1,
     type: ['primary', 'success', 'error', 'warning', 'info'],
     http,
     toast,
@@ -4746,6 +4803,7 @@
     zIndex,
     debounce,
     throttle,
+    addStyle,
   };
   uni.$u = $u;
   var isArray$5 = Array.isArray;
@@ -4873,19 +4931,19 @@
     );
     return uid ? 'Symbol(src)_1.' + uid : '';
   })();
-  function isMasked$1(func) {
-    return !!maskSrcKey && maskSrcKey in func;
+  function isMasked$1(func2) {
+    return !!maskSrcKey && maskSrcKey in func2;
   }
   var _isMasked = isMasked$1;
   var funcProto$1 = Function.prototype;
   var funcToString$1 = funcProto$1.toString;
-  function toSource$2(func) {
-    if (func != null) {
+  function toSource$2(func2) {
+    if (func2 != null) {
       try {
-        return funcToString$1.call(func);
+        return funcToString$1.call(func2);
       } catch (e) {}
       try {
-        return func + '';
+        return func2 + '';
       } catch (e) {}
     }
     return '';
@@ -5164,9 +5222,9 @@
   var _MapCache = MapCache$1;
   var MapCache = _MapCache;
   var FUNC_ERROR_TEXT = 'Expected a function';
-  function memoize$1(func, resolver) {
+  function memoize$1(func2, resolver) {
     if (
-      typeof func != 'function' ||
+      typeof func2 != 'function' ||
       (resolver != null && typeof resolver != 'function')
     ) {
       throw new TypeError(FUNC_ERROR_TEXT);
@@ -5178,7 +5236,7 @@
       if (cache.has(key)) {
         return cache.get(key);
       }
-      var result = func.apply(this, args);
+      var result = func2.apply(this, args);
       memoized.cache = cache.set(key, result) || cache;
       return result;
     };
@@ -5189,8 +5247,8 @@
   var memoize_1 = memoize$1;
   var memoize = memoize_1;
   var MAX_MEMOIZE_SIZE = 500;
-  function memoizeCapped$1(func) {
-    var result = memoize(func, function (key) {
+  function memoizeCapped$1(func2) {
+    var result = memoize(func2, function (key) {
       if (cache.size === MAX_MEMOIZE_SIZE) {
         cache.clear();
       }
@@ -5204,12 +5262,12 @@
   var rePropName =
     /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
   var reEscapeChar = /\\(\\)?/g;
-  var stringToPath$1 = memoizeCapped(function (string) {
+  var stringToPath$1 = memoizeCapped(function (string2) {
     var result = [];
-    if (string.charCodeAt(0) === 46) {
+    if (string2.charCodeAt(0) === 46) {
       result.push('');
     }
-    string.replace(rePropName, function (match, number2, quote, subString) {
+    string2.replace(rePropName, function (match, number2, quote, subString) {
       result.push(
         quote ? subString.replace(reEscapeChar, '$1') : number2 || match,
       );
@@ -5289,9 +5347,9 @@
   var getNative$4 = _getNative;
   var defineProperty$2 = (function () {
     try {
-      var func = getNative$4(Object, 'defineProperty');
-      func({}, '', {});
-      return func;
+      var func2 = getNative$4(Object, 'defineProperty');
+      func2({}, '', {});
+      return func2;
     } catch (e) {}
   })();
   var _defineProperty = defineProperty$2;
@@ -5525,24 +5583,24 @@
     return length ? baseFlatten(array2, 1) : [];
   }
   var flatten_1 = flatten$1;
-  function apply$1(func, thisArg, args) {
+  function apply$1(func2, thisArg, args) {
     switch (args.length) {
       case 0:
-        return func.call(thisArg);
+        return func2.call(thisArg);
       case 1:
-        return func.call(thisArg, args[0]);
+        return func2.call(thisArg, args[0]);
       case 2:
-        return func.call(thisArg, args[0], args[1]);
+        return func2.call(thisArg, args[0], args[1]);
       case 3:
-        return func.call(thisArg, args[0], args[1], args[2]);
+        return func2.call(thisArg, args[0], args[1], args[2]);
     }
-    return func.apply(thisArg, args);
+    return func2.apply(thisArg, args);
   }
   var _apply = apply$1;
   var apply = _apply;
   var nativeMax = Math.max;
-  function overRest$1(func, start, transform) {
-    start = nativeMax(start === void 0 ? func.length - 1 : start, 0);
+  function overRest$1(func2, start, transform) {
+    start = nativeMax(start === void 0 ? func2.length - 1 : start, 0);
     return function () {
       var args = arguments,
         index = -1,
@@ -5557,7 +5615,7 @@
         otherArgs[index] = args[index];
       }
       otherArgs[start] = transform(array2);
-      return apply(func, this, otherArgs);
+      return apply(func2, this, otherArgs);
     };
   }
   var _overRest = overRest$1;
@@ -5576,11 +5634,11 @@
     identity = identity_1;
   var baseSetToString$1 = !defineProperty
     ? identity
-    : function (func, string) {
-        return defineProperty(func, 'toString', {
+    : function (func2, string2) {
+        return defineProperty(func2, 'toString', {
           configurable: true,
           enumerable: false,
-          value: constant(string),
+          value: constant(string2),
           writable: true,
         });
       };
@@ -5588,7 +5646,7 @@
   var HOT_COUNT = 800,
     HOT_SPAN = 16;
   var nativeNow = Date.now;
-  function shortOut$1(func) {
+  function shortOut$1(func2) {
     var count = 0,
       lastCalled = 0;
     return function () {
@@ -5602,7 +5660,7 @@
       } else {
         count = 0;
       }
-      return func.apply(void 0, arguments);
+      return func2.apply(void 0, arguments);
     };
   }
   var _shortOut = shortOut$1;
@@ -5613,8 +5671,8 @@
   var flatten = flatten_1,
     overRest = _overRest,
     setToString = _setToString;
-  function flatRest$1(func) {
-    return setToString(overRest(func, void 0, flatten), func + '');
+  function flatRest$1(func2) {
+    return setToString(overRest(func2, void 0, flatten), func2 + '');
   }
   var _flatRest = flatRest$1;
   var basePick = _basePick,
@@ -5773,36 +5831,47 @@
     (function () {
       var hasOwn2 = {}.hasOwnProperty;
       function classNames() {
-        var classes = [];
+        var classes = '';
         for (var i = 0; i < arguments.length; i++) {
           var arg = arguments[i];
-          if (!arg) continue;
-          var argType = typeof arg;
-          if (argType === 'string' || argType === 'number') {
-            classes.push(arg);
-          } else if (Array.isArray(arg)) {
-            if (arg.length) {
-              var inner = classNames.apply(null, arg);
-              if (inner) {
-                classes.push(inner);
-              }
-            }
-          } else if (argType === 'object') {
-            if (
-              arg.toString !== Object.prototype.toString &&
-              !arg.toString.toString().includes('[native code]')
-            ) {
-              classes.push(arg.toString());
-              continue;
-            }
-            for (var key in arg) {
-              if (hasOwn2.call(arg, key) && arg[key]) {
-                classes.push(key);
-              }
-            }
+          if (arg) {
+            classes = appendClass(classes, parseValue(arg));
           }
         }
-        return classes.join(' ');
+        return classes;
+      }
+      function parseValue(arg) {
+        if (typeof arg === 'string' || typeof arg === 'number') {
+          return arg;
+        }
+        if (typeof arg !== 'object') {
+          return '';
+        }
+        if (Array.isArray(arg)) {
+          return classNames.apply(null, arg);
+        }
+        if (
+          arg.toString !== Object.prototype.toString &&
+          !arg.toString.toString().includes('[native code]')
+        ) {
+          return arg.toString();
+        }
+        var classes = '';
+        for (var key in arg) {
+          if (hasOwn2.call(arg, key) && arg[key]) {
+            classes = appendClass(classes, key);
+          }
+        }
+        return classes;
+      }
+      function appendClass(value, newClass) {
+        if (!newClass) {
+          return value;
+        }
+        if (value) {
+          return value + ' ' + newClass;
+        }
+        return value + newClass;
       }
       if (module2.exports) {
         classNames.default = classNames;
@@ -5916,43 +5985,25 @@
     ? void 0
     : _a.call(window, '(max-width: 768px)').matches;
   const InfoCardPlugin = {
-    name: '物流节点',
-    description: 'uview版TimeLine组件示例',
-    componentId: 'uni-time-line',
-    id: 'uni-time-line',
-    tags: ['uview组件'],
+    name: 'H5信息卡片',
+    description: '信息展示卡片',
+    componentId: 'h5-uni-info-card',
+    id: 'h5-uni-info-card',
+    tags: ['自定义组件', '跨端组件'],
     // 组件分类
     pluginIcon: 'cards-plugin',
     order: 1,
     // 展示顺序（从小到大展示）
     type: 'element',
     // 渲染器类型
-    device: ['mobile', 'app'],
-    // 设置类型，目前支持3种类型: pc、mobile、app
+    device: ['mobile', 'app', 'quickapp', 'quickapp-card'],
+    // 设置类型，目前支持3种类型: pc、mobile、app、quickapp、quickapp-card
     docLink: '',
     demoProperties: {
-      componentId: 'uni-time-line',
+      componentId: 'h5-uni-info-card',
       type: 'element',
       componentProperties: {
-        data: {
-          timeLine: [
-            {
-              status: '运输中',
-              desc: '【深圳市】日照香炉生紫烟，遥看瀑布挂前川，飞流直下三千尺，疑是银河落九天。',
-              time: '2019-05-10 12:12',
-            },
-            {
-              status: '运输中',
-              desc: '【深圳市】日照香炉生紫烟，遥看瀑布挂前川，飞流直下三千尺，疑是银河落九天。',
-              time: '2019-05-08 12:12',
-            },
-            {
-              status: '待取件',
-              desc: '[自提柜]您的快件已放在楼下侧门，直走前方53.6米，左拐约10步，再右拐直走，见一红灯笼停下，叩门三下，喊“芝麻开门”即可。',
-              time: '2019-05-12 12:12',
-            },
-          ],
-        },
+        data: {},
         style: {},
       },
     },
@@ -5967,31 +6018,32 @@
               title: '数据',
               controls: [
                 {
-                  name: 'data.timeLine',
-                  type: 'setting-list',
-                  label: '物流节点',
-                  mode: 'normal',
-                  fullSize: true,
-                  setting: [
-                    {
-                      type: 'input-text',
-                      name: 'status',
-                      label: '状态',
-                    },
-                    {
-                      type: 'textarea',
-                      name: 'desc',
-                      label: '详细',
-                    },
-                    {
-                      type: 'input-datetime',
-                      name: 'time',
-                      label: '时间',
-                      format: 'YYYY-MM-DD HH:mm',
-                    },
-                  ],
+                  type: 'textarea',
+                  name: 'data.title',
+                  label: '卡片title',
+                  value:
+                    'amis 是一个低代码前端框架，它使用 JSON 配置来生成页面，可以减少页面开发工作量，极大提升效率。',
                   enableDataBinding: true,
                   // 有这个属性则组件会自动开启动态数据绑定
+                },
+                {
+                  type: 'text',
+                  name: 'data.backgroundImage',
+                  label: '展示图片',
+                  value:
+                    'https://search-operate.cdn.bcebos.com/64c279f23794a831f9a8e7a4e0b722dd.jpg',
+                },
+                {
+                  type: 'input-number',
+                  name: 'data.img_count',
+                  label: '图片数量',
+                  value: 3,
+                },
+                {
+                  type: 'input-number',
+                  name: 'data.comment_count',
+                  label: '评论数',
+                  value: 2021,
                 },
               ],
             },

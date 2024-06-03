@@ -1,7 +1,7 @@
 /*!
- * vue2-amis-custom-widget v1.1.7
+ * vue2-amis-custom-widget v1.2.0
  * author: fex
  * build tool: AKFun
- * build time: Thu Aug 17 2023 20:29:52 GMT+0800 (中国标准时间)
+ * build time: Mon Jun 03 2024 19:27:23 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */.news-card{border-bottom:1px solid #ececec;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;margin:0 12px;padding-bottom:12px;position:relative}.news-card .news-title{color:#5f5e5e;font-family:PingFangSC-Regular;font-size:16px;line-height:22px;padding:6px 0}.news-card .item-imgbox{background:#f0f0f0;cursor:pointer;height:395px;overflow:hidden;position:relative;text-align:center}.news-card .item-imgbox,.news-card .item-imgbox .news-img{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.news-card .item-imgbox .news-img{background-size:cover;height:100%;width:100%}.news-card .item-imgbox .img-count{background:rgba(0,0,0,.4);color:#fff;font-size:25px;line-height:1.2;min-width:60px;overflow:hidden;padding:6px 8px;position:absolute;right:0;text-align:center;top:0}.news-card .item-imgbox .img-count,.news-card .news-info{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.news-card .news-info{font-family:PingFangSC-Light;height:28px}.news-card .cmt-num,.news-card .media-mark{color:#828282;display:inline-block;font-family:PingFangSC-Light;font-size:18px;height:28px;line-height:28px}

@@ -10,15 +10,15 @@
 })(this, function () {
   return (function () {
     var e = {
-        271: function () {},
-        588: function (e, t, r) {
-          var n = r(271);
+        731: function () {},
+        387: function (e, t, r) {
+          var n = r(731);
           n.__esModule && (n = n.default),
             'string' == typeof n && (n = [[e.id, n, '']]),
             n.locals && (e.exports = n.locals),
-            (0, r(346).Z)('dfa2c9b2', n, !1, { sourceMap: !1 });
+            (0, r(534).A)('dfa2c9b2', n, !1, { sourceMap: !1 });
         },
-        346: function (e, t, r) {
+        534: function (e, t, r) {
           'use strict';
           function n(e, t) {
             for (var r = [], n = {}, a = 0; a < t.length; a++) {
@@ -37,7 +37,7 @@
             return r;
           }
           r.d(t, {
-            Z: function () {
+            A: function () {
               return m;
             },
           });
@@ -137,15 +137,15 @@
               }
             );
           }
-          var b,
-            y =
-              ((b = []),
+          var y,
+            b =
+              ((y = []),
               function (e, t) {
-                return (b[e] = t), b.filter(Boolean).join('\n');
+                return (y[e] = t), y.filter(Boolean).join('\n');
               });
           function N(e, t, r, n) {
             var a = r ? '' : n.css;
-            if (e.styleSheet) e.styleSheet.cssText = y(t, a);
+            if (e.styleSheet) e.styleSheet.cssText = b(t, a);
             else {
               var o = document.createTextNode(a),
                 i = e.childNodes;
@@ -214,26 +214,24 @@
       (function () {
         'use strict';
         r.r(n);
-        var e = require('@babel/runtime/helpers/assertThisInitialized'),
+        var e = require('@babel/runtime/helpers/inheritsLoose'),
           t = r.n(e),
-          a = require('@babel/runtime/helpers/inheritsLoose'),
-          o = r.n(a),
-          i = require('react'),
-          s = require('classnames'),
-          c = r.n(s),
-          u = require('aipage-widget'),
-          d =
-            (r(588),
+          a = require('react'),
+          o = require('classnames'),
+          i = r.n(o),
+          s = require('aipage-widget'),
+          c =
+            (r(387),
             (function (e) {
               function r() {
-                var r;
+                var t;
                 return (
-                  ((r = e.call(this) || this).agreeDataFormat =
-                    r.agreeDataFormat.bind(t()(r))),
-                  r
+                  ((t = e.call(this) || this).agreeDataFormat =
+                    t.agreeDataFormat.bind(t)),
+                  t
                 );
               }
-              o()(r, e);
+              t()(r, e);
               var n = r.prototype;
               return (
                 (n.agreeDataFormat = function (e) {
@@ -248,10 +246,10 @@
                     t = e.componentProperties,
                     r = e.id,
                     n = t || {},
-                    a = n.data,
-                    o = void 0 === a ? {} : a,
-                    s = (n.style, (0, u.getClasses)(this.props)),
-                    d = o || {},
+                    o = n.data,
+                    c = void 0 === o ? {} : o,
+                    u = (n.style, (0, s.getClasses)(this.props)),
+                    d = c || {},
                     l = d.title,
                     f = d.backgroundImage,
                     p = d.img_count,
@@ -259,34 +257,34 @@
                     v =
                       f ||
                       'https://search-operate.cdn.bcebos.com/64c279f23794a831f9a8e7a4e0b722dd.jpg';
-                  return i.createElement(
+                  return a.createElement(
                     'div',
-                    { className: c()('news-card', s), 'data-component-id': r },
-                    i.createElement(
+                    { className: i()('news-card', u), 'data-component-id': r },
+                    a.createElement(
                       'div',
                       { className: 'news-title' },
                       l ||
                         'amis 是一个低代码前端框架，它使用 JSON 配置来生成页面，可以减少页面开发工作量，极大提升效率。',
                     ),
-                    i.createElement(
+                    a.createElement(
                       'div',
                       { className: 'item-imgbox' },
-                      i.createElement('div', {
+                      a.createElement('div', {
                         className: 'news-img',
                         style: { backgroundImage: 'url(' + v + ')' },
                       }),
                       p > 0 &&
-                        i.createElement('div', { className: 'img-count' }, p),
+                        a.createElement('div', { className: 'img-count' }, p),
                     ),
-                    i.createElement(
+                    a.createElement(
                       'div',
                       { className: 'news-info' },
-                      i.createElement(
+                      a.createElement(
                         'div',
                         { className: 'left media-mark' },
                         '爱速搭 · 低代码平台',
                       ),
-                      i.createElement(
+                      a.createElement(
                         'div',
                         { className: 'cmt-num right' },
                         this.agreeDataFormat(m) || 0,
@@ -297,8 +295,8 @@
                 }),
                 r
               );
-            })(i.PureComponent));
-        (0, u.registerRenderer)(d, {
+            })(a.PureComponent));
+        (0, s.registerRenderer)(c, {
           type: 'react-info-card',
           framework: 'react',
         });

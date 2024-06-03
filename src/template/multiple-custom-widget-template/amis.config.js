@@ -11,12 +11,21 @@ module.exports = {
     enableESLint: false, // 调试模式是否开启ESLint，默认开启ESLint检测代码格式
     enableESLintFix: false, // 是否自动修正代码格式，默认不自动修正
     enableStyleLint: false, // 是否开启StyleLint，默认开启ESLint检测代码格式
-    enableStyleLintFix: false // 是否需要StyleLint自动修正代码格式
+    enableStyleLintFix: false, // 是否需要StyleLint自动修正代码格式
   },
   webpack: {
     resolve: {
       // webpack的resolve配置
-      extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue', '.umd.js', '.min.js', '.json'], // 用于配置webpack在尝试过程中用到的后缀列表
+      extensions: [
+        '.js',
+        '.jsx',
+        '.ts',
+        '.tsx',
+        '.vue',
+        '.umd.js',
+        '.min.js',
+        '.json',
+      ], // 用于配置webpack在尝试过程中用到的后缀列表
       alias: {
         '@': resolve('src'),
         $function: resolve('src/function'),
@@ -26,10 +35,21 @@ module.exports = {
     // createDeclaration: true, // 打包时是否创建ts声明文件
     ignoreNodeModules: false, // 打包时是否忽略 node_modules
     projectDir: ['src', 'editor'],
+    postCssLoaderOption: {
+      postcssOptions: {
+        plugins: [
+          require('postcss-pxtorem')({
+            rootValue: 16, // 1rem 等于 16px
+            propList: ['*'], // 所有属性都转换
+          }),
+        ],
+      },
+    },
     // template: resolve('./editor/index.html'), // dev本地调试时需要html模板
   },
   dev: {
-    entry: { // 本地编辑器中预览自定义组件
+    entry: {
+      // 本地编辑器中预览自定义组件
       index: [
         './src/react-widget/index.js',
         './src/react-widget/plugin/info-card-plugin.jsx',
@@ -50,7 +70,8 @@ module.exports = {
     closeHotReload: true, // 是否关闭热更新
   },
   preview: {
-    entry: { // 预览自定义组件内容
+    entry: {
+      // 预览自定义组件内容
       index: './src/preview.js',
     },
     // 用于开启本地调试模式的相关配置信息
@@ -64,14 +85,15 @@ module.exports = {
       '/apiTest': {
         target: 'http://api-test.com.cn', // 不支持跨域的接口根地址
         ws: true,
-        changeOrigin: true
-      }
+        changeOrigin: true,
+      },
     },
     cssSourceMap: true,
     closeHotReload: false, // 是否关闭热更新
   },
   linkDebug: {
-    entry: { // 外链调试（amis-saas中预览自定义组件）
+    entry: {
+      // 外链调试（amis-saas中预览自定义组件）
       index: [
         './src/react-widget/index.js',
         './src/react-widget/plugin/info-card-plugin.jsx',
@@ -93,8 +115,8 @@ module.exports = {
       '/apiTest': {
         target: 'http://api-test.com.cn', // 不支持跨域的接口根地址
         ws: true,
-        changeOrigin: true
-      }
+        changeOrigin: true,
+      },
     },
     cssSourceMap: true,
     closeHotReload: true, // 是否关闭热更新
@@ -107,7 +129,7 @@ module.exports = {
       infoCard: './src/vue-widget/index.js',
       infoCardPlugin: './src/vue-widget/plugin/info-card-plugin.jsx',
       helloJquery: './src/hello-jquery/hello-jquery.jsx',
-      helloJqueryPlugin: './src/hello-jquery/plugin/hello-jquery-plugin.jsx'
+      helloJqueryPlugin: './src/hello-jquery/plugin/hello-jquery-plugin.jsx',
     },
     // 用于构建生产环境代码的相关配置信息
     NODE_ENV: 'production', // development / production
@@ -121,5 +143,5 @@ module.exports = {
     productionGzip: false,
     productionGzipExtensions: ['js', 'css', 'json'],
     bundleAnalyzerReport: false,
-  }
+  },
 };

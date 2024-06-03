@@ -4,10 +4,10 @@
 import { registerPlugin } from 'vue3-aipage-widget';
 
 const InfoCardPlugin = {
-  name: 'JSON数据卡片',
-  description: 'JSON数据卡片',
-  componentId: 'h5-uni-info-card-v3',
-  id: 'h5-uni-info-card-v3',
+  name: 'H5信息卡片',
+  description: '信息展示卡片',
+  componentId: 'h5-uni-info-card',
+  id: 'h5-uni-info-card',
   tags: ['自定义组件', '跨端组件'], // 组件分类
   pluginIcon: 'cards-plugin',
   order: 1, // 展示顺序（从小到大展示）
@@ -15,19 +15,10 @@ const InfoCardPlugin = {
   device: ['mobile', 'app', 'quickapp', 'quickapp-card'], // 设置类型，目前支持3种类型: pc、mobile、app、quickapp、quickapp-card
   docLink: '',
   demoProperties: {
-    componentId: 'h5-uni-info-card-v3',
+    componentId: 'h5-uni-info-card',
     type: 'element',
     componentProperties: {
-      data: {
-        jsonData: {
-          componentId: 'h5-uni-info-card-v3',
-          type: 'element',
-          componentProperties: {
-            data: {},
-            style: {},
-          },
-        },
-      },
+      data: {},
       style: {},
     },
   },
@@ -45,12 +36,28 @@ const InfoCardPlugin = {
                 type: 'textarea',
                 name: 'data.title',
                 label: '卡片title',
+                value:
+                  'amis 是一个低代码前端框架，它使用 JSON 配置来生成页面，可以减少页面开发工作量，极大提升效率。',
+                enableDataBinding: true, // 有这个属性则组件会自动开启动态数据绑定
               },
               {
-                type: 'json',
-                name: 'data.jsonData',
-                label: 'JSON数据',
-                enableDataBinding: true, // 有这个属性则组件会自动开启动态数据绑定
+                type: 'text',
+                name: 'data.backgroundImage',
+                label: '展示图片',
+                value:
+                  'https://search-operate.cdn.bcebos.com/64c279f23794a831f9a8e7a4e0b722dd.jpg',
+              },
+              {
+                type: 'input-number',
+                name: 'data.img_count',
+                label: '图片数量',
+                value: 3,
+              },
+              {
+                type: 'input-number',
+                name: 'data.comment_count',
+                label: '评论数',
+                value: 2021,
               },
             ],
           },

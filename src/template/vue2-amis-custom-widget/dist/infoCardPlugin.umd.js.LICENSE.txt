@@ -1,7 +1,7 @@
 /*!
- * vue2-amis-custom-widget v1.1.7
+ * vue2-amis-custom-widget v1.2.0
  * author: fex
  * build tool: AKFun
- * build time: Thu Aug 17 2023 20:29:52 GMT+0800 (中国标准时间)
+ * build time: Mon Jun 03 2024 19:27:23 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */

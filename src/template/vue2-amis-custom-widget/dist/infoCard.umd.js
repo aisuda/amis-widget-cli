@@ -10,35 +10,35 @@
 })(this, function () {
   return (function () {
     var e = {
-        75: function () {},
-        195: function (e, t, n) {
-          var r = n(75);
+        723: function () {},
+        219: function (e, t, n) {
+          var r = n(723);
           r.__esModule && (r = r.default),
             'string' == typeof r && (r = [[e.id, r, '']]),
             r.locals && (e.exports = r.locals),
-            (0, n(346).Z)('93fb3e70', r, !1, { sourceMap: !1 });
+            (0, n(534).A)('d8a6f15c', r, !1, { sourceMap: !1 });
         },
-        346: function (e, t, n) {
+        534: function (e, t, n) {
           'use strict';
           function r(e, t) {
             for (var n = [], r = {}, i = 0; i < t.length; i++) {
-              var a = t[i],
-                s = a[0],
+              var s = t[i],
+                a = s[0],
                 o = {
                   id: e + ':' + i,
-                  css: a[1],
-                  media: a[2],
-                  sourceMap: a[3],
+                  css: s[1],
+                  media: s[2],
+                  sourceMap: s[3],
                 };
-              r[s]
-                ? r[s].parts.push(o)
-                : n.push((r[s] = { id: s, parts: [o] }));
+              r[a]
+                ? r[a].parts.push(o)
+                : n.push((r[a] = { id: a, parts: [o] }));
             }
             return n;
           }
           n.d(t, {
-            Z: function () {
-              return v;
+            A: function () {
+              return f;
             },
           });
           var i = 'undefined' != typeof document;
@@ -46,8 +46,8 @@
             throw new Error(
               "vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.",
             );
-          var a = {},
-            s =
+          var s = {},
+            a =
               i && (document.head || document.getElementsByTagName('head')[0]),
             o = null,
             u = 0,
@@ -55,28 +55,28 @@
             c = function () {},
             d = null,
             m = 'data-vue-ssr-id',
-            f =
+            v =
               'undefined' != typeof navigator &&
               /msie [6-9]\b/.test(navigator.userAgent.toLowerCase());
-          function v(e, t, n, i) {
+          function f(e, t, n, i) {
             (l = n), (d = i || {});
-            var s = r(e, t);
+            var a = r(e, t);
             return (
-              p(s),
+              p(a),
               function (t) {
-                for (var n = [], i = 0; i < s.length; i++) {
-                  var o = s[i];
-                  (u = a[o.id]).refs--, n.push(u);
+                for (var n = [], i = 0; i < a.length; i++) {
+                  var o = a[i];
+                  (u = s[o.id]).refs--, n.push(u);
                 }
                 for (
-                  t ? p((s = r(e, t))) : (s = []), i = 0;
+                  t ? p((a = r(e, t))) : (a = []), i = 0;
                   i < n.length;
                   i++
                 ) {
                   var u;
                   if (0 === (u = n[i]).refs) {
                     for (var l = 0; l < u.parts.length; l++) u.parts[l]();
-                    delete a[u.id];
+                    delete s[u.id];
                   }
                 }
               }
@@ -85,7 +85,7 @@
           function p(e) {
             for (var t = 0; t < e.length; t++) {
               var n = e[t],
-                r = a[n.id];
+                r = s[n.id];
               if (r) {
                 r.refs++;
                 for (var i = 0; i < r.parts.length; i++) r.parts[i](n.parts[i]);
@@ -93,15 +93,15 @@
                 r.parts.length > n.parts.length &&
                   (r.parts.length = n.parts.length);
               } else {
-                var s = [];
-                for (i = 0; i < n.parts.length; i++) s.push(_(n.parts[i]));
-                a[n.id] = { id: n.id, refs: 1, parts: s };
+                var a = [];
+                for (i = 0; i < n.parts.length; i++) a.push(_(n.parts[i]));
+                s[n.id] = { id: n.id, refs: 1, parts: a };
               }
             }
           }
           function h() {
             var e = document.createElement('style');
-            return (e.type = 'text/css'), s.appendChild(e), e;
+            return (e.type = 'text/css'), a.appendChild(e), e;
           }
           function _(e) {
             var t,
@@ -111,7 +111,7 @@
               if (l) return c;
               r.parentNode.removeChild(r);
             }
-            if (f) {
+            if (v) {
               var i = u++;
               (r = o || (o = h())),
                 (t = y.bind(null, r, i, !1)),
@@ -147,10 +147,10 @@
             var i = n ? '' : r.css;
             if (e.styleSheet) e.styleSheet.cssText = b(t, i);
             else {
-              var a = document.createTextNode(i),
-                s = e.childNodes;
-              s[t] && e.removeChild(s[t]),
-                s.length ? e.insertBefore(a, s[t]) : e.appendChild(a);
+              var s = document.createTextNode(i),
+                a = e.childNodes;
+              a[t] && e.removeChild(a[t]),
+                a.length ? e.insertBefore(s, a[t]) : e.appendChild(s);
             }
           }
           function C(e, t) {
@@ -180,8 +180,8 @@
     function n(r) {
       var i = t[r];
       if (void 0 !== i) return i.exports;
-      var a = (t[r] = { id: r, exports: {} });
-      return e[r](a, a.exports, n), a.exports;
+      var s = (t[r] = { id: r, exports: {} });
+      return e[r](s, s.exports, n), s.exports;
     }
     (n.n = function (e) {
       var t =
@@ -383,10 +383,10 @@
           require('element-ui/lib/theme-chalk/base.css');
         var t = require('element-ui/lib/menu-item-group'),
           i = n.n(t),
-          a =
+          s =
             (require('element-ui/lib/theme-chalk/menu-item.css'),
             require('element-ui/lib/menu-item')),
-          s = n.n(a),
+          a = n.n(s),
           o =
             (require('element-ui/lib/theme-chalk/submenu.css'),
             require('element-ui/lib/submenu')),
@@ -399,33 +399,29 @@
             (require('element-ui/lib/theme-chalk/link.css'),
             require('element-ui/lib/link')),
           m = n.n(d),
-          f =
+          v =
             (require('element-ui/lib/theme-chalk/rate.css'),
             require('element-ui/lib/rate')),
-          v = {
-            props: {
-              title: {
-                type: String,
-                default:
-                  'amis 是一个低代码前端框架，它使用 JSON 配置来生成页面，可以减少页面开发工作量，极大提升效率。',
-              },
-              backgroundImage: {
-                type: String,
-                default:
-                  'https://search-operate.cdn.bcebos.com/64c279f23794a831f9a8e7a4e0b722dd.jpg',
-              },
-              img_count: { type: Number, default: 3 },
-              comment_count: { type: Number, default: 2021 },
-            },
+          f = {
             data: function () {
-              return { isAlive: !0, isFirstVisit: !0, rateVal: 3 };
+              return {
+                isAlive: !0,
+                isFirstVisit: !0,
+                img_count: 3,
+                title:
+                  'amis 是一个低代码前端框架，它使用 JSON 配置来生成页面，可以减少页面开发工作量，极大提升效率。',
+                backgroundImage:
+                  'https://search-operate.cdn.bcebos.com/64c279f23794a831f9a8e7a4e0b722dd.jpg',
+                comment_count: 2021,
+                rateVal: 3,
+              };
             },
             components: {
-              Rate: n.n(f)(),
+              Rate: n.n(v)(),
               Link: m(),
               Menu: c(),
               Submenu: u(),
-              MenuItem: s(),
+              MenuItem: a(),
               MenuItemGroup: i(),
             },
             mounted: function () {
@@ -447,8 +443,8 @@
               },
             },
           };
-        n(195);
-        var p = (function (e, t, n, r, i, a, s, o) {
+        n(219);
+        var p = (function (e, t, n, r, i, s, a, o) {
             var u,
               l = 'function' == typeof e ? e.options : e;
             if (
@@ -467,7 +463,7 @@
                 l.beforeCreate = d ? [].concat(d, u) : [u];
               }
             return { exports: e, options: l };
-          })(v, e),
+          })(f, e),
           h = p.exports;
         (0, require('amis-widget').registerRendererByType)(h, {
           type: 'vue-info-card',

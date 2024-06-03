@@ -1,7 +1,7 @@
 /*!
- * uni-h5-custom-widget-template v1.2.3
+ * uni-h5-custom-widget-template v1.3.0
  * author: wibetter
  * build tool: AKFun
- * build time: Fri Sep 30 2022 13:35:47 GMT+0800 (中国标准时间)
+ * build time: Mon Jun 03 2024 19:02:47 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */

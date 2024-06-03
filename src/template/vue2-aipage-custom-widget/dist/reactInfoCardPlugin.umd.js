@@ -43,7 +43,7 @@
       pluginIcon: 'cards-plugin',
       order: 1,
       type: 'element',
-      device: ['pc', 'mobile'],
+      device: ['pc', 'mobile', 'app'],
       docLink: '',
       demoProperties: {
         componentId: 'react-info-card',

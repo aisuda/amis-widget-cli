@@ -27,6 +27,7 @@ module.exports = {
         '.umd.js',
         '.min.js',
         '.json',
+        '.mjs',
       ], // 用于配置webpack在尝试过程中用到的后缀列表
       alias: {
         '@': resolve('src'),

@@ -1,5 +1,5 @@
-import { defineConfig } from "vite";
-import uni from "@dcloudio/vite-plugin-uni";
+import { defineConfig } from 'vite';
+import uni from '@dcloudio/vite-plugin-uni';
 const path = require('path');
 /**
  * vite 配置文件
@@ -23,14 +23,13 @@ export default defineConfig(({ command, mode }) => {
   if (command === 'serve') {
     // dev 独有配置
     return {
-      ...commonConfig
-    }
+      ...commonConfig,
+    };
   } else {
-    const curDir =  process.env.UNI_BUILD_DIR ? '/' + process.env.UNI_BUILD_DIR : '';
-    const curEntry = path.resolve(__dirname, `./build${curDir}/${ process.env.UNI_BUILD_LIB || 'renderer'}.ts`); // 构建自定组件入口文件
+    // command === 'build'
     if (process.env.UNI_BUILD_MODE === 'h5') {
       return {
-        //mode: 'development', // 'development'（开发模式），'production'（生产模式）
+        // mode: 'development', // 'development'（开发模式），'production'（生产模式）
         ...commonConfig,
         build: {
           // https://vitejs.dev/config/build-options.html#build-minify
@@ -40,22 +39,28 @@ export default defineConfig(({ command, mode }) => {
             external: ['react', 'vue'], // 在构建中排除的依赖项
             output: {
               // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
-              dir: 'web' + curDir, // 输出构建后文件的目录
+              // dir: 'web',
+              dir: `web/${process.env.UNI_BUILD_LIB}`, // 输出构建后文件的目录
               globals: {
                 vue: 'vue',
-                react: 'react'
+                react: 'react',
               },
               // format: 'amd',
-            }
+            },
           },
           lib: {
-            entry: curEntry,
+            entry: path.resolve(
+              __dirname,
+              `./build/${process.env.UNI_BUILD_LIB || 'registerRenderer'}.ts`,
+            ), // 构建自定组件入口文件
             formats: ['umd'],
-            name: process.env.UNI_BUILD_LIB || 'renderer', // 自定义组件名字
-            fileName: (format) => `${process.env.UNI_BUILD_LIB || 'renderer'}.${format}.js`,
+            name: process.env.UNI_BUILD_LIB || 'registerRenderer', // 自定义组件名字
+            fileName: (format) =>
+              `${process.env.UNI_BUILD_LIB || 'registerRenderer'}.${format}.js`,
+            style: 'renderer',
           },
           // cssCodeSplit: false, // https://vitejs.cn/config/#build-csscodesplit
-        }
+        },
       };
     } else {
       return {

@@ -1,0 +1,65 @@
+/*!
+ * vue3-aipage-custom-widget-template v1.1.0
+ * author: fex
+ * build tool: AKFun
+ * build time: Mon Jun 03 2024 19:39:00 GMT+0800 (中国标准时间)
+ * build tool info: https://github.com/wibetter/akfun
+ */
+
+/*! !!../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!./style.scss */
+
+/*! !../../node_modules/vue-style-loader/lib/addStylesClient.js */
+
+/*! ./info-card */
+
+/*! ./listToStyles */
+
+/*! ./style.scss */
+
+/*! @babel/runtime/helpers/inheritsLoose */
+
+/*! classnames */
+
+/*! react */
+
+/*! vue3-aipage-widget */
+
+/*!************************!*\
+  !*** external "react" ***!
+  \************************/
+
+/*!*****************************!*\
+  !*** external "classnames" ***!
+  \*****************************/
+
+/*!***********************************!*\
+  !*** ./src/react-widget/index.js ***!
+  \***********************************/
+
+/*!*************************************!*\
+  !*** ./src/react-widget/style.scss ***!
+  \*************************************/
+
+/*!*************************************!*\
+  !*** external "vue3-aipage-widget" ***!
+  \*************************************/
+
+/*!****************************************!*\
+  !*** ./src/react-widget/info-card.jsx ***!
+  \****************************************/
+
+/*!*******************************************************!*\
+  !*** external "@babel/runtime/helpers/inheritsLoose" ***!
+  \*******************************************************/
+
+/*!***********************************************************!*\
+  !*** ./node_modules/vue-style-loader/lib/listToStyles.js ***!
+  \***********************************************************/
+
+/*!**************************************************************!*\
+  !*** ./node_modules/vue-style-loader/lib/addStylesClient.js ***!
+  \**************************************************************/
+
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!./src/react-widget/style.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************/
