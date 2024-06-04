@@ -142,6 +142,7 @@ class AipageEditorDemo extends React.Component {
       disabledDatabase: true, // 用于隐藏数据源
       showPageShareQRCode: false, // 显示页面级分享二维码
       hiddenAppShareQRCode: true, // 不显示应用级分享二维码
+      disabledPagesList: true, // 用于隐藏页面列表
       // isWidgetTplMode: true, // 组件模板编辑页扫码预览模式需要
       // getShareKeyPath,
       disabledPlugins: ['todo', 'form-entity', 'user-select', 'department-select']
