@@ -124,22 +124,12 @@ module.exports = {
   build2lib: {
     entry: {
       // 自定义组件入口文件
-      index: [
-        './src/react-widget/index.js',
-        './src/react-widget/plugin/info-card-plugin.jsx',
-        './src/vue-widget/index.js',
-        './src/vue-widget/plugin/info-card-plugin.jsx',
-        './src/hello-jquery/hello-jquery.jsx',
-        './src/hello-jquery/plugin/hello-jquery-plugin.jsx',
-      ],
-      /*
       reactInfoCard: './src/react-widget/index.js',
       reactInfoCardPlugin: './src/react-widget/plugin/info-card-plugin.jsx',
       infoCard: './src/vue-widget/index.js',
       infoCardPlugin: './src/vue-widget/plugin/info-card-plugin.jsx',
       helloJquery: './src/hello-jquery/hello-jquery.jsx',
       helloJqueryPlugin: './src/hello-jquery/plugin/hello-jquery-plugin.jsx',
-      */
     },
     // 用于构建生产环境代码的相关配置信息
     NODE_ENV: 'production', // development / production
