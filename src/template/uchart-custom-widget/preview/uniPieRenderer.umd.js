@@ -10,124 +10,323 @@
 })(this, function () {
   return (function () {
     var e = {
-        190: function () {},
-        262: function (e, t) {
-          'use strict';
-          t.A = (e, t) => {
-            const r = e.__vccOpts || e;
-            for (const [e, n] of t) r[e] = n;
-            return r;
-          };
-        },
-        806: function (e, t, r) {
-          var n = r(190);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, r(534).A)('d7cb38a6', n, !1, { sourceMap: !1 });
-        },
-        534: function (e, t, r) {
-          'use strict';
-          function n(e, t) {
-            for (var r = [], n = {}, i = 0; i < t.length; i++) {
-              var o = t[i],
-                a = o[0],
-                s = {
-                  id: e + ':' + i,
-                  css: o[1],
-                  media: o[2],
-                  sourceMap: o[3],
+        './node_modules/babel-loader/lib/index.js??clonedRuleSet-2.use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/h5components/uni-pie-chart/uni-pie-chart.vue?vue&type=script&lang=js':
+          function (e, t, s) {
+            'use strict';
+            s.r(t);
+            var n = s('@qiun/ucharts'),
+              r = s.n(n),
+              o = {};
+            t.default = {
+              props: ['componentProperties', 'id'],
+              data: function () {
+                return {
+                  defaultChartData: {
+                    series: [
+                      {
+                        data: [
+                          { name: '一班', value: 50 },
+                          { name: '二班', value: 30 },
+                          { name: '三班', value: 20 },
+                          { name: '四班', value: 18 },
+                          { name: '五班', value: 8 },
+                        ],
+                      },
+                    ],
+                  },
                 };
-              n[a]
-                ? n[a].parts.push(s)
-                : r.push((n[a] = { id: a, parts: [s] }));
+              },
+              computed: {
+                chartId: function () {
+                  return this.id || 'pie-uChart';
+                },
+                series: function () {
+                  return (
+                    (this.componentProperties &&
+                      this.componentProperties.data &&
+                      this.componentProperties.data.series) ||
+                    this.defaultChartData.series
+                  );
+                },
+              },
+              mounted: function () {
+                this.drawCharts(this.chartId, { series: this.series });
+              },
+              updated: function () {
+                this.drawCharts(this.chartId, { series: this.series });
+              },
+              methods: {
+                drawCharts: function (e, t) {
+                  var s = document.getElementById(e) || this.$refs.uchart;
+                  (s.width = s.offsetWidth || '370'),
+                    (s.height = s.offsetHeight || '280');
+                  var n = s.getContext('2d');
+                  o[e] = new (r())({
+                    type: 'pie',
+                    context: n,
+                    width: s.width,
+                    height: s.height,
+                    series: t.series,
+                    animation: !0,
+                    background: '#ffffff',
+                    padding: [5, 5, 5, 5],
+                    xAxis: { disableGrid: !0 },
+                    yAxis: { data: [{ min: 0 }] },
+                    color: [
+                      '#1890FF',
+                      '#91CB74',
+                      '#FAC858',
+                      '#EE6666',
+                      '#73C0DE',
+                      '#3CA272',
+                      '#FC8452',
+                      '#9A60B4',
+                      '#ea7ccc',
+                    ],
+                    legend: {},
+                    extra: {
+                      pie: {
+                        activeOpacity: 0.5,
+                        activeRadius: 10,
+                        offsetAngle: 0,
+                        labelWidth: 15,
+                        border: !1,
+                        borderWidth: 3,
+                        borderColor: '#FFFFFF',
+                      },
+                    },
+                  });
+                },
+                tap: function (e) {
+                  o[e.target.id].touchLegend(e), o[e.target.id].showToolTip(e);
+                },
+              },
+            };
+          },
+        './node_modules/babel-loader/lib/index.js??clonedRuleSet-2.use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/h5components/uni-pie-chart/uni-pie-chart.vue?vue&type=template&id=e4ee6cc4&scoped=true':
+          function (e, t, s) {
+            'use strict';
+            s.r(t),
+              s.d(t, {
+                render: function () {
+                  return d;
+                },
+              });
+            var n = s('vue'),
+              r = { class: 'u-charts-container' },
+              o = ['canvas-id', 'id'];
+            function d(e, t, s, d, u, i) {
+              return (
+                (0, n.openBlock)(),
+                (0, n.createElementBlock)('div', r, [
+                  i.chartId
+                    ? ((0, n.openBlock)(),
+                      (0, n.createElementBlock)(
+                        'canvas',
+                        {
+                          key: 0,
+                          'canvas-id': i.chartId,
+                          id: i.chartId,
+                          class: 'u-charts',
+                          onTouchend:
+                            t[0] ||
+                            (t[0] = function () {
+                              return i.tap && i.tap.apply(i, arguments);
+                            }),
+                          ref: 'uchart',
+                        },
+                        null,
+                        40,
+                        o,
+                      ))
+                    : (0, n.createCommentVNode)('v-if', !0),
+                ])
+              );
             }
-            return r;
-          }
-          r.d(t, {
-            A: function () {
-              return h;
-            },
-          });
-          var i = 'undefined' != typeof document;
-          if ('undefined' != typeof DEBUG && DEBUG && !i)
+          },
+        './node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./src/h5components/uni-pie-chart/uni-pie-chart.vue?vue&type=style&index=0&id=e4ee6cc4&scoped=true&lang=scss':
+          function () {},
+        './node_modules/vue-loader/dist/exportHelper.js': function (e, t) {
+          'use strict';
+          Object.defineProperty(t, '__esModule', { value: !0 }),
+            (t.default = (e, t) => {
+              const s = e.__vccOpts || e;
+              for (const [e, n] of t) s[e] = n;
+              return s;
+            });
+        },
+        './src/h5components/uni-pie-chart/uni-pie-chart.vue': function (
+          e,
+          t,
+          s,
+        ) {
+          'use strict';
+          s.r(t);
+          var n = s(
+              './src/h5components/uni-pie-chart/uni-pie-chart.vue?vue&type=template&id=e4ee6cc4&scoped=true',
+            ),
+            r = s(
+              './src/h5components/uni-pie-chart/uni-pie-chart.vue?vue&type=script&lang=js',
+            );
+          s(
+            './src/h5components/uni-pie-chart/uni-pie-chart.vue?vue&type=style&index=0&id=e4ee6cc4&scoped=true&lang=scss',
+          );
+          const o = (0,
+          s('./node_modules/vue-loader/dist/exportHelper.js').default)(
+            r.default,
+            [
+              ['render', n.render],
+              ['__scopeId', 'data-v-e4ee6cc4'],
+              ['__file', 'src/h5components/uni-pie-chart/uni-pie-chart.vue'],
+            ],
+          );
+          t.default = o;
+        },
+        './src/h5components/uni-pie-chart/uni-pie-chart.vue?vue&type=script&lang=js':
+          function (e, t, s) {
+            'use strict';
+            s.r(t),
+              s.d(t, {
+                default: function () {
+                  return n.default;
+                },
+              });
+            var n = s(
+              './node_modules/babel-loader/lib/index.js??clonedRuleSet-2.use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/h5components/uni-pie-chart/uni-pie-chart.vue?vue&type=script&lang=js',
+            );
+          },
+        './src/h5components/uni-pie-chart/uni-pie-chart.vue?vue&type=template&id=e4ee6cc4&scoped=true':
+          function (e, t, s) {
+            'use strict';
+            s.r(t),
+              s.d(t, {
+                render: function () {
+                  return n.render;
+                },
+              });
+            var n = s(
+              './node_modules/babel-loader/lib/index.js??clonedRuleSet-2.use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/h5components/uni-pie-chart/uni-pie-chart.vue?vue&type=template&id=e4ee6cc4&scoped=true',
+            );
+          },
+        './src/h5components/uni-pie-chart/uni-pie-chart.vue?vue&type=style&index=0&id=e4ee6cc4&scoped=true&lang=scss':
+          function (e, t, s) {
+            'use strict';
+            s.r(t);
+            var n = s(
+                './node_modules/vue-style-loader/index.js??clonedRuleSet-11.use[0]!./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./src/h5components/uni-pie-chart/uni-pie-chart.vue?vue&type=style&index=0&id=e4ee6cc4&scoped=true&lang=scss',
+              ),
+              r = {};
+            for (var o in n)
+              'default' !== o &&
+                (r[o] = function (e) {
+                  return n[e];
+                }.bind(0, o));
+            s.d(t, r);
+          },
+        './node_modules/vue-style-loader/index.js??clonedRuleSet-11.use[0]!./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./src/h5components/uni-pie-chart/uni-pie-chart.vue?vue&type=style&index=0&id=e4ee6cc4&scoped=true&lang=scss':
+          function (e, t, s) {
+            var n = s(
+              './node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./src/h5components/uni-pie-chart/uni-pie-chart.vue?vue&type=style&index=0&id=e4ee6cc4&scoped=true&lang=scss',
+            );
+            n.__esModule && (n = n.default),
+              'string' == typeof n && (n = [[e.id, n, '']]),
+              n.locals && (e.exports = n.locals),
+              (0,
+              s('./node_modules/vue-style-loader/lib/addStylesClient.js')
+                .default)('705e60de', n, !1, { sourceMap: !1 });
+          },
+        './node_modules/vue-style-loader/lib/addStylesClient.js': function (
+          e,
+          t,
+          s,
+        ) {
+          'use strict';
+          s.r(t),
+            s.d(t, {
+              default: function () {
+                return m;
+              },
+            });
+          var n = s('./node_modules/vue-style-loader/lib/listToStyles.js'),
+            r = 'undefined' != typeof document;
+          if ('undefined' != typeof DEBUG && DEBUG && !r)
             throw new Error(
               "vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.",
             );
           var o = {},
-            a =
-              i && (document.head || document.getElementsByTagName('head')[0]),
-            s = null,
-            d = 0,
-            u = !1,
-            c = function () {},
-            f = null,
-            l = 'data-vue-ssr-id',
-            p =
+            d =
+              r && (document.head || document.getElementsByTagName('head')[0]),
+            u = null,
+            i = 0,
+            a = !1,
+            l = function () {},
+            c = null,
+            p = 'data-vue-ssr-id',
+            f =
               'undefined' != typeof navigator &&
               /msie [6-9]\b/.test(navigator.userAgent.toLowerCase());
-          function h(e, t, r, i) {
-            (u = r), (f = i || {});
-            var a = n(e, t);
+          function m(e, t, s, r) {
+            (a = s), (c = r || {});
+            var d = (0, n.default)(e, t);
             return (
-              v(a),
+              h(d),
               function (t) {
-                for (var r = [], i = 0; i < a.length; i++) {
-                  var s = a[i];
-                  (d = o[s.id]).refs--, r.push(d);
+                for (var s = [], r = 0; r < d.length; r++) {
+                  var u = d[r];
+                  (i = o[u.id]).refs--, s.push(i);
                 }
                 for (
-                  t ? v((a = n(e, t))) : (a = []), i = 0;
-                  i < r.length;
-                  i++
+                  t ? h((d = (0, n.default)(e, t))) : (d = []), r = 0;
+                  r < s.length;
+                  r++
                 ) {
-                  var d;
-                  if (0 === (d = r[i]).refs) {
-                    for (var u = 0; u < d.parts.length; u++) d.parts[u]();
-                    delete o[d.id];
+                  var i;
+                  if (0 === (i = s[r]).refs) {
+                    for (var a = 0; a < i.parts.length; a++) i.parts[a]();
+                    delete o[i.id];
                   }
                 }
               }
             );
           }
-          function v(e) {
+          function h(e) {
             for (var t = 0; t < e.length; t++) {
-              var r = e[t],
-                n = o[r.id];
+              var s = e[t],
+                n = o[s.id];
               if (n) {
                 n.refs++;
-                for (var i = 0; i < n.parts.length; i++) n.parts[i](r.parts[i]);
-                for (; i < r.parts.length; i++) n.parts.push(g(r.parts[i]));
-                n.parts.length > r.parts.length &&
-                  (n.parts.length = r.parts.length);
+                for (var r = 0; r < n.parts.length; r++) n.parts[r](s.parts[r]);
+                for (; r < s.parts.length; r++) n.parts.push(j(s.parts[r]));
+                n.parts.length > s.parts.length &&
+                  (n.parts.length = s.parts.length);
               } else {
-                var a = [];
-                for (i = 0; i < r.parts.length; i++) a.push(g(r.parts[i]));
-                o[r.id] = { id: r.id, refs: 1, parts: a };
+                var d = [];
+                for (r = 0; r < s.parts.length; r++) d.push(j(s.parts[r]));
+                o[s.id] = { id: s.id, refs: 1, parts: d };
               }
             }
           }
-          function m() {
+          function v() {
             var e = document.createElement('style');
-            return (e.type = 'text/css'), a.appendChild(e), e;
+            return (e.type = 'text/css'), d.appendChild(e), e;
           }
-          function g(e) {
+          function j(e) {
             var t,
-              r,
-              n = document.querySelector('style[' + l + '~="' + e.id + '"]');
+              s,
+              n = document.querySelector('style[' + p + '~="' + e.id + '"]');
             if (n) {
-              if (u) return c;
+              if (a) return l;
               n.parentNode.removeChild(n);
             }
-            if (p) {
-              var i = d++;
-              (n = s || (s = m())),
-                (t = C.bind(null, n, i, !1)),
-                (r = C.bind(null, n, i, !0));
+            if (f) {
+              var r = i++;
+              (n = u || (u = v())),
+                (t = _.bind(null, n, r, !1)),
+                (s = _.bind(null, n, r, !0));
             } else
-              (n = m()),
+              (n = v()),
                 (t = x.bind(null, n)),
-                (r = function () {
+                (s = function () {
                   n.parentNode.removeChild(n);
                 });
             return (
@@ -141,57 +340,98 @@
                   )
                     return;
                   t((e = n));
-                } else r();
+                } else s();
               }
             );
           }
           var y,
-            b =
+            g =
               ((y = []),
               function (e, t) {
                 return (y[e] = t), y.filter(Boolean).join('\n');
               });
-          function C(e, t, r, n) {
-            var i = r ? '' : n.css;
-            if (e.styleSheet) e.styleSheet.cssText = b(t, i);
+          function _(e, t, s, n) {
+            var r = s ? '' : n.css;
+            if (e.styleSheet) e.styleSheet.cssText = g(t, r);
             else {
-              var o = document.createTextNode(i),
-                a = e.childNodes;
-              a[t] && e.removeChild(a[t]),
-                a.length ? e.insertBefore(o, a[t]) : e.appendChild(o);
+              var o = document.createTextNode(r),
+                d = e.childNodes;
+              d[t] && e.removeChild(d[t]),
+                d.length ? e.insertBefore(o, d[t]) : e.appendChild(o);
             }
           }
           function x(e, t) {
-            var r = t.css,
+            var s = t.css,
               n = t.media,
-              i = t.sourceMap;
+              r = t.sourceMap;
             if (
               (n && e.setAttribute('media', n),
-              f.ssrId && e.setAttribute(l, t.id),
-              i &&
-                ((r += '\n/*# sourceURL=' + i.sources[0] + ' */'),
-                (r +=
+              c.ssrId && e.setAttribute(p, t.id),
+              r &&
+                ((s += '\n/*# sourceURL=' + r.sources[0] + ' */'),
+                (s +=
                   '\n/*# sourceMappingURL=data:application/json;base64,' +
-                  btoa(unescape(encodeURIComponent(JSON.stringify(i)))) +
+                  btoa(unescape(encodeURIComponent(JSON.stringify(r)))) +
                   ' */')),
               e.styleSheet)
             )
-              e.styleSheet.cssText = r;
+              e.styleSheet.cssText = s;
             else {
               for (; e.firstChild; ) e.removeChild(e.firstChild);
-              e.appendChild(document.createTextNode(r));
+              e.appendChild(document.createTextNode(s));
             }
           }
         },
+        './node_modules/vue-style-loader/lib/listToStyles.js': function (
+          e,
+          t,
+          s,
+        ) {
+          'use strict';
+          function n(e, t) {
+            for (var s = [], n = {}, r = 0; r < t.length; r++) {
+              var o = t[r],
+                d = o[0],
+                u = {
+                  id: e + ':' + r,
+                  css: o[1],
+                  media: o[2],
+                  sourceMap: o[3],
+                };
+              n[d]
+                ? n[d].parts.push(u)
+                : s.push((n[d] = { id: d, parts: [u] }));
+            }
+            return s;
+          }
+          s.r(t),
+            s.d(t, {
+              default: function () {
+                return n;
+              },
+            });
+        },
+        '@qiun/ucharts': function (e) {
+          'use strict';
+          e.exports = require('@qiun/ucharts');
+        },
+        vue: function (e) {
+          'use strict';
+          e.exports = require('vue');
+        },
+        'vue3-aipage-widget/dist/index.umd': function (e) {
+          'use strict';
+          e.exports = require('vue3-aipage-widget/dist/index.umd');
+        },
       },
       t = {};
-    function r(n) {
-      var i = t[n];
-      if (void 0 !== i) return i.exports;
+    function s(n) {
+      var r = t[n];
+      if (void 0 !== r) return r.exports;
       var o = (t[n] = { id: n, exports: {} });
-      return e[n](o, o.exports, r), o.exports;
+      return e[n](o, o.exports, s), o.exports;
     }
-    (r.n = function (e) {
+    (s.n = function (e) {
       var t =
         e && e.__esModule
           ? function () {
@@ -200,18 +440,18 @@
           : function () {
               return e;
             };
-      return r.d(t, { a: t }), t;
+      return s.d(t, { a: t }), t;
     }),
-      (r.d = function (e, t) {
+      (s.d = function (e, t) {
         for (var n in t)
-          r.o(t, n) &&
-            !r.o(e, n) &&
+          s.o(t, n) &&
+            !s.o(e, n) &&
             Object.defineProperty(e, n, { enumerable: !0, get: t[n] });
       }),
-      (r.o = function (e, t) {
+      (s.o = function (e, t) {
         return Object.prototype.hasOwnProperty.call(e, t);
       }),
-      (r.r = function (e) {
+      (s.r = function (e) {
         'undefined' != typeof Symbol &&
           Symbol.toStringTag &&
           Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
@@ -221,136 +461,10 @@
     return (
       (function () {
         'use strict';
-        r.r(n);
-        var e = require('vue3-aipage-widget/dist/index.umd'),
-          t = require('vue'),
-          i = { class: 'u-charts-container' },
-          o = ['canvas-id', 'id'],
-          a = require('@qiun/ucharts'),
-          s = r.n(a),
-          d = {},
-          u = {
-            props: ['componentProperties', 'id'],
-            data: function () {
-              return {
-                defaultChartData: {
-                  series: [
-                    {
-                      data: [
-                        { name: '一班', value: 50 },
-                        { name: '二班', value: 30 },
-                        { name: '三班', value: 20 },
-                        { name: '四班', value: 18 },
-                        { name: '五班', value: 8 },
-                      ],
-                    },
-                  ],
-                },
-              };
-            },
-            computed: {
-              chartId: function () {
-                return this.id || 'pie-uChart';
-              },
-              series: function () {
-                return (
-                  (this.componentProperties &&
-                    this.componentProperties.data &&
-                    this.componentProperties.data.series) ||
-                  this.defaultChartData.series
-                );
-              },
-            },
-            mounted: function () {
-              this.drawCharts(this.chartId, { series: this.series });
-            },
-            updated: function () {
-              this.drawCharts(this.chartId, { series: this.series });
-            },
-            methods: {
-              drawCharts: function (e, t) {
-                var r = document.getElementById(e) || this.$refs.uchart;
-                (r.width = r.offsetWidth || '370'),
-                  (r.height = r.offsetHeight || '280');
-                var n = r.getContext('2d');
-                d[e] = new (s())({
-                  type: 'pie',
-                  context: n,
-                  width: r.width,
-                  height: r.height,
-                  series: t.series,
-                  animation: !0,
-                  background: '#ffffff',
-                  padding: [5, 5, 5, 5],
-                  xAxis: { disableGrid: !0 },
-                  yAxis: { data: [{ min: 0 }] },
-                  color: [
-                    '#1890FF',
-                    '#91CB74',
-                    '#FAC858',
-                    '#EE6666',
-                    '#73C0DE',
-                    '#3CA272',
-                    '#FC8452',
-                    '#9A60B4',
-                    '#ea7ccc',
-                  ],
-                  legend: {},
-                  extra: {
-                    pie: {
-                      activeOpacity: 0.5,
-                      activeRadius: 10,
-                      offsetAngle: 0,
-                      labelWidth: 15,
-                      border: !1,
-                      borderWidth: 3,
-                      borderColor: '#FFFFFF',
-                    },
-                  },
-                });
-              },
-              tap: function (e) {
-                d[e.target.id].touchLegend(e), d[e.target.id].showToolTip(e);
-              },
-            },
-          };
-        r(806);
-        const c = (0, r(262).A)(u, [
-          [
-            'render',
-            function (e, r, n, a, s, d) {
-              return (
-                (0, t.openBlock)(),
-                (0, t.createElementBlock)('div', i, [
-                  d.chartId
-                    ? ((0, t.openBlock)(),
-                      (0, t.createElementBlock)(
-                        'canvas',
-                        {
-                          key: 0,
-                          'canvas-id': d.chartId,
-                          id: d.chartId,
-                          class: 'u-charts',
-                          onTouchend:
-                            r[0] ||
-                            (r[0] = function () {
-                              return d.tap && d.tap.apply(d, arguments);
-                            }),
-                          ref: 'uchart',
-                        },
-                        null,
-                        40,
-                        o,
-                      ))
-                    : (0, t.createCommentVNode)('v-if', !0),
-                ])
-              );
-            },
-          ],
-          ['__scopeId', 'data-v-46fb2cf5'],
-        ]);
-        var f = c;
-        (0, e.registerRenderer)(f, {
+        s.r(n);
+        var e = s('vue3-aipage-widget/dist/index.umd'),
+          t = s('./src/h5components/uni-pie-chart/uni-pie-chart.vue');
+        (0, e.registerRenderer)(t.default, {
           type: 'uni-pie-chart',
           framework: 'vue3',
         });

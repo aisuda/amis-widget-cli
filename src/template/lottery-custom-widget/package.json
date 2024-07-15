@@ -1,6 +1,6 @@
 {
   "name": "lottery-custom-widget",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "抽奖自定义组件",
   "keywords": [
     "自定义组件",
@@ -53,12 +53,12 @@
       "type": "uni-lottery-card",
       "framework": "vue3",
       "description": "抽奖自定义组件",
-      "entry": "/web/renderer.umd",
+      "entry": "/web/renderer/renderer.umd",
       "files": [
-        "/web/style.css"
+        "/web/renderer/style.css"
       ],
       "editorPlugin": {
-        "pluginEntry": "/web/plugin.umd",
+        "pluginEntry": "/web/plugin/plugin.umd",
         "tag": [
           "跨端组件"
         ],

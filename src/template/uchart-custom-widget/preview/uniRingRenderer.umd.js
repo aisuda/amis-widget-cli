@@ -10,188 +10,452 @@
 })(this, function () {
   return (function () {
     var e = {
-        565: function () {},
-        262: function (e, t) {
-          'use strict';
-          t.A = (e, t) => {
-            const r = e.__vccOpts || e;
-            for (const [e, n] of t) r[e] = n;
-            return r;
-          };
-        },
-        261: function (e, t, r) {
-          var n = r(565);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, r(534).A)('4cecb950', n, !1, { sourceMap: !1 });
-        },
-        534: function (e, t, r) {
-          'use strict';
-          function n(e, t) {
-            for (var r = [], n = {}, i = 0; i < t.length; i++) {
-              var o = t[i],
-                a = o[0],
-                s = {
-                  id: e + ':' + i,
-                  css: o[1],
-                  media: o[2],
-                  sourceMap: o[3],
+        './node_modules/babel-loader/lib/index.js??clonedRuleSet-2.use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/h5components/uni-ring-chart/uni-ring-chart.vue?vue&type=script&lang=js':
+          function (e, t, n) {
+            'use strict';
+            n.r(t);
+            var s = n('@qiun/ucharts'),
+              r = n.n(s),
+              o = {};
+            t.default = {
+              props: ['componentProperties', 'id'],
+              data: function () {
+                return {
+                  defaultChartData: {
+                    series: [
+                      {
+                        data: [
+                          { name: '一班', value: 50 },
+                          { name: '二班', value: 30 },
+                          { name: '三班', value: 20 },
+                          { name: '四班', value: 18 },
+                          { name: '五班', value: 8 },
+                        ],
+                      },
+                    ],
+                  },
                 };
-              n[a]
-                ? n[a].parts.push(s)
-                : r.push((n[a] = { id: a, parts: [s] }));
+              },
+              computed: {
+                chartId: function () {
+                  return this.id || 'ring-uChart';
+                },
+                title: function () {
+                  return (
+                    (this.componentProperties &&
+                      this.componentProperties.data &&
+                      this.componentProperties.data.title) ||
+                    '收益率'
+                  );
+                },
+                subTitle: function () {
+                  return (
+                    (this.componentProperties &&
+                      this.componentProperties.data &&
+                      this.componentProperties.data.subTitle) ||
+                    '70%'
+                  );
+                },
+                series: function () {
+                  return (
+                    (this.componentProperties &&
+                      this.componentProperties.data &&
+                      this.componentProperties.data.series) ||
+                    this.defaultChartData.series
+                  );
+                },
+              },
+              mounted: function () {
+                this.drawCharts(this.chartId, { series: this.series });
+              },
+              updated: function () {
+                this.drawCharts(this.chartId, { series: this.series });
+              },
+              methods: {
+                drawCharts: function (e, t) {
+                  var n = document.getElementById(e) || this.$refs.uchart;
+                  (n.width = n.offsetWidth || '370'),
+                    (n.height = n.offsetHeight || '280');
+                  var s = n.getContext('2d');
+                  o[e] = new (r())({
+                    type: 'ring',
+                    context: s,
+                    width: n.width,
+                    height: n.height,
+                    series: t.series,
+                    animation: !0,
+                    background: '#ffffff',
+                    rotate: !1,
+                    rotateLock: !1,
+                    color: [
+                      '#1890FF',
+                      '#91CB74',
+                      '#FAC858',
+                      '#EE6666',
+                      '#73C0DE',
+                      '#3CA272',
+                      '#FC8452',
+                      '#9A60B4',
+                      '#ea7ccc',
+                    ],
+                    padding: [5, 5, 5, 5],
+                    dataLabel: !0,
+                    legend: { show: !0, position: 'right', lineHeight: 25 },
+                    title: { name: this.title, fontSize: 13, color: '#666666' },
+                    subtitle: {
+                      name: this.subTitle,
+                      fontSize: 20,
+                      color: '#7cb5ec',
+                    },
+                    extra: {
+                      ring: {
+                        ringWidth: 60,
+                        activeOpacity: 0.5,
+                        activeRadius: 10,
+                        offsetAngle: 0,
+                        labelWidth: 15,
+                        border: !1,
+                        borderWidth: 3,
+                        borderColor: '#FFFFFF',
+                      },
+                    },
+                  });
+                },
+                tap: function (e) {
+                  o[e.target.id].touchLegend(e), o[e.target.id].showToolTip(e);
+                },
+              },
+            };
+          },
+        './node_modules/babel-loader/lib/index.js??clonedRuleSet-2.use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/h5components/uni-ring-chart/uni-ring-chart.vue?vue&type=template&id=0669abdc&scoped=true':
+          function (e, t, n) {
+            'use strict';
+            n.r(t),
+              n.d(t, {
+                render: function () {
+                  return d;
+                },
+              });
+            var s = n('vue'),
+              r = { class: 'u-charts-container' },
+              o = ['canvas-id', 'id'];
+            function d(e, t, n, d, i, u) {
+              return (
+                (0, s.openBlock)(),
+                (0, s.createElementBlock)('div', r, [
+                  u.chartId
+                    ? ((0, s.openBlock)(),
+                      (0, s.createElementBlock)(
+                        'canvas',
+                        {
+                          key: 0,
+                          'canvas-id': u.chartId,
+                          id: u.chartId,
+                          class: 'u-charts',
+                          onTouchend:
+                            t[0] ||
+                            (t[0] = function () {
+                              return u.tap && u.tap.apply(u, arguments);
+                            }),
+                          ref: 'uchart',
+                        },
+                        null,
+                        40,
+                        o,
+                      ))
+                    : (0, s.createCommentVNode)('v-if', !0),
+                ])
+              );
             }
-            return r;
-          }
-          r.d(t, {
-            A: function () {
-              return h;
-            },
-          });
-          var i = 'undefined' != typeof document;
-          if ('undefined' != typeof DEBUG && DEBUG && !i)
+          },
+        './node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./src/h5components/uni-ring-chart/uni-ring-chart.vue?vue&type=style&index=0&id=0669abdc&scoped=true&lang=scss':
+          function () {},
+        './node_modules/vue-loader/dist/exportHelper.js': function (e, t) {
+          'use strict';
+          Object.defineProperty(t, '__esModule', { value: !0 }),
+            (t.default = (e, t) => {
+              const n = e.__vccOpts || e;
+              for (const [e, s] of t) n[e] = s;
+              return n;
+            });
+        },
+        './src/h5components/uni-ring-chart/uni-ring-chart.vue': function (
+          e,
+          t,
+          n,
+        ) {
+          'use strict';
+          n.r(t);
+          var s = n(
+              './src/h5components/uni-ring-chart/uni-ring-chart.vue?vue&type=template&id=0669abdc&scoped=true',
+            ),
+            r = n(
+              './src/h5components/uni-ring-chart/uni-ring-chart.vue?vue&type=script&lang=js',
+            );
+          n(
+            './src/h5components/uni-ring-chart/uni-ring-chart.vue?vue&type=style&index=0&id=0669abdc&scoped=true&lang=scss',
+          );
+          const o = (0,
+          n('./node_modules/vue-loader/dist/exportHelper.js').default)(
+            r.default,
+            [
+              ['render', s.render],
+              ['__scopeId', 'data-v-0669abdc'],
+              ['__file', 'src/h5components/uni-ring-chart/uni-ring-chart.vue'],
+            ],
+          );
+          t.default = o;
+        },
+        './src/h5components/uni-ring-chart/uni-ring-chart.vue?vue&type=script&lang=js':
+          function (e, t, n) {
+            'use strict';
+            n.r(t),
+              n.d(t, {
+                default: function () {
+                  return s.default;
+                },
+              });
+            var s = n(
+              './node_modules/babel-loader/lib/index.js??clonedRuleSet-2.use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/h5components/uni-ring-chart/uni-ring-chart.vue?vue&type=script&lang=js',
+            );
+          },
+        './src/h5components/uni-ring-chart/uni-ring-chart.vue?vue&type=template&id=0669abdc&scoped=true':
+          function (e, t, n) {
+            'use strict';
+            n.r(t),
+              n.d(t, {
+                render: function () {
+                  return s.render;
+                },
+              });
+            var s = n(
+              './node_modules/babel-loader/lib/index.js??clonedRuleSet-2.use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/h5components/uni-ring-chart/uni-ring-chart.vue?vue&type=template&id=0669abdc&scoped=true',
+            );
+          },
+        './src/h5components/uni-ring-chart/uni-ring-chart.vue?vue&type=style&index=0&id=0669abdc&scoped=true&lang=scss':
+          function (e, t, n) {
+            'use strict';
+            n.r(t);
+            var s = n(
+                './node_modules/vue-style-loader/index.js??clonedRuleSet-11.use[0]!./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./src/h5components/uni-ring-chart/uni-ring-chart.vue?vue&type=style&index=0&id=0669abdc&scoped=true&lang=scss',
+              ),
+              r = {};
+            for (var o in s)
+              'default' !== o &&
+                (r[o] = function (e) {
+                  return s[e];
+                }.bind(0, o));
+            n.d(t, r);
+          },
+        './node_modules/vue-style-loader/index.js??clonedRuleSet-11.use[0]!./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./src/h5components/uni-ring-chart/uni-ring-chart.vue?vue&type=style&index=0&id=0669abdc&scoped=true&lang=scss':
+          function (e, t, n) {
+            var s = n(
+              './node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./src/h5components/uni-ring-chart/uni-ring-chart.vue?vue&type=style&index=0&id=0669abdc&scoped=true&lang=scss',
+            );
+            s.__esModule && (s = s.default),
+              'string' == typeof s && (s = [[e.id, s, '']]),
+              s.locals && (e.exports = s.locals),
+              (0,
+              n('./node_modules/vue-style-loader/lib/addStylesClient.js')
+                .default)('e5e01200', s, !1, { sourceMap: !1 });
+          },
+        './node_modules/vue-style-loader/lib/addStylesClient.js': function (
+          e,
+          t,
+          n,
+        ) {
+          'use strict';
+          n.r(t),
+            n.d(t, {
+              default: function () {
+                return f;
+              },
+            });
+          var s = n('./node_modules/vue-style-loader/lib/listToStyles.js'),
+            r = 'undefined' != typeof document;
+          if ('undefined' != typeof DEBUG && DEBUG && !r)
             throw new Error(
               "vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.",
             );
           var o = {},
-            a =
-              i && (document.head || document.getElementsByTagName('head')[0]),
-            s = null,
-            d = 0,
-            u = !1,
-            c = function () {},
-            f = null,
-            l = 'data-vue-ssr-id',
-            p =
+            d =
+              r && (document.head || document.getElementsByTagName('head')[0]),
+            i = null,
+            u = 0,
+            a = !1,
+            l = function () {},
+            c = null,
+            p = 'data-vue-ssr-id',
+            h =
               'undefined' != typeof navigator &&
               /msie [6-9]\b/.test(navigator.userAgent.toLowerCase());
-          function h(e, t, r, i) {
-            (u = r), (f = i || {});
-            var a = n(e, t);
+          function f(e, t, n, r) {
+            (a = n), (c = r || {});
+            var d = (0, s.default)(e, t);
             return (
-              v(a),
+              m(d),
               function (t) {
-                for (var r = [], i = 0; i < a.length; i++) {
-                  var s = a[i];
-                  (d = o[s.id]).refs--, r.push(d);
+                for (var n = [], r = 0; r < d.length; r++) {
+                  var i = d[r];
+                  (u = o[i.id]).refs--, n.push(u);
                 }
                 for (
-                  t ? v((a = n(e, t))) : (a = []), i = 0;
-                  i < r.length;
-                  i++
+                  t ? m((d = (0, s.default)(e, t))) : (d = []), r = 0;
+                  r < n.length;
+                  r++
                 ) {
-                  var d;
-                  if (0 === (d = r[i]).refs) {
-                    for (var u = 0; u < d.parts.length; u++) d.parts[u]();
-                    delete o[d.id];
+                  var u;
+                  if (0 === (u = n[r]).refs) {
+                    for (var a = 0; a < u.parts.length; a++) u.parts[a]();
+                    delete o[u.id];
                   }
                 }
               }
             );
           }
-          function v(e) {
+          function m(e) {
             for (var t = 0; t < e.length; t++) {
-              var r = e[t],
-                n = o[r.id];
-              if (n) {
-                n.refs++;
-                for (var i = 0; i < n.parts.length; i++) n.parts[i](r.parts[i]);
-                for (; i < r.parts.length; i++) n.parts.push(g(r.parts[i]));
-                n.parts.length > r.parts.length &&
-                  (n.parts.length = r.parts.length);
+              var n = e[t],
+                s = o[n.id];
+              if (s) {
+                s.refs++;
+                for (var r = 0; r < s.parts.length; r++) s.parts[r](n.parts[r]);
+                for (; r < n.parts.length; r++) s.parts.push(g(n.parts[r]));
+                s.parts.length > n.parts.length &&
+                  (s.parts.length = n.parts.length);
               } else {
-                var a = [];
-                for (i = 0; i < r.parts.length; i++) a.push(g(r.parts[i]));
-                o[r.id] = { id: r.id, refs: 1, parts: a };
+                var d = [];
+                for (r = 0; r < n.parts.length; r++) d.push(g(n.parts[r]));
+                o[n.id] = { id: n.id, refs: 1, parts: d };
               }
             }
           }
-          function m() {
+          function v() {
             var e = document.createElement('style');
-            return (e.type = 'text/css'), a.appendChild(e), e;
+            return (e.type = 'text/css'), d.appendChild(e), e;
           }
           function g(e) {
             var t,
-              r,
-              n = document.querySelector('style[' + l + '~="' + e.id + '"]');
-            if (n) {
-              if (u) return c;
-              n.parentNode.removeChild(n);
+              n,
+              s = document.querySelector('style[' + p + '~="' + e.id + '"]');
+            if (s) {
+              if (a) return l;
+              s.parentNode.removeChild(s);
             }
-            if (p) {
-              var i = d++;
-              (n = s || (s = m())),
-                (t = C.bind(null, n, i, !1)),
-                (r = C.bind(null, n, i, !0));
+            if (h) {
+              var r = u++;
+              (s = i || (i = v())),
+                (t = _.bind(null, s, r, !1)),
+                (n = _.bind(null, s, r, !0));
             } else
-              (n = m()),
-                (t = x.bind(null, n)),
-                (r = function () {
-                  n.parentNode.removeChild(n);
+              (s = v()),
+                (t = b.bind(null, s)),
+                (n = function () {
+                  s.parentNode.removeChild(s);
                 });
             return (
               t(e),
-              function (n) {
-                if (n) {
+              function (s) {
+                if (s) {
                   if (
-                    n.css === e.css &&
-                    n.media === e.media &&
-                    n.sourceMap === e.sourceMap
+                    s.css === e.css &&
+                    s.media === e.media &&
+                    s.sourceMap === e.sourceMap
                   )
                     return;
-                  t((e = n));
-                } else r();
+                  t((e = s));
+                } else n();
               }
             );
           }
-          var b,
+          var j,
             y =
-              ((b = []),
+              ((j = []),
               function (e, t) {
-                return (b[e] = t), b.filter(Boolean).join('\n');
+                return (j[e] = t), j.filter(Boolean).join('\n');
               });
-          function C(e, t, r, n) {
-            var i = r ? '' : n.css;
-            if (e.styleSheet) e.styleSheet.cssText = y(t, i);
+          function _(e, t, n, s) {
+            var r = n ? '' : s.css;
+            if (e.styleSheet) e.styleSheet.cssText = y(t, r);
             else {
-              var o = document.createTextNode(i),
-                a = e.childNodes;
-              a[t] && e.removeChild(a[t]),
-                a.length ? e.insertBefore(o, a[t]) : e.appendChild(o);
+              var o = document.createTextNode(r),
+                d = e.childNodes;
+              d[t] && e.removeChild(d[t]),
+                d.length ? e.insertBefore(o, d[t]) : e.appendChild(o);
             }
           }
-          function x(e, t) {
-            var r = t.css,
-              n = t.media,
-              i = t.sourceMap;
+          function b(e, t) {
+            var n = t.css,
+              s = t.media,
+              r = t.sourceMap;
             if (
-              (n && e.setAttribute('media', n),
-              f.ssrId && e.setAttribute(l, t.id),
-              i &&
-                ((r += '\n/*# sourceURL=' + i.sources[0] + ' */'),
-                (r +=
+              (s && e.setAttribute('media', s),
+              c.ssrId && e.setAttribute(p, t.id),
+              r &&
+                ((n += '\n/*# sourceURL=' + r.sources[0] + ' */'),
+                (n +=
                   '\n/*# sourceMappingURL=data:application/json;base64,' +
-                  btoa(unescape(encodeURIComponent(JSON.stringify(i)))) +
+                  btoa(unescape(encodeURIComponent(JSON.stringify(r)))) +
                   ' */')),
               e.styleSheet)
             )
-              e.styleSheet.cssText = r;
+              e.styleSheet.cssText = n;
             else {
               for (; e.firstChild; ) e.removeChild(e.firstChild);
-              e.appendChild(document.createTextNode(r));
+              e.appendChild(document.createTextNode(n));
             }
           }
         },
+        './node_modules/vue-style-loader/lib/listToStyles.js': function (
+          e,
+          t,
+          n,
+        ) {
+          'use strict';
+          function s(e, t) {
+            for (var n = [], s = {}, r = 0; r < t.length; r++) {
+              var o = t[r],
+                d = o[0],
+                i = {
+                  id: e + ':' + r,
+                  css: o[1],
+                  media: o[2],
+                  sourceMap: o[3],
+                };
+              s[d]
+                ? s[d].parts.push(i)
+                : n.push((s[d] = { id: d, parts: [i] }));
+            }
+            return n;
+          }
+          n.r(t),
+            n.d(t, {
+              default: function () {
+                return s;
+              },
+            });
+        },
+        '@qiun/ucharts': function (e) {
+          'use strict';
+          e.exports = require('@qiun/ucharts');
+        },
+        vue: function (e) {
+          'use strict';
+          e.exports = require('vue');
+        },
+        'vue3-aipage-widget/dist/index.umd': function (e) {
+          'use strict';
+          e.exports = require('vue3-aipage-widget/dist/index.umd');
+        },
       },
       t = {};
-    function r(n) {
-      var i = t[n];
-      if (void 0 !== i) return i.exports;
-      var o = (t[n] = { id: n, exports: {} });
-      return e[n](o, o.exports, r), o.exports;
+    function n(s) {
+      var r = t[s];
+      if (void 0 !== r) return r.exports;
+      var o = (t[s] = { id: s, exports: {} });
+      return e[s](o, o.exports, n), o.exports;
     }
-    (r.n = function (e) {
+    (n.n = function (e) {
       var t =
         e && e.__esModule
           ? function () {
@@ -200,186 +464,36 @@
           : function () {
               return e;
             };
-      return r.d(t, { a: t }), t;
+      return n.d(t, { a: t }), t;
     }),
-      (r.d = function (e, t) {
-        for (var n in t)
-          r.o(t, n) &&
-            !r.o(e, n) &&
-            Object.defineProperty(e, n, { enumerable: !0, get: t[n] });
+      (n.d = function (e, t) {
+        for (var s in t)
+          n.o(t, s) &&
+            !n.o(e, s) &&
+            Object.defineProperty(e, s, { enumerable: !0, get: t[s] });
       }),
-      (r.o = function (e, t) {
+      (n.o = function (e, t) {
         return Object.prototype.hasOwnProperty.call(e, t);
       }),
-      (r.r = function (e) {
+      (n.r = function (e) {
         'undefined' != typeof Symbol &&
           Symbol.toStringTag &&
           Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
           Object.defineProperty(e, '__esModule', { value: !0 });
       });
-    var n = {};
+    var s = {};
     return (
       (function () {
         'use strict';
-        r.r(n);
-        var e = require('vue3-aipage-widget/dist/index.umd'),
-          t = require('vue'),
-          i = { class: 'u-charts-container' },
-          o = ['canvas-id', 'id'],
-          a = require('@qiun/ucharts'),
-          s = r.n(a),
-          d = {},
-          u = {
-            props: ['componentProperties', 'id'],
-            data: function () {
-              return {
-                defaultChartData: {
-                  series: [
-                    {
-                      data: [
-                        { name: '一班', value: 50 },
-                        { name: '二班', value: 30 },
-                        { name: '三班', value: 20 },
-                        { name: '四班', value: 18 },
-                        { name: '五班', value: 8 },
-                      ],
-                    },
-                  ],
-                },
-              };
-            },
-            computed: {
-              chartId: function () {
-                return this.id || 'ring-uChart';
-              },
-              title: function () {
-                return (
-                  (this.componentProperties &&
-                    this.componentProperties.data &&
-                    this.componentProperties.data.title) ||
-                  '收益率'
-                );
-              },
-              subTitle: function () {
-                return (
-                  (this.componentProperties &&
-                    this.componentProperties.data &&
-                    this.componentProperties.data.subTitle) ||
-                  '70%'
-                );
-              },
-              series: function () {
-                return (
-                  (this.componentProperties &&
-                    this.componentProperties.data &&
-                    this.componentProperties.data.series) ||
-                  this.defaultChartData.series
-                );
-              },
-            },
-            mounted: function () {
-              this.drawCharts(this.chartId, { series: this.series });
-            },
-            updated: function () {
-              this.drawCharts(this.chartId, { series: this.series });
-            },
-            methods: {
-              drawCharts: function (e, t) {
-                var r = document.getElementById(e) || this.$refs.uchart;
-                (r.width = r.offsetWidth || '370'),
-                  (r.height = r.offsetHeight || '280');
-                var n = r.getContext('2d');
-                d[e] = new (s())({
-                  type: 'ring',
-                  context: n,
-                  width: r.width,
-                  height: r.height,
-                  series: t.series,
-                  animation: !0,
-                  background: '#ffffff',
-                  rotate: !1,
-                  rotateLock: !1,
-                  color: [
-                    '#1890FF',
-                    '#91CB74',
-                    '#FAC858',
-                    '#EE6666',
-                    '#73C0DE',
-                    '#3CA272',
-                    '#FC8452',
-                    '#9A60B4',
-                    '#ea7ccc',
-                  ],
-                  padding: [5, 5, 5, 5],
-                  dataLabel: !0,
-                  legend: { show: !0, position: 'right', lineHeight: 25 },
-                  title: { name: this.title, fontSize: 13, color: '#666666' },
-                  subtitle: {
-                    name: this.subTitle,
-                    fontSize: 20,
-                    color: '#7cb5ec',
-                  },
-                  extra: {
-                    ring: {
-                      ringWidth: 60,
-                      activeOpacity: 0.5,
-                      activeRadius: 10,
-                      offsetAngle: 0,
-                      labelWidth: 15,
-                      border: !1,
-                      borderWidth: 3,
-                      borderColor: '#FFFFFF',
-                    },
-                  },
-                });
-              },
-              tap: function (e) {
-                d[e.target.id].touchLegend(e), d[e.target.id].showToolTip(e);
-              },
-            },
-          };
-        r(261);
-        const c = (0, r(262).A)(u, [
-          [
-            'render',
-            function (e, r, n, a, s, d) {
-              return (
-                (0, t.openBlock)(),
-                (0, t.createElementBlock)('div', i, [
-                  d.chartId
-                    ? ((0, t.openBlock)(),
-                      (0, t.createElementBlock)(
-                        'canvas',
-                        {
-                          key: 0,
-                          'canvas-id': d.chartId,
-                          id: d.chartId,
-                          class: 'u-charts',
-                          onTouchend:
-                            r[0] ||
-                            (r[0] = function () {
-                              return d.tap && d.tap.apply(d, arguments);
-                            }),
-                          ref: 'uchart',
-                        },
-                        null,
-                        40,
-                        o,
-                      ))
-                    : (0, t.createCommentVNode)('v-if', !0),
-                ])
-              );
-            },
-          ],
-          ['__scopeId', 'data-v-b86dfad6'],
-        ]);
-        var f = c;
-        (0, e.registerRenderer)(f, {
+        n.r(s);
+        var e = n('vue3-aipage-widget/dist/index.umd'),
+          t = n('./src/h5components/uni-ring-chart/uni-ring-chart.vue');
+        (0, e.registerRenderer)(t.default, {
           type: 'uni-ring-chart',
           framework: 'vue3',
         });
       })(),
-      n
+      s
     );
   })();
 });

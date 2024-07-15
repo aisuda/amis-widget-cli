@@ -10,188 +10,458 @@
 })(this, function () {
   return (function () {
     var e = {
-        337: function () {},
-        262: function (e, t) {
-          'use strict';
-          t.A = (e, t) => {
-            const r = e.__vccOpts || e;
-            for (const [e, n] of t) r[e] = n;
-            return r;
-          };
-        },
-        393: function (e, t, r) {
-          var n = r(337);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, r(534).A)('2af6bfd9', n, !1, { sourceMap: !1 });
-        },
-        534: function (e, t, r) {
-          'use strict';
-          function n(e, t) {
-            for (var r = [], n = {}, a = 0; a < t.length; a++) {
-              var i = t[a],
-                o = i[0],
-                s = {
-                  id: e + ':' + a,
-                  css: i[1],
-                  media: i[2],
-                  sourceMap: i[3],
+        './node_modules/babel-loader/lib/index.js??clonedRuleSet-2.use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/h5components/uni-area-chart/uni-area-chart.vue?vue&type=script&lang=js':
+          function (e, t, s) {
+            'use strict';
+            s.r(t);
+            var r = s('@qiun/ucharts'),
+              n = s.n(r),
+              o = {};
+            t.default = {
+              data: function () {
+                return {
+                  defaultChartData: {
+                    categories: [
+                      '2016',
+                      '2017',
+                      '2018',
+                      '2019',
+                      '2020',
+                      '2021',
+                    ],
+                    series: [
+                      { name: '成交量A', data: [35, 8, 25, 37, 4, 20] },
+                      { name: '成交量B', data: [70, 40, 65, 100, 44, 68] },
+                      { name: '成交量C', data: [100, 80, 95, 150, 112, 132] },
+                    ],
+                  },
                 };
-              n[o]
-                ? n[o].parts.push(s)
-                : r.push((n[o] = { id: o, parts: [s] }));
+              },
+              computed: {
+                chartId: function () {
+                  return this.id || 'area-uChart';
+                },
+                categories: function () {
+                  return (
+                    (this.componentProperties &&
+                      this.componentProperties.data &&
+                      this.componentProperties.data.categories) ||
+                    this.defaultChartData.categories
+                  );
+                },
+                series: function () {
+                  return (
+                    (this.componentProperties &&
+                      this.componentProperties.data &&
+                      this.componentProperties.data.series) ||
+                    this.defaultChartData.series
+                  );
+                },
+              },
+              mounted: function () {
+                console.log('mounted-drawCharts:', this.chartId),
+                  this.drawCharts(this.chartId, {
+                    categories: this.categories,
+                    series: this.series,
+                  });
+              },
+              updated: function () {
+                console.log('updated-drawCharts:', this.chartId),
+                  this.drawCharts(this.chartId, {
+                    categories: this.categories,
+                    series: this.series,
+                  });
+              },
+              methods: {
+                drawCharts: function (e, t) {
+                  console.log('drawCharts:', e, t, this);
+                  var s =
+                    document.getElementById(e) ||
+                    this.$refs.uchart ||
+                    this.$refs.uchartBox;
+                  if (
+                    (console.log(
+                      'document.getElementById(id):',
+                      document.getElementById(e),
+                    ),
+                    console.log('this.$refs:', this.$refs),
+                    console.log('this.$refs.uchart:', this.$refs.uchart),
+                    s)
+                  ) {
+                    (s.width = s.offsetWidth || '370'),
+                      (s.height = s.offsetHeight || '280');
+                    var r = s.getContext('2d');
+                    o[e] = new (n())({
+                      type: 'area',
+                      context: r,
+                      width: s.width,
+                      height: s.height,
+                      categories: this.categories,
+                      series: t.series,
+                      animation: !0,
+                      background: '#ffffff',
+                      padding: [15, 15, 0, 5],
+                      xAxis: { disableGrid: !0 },
+                      yAxis: { data: [{ min: 0 }] },
+                      color: [
+                        '#1890FF',
+                        '#91CB74',
+                        '#FAC858',
+                        '#EE6666',
+                        '#73C0DE',
+                        '#3CA272',
+                        '#FC8452',
+                        '#9A60B4',
+                        '#ea7ccc',
+                      ],
+                      legend: {},
+                      extra: {
+                        area: {
+                          type: 'straight',
+                          opacity: 0.2,
+                          addLine: !0,
+                          width: 2,
+                          gradient: !1,
+                        },
+                      },
+                    });
+                  }
+                },
+                tap: function (e) {
+                  o[e.target.id].touchLegend(e), o[e.target.id].showToolTip(e);
+                },
+              },
+            };
+          },
+        './node_modules/babel-loader/lib/index.js??clonedRuleSet-2.use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/h5components/uni-area-chart/uni-area-chart.vue?vue&type=template&id=50c90e3c':
+          function (e, t, s) {
+            'use strict';
+            s.r(t),
+              s.d(t, {
+                render: function () {
+                  return a;
+                },
+              });
+            var r = s('vue'),
+              n = { class: 'u-charts-container', ref: 'uchartBox' },
+              o = ['canvas-id', 'id'];
+            function a(e, t, s, a, d, u) {
+              return (
+                (0, r.openBlock)(),
+                (0, r.createElementBlock)(
+                  'div',
+                  n,
+                  [
+                    (0, r.createElementVNode)(
+                      'canvas',
+                      {
+                        'canvas-id': u.chartId,
+                        id: u.chartId,
+                        class: 'u-charts',
+                        onTouchend:
+                          t[0] ||
+                          (t[0] = function () {
+                            return u.tap && u.tap.apply(u, arguments);
+                          }),
+                        ref: 'uchart',
+                      },
+                      null,
+                      40,
+                      o,
+                    ),
+                  ],
+                  512,
+                )
+              );
             }
-            return r;
-          }
-          r.d(t, {
-            A: function () {
-              return l;
-            },
-          });
-          var a = 'undefined' != typeof document;
-          if ('undefined' != typeof DEBUG && DEBUG && !a)
+          },
+        './node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./src/h5components/uni-area-chart/uni-area-chart.vue?vue&type=style&index=0&id=50c90e3c&lang=scss':
+          function () {},
+        './node_modules/vue-loader/dist/exportHelper.js': function (e, t) {
+          'use strict';
+          Object.defineProperty(t, '__esModule', { value: !0 }),
+            (t.default = (e, t) => {
+              const s = e.__vccOpts || e;
+              for (const [e, r] of t) s[e] = r;
+              return s;
+            });
+        },
+        './src/h5components/uni-area-chart/uni-area-chart.vue': function (
+          e,
+          t,
+          s,
+        ) {
+          'use strict';
+          s.r(t);
+          var r = s(
+              './src/h5components/uni-area-chart/uni-area-chart.vue?vue&type=template&id=50c90e3c',
+            ),
+            n = s(
+              './src/h5components/uni-area-chart/uni-area-chart.vue?vue&type=script&lang=js',
+            );
+          s(
+            './src/h5components/uni-area-chart/uni-area-chart.vue?vue&type=style&index=0&id=50c90e3c&lang=scss',
+          );
+          const o = (0,
+          s('./node_modules/vue-loader/dist/exportHelper.js').default)(
+            n.default,
+            [
+              ['render', r.render],
+              ['__file', 'src/h5components/uni-area-chart/uni-area-chart.vue'],
+            ],
+          );
+          t.default = o;
+        },
+        './src/h5components/uni-area-chart/uni-area-chart.vue?vue&type=script&lang=js':
+          function (e, t, s) {
+            'use strict';
+            s.r(t),
+              s.d(t, {
+                default: function () {
+                  return r.default;
+                },
+              });
+            var r = s(
+              './node_modules/babel-loader/lib/index.js??clonedRuleSet-2.use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/h5components/uni-area-chart/uni-area-chart.vue?vue&type=script&lang=js',
+            );
+          },
+        './src/h5components/uni-area-chart/uni-area-chart.vue?vue&type=template&id=50c90e3c':
+          function (e, t, s) {
+            'use strict';
+            s.r(t),
+              s.d(t, {
+                render: function () {
+                  return r.render;
+                },
+              });
+            var r = s(
+              './node_modules/babel-loader/lib/index.js??clonedRuleSet-2.use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/h5components/uni-area-chart/uni-area-chart.vue?vue&type=template&id=50c90e3c',
+            );
+          },
+        './src/h5components/uni-area-chart/uni-area-chart.vue?vue&type=style&index=0&id=50c90e3c&lang=scss':
+          function (e, t, s) {
+            'use strict';
+            s.r(t);
+            var r = s(
+                './node_modules/vue-style-loader/index.js??clonedRuleSet-11.use[0]!./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./src/h5components/uni-area-chart/uni-area-chart.vue?vue&type=style&index=0&id=50c90e3c&lang=scss',
+              ),
+              n = {};
+            for (var o in r)
+              'default' !== o &&
+                (n[o] = function (e) {
+                  return r[e];
+                }.bind(0, o));
+            s.d(t, n);
+          },
+        './node_modules/vue-style-loader/index.js??clonedRuleSet-11.use[0]!./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./src/h5components/uni-area-chart/uni-area-chart.vue?vue&type=style&index=0&id=50c90e3c&lang=scss':
+          function (e, t, s) {
+            var r = s(
+              './node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./node_modules/params-replace-loader/index.js??clonedRuleSet-7!./src/h5components/uni-area-chart/uni-area-chart.vue?vue&type=style&index=0&id=50c90e3c&lang=scss',
+            );
+            r.__esModule && (r = r.default),
+              'string' == typeof r && (r = [[e.id, r, '']]),
+              r.locals && (e.exports = r.locals),
+              (0,
+              s('./node_modules/vue-style-loader/lib/addStylesClient.js')
+                .default)('212a76b6', r, !1, { sourceMap: !1 });
+          },
+        './node_modules/vue-style-loader/lib/addStylesClient.js': function (
+          e,
+          t,
+          s,
+        ) {
+          'use strict';
+          s.r(t),
+            s.d(t, {
+              default: function () {
+                return f;
+              },
+            });
+          var r = s('./node_modules/vue-style-loader/lib/listToStyles.js'),
+            n = 'undefined' != typeof document;
+          if ('undefined' != typeof DEBUG && DEBUG && !n)
             throw new Error(
               "vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.",
             );
-          var i = {},
-            o =
-              a && (document.head || document.getElementsByTagName('head')[0]),
-            s = null,
-            d = 0,
-            c = !1,
-            u = function () {},
-            f = null,
+          var o = {},
+            a =
+              n && (document.head || document.getElementsByTagName('head')[0]),
+            d = null,
+            u = 0,
+            i = !1,
+            l = function () {},
+            c = null,
             p = 'data-vue-ssr-id',
             h =
               'undefined' != typeof navigator &&
               /msie [6-9]\b/.test(navigator.userAgent.toLowerCase());
-          function l(e, t, r, a) {
-            (c = r), (f = a || {});
-            var o = n(e, t);
+          function f(e, t, s, n) {
+            (i = s), (c = n || {});
+            var a = (0, r.default)(e, t);
             return (
-              g(o),
+              m(a),
               function (t) {
-                for (var r = [], a = 0; a < o.length; a++) {
-                  var s = o[a];
-                  (d = i[s.id]).refs--, r.push(d);
+                for (var s = [], n = 0; n < a.length; n++) {
+                  var d = a[n];
+                  (u = o[d.id]).refs--, s.push(u);
                 }
                 for (
-                  t ? g((o = n(e, t))) : (o = []), a = 0;
-                  a < r.length;
-                  a++
+                  t ? m((a = (0, r.default)(e, t))) : (a = []), n = 0;
+                  n < s.length;
+                  n++
                 ) {
-                  var d;
-                  if (0 === (d = r[a]).refs) {
-                    for (var c = 0; c < d.parts.length; c++) d.parts[c]();
-                    delete i[d.id];
+                  var u;
+                  if (0 === (u = s[n]).refs) {
+                    for (var i = 0; i < u.parts.length; i++) u.parts[i]();
+                    delete o[u.id];
                   }
                 }
               }
             );
           }
-          function g(e) {
+          function m(e) {
             for (var t = 0; t < e.length; t++) {
-              var r = e[t],
-                n = i[r.id];
-              if (n) {
-                n.refs++;
-                for (var a = 0; a < n.parts.length; a++) n.parts[a](r.parts[a]);
-                for (; a < r.parts.length; a++) n.parts.push(m(r.parts[a]));
-                n.parts.length > r.parts.length &&
-                  (n.parts.length = r.parts.length);
+              var s = e[t],
+                r = o[s.id];
+              if (r) {
+                r.refs++;
+                for (var n = 0; n < r.parts.length; n++) r.parts[n](s.parts[n]);
+                for (; n < s.parts.length; n++) r.parts.push(g(s.parts[n]));
+                r.parts.length > s.parts.length &&
+                  (r.parts.length = s.parts.length);
               } else {
-                var o = [];
-                for (a = 0; a < r.parts.length; a++) o.push(m(r.parts[a]));
-                i[r.id] = { id: r.id, refs: 1, parts: o };
+                var a = [];
+                for (n = 0; n < s.parts.length; n++) a.push(g(s.parts[n]));
+                o[s.id] = { id: s.id, refs: 1, parts: a };
               }
             }
           }
           function v() {
             var e = document.createElement('style');
-            return (e.type = 'text/css'), o.appendChild(e), e;
+            return (e.type = 'text/css'), a.appendChild(e), e;
           }
-          function m(e) {
+          function g(e) {
             var t,
-              r,
-              n = document.querySelector('style[' + p + '~="' + e.id + '"]');
-            if (n) {
-              if (c) return u;
-              n.parentNode.removeChild(n);
+              s,
+              r = document.querySelector('style[' + p + '~="' + e.id + '"]');
+            if (r) {
+              if (i) return l;
+              r.parentNode.removeChild(r);
             }
             if (h) {
-              var a = d++;
-              (n = s || (s = v())),
-                (t = b.bind(null, n, a, !1)),
-                (r = b.bind(null, n, a, !0));
+              var n = u++;
+              (r = d || (d = v())),
+                (t = x.bind(null, r, n, !1)),
+                (s = x.bind(null, r, n, !0));
             } else
-              (n = v()),
-                (t = x.bind(null, n)),
-                (r = function () {
-                  n.parentNode.removeChild(n);
+              (r = v()),
+                (t = _.bind(null, r)),
+                (s = function () {
+                  r.parentNode.removeChild(r);
                 });
             return (
               t(e),
-              function (n) {
-                if (n) {
+              function (r) {
+                if (r) {
                   if (
-                    n.css === e.css &&
-                    n.media === e.media &&
-                    n.sourceMap === e.sourceMap
+                    r.css === e.css &&
+                    r.media === e.media &&
+                    r.sourceMap === e.sourceMap
                   )
                     return;
-                  t((e = n));
-                } else r();
+                  t((e = r));
+                } else s();
               }
             );
           }
-          var y,
-            C =
-              ((y = []),
+          var j,
+            y =
+              ((j = []),
               function (e, t) {
-                return (y[e] = t), y.filter(Boolean).join('\n');
+                return (j[e] = t), j.filter(Boolean).join('\n');
               });
-          function b(e, t, r, n) {
-            var a = r ? '' : n.css;
-            if (e.styleSheet) e.styleSheet.cssText = C(t, a);
+          function x(e, t, s, r) {
+            var n = s ? '' : r.css;
+            if (e.styleSheet) e.styleSheet.cssText = y(t, n);
             else {
-              var i = document.createTextNode(a),
-                o = e.childNodes;
-              o[t] && e.removeChild(o[t]),
-                o.length ? e.insertBefore(i, o[t]) : e.appendChild(i);
+              var o = document.createTextNode(n),
+                a = e.childNodes;
+              a[t] && e.removeChild(a[t]),
+                a.length ? e.insertBefore(o, a[t]) : e.appendChild(o);
             }
           }
-          function x(e, t) {
-            var r = t.css,
-              n = t.media,
-              a = t.sourceMap;
+          function _(e, t) {
+            var s = t.css,
+              r = t.media,
+              n = t.sourceMap;
             if (
-              (n && e.setAttribute('media', n),
-              f.ssrId && e.setAttribute(p, t.id),
-              a &&
-                ((r += '\n/*# sourceURL=' + a.sources[0] + ' */'),
-                (r +=
+              (r && e.setAttribute('media', r),
+              c.ssrId && e.setAttribute(p, t.id),
+              n &&
+                ((s += '\n/*# sourceURL=' + n.sources[0] + ' */'),
+                (s +=
                   '\n/*# sourceMappingURL=data:application/json;base64,' +
-                  btoa(unescape(encodeURIComponent(JSON.stringify(a)))) +
+                  btoa(unescape(encodeURIComponent(JSON.stringify(n)))) +
                   ' */')),
               e.styleSheet)
             )
-              e.styleSheet.cssText = r;
+              e.styleSheet.cssText = s;
             else {
               for (; e.firstChild; ) e.removeChild(e.firstChild);
-              e.appendChild(document.createTextNode(r));
+              e.appendChild(document.createTextNode(s));
             }
           }
         },
+        './node_modules/vue-style-loader/lib/listToStyles.js': function (
+          e,
+          t,
+          s,
+        ) {
+          'use strict';
+          function r(e, t) {
+            for (var s = [], r = {}, n = 0; n < t.length; n++) {
+              var o = t[n],
+                a = o[0],
+                d = {
+                  id: e + ':' + n,
+                  css: o[1],
+                  media: o[2],
+                  sourceMap: o[3],
+                };
+              r[a]
+                ? r[a].parts.push(d)
+                : s.push((r[a] = { id: a, parts: [d] }));
+            }
+            return s;
+          }
+          s.r(t),
+            s.d(t, {
+              default: function () {
+                return r;
+              },
+            });
+        },
+        '@qiun/ucharts': function (e) {
+          'use strict';
+          e.exports = require('@qiun/ucharts');
+        },
+        vue: function (e) {
+          'use strict';
+          e.exports = require('vue');
+        },
+        'vue3-aipage-widget/dist/index.umd': function (e) {
+          'use strict';
+          e.exports = require('vue3-aipage-widget/dist/index.umd');
+        },
       },
       t = {};
-    function r(n) {
-      var a = t[n];
-      if (void 0 !== a) return a.exports;
-      var i = (t[n] = { id: n, exports: {} });
-      return e[n](i, i.exports, r), i.exports;
+    function s(r) {
+      var n = t[r];
+      if (void 0 !== n) return n.exports;
+      var o = (t[r] = { id: r, exports: {} });
+      return e[r](o, o.exports, s), o.exports;
     }
-    (r.n = function (e) {
+    (s.n = function (e) {
       var t =
         e && e.__esModule
           ? function () {
@@ -200,170 +470,36 @@
           : function () {
               return e;
             };
-      return r.d(t, { a: t }), t;
+      return s.d(t, { a: t }), t;
     }),
-      (r.d = function (e, t) {
-        for (var n in t)
-          r.o(t, n) &&
-            !r.o(e, n) &&
-            Object.defineProperty(e, n, { enumerable: !0, get: t[n] });
+      (s.d = function (e, t) {
+        for (var r in t)
+          s.o(t, r) &&
+            !s.o(e, r) &&
+            Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
       }),
-      (r.o = function (e, t) {
+      (s.o = function (e, t) {
         return Object.prototype.hasOwnProperty.call(e, t);
       }),
-      (r.r = function (e) {
+      (s.r = function (e) {
         'undefined' != typeof Symbol &&
           Symbol.toStringTag &&
           Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
           Object.defineProperty(e, '__esModule', { value: !0 });
       });
-    var n = {};
+    var r = {};
     return (
       (function () {
         'use strict';
-        r.r(n);
-        var e = require('vue3-aipage-widget/dist/index.umd'),
-          t = require('vue'),
-          a = { class: 'u-charts-container' },
-          i = ['canvas-id', 'id'],
-          o = require('@qiun/ucharts'),
-          s = r.n(o),
-          d = {},
-          c = {
-            props: ['componentProperties', 'id'],
-            data: function () {
-              return {
-                defaultChartData: {
-                  categories: ['2016', '2017', '2018', '2019', '2020', '2021'],
-                  series: [
-                    { name: '成交量A', data: [35, 8, 25, 37, 4, 20] },
-                    { name: '成交量B', data: [70, 40, 65, 100, 44, 68] },
-                    { name: '成交量C', data: [100, 80, 95, 150, 112, 132] },
-                  ],
-                },
-              };
-            },
-            computed: {
-              chartId: function () {
-                return this.id || 'area-uChart';
-              },
-              categories: function () {
-                return (
-                  (this.componentProperties &&
-                    this.componentProperties.data &&
-                    this.componentProperties.data.categories) ||
-                  this.defaultChartData.categories
-                );
-              },
-              series: function () {
-                return (
-                  (this.componentProperties &&
-                    this.componentProperties.data &&
-                    this.componentProperties.data.series) ||
-                  this.defaultChartData.series
-                );
-              },
-            },
-            mounted: function () {
-              this.drawCharts(this.chartId, {
-                categories: this.categories,
-                series: this.series,
-              });
-            },
-            updated: function () {
-              this.drawCharts(this.chartId, {
-                categories: this.categories,
-                series: this.series,
-              });
-            },
-            methods: {
-              drawCharts: function (e, t) {
-                var r = document.getElementById(e) || this.$refs.uchart;
-                (r.width = r.offsetWidth || '370'),
-                  (r.height = r.offsetHeight || '280');
-                var n = r.getContext('2d');
-                d[e] = new (s())({
-                  type: 'area',
-                  context: n,
-                  width: r.width,
-                  height: r.height,
-                  categories: this.categories,
-                  series: t.series,
-                  animation: !0,
-                  background: '#ffffff',
-                  padding: [15, 15, 0, 5],
-                  xAxis: { disableGrid: !0 },
-                  yAxis: { data: [{ min: 0 }] },
-                  color: [
-                    '#1890FF',
-                    '#91CB74',
-                    '#FAC858',
-                    '#EE6666',
-                    '#73C0DE',
-                    '#3CA272',
-                    '#FC8452',
-                    '#9A60B4',
-                    '#ea7ccc',
-                  ],
-                  legend: {},
-                  extra: {
-                    area: {
-                      type: 'straight',
-                      opacity: 0.2,
-                      addLine: !0,
-                      width: 2,
-                      gradient: !1,
-                    },
-                  },
-                });
-              },
-              tap: function (e) {
-                d[e.target.id].touchLegend(e), d[e.target.id].showToolTip(e);
-              },
-            },
-          };
-        r(393);
-        const u = (0, r(262).A)(c, [
-          [
-            'render',
-            function (e, r, n, o, s, d) {
-              return (
-                (0, t.openBlock)(),
-                (0, t.createElementBlock)('div', a, [
-                  d.chartId
-                    ? ((0, t.openBlock)(),
-                      (0, t.createElementBlock)(
-                        'canvas',
-                        {
-                          key: 0,
-                          'canvas-id': d.chartId,
-                          id: d.chartId,
-                          class: 'u-charts',
-                          onTouchend:
-                            r[0] ||
-                            (r[0] = function () {
-                              return d.tap && d.tap.apply(d, arguments);
-                            }),
-                          ref: 'uchart',
-                        },
-                        null,
-                        40,
-                        i,
-                      ))
-                    : (0, t.createCommentVNode)('v-if', !0),
-                ])
-              );
-            },
-          ],
-          ['__scopeId', 'data-v-0076da2c'],
-        ]);
-        var f = u;
-        (0, e.registerRenderer)(f, {
+        s.r(r);
+        var e = s('vue3-aipage-widget/dist/index.umd'),
+          t = s('./src/h5components/uni-area-chart/uni-area-chart.vue');
+        (0, e.registerRenderer)(t.default, {
           type: 'uni-area-chart',
           framework: 'vue3',
         });
       })(),
-      n
+      r
     );
   })();
 });

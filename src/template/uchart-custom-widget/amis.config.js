@@ -134,7 +134,7 @@ module.exports = {
       uniRingPlugin: './src/h5components/uni-ring-chart/plugin.ts',
     },
     // 用于构建生产环境代码的相关配置信息
-    NODE_ENV: 'production', // development / production
+    NODE_ENV: 'development', // development / production
     libraryName: 'aipageWidget', // 构建第三方功能包时最后导出的引用变量名
     assetsRoot: resolve('./preview'), // 打包后的文件绝对路径（物理路径）
     assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）

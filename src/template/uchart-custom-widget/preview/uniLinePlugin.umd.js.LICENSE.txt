@@ -1,7 +1,17 @@
 /*!
- * uchart-custom-widget v1.2.10
+ * uchart-custom-widget v1.3.6
  * author: wibetter
  * build tool: AKFun
- * build time: Mon Jun 03 2024 20:46:19 GMT+0800 (中国标准时间)
+ * build time: Mon Jun 17 2024 21:08:13 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
+
+/*! vue3-aipage-widget/dist/index.umd */
+
+/*!***************************************************!*\
+  !*** ./src/h5components/uni-line-chart/plugin.ts ***!
+  \***************************************************/
+
+/*!****************************************************!*\
+  !*** external "vue3-aipage-widget/dist/index.umd" ***!
+  \****************************************************/

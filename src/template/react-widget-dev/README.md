@@ -74,7 +74,7 @@ $ npm run build
 ```bash
 $ npm publish
 ```
-8. **发布到制定的NPM仓库**
+8. **发布到指定的NPM仓库**
 > 打开NPM配置文件（src/.npmrc），配置为制定仓库地址即可。
 ### 配置项说明（amis-widget-cli）
 [请查看amis-widget-cli](https://github.com/aisuda/amis-widget-cli)
