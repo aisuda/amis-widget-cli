@@ -1,0 +1,86 @@
+{
+  "name": "i18n-react-custom-widget-template",
+  "version": "1.0.5",
+  "description": "国际化版amis自定义组件模板（react技术栈）",
+  "keywords": [
+    "自定义组件模板",
+    "react技术栈",
+    "amis自定义组件",
+    "amis-editor自定义插件",
+    "国际化"
+  ],
+  "author": "wibetter",
+  "license": "MIT",
+  "scripts": {
+    "dev": "amis dev",
+    "preview": "amis preview",
+    "linkDebug": "amis linkDebug",
+    "i18n:update": "npx i18n update --config=./i18nConfig.js --secretKey=custom-amis-widgets",
+    "i18n:translate": "npx i18n translate --config=./i18nConfig.js --l=en-US,ru-RU",
+    "build2lib": "amis build2lib",
+    "format": "prettier --write \"src/**/**/*.{js,jsx,ts,tsx,vue,scss,json}\""
+  },
+  "files": [
+    "dist/*"
+  ],
+  "framework": "react",
+  "amis-widgets": [
+    {
+      "name": "react-info-card",
+      "framework": "react",
+      "usage": "renderer",
+      "type": "react-info-card",
+      "entry": "/dist/reactInfoCard.umd",
+      "files": [
+        "/dist/reactInfoCard.css"
+      ],
+      "editorPlugin": {
+        "name": "react-info-card-plugin",
+        "description": "信息展示卡片",
+        "pluginEntry": "/dist/reactInfoCardPlugin.umd",
+        "tag": [
+          "展示"
+        ],
+        "sort": 100
+      }
+    }
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "src/**/**/*.{js,jsx,ts,tsx,vue,scss,json}": [
+      "prettier --write"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git@github.com:aisuda/i18n-react-custom-widget-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aisuda/i18n-react-custom-widget-template/issues"
+  },
+  "dependencies": {
+    "amis-widget": "^3.2.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "i18n-runtime": "*"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^9.1.1",
+    "amis-widget-cli": "^3.1.13",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.9",
+    "prettier": "^2.0.5",
+    "i18n-command": "^0.0.23-beta.17",
+    "webpack-react-i18n": "^0.0.23-beta.8"
+  },
+  "engines": {
+    "node": ">= 10.13.0",
+    "npm": ">= 6.4.1"
+  }
+}
