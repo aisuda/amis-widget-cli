@@ -1,0 +1,127 @@
+/* 公共的自定义函数 */
+
+@function px2vw($px, $screen-width: 750) {
+  @return ($px / $screen-width) * 100vw;
+}
+
+@function px2rem($px, $remRate: 100) {
+  @return ($px / $remRate) + rem;
+}
+
+@function px2vmin($px, $screen-width: 750) {
+  @return ($px / $screen-width) * 100vmin;
+}
+
+@mixin fillBox {
+  width: 100%;
+  height: 100%;
+}
+
+/* 头部细线 */
+@mixin borderTop {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 1px;
+  background: #ddd;
+  transform: scaleY(0.5);
+}
+
+/* 底部细线 */
+@mixin borderBtm {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: #ddd;
+  transform: scaleY(0.5);
+}
+
+/* 统一的内边距 */
+@mixin unifiedPadding($value: 40) {
+  padding: 0 px2rem($value) 0 px2rem($value);
+}
+
+/* 统一的左内边距 */
+@mixin unifiedLeftPadding($value: 40) {
+  padding-left: px2rem($value);
+}
+
+/* 统一的右内边距 */
+@mixin unifiedRightPadding($value: 40) {
+  padding-right: px2rem($value);
+}
+
+/* 统一的底部边框样式 */
+@mixin unifiedBottomBorder {
+  border-bottom: 1px solid #ddd;
+}
+
+/* 统一的上边框样式 */
+@mixin unifiedTopBorder {
+  border-top: 1px solid #ddd;
+}
+
+/* 统一的Item高度 */
+@mixin unifiedItemHeight {
+  line-height: px2rem(120);
+  height: px2rem(120);
+}
+
+/* 设置行高样式 */
+@mixin setItemHeight($value: 120) {
+  line-height: px2rem($value);
+  height: px2rem($value);
+}
+
+/* 统一的Item样式 */
+@mixin unifiedItemStyle {
+  font-family: PingFangSC-Regular;
+  font-size: px2rem(28);
+  color: #828282;
+  letter-spacing: 0;
+}
+
+/* 统一的弹性盒子样式 */
+@mixin unifiedFlexBoxStyle {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 统一的Title样式 */
+@mixin unifiedTitleStyle {
+  font-family: PingFangSC-Regular;
+  font-size: px2rem(40);
+  color: #1e1e1e;
+}
+
+/* 统一的内容样式 */
+@mixin unifiedContentStyle {
+  font-family: PingFangSC-Regular;
+  font-size: px2rem(28);
+  color: #1e1e1e;
+  letter-spacing: 0;
+  text-align: right;
+  line-height: px2rem(28);
+}
+
+/* 底部导航盒子样式 */
+@mixin fixedBottomBox {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+// 常用的变量
+$background-color: #fafafa;
+$border-color: #f7f7f7;
+$page-padding-top: px2rem(20);

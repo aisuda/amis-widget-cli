@@ -1,0 +1,17 @@
+{
+  "en-US": {},
+  "ru-RU": {},
+  "zh-CN": {
+    "37c6a9d4d2294b61e08025d2bfda22b2": "amis 是一个低代码前端框架，它使用 JSON 配置来生成页面，可以减少页面开发工作量，极大提升效率。",
+    "d6cce67cebd7f818e94b8ceb380a9e10": "爱速搭 · 低代码平台",
+    "2ee57f9c0bbd29ab90c57f7b020e3075": "评",
+    "6c9b0de22d92217b2154db7c453f24e5": "react组件",
+    "e04741723e4712bfd3e106ddf8a4ac9c": "信息展示卡片",
+    "9ef9feec3fa5372abaacce3c45eb02ab": "自定义",
+    "5ff3a329016d43bb9efac693a0923f5a": "配置",
+    "33fffce2ae5ecff65a344ea1b09831be": "卡片title",
+    "1c74c3d795663d30e7f39b37d962daf1": "展示图片",
+    "80fe75127e5504cecc3f24f49bc2b919": "图片数量",
+    "a64997e951d620cd7bc041a39d6c5ae2": "评论数"
+  }
+}
