@@ -128,8 +128,8 @@ let argv = yargs
           },
           {
             name: 'uview版自定义组件(aipage-editor专用)',
-            value: 'uview-custom-form',
-            short: 'uview-custom-form'
+            value: 'uview-custom-widget',
+            short: 'uview-custom-widget'
           },
           {
             name: 'uniapp+H5版组件模板(aipage-editor专用)',
